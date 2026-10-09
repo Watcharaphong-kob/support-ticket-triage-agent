@@ -31,3 +31,6 @@ Ruling: private evaluator access cannot be confirmed without an identity; retain
 Delivery verified: 8d50edc pushed; draft PR #2 attached; issue #1 closed; hosted CI run 37904012936 succeeded. Ask-matt post-task check: full prototype completion verified; live quality limitations retained.
 
 S01 before: ask-matt → grill-with-docs facts + to-spec synthesis, reuse approved CLI/DB test seams. Fact subagent unavailable; read/count current sources directly. Docker suite 65 passed/1 host-only skip. User requests simplicity; interpretation recorded as readable minimal concepts without dropping required behavior. S01 after: ask-matt → documentation/source/syntax verification. Runtime untouched; S02 simplification proposed separately.
+
+
+Architecture ticket publication before: ask-matt → improve-codebase-architecture/codebase-design survey → to-tickets. User accepted both slices. Published S02/#4 and S03/#5 with ready-for-agent; verified native sub-issue parent #3, labels/open states and unchanged parent body. S01 is complete; no dependency between these tickets. Regenerated planner/TODO/tickets/HTML; runtime untouched. Post-task ask-matt route: verify published acceptance/blockers and deterministic source-fidelity checks; implementation/TDD/review is later work.

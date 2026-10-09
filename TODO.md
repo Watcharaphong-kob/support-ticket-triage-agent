@@ -1,6 +1,6 @@
 # Project TODO
 
-9 October 2026 · 17/17 Phase 1 tasks done · Next: Phase 1 complete
+9 October 2026 · 17/17 Phase 1 tasks done · Next: S02
 
 [Spec](PROJECT_SPEC.md) · [Stack](TECH_STACK.md) · [Detailed planner](PROJECT_TASK_PLANNER.md)
 
@@ -80,7 +80,26 @@ Checked tasks record completed setup/design and the user's E01 architecture deci
 
 - [x] **S01 — Document testing, assignment fit and clone setup** (done): Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.
 
-- [ ] **S02 — Simplify repeated runtime code without changing behavior** (todo): Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.
+- [ ] **S02 — Concentrate read-only tool validation** (todo): Keep ticket triage behavior unchanged while concentrating repeated tool-specific knowledge in the existing read-only tool module. The agent retains model turns, execution budgets, call IDs, transcript bookkeeping and fallback behavior.
+
+- [ ] Remove repeated allowlist/validation knowledge only where total complexity decreases; record before/after code size and concepts.
+- [ ] Preserve public ticket/result contracts and actual execution of customer-history and knowledge-search tools.
+- [ ] Preserve failure timing and codes: malformed JSON, unknown tool, foreign customer and duplicate IDs remain rejected as currently tested; schema-invalid arguments remain a recorded tool error followed by tool_unavailable.
+- [ ] Preserve currently rejected batch behavior, tool/model budgets, safe error details, trace records and grounded citations.
+- [ ] Preserve full conversations, Thai output, missing-history disclosure and mock-knowledge labeling.
+- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.
+- [ ] Update planner, TODO, reader HTML and ticket evidence. No generic registry, additional delegation module or new public seam solely to shorten a file.
+
+- [ ] **S03 — Simplify offline demonstration content** (todo): Make the offline demonstration implementation easier to read by reducing repeated scenario construction, while preserving the same model interface, sample results and explicit distinction from live GPT.
+
+- [ ] Remove actual repeated logic or concepts; record before/after size and complexity. Moving a file or prose alone does not satisfy acceptance.
+- [ ] Preserve the GPT and offline model adapters and existing public behavior; do not add an adapter hierarchy or loader framework.
+- [ ] Preserve all three sample outcomes, whole-thread input, Thai drafts and separate secondary issues without hardcoding ticket IDs.
+- [ ] Both tools still execute and citations still identify retrieved evidence; unknown scenarios retain honest limitations.
+- [ ] Offline execution remains labeled and rejects live embedding configuration before constructing a paid provider.
+- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.
+- [ ] If packaged data changes, verify installed wheel resources and fresh-clone execution.
+- [ ] Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.
 
 
 

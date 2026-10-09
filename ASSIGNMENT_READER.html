@@ -9,7 +9,7 @@
 </style></head><body><a class="skip" href="#overview">Skip to content</a><div class="layout"><aside><div class="brand">OOCA Assignment</div><div class="sub">SUPPORT TICKET TRIAGE</div><nav aria-label="Document views"><a href="#overview">Overview</a><a href="#planner">Task planner</a><a href="#todo">TODO list</a><a href="#tickets">Tickets</a><a href="#spec">Spec</a><a href="#stack">Tech stack</a><a href="#testing">How to test / Word fit</a><a href="#knowledge">Knowledge system</a><a href="#github">GitHub plan</a><a href="#t02">Verified setup</a><a href="#original">Original assignment</a></nav><div class="aside-note">17/17 Phase 1 tasks done<br>Offline reader · Ctrl+P to print<br>Task data: docs/project_tasks.json</div></aside><main><section class="page" id="overview" tabindex="-1"><div class="eyebrow">PROJECT WORKSPACE · 9 October 2026</div>
 <h2>Support Ticket<br>Triage Agent</h2><p class="lead">The assignment, spec, stack and execution plan in one offline reader.</p>
 <div class="stats"><div><b>17/17</b><span>Phase 1 tasks complete</span></div><div><b>Classic RAG</b><span>Docker + PostgreSQL + pgvector</span></div><div><b>Prototype</b><span>GraphRAG deferred to Phase 2</span></div></div>
-<div class="note">GPT prompt, bounded agent loop, JSON CLI, Docker classic RAG and both tools implemented; see Tickets for evidence. Next: Phase 1 complete. Live embeddings not verified.</div>
+<div class="note">GPT prompt, bounded agent loop, JSON CLI, Docker classic RAG and both tools implemented; see Tickets for evidence. Next: S02. Live embeddings not verified.</div>
 <div class="tiles"><a href="#spec"><b>Project spec</b><span>Scope, contracts and acceptance</span></a><a href="#stack"><b>Tech stack</b><span>Installed tools and proposed choices</span></a><a href="#todo"><b>TODO list</b><span>One shared list; verified status</span></a><a href="#original"><b>Original assignment</b><span>All conversations, including Thai</span></a></div>
 <h2>Assignment Summary</h2>
 <h3>What you need to build</h3>
@@ -31,7 +31,7 @@
 <p>The document does not specify a model version, programming language, official sample labels, submission deadline, or deployment platform. Confirm those design choices before implementation. This deliverable is planning and document conversion; it does not implement or publish the project.</p></section><section class="page" id="planner" tabindex="-1"><h2>Project Task Planner</h2>
 <p>9 October 2026 · Rebuilt from docs/project_tasks.json</p>
 <h3>Current position</h3>
-<p>17 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: Phase 1 complete. GPT/tool/CLI implementation is available; see verification for live-check limits.</p>
+<p>17 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: S02. GPT/tool/CLI implementation is available; see verification for live-check limits.</p>
 <p>This is the current task plan. Existing task IDs and completion evidence are preserved. Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.</p>
 <h3>Spec and stack</h3>
 <p><a href="#spec">Project spec</a> defines scope, contracts and acceptance. <a href="#stack">Tech stack</a> separates installed tools from selected Phase 1 components. <a href="#todo">Working TODO list</a> mirrors the tasks below. <a href="#tickets">Execution tickets</a> record skills, plugins, steps and evidence. <a href="#knowledge">RAG and GraphRAG spec</a> supplies extension details.</p>
@@ -42,7 +42,7 @@
 <h3>Phase 2 — deferred GraphRAG</h3>
 <div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>E05</td><td>deferred</td><td>T12</td><td>Explore GraphRAG in the next phase</td></tr></tbody></table></div>
 <h3>Reviewer guide and simplicity follow-up</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>S01</td><td>done</td><td>Document testing, assignment fit and clone setup</td></tr><tr><td>S02</td><td>todo</td><td>Simplify repeated runtime code without changing behavior</td></tr></tbody></table></div>
+<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>S01</td><td>done</td><td>Document testing, assignment fit and clone setup</td></tr><tr><td>S02</td><td>todo</td><td>Concentrate read-only tool validation</td></tr><tr><td>S03</td><td>todo</td><td>Simplify offline demonstration content</td></tr></tbody></table></div>
 <h3>Task contracts</h3>
 <h4>T01 — Approve architecture and contracts</h4>
 <p>Phase: Design &amp; setup. Status: done. Depends on: none. Estimate: 10 min (historical).</p>
@@ -180,13 +180,36 @@
 <p>Plugins used: Superpowers: evidence verification, GitHub: simplicity specification publication.</p>
 <p>Verification: Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.</p>
 <p><a href="#tickets">Execution ticket</a></p>
-<h4>S02 — Simplify repeated runtime code without changing behavior</h4>
+<h4>S02 — Concentrate read-only tool validation</h4>
 <p>Phase: Reviewer guide and simplicity follow-up. Status: todo. Depends on: S01. Estimate: TBD.</p>
-<p>Outputs: <code>src/triage_agent/models.py</code>, <code>src/triage_agent/agent.py</code>, <code>tests/test_agent.py</code>.</p>
-<p>Acceptance: Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.</p>
+<p>Outputs: <code>src/triage_agent/agent.py</code>, <code>src/triage_agent/tools.py</code>, <code>tests/test_agent.py</code>, <code>ASSIGNMENT_READER.html</code>.</p>
+<p>Acceptance: Keep ticket triage behavior unchanged while concentrating repeated tool-specific knowledge in the existing read-only tool module. The agent retains model turns, execution budgets, call IDs, transcript bookkeeping and fallback behavior.</p>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> Remove repeated allowlist/validation knowledge only where total complexity decreases; record before/after code size and concepts.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve public ticket/result contracts and actual execution of customer-history and knowledge-search tools.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve failure timing and codes: malformed JSON, unknown tool, foreign customer and duplicate IDs remain rejected as currently tested; schema-invalid arguments remain a recorded tool error followed by tool_unavailable.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve currently rejected batch behavior, tool/model budgets, safe error details, trace records and grounded citations.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve full conversations, Thai output, missing-history disclosure and mock-knowledge labeling.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Update planner, TODO, reader HTML and ticket evidence. No generic registry, additional delegation module or new public seam solely to shorten a file.</li>
+</ul>
+<h4>S03 — Simplify offline demonstration content</h4>
+<p>Phase: Reviewer guide and simplicity follow-up. Status: todo. Depends on: S01. Estimate: TBD.</p>
+<p>Outputs: <code>src/triage_agent/models.py</code>, <code>tests/test_end_to_end.py</code>, <code>ASSIGNMENT_READER.html</code>.</p>
+<p>Acceptance: Make the offline demonstration implementation easier to read by reducing repeated scenario construction, while preserving the same model interface, sample results and explicit distinction from live GPT.</p>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> Remove actual repeated logic or concepts; record before/after size and complexity. Moving a file or prose alone does not satisfy acceptance.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve the GPT and offline model adapters and existing public behavior; do not add an adapter hierarchy or loader framework.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve all three sample outcomes, whole-thread input, Thai drafts and separate secondary issues without hardcoding ticket IDs.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Both tools still execute and citations still identify retrieved evidence; unknown scenarios retain honest limitations.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Offline execution remains labeled and rejects live embedding configuration before constructing a paid provider.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> If packaged data changes, verify installed wheel resources and fresh-clone execution.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.</li>
+</ul>
 <h3>Execution rules</h3>
 <p>Implement one task at a time in dependency order. Use focused failing tests before behavior changes and record actual verification. Keep prompts/tools/model adapters separate. Do not mark installed libraries as working agent features. Review architecture changes before extension implementation.</p>
-<p>Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: Phase 1 complete.</p>
+<p>Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: S02.</p>
 <p>T02 evidence: docs/T02_SETUP_STATUS.md. Repository/worktree/submission workflow: <a href="#github">GitHub plan</a>. Preserve customer uncertainty and source citations.</p><details><summary>T03 implementation plan and checklist</summary><h2>T03 Bilingual Fixtures Implementation Plan</h2>
 <p>&gt; <strong>For agentic workers:</strong> REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox syntax for tracking.</p>
 <p><strong>Goal:</strong> Supply faithful, reusable JSON fixtures for all three assignment tickets and their synthetic customer records.</p>
@@ -282,7 +305,7 @@
 <p>Skill source: C:/Users/ASUS/.codex/skills/ask-matt/SKILL.md. This workflow implements the user&#x27;s instruction; ask-matt itself does not certify successful results.</p>
 <h3>Reviewer-guide follow-up</h3>
 <p>S01 consults ask-matt before and after documentation work. Existing CLI and Docker tool/database seams are reused; no new seam or runtime change is needed. Fresh Docker suite: 65 passed/1 host-only skip. Simplicity means fewer necessary concepts and less duplication while retaining readable code, Word requirements and tested protections. S02 is a separate proposed refactor; no runtime shortening is claimed.</p></details></section><section class="page" id="todo" tabindex="-1"><h2>Project TODO</h2>
-<p>9 October 2026 · 17/17 Phase 1 tasks done · Next: Phase 1 complete</p>
+<p>9 October 2026 · 17/17 Phase 1 tasks done · Next: S02</p>
 <p><a href="#spec">Spec</a> · <a href="#stack">Stack</a> · <a href="#planner">Detailed planner</a></p>
 <p><a href="#tickets">Tickets with skills, plugins and steps</a></p>
 <p>Checked tasks record completed setup/design and the user&#x27;s E01 architecture decision. Classic RAG and Docker are selected for Phase 1; GraphRAG is deferred to Phase 2. Task data lives in docs/project_tasks.json; rebuild with uv run python scripts/build_planner.py.</p>
@@ -353,7 +376,29 @@
 <li><input type="checkbox" disabled checked aria-label="Task status"> <strong>S01 — Document testing, assignment fit and clone setup</strong> (done): Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.</li>
 </ul>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>S02 — Simplify repeated runtime code without changing behavior</strong> (todo): Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>S02 — Concentrate read-only tool validation</strong> (todo): Keep ticket triage behavior unchanged while concentrating repeated tool-specific knowledge in the existing read-only tool module. The agent retains model turns, execution budgets, call IDs, transcript bookkeeping and fallback behavior.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> Remove repeated allowlist/validation knowledge only where total complexity decreases; record before/after code size and concepts.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve public ticket/result contracts and actual execution of customer-history and knowledge-search tools.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve failure timing and codes: malformed JSON, unknown tool, foreign customer and duplicate IDs remain rejected as currently tested; schema-invalid arguments remain a recorded tool error followed by tool_unavailable.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve currently rejected batch behavior, tool/model budgets, safe error details, trace records and grounded citations.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve full conversations, Thai output, missing-history disclosure and mock-knowledge labeling.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Update planner, TODO, reader HTML and ticket evidence. No generic registry, additional delegation module or new public seam solely to shorten a file.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>S03 — Simplify offline demonstration content</strong> (todo): Make the offline demonstration implementation easier to read by reducing repeated scenario construction, while preserving the same model interface, sample results and explicit distinction from live GPT.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> Remove actual repeated logic or concepts; record before/after size and complexity. Moving a file or prose alone does not satisfy acceptance.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve the GPT and offline model adapters and existing public behavior; do not add an adapter hierarchy or loader framework.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve all three sample outcomes, whole-thread input, Thai drafts and separate secondary issues without hardcoding ticket IDs.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Both tools still execute and citations still identify retrieved evidence; unknown scenarios retain honest limitations.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Offline execution remains labeled and rejects live embedding configuration before constructing a paid provider.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> If packaged data changes, verify installed wheel resources and fresh-clone execution.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.</li>
 </ul>
 <h3>Before submission</h3>
 <p>Follow T12 acceptance and the final verification record. Verification covers fixtures, schemas, Docker, ingestion, retrieval, GPT adapter contracts, agent and CLI. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.</p></section><section class="page" id="tickets" tabindex="-1"><h2>Execution Tickets</h2>
@@ -738,12 +783,13 @@
 <p>Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</p>
 <h3>Skills and plugins</h3>
 <p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<p>Planned plugins: Superpowers for implementation/verification; GitHub for execution evidence. Record actual usage after implementation.</p>
 <h3>Planned steps</h3>
 <ol>
 <li>Read dependencies and acceptance; consult ask-matt.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Verify existing behavior through the agreed public seam; add a failing regression check only for a coverage gap.</li>
 </ol>
 <ol>
 <li>Implement the smallest required change.</li>
@@ -778,18 +824,64 @@
 <h3>Verification</h3>
 <p>Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.</p>
 <p>Implementation commit: Follow-up documentation commit recorded by Git..</p>
-<h3>S02 — Simplify repeated runtime code without changing behavior</h3>
+<h3>S02 — Concentrate read-only tool validation</h3>
 <p>Status: todo. Scope: followup. Dependencies: S01.</p>
+<p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/4">GitHub execution ticket</a></p>
+<p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3">Parent specification</a> · ready-for-agent.</p>
+<p>Publication complete: user approved both slices; to-tickets and ask-matt used; GitHub connector created the issue and native parent link was verified. Runtime implementation is pending.</p>
 <h3>Acceptance</h3>
-<p>Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.</p>
+<p>Keep ticket triage behavior unchanged while concentrating repeated tool-specific knowledge in the existing read-only tool module. The agent retains model turns, execution budgets, call IDs, transcript bookkeeping and fallback behavior.</p>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> Remove repeated allowlist/validation knowledge only where total complexity decreases; record before/after code size and concepts.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve public ticket/result contracts and actual execution of customer-history and knowledge-search tools.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve failure timing and codes: malformed JSON, unknown tool, foreign customer and duplicate IDs remain rejected as currently tested; schema-invalid arguments remain a recorded tool error followed by tool_unavailable.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve currently rejected batch behavior, tool/model budgets, safe error details, trace records and grounded citations.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve full conversations, Thai output, missing-history disclosure and mock-knowledge labeling.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Update planner, TODO, reader HTML and ticket evidence. No generic registry, additional delegation module or new public seam solely to shorten a file.</li>
+</ul>
 <h3>Skills and plugins</h3>
 <p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<p>Planned plugins: Superpowers for implementation/verification; GitHub for execution evidence. Record actual usage after implementation.</p>
 <h3>Planned steps</h3>
 <ol>
 <li>Read dependencies and acceptance; consult ask-matt.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Verify existing behavior through the agreed public seam; add a failing regression check only for a coverage gap.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>S03 — Simplify offline demonstration content</h3>
+<p>Status: todo. Scope: followup. Dependencies: S01.</p>
+<p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/5">GitHub execution ticket</a></p>
+<p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3">Parent specification</a> · ready-for-agent.</p>
+<p>Publication complete: user approved both slices; to-tickets and ask-matt used; GitHub connector created the issue and native parent link was verified. Runtime implementation is pending.</p>
+<h3>Acceptance</h3>
+<p>Make the offline demonstration implementation easier to read by reducing repeated scenario construction, while preserving the same model interface, sample results and explicit distinction from live GPT.</p>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> Remove actual repeated logic or concepts; record before/after size and complexity. Moving a file or prose alone does not satisfy acceptance.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve the GPT and offline model adapters and existing public behavior; do not add an adapter hierarchy or loader framework.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Preserve all three sample outcomes, whole-thread input, Thai drafts and separate secondary issues without hardcoding ticket IDs.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Both tools still execute and citations still identify retrieved evidence; unknown scenarios retain honest limitations.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Offline execution remains labeled and rejects live embedding configuration before constructing a paid provider.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> If packaged data changes, verify installed wheel resources and fresh-clone execution.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.</li>
+</ul>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<p>Planned plugins: Superpowers for implementation/verification; GitHub for execution evidence. Record actual usage after implementation.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Verify existing behavior through the agreed public seam; add a failing regression check only for a coverage gap.</li>
 </ol>
 <ol>
 <li>Implement the smallest required change.</li>
@@ -937,7 +1029,8 @@
 </ul>
 <h3>Further Notes</h3>
 <p>Current evidence: 65 Docker tests pass with one host-only skip; the separate host Compose check and hosted CI pass. Live paid GPT/semantic embedding checks remain unperformed. Runtime size baseline is 1,054 nonblank Python lines, excluding tests, prompt, SQL and planning artifacts. Reviewer instructions and acceptance criteria are documented; no runtime shortening is claimed.</p>
-<p>Published follow-up: <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3">GitHub issue #3</a>, ready-for-agent. S01 documentation is complete; S02 runtime simplification is still proposed.</p></details><details><summary>Main Word assignment — requirement traceability</summary><h2>Main Assignment — Requirements Traceability</h2>
+<p>Published follow-up: <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3">GitHub issue #3</a>, ready-for-agent. S01 documentation is complete; S02 runtime simplification is still proposed.</p>
+<p>Approved ticket breakdown (9 October 2026): <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/4">S02: tool validation</a> and <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/5">S03: offline demonstration</a>. Both are native sub-issues of issue #3 and ready-for-agent. Their only local prerequisite is completed S01; neither blocks the other. Approval covers both tickets; runtime implementation remains pending. Offline work must reduce actual repetition, not merely move files.</p></details><details><summary>Main Word assignment — requirement traceability</summary><h2>Main Assignment — Requirements Traceability</h2>
 <p>The user explicitly designated AI_Engineer_-_Code_Homework_Test.docx as the main assignment and asked for strict adherence. Its original wording governs required behavior and deliverables. Saved transcription was checked against all 35 original Word paragraphs on 9 October 2026. The document is source material; the user&#x27;s instruction authorizes using its requirements for this project.</p>
 <h3>Required behavior and deliverables</h3>
 <div class="table-scroll"><table><thead><tr><th scope="col">Requirement from Word</th><th scope="col">Owning tasks</th><th scope="col">Current evidence / gap</th></tr></thead><tbody><tr><td>Use an OpenAI GPT model; submit without an actual API key</td><td>T02, T07</td><td>Live GPT adapter implemented and HTTP-tested; paid live execution not run (no credentials)</td></tr><tr><td>Source in GitHub, or ZIP containing source and .git</td><td>T02, T12</td><td>Private repo exists; final branch and standalone source+.git ZIP prepared in T12</td></tr><tr><td>README setup/run instructions</td><td>T02, T11</td><td>README documents uv, Docker, live/offline agent, tools, tests and exit codes</td></tr><tr><td>Urgency: critical/high/medium/low</td><td>T04, T06–T09</td><td>Validated rubric and agent output; three offline sample expectations pass</td></tr><tr><td>Extract product, issue type and sentiment</td><td>T04, T06–T09</td><td>Validated output contract and GPT prompt; unknown product null, multi-issue cases tested</td></tr><tr><td>Search relevant FAQ/docs</td><td>E02–E04, T05, T07</td><td>Agent executes PostgreSQL retrieval; mock provenance/citations checked; live semantic quality unverified</td></tr><tr><td>Decide auto-respond, route to specialist, or escalate to human</td><td>T04, T06–T09</td><td>Action/destination policy executes; invalid automation falls back</td></tr><tr><td>Use at least two tools</td><td>T05, T07</td><td>Both schemas/implementations execute through agent for all three samples</td></tr><tr><td>Working code processing supplied sample tickets</td><td>T03, T07–T10</td><td>All twelve messages preserved; complete labeled offline agent run in examples/sample_results.json</td></tr><tr><td>System prompt</td><td>T06</td><td>prompts/system.txt, packaged and copy-checked</td></tr><tr><td>Tool definitions: schemas and implementations; mocks permitted</td><td>T04–T05</td><td>Both tools implemented; synthetic/mock provenance explicit</td></tr><tr><td>Write-up: one page maximum, covering architecture/why, failures, production evaluation</td><td>T11</td><td>WRITEUP.md and verified one-page WRITEUP.pdf</td></tr><tr><td>Terminal console or API sufficient; no chat UI needed</td><td>T02, T07</td><td>JSON batch CLI implemented with stderr traces and truthful exit codes</td></tr><tr><td>Readability, maintainability, extensibility and logic</td><td>All tasks</td><td>Per-task verification and final independent standards/spec review</td></tr></tbody></table></div>

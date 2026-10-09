@@ -130,8 +130,10 @@ def main():
     done = {task["id"] for task in phase1 if task["status"] == "done"}
     ready = [
         task["id"]
-        for task in phase1
-        if task["status"] == "todo" and set(task["depends_on"]) <= done
+        for task in tasks
+        if task["scope"] in {"phase1", "followup"}
+        and task["status"] == "todo"
+        and set(task["depends_on"]) <= {t["id"] for t in tasks if t["status"] == "done"}
     ]
     next_task = ready[0] if ready else "Phase 1 complete"
     assert len({task["id"] for task in tasks}) == len(tasks)
@@ -264,6 +266,11 @@ def main():
             task["acceptance"],
             "## Skills and plugins",
         ]
+        if task.get("github_issue"):
+            body.insert(2, f"[GitHub execution ticket]({task['github_issue']})")
+        if task.get("parent_issue"):
+            body.insert(3, f"[Parent specification]({task['parent_issue']}) · ready-for-agent.")
+            body.insert(4, "Publication complete: user approved both slices; to-tickets and ask-matt used; GitHub connector created the issue and native parent link was verified. Runtime implementation is pending.")
         if task.get("steps_done"):
             body += [
                 "Skills used: " + ", ".join(task["skills_used"]) + ".",
@@ -296,9 +303,10 @@ def main():
             body += [
                 "Planned skills: ask-matt before/after, implement, tdd, code-review, "
                 "Superpowers execution and verification. Not executed yet.",
+                "Planned plugins: Superpowers for implementation/verification; GitHub for execution evidence. Record actual usage after implementation.",
                 "## Planned steps",
                 "1. Read dependencies and acceptance; consult ask-matt.",
-                "2. Add a failing behavior check at the agreed public boundary.",
+                "2. Verify existing behavior through the agreed public seam; add a failing regression check only for a coverage gap.",
                 "3. Implement the smallest required change.",
                 "4. Consult ask-matt, test and review; record evidence before completion.",
             ]

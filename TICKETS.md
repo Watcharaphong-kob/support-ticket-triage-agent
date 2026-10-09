@@ -522,11 +522,13 @@ Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded 
 
 Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
 
+Planned plugins: Superpowers for implementation/verification; GitHub for execution evidence. Record actual usage after implementation.
+
 ## Planned steps
 
 1. Read dependencies and acceptance; consult ask-matt.
 
-2. Add a failing behavior check at the agreed public boundary.
+2. Verify existing behavior through the agreed public seam; add a failing regression check only for a coverage gap.
 
 3. Implement the smallest required change.
 
@@ -566,23 +568,78 @@ Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and
 
 Implementation commit: Follow-up documentation commit recorded by Git..
 
-## S02 — Simplify repeated runtime code without changing behavior
+## S02 — Concentrate read-only tool validation
 
 Status: todo. Scope: followup. Dependencies: S01.
 
+[GitHub execution ticket](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/4)
+
+[Parent specification](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3) · ready-for-agent.
+
+Publication complete: user approved both slices; to-tickets and ask-matt used; GitHub connector created the issue and native parent link was verified. Runtime implementation is pending.
+
 ## Acceptance
 
-Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.
+Keep ticket triage behavior unchanged while concentrating repeated tool-specific knowledge in the existing read-only tool module. The agent retains model turns, execution budgets, call IDs, transcript bookkeeping and fallback behavior.
+
+- [ ] Remove repeated allowlist/validation knowledge only where total complexity decreases; record before/after code size and concepts.
+- [ ] Preserve public ticket/result contracts and actual execution of customer-history and knowledge-search tools.
+- [ ] Preserve failure timing and codes: malformed JSON, unknown tool, foreign customer and duplicate IDs remain rejected as currently tested; schema-invalid arguments remain a recorded tool error followed by tool_unavailable.
+- [ ] Preserve currently rejected batch behavior, tool/model budgets, safe error details, trace records and grounded citations.
+- [ ] Preserve full conversations, Thai output, missing-history disclosure and mock-knowledge labeling.
+- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.
+- [ ] Update planner, TODO, reader HTML and ticket evidence. No generic registry, additional delegation module or new public seam solely to shorten a file.
 
 ## Skills and plugins
 
 Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
 
+Planned plugins: Superpowers for implementation/verification; GitHub for execution evidence. Record actual usage after implementation.
+
 ## Planned steps
 
 1. Read dependencies and acceptance; consult ask-matt.
 
-2. Add a failing behavior check at the agreed public boundary.
+2. Verify existing behavior through the agreed public seam; add a failing regression check only for a coverage gap.
+
+3. Implement the smallest required change.
+
+4. Consult ask-matt, test and review; record evidence before completion.
+
+## S03 — Simplify offline demonstration content
+
+Status: todo. Scope: followup. Dependencies: S01.
+
+[GitHub execution ticket](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/5)
+
+[Parent specification](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3) · ready-for-agent.
+
+Publication complete: user approved both slices; to-tickets and ask-matt used; GitHub connector created the issue and native parent link was verified. Runtime implementation is pending.
+
+## Acceptance
+
+Make the offline demonstration implementation easier to read by reducing repeated scenario construction, while preserving the same model interface, sample results and explicit distinction from live GPT.
+
+- [ ] Remove actual repeated logic or concepts; record before/after size and complexity. Moving a file or prose alone does not satisfy acceptance.
+- [ ] Preserve the GPT and offline model adapters and existing public behavior; do not add an adapter hierarchy or loader framework.
+- [ ] Preserve all three sample outcomes, whole-thread input, Thai drafts and separate secondary issues without hardcoding ticket IDs.
+- [ ] Both tools still execute and citations still identify retrieved evidence; unknown scenarios retain honest limitations.
+- [ ] Offline execution remains labeled and rejects live embedding configuration before constructing a paid provider.
+- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.
+- [ ] If packaged data changes, verify installed wheel resources and fresh-clone execution.
+- [ ] Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.
+
+## Skills and plugins
+
+Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+
+Planned plugins: Superpowers for implementation/verification; GitHub for execution evidence. Record actual usage after implementation.
+
+## Planned steps
+
+1. Read dependencies and acceptance; consult ask-matt.
+
+2. Verify existing behavior through the agreed public seam; add a failing regression check only for a coverage gap.
 
 3. Implement the smallest required change.
 

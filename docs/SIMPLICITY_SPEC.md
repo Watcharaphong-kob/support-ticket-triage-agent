@@ -62,3 +62,6 @@ Use the main Word assignment as the binding requirement. Keep the selected uv/Do
 Current evidence: 65 Docker tests pass with one host-only skip; the separate host Compose check and hosted CI pass. Live paid GPT/semantic embedding checks remain unperformed. Runtime size baseline is 1,054 nonblank Python lines, excluding tests, prompt, SQL and planning artifacts. Reviewer instructions and acceptance criteria are documented; no runtime shortening is claimed.
 
 Published follow-up: [GitHub issue #3](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3), ready-for-agent. S01 documentation is complete; S02 runtime simplification is still proposed.
+
+
+Approved ticket breakdown (9 October 2026): [S02: tool validation](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/4) and [S03: offline demonstration](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/5). Both are native sub-issues of issue #3 and ready-for-agent. Their only local prerequisite is completed S01; neither blocks the other. Approval covers both tickets; runtime implementation remains pending. Offline work must reduce actual repetition, not merely move files.

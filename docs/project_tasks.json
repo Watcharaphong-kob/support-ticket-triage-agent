@@ -643,21 +643,46 @@
     },
     {
       "id": "S02",
-      "title": "Simplify repeated runtime code without changing behavior",
+      "title": "Concentrate read-only tool validation",
       "phase": "Reviewer guide and simplicity follow-up",
       "minutes": null,
       "depends_on": [
         "S01"
       ],
       "outputs": [
-        "src/triage_agent/models.py",
         "src/triage_agent/agent.py",
-        "tests/test_agent.py"
+        "src/triage_agent/tools.py",
+        "tests/test_agent.py",
+        "ASSIGNMENT_READER.html"
       ],
-      "acceptance": "Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.",
+      "acceptance": "Keep ticket triage behavior unchanged while concentrating repeated tool-specific knowledge in the existing read-only tool module. The agent retains model turns, execution budgets, call IDs, transcript bookkeeping and fallback behavior.\n\n- [ ] Remove repeated allowlist/validation knowledge only where total complexity decreases; record before/after code size and concepts.\n- [ ] Preserve public ticket/result contracts and actual execution of customer-history and knowledge-search tools.\n- [ ] Preserve failure timing and codes: malformed JSON, unknown tool, foreign customer and duplicate IDs remain rejected as currently tested; schema-invalid arguments remain a recorded tool error followed by tool_unavailable.\n- [ ] Preserve currently rejected batch behavior, tool/model budgets, safe error details, trace records and grounded citations.\n- [ ] Preserve full conversations, Thai output, missing-history disclosure and mock-knowledge labeling.\n- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.\n- [ ] Update planner, TODO, reader HTML and ticket evidence. No generic registry, additional delegation module or new public seam solely to shorten a file.",
       "status": "todo",
       "scope": "followup",
-      "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3"
+      "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/4",
+      "parent_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3",
+      "tracker_status": "ready-for-agent",
+      "ticket": "docs/tickets/S02.md"
+    },
+    {
+      "id": "S03",
+      "phase": "Reviewer guide and simplicity follow-up",
+      "minutes": null,
+      "scope": "followup",
+      "status": "todo",
+      "depends_on": [
+        "S01"
+      ],
+      "title": "Simplify offline demonstration content",
+      "outputs": [
+        "src/triage_agent/models.py",
+        "tests/test_end_to_end.py",
+        "ASSIGNMENT_READER.html"
+      ],
+      "acceptance": "Make the offline demonstration implementation easier to read by reducing repeated scenario construction, while preserving the same model interface, sample results and explicit distinction from live GPT.\n\n- [ ] Remove actual repeated logic or concepts; record before/after size and complexity. Moving a file or prose alone does not satisfy acceptance.\n- [ ] Preserve the GPT and offline model adapters and existing public behavior; do not add an adapter hierarchy or loader framework.\n- [ ] Preserve all three sample outcomes, whole-thread input, Thai drafts and separate secondary issues without hardcoding ticket IDs.\n- [ ] Both tools still execute and citations still identify retrieved evidence; unknown scenarios retain honest limitations.\n- [ ] Offline execution remains labeled and rejects live embedding configuration before constructing a paid provider.\n- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.\n- [ ] If packaged data changes, verify installed wheel resources and fresh-clone execution.\n- [ ] Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.",
+      "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/5",
+      "parent_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3",
+      "tracker_status": "ready-for-agent",
+      "ticket": "docs/tickets/S03.md"
     }
   ],
   "phase": "Phase 1 â€” Docker classic RAG prototype",

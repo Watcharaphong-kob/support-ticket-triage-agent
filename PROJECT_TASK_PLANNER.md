@@ -4,7 +4,7 @@
 
 ## Current position
 
-17 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: Phase 1 complete. GPT/tool/CLI implementation is available; see verification for live-check limits.
+17 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: S02. GPT/tool/CLI implementation is available; see verification for live-check limits.
 
 This is the current task plan. Existing task IDs and completion evidence are preserved. Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.
 
@@ -49,7 +49,8 @@ The original homework estimate was 210 minutes and the assignment recommends 150
 | Task | Status | Deliverable |
 | --- | --- | --- |
 | S01 | done | Document testing, assignment fit and clone setup |
-| S02 | todo | Simplify repeated runtime code without changing behavior |
+| S02 | todo | Concentrate read-only tool validation |
+| S03 | todo | Simplify offline demonstration content |
 
 ## Task contracts
 
@@ -325,18 +326,43 @@ Verification: Fresh Docker run: 65 passed, 1 host-only skip. Documentation/deliv
 
 [Execution ticket](docs/tickets/S01.md)
 
-### S02 — Simplify repeated runtime code without changing behavior
+### S02 — Concentrate read-only tool validation
 
 Phase: Reviewer guide and simplicity follow-up. Status: todo. Depends on: S01. Estimate: TBD.
 
-Outputs: `src/triage_agent/models.py`, `src/triage_agent/agent.py`, `tests/test_agent.py`.
+Outputs: `src/triage_agent/agent.py`, `src/triage_agent/tools.py`, `tests/test_agent.py`, `ASSIGNMENT_READER.html`.
 
-Acceptance: Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.
+Acceptance: Keep ticket triage behavior unchanged while concentrating repeated tool-specific knowledge in the existing read-only tool module. The agent retains model turns, execution budgets, call IDs, transcript bookkeeping and fallback behavior.
+
+- [ ] Remove repeated allowlist/validation knowledge only where total complexity decreases; record before/after code size and concepts.
+- [ ] Preserve public ticket/result contracts and actual execution of customer-history and knowledge-search tools.
+- [ ] Preserve failure timing and codes: malformed JSON, unknown tool, foreign customer and duplicate IDs remain rejected as currently tested; schema-invalid arguments remain a recorded tool error followed by tool_unavailable.
+- [ ] Preserve currently rejected batch behavior, tool/model budgets, safe error details, trace records and grounded citations.
+- [ ] Preserve full conversations, Thai output, missing-history disclosure and mock-knowledge labeling.
+- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.
+- [ ] Update planner, TODO, reader HTML and ticket evidence. No generic registry, additional delegation module or new public seam solely to shorten a file.
+
+### S03 — Simplify offline demonstration content
+
+Phase: Reviewer guide and simplicity follow-up. Status: todo. Depends on: S01. Estimate: TBD.
+
+Outputs: `src/triage_agent/models.py`, `tests/test_end_to_end.py`, `ASSIGNMENT_READER.html`.
+
+Acceptance: Make the offline demonstration implementation easier to read by reducing repeated scenario construction, while preserving the same model interface, sample results and explicit distinction from live GPT.
+
+- [ ] Remove actual repeated logic or concepts; record before/after size and complexity. Moving a file or prose alone does not satisfy acceptance.
+- [ ] Preserve the GPT and offline model adapters and existing public behavior; do not add an adapter hierarchy or loader framework.
+- [ ] Preserve all three sample outcomes, whole-thread input, Thai drafts and separate secondary issues without hardcoding ticket IDs.
+- [ ] Both tools still execute and citations still identify retrieved evidence; unknown scenarios retain honest limitations.
+- [ ] Offline execution remains labeled and rejects live embedding configuration before constructing a paid provider.
+- [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.
+- [ ] If packaged data changes, verify installed wheel resources and fresh-clone execution.
+- [ ] Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.
 
 ## Execution rules
 
 Implement one task at a time in dependency order. Use focused failing tests before behavior changes and record actual verification. Keep prompts/tools/model adapters separate. Do not mark installed libraries as working agent features. Review architecture changes before extension implementation.
 
-Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: Phase 1 complete.
+Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: S02.
 
 T02 evidence: docs/T02_SETUP_STATUS.md. Repository/worktree/submission workflow: [GitHub plan](GITHUB_REPO_PLAN.md). Preserve customer uncertainty and source citations.
