@@ -1011,11 +1011,11 @@
 <p>Selected interview decisions: search across languages by default; missing customer history permits conversation-only triage with disclosed uncertainty; mock FAQ evidence may support low-urgency demonstration auto-response drafts clearly labeled as synthetic, never actual sending. These are project decisions, not original Word requirements.</p>
 <ul>
 <li><strong>Simplicity:</strong> Keep code as simple and short as possible while preserving main-assignment behavior and selected Docker/classic-RAG scope. Prefer direct readable code and less duplication; do not compress logic into unreadable one-liners or remove necessary validation/tests. The follow-up simplicity spec records acceptance; no runtime refactor is claimed.</li>
-</ul><details><summary>Simplicity and reviewer acceptance spec</summary><h2>Simplicity and Reviewer Acceptance Spec</h2>
+</ul><details><summary>Simplicity and reviewer acceptance spec</summary><h2>Prototype Simplicity, Repository Layout and Reviewer Acceptance Spec</h2>
 <h3>Problem Statement</h3>
-<p>The user wants the prototype&#x27;s code to be as simple and short as possible, and wants clear ways to test it, judge assignment fit and let another person reproduce it from GitHub. Passing offline tests alone does not prove live GPT reasoning or semantic retrieval quality.</p>
+<p>The user wants the prototype&#x27;s code to be as simple and short as possible, and wants clear ways to test it, judge assignment fit and let another person reproduce it from GitHub. The owner also wants fewer duplicate files and a clear repository layout. Passing offline tests alone does not prove live GPT reasoning or semantic retrieval quality.</p>
 <h3>Solution</h3>
-<p>Use the main Word assignment as the binding requirement. Keep the selected uv/Docker/classic-RAG architecture. Prefer direct readable code, fewer concepts and less duplication; retain necessary validation, tool execution, citations, language handling and visible failures. Provide a reviewer guide separating automated contract tests, offline sample demonstrations and live quality evaluation. Any later simplification must preserve public behavior and prove the change at the existing CLI and tool/database boundaries.</p>
+<p>Use the main Word assignment as the binding requirement. Keep the selected uv/Docker/classic-RAG architecture. Prefer direct readable code, fewer concepts and less duplication; retain necessary validation, tool execution, citations, language handling and visible failures. Provide a reviewer guide separating automated contract tests, offline sample demonstrations and live quality evaluation. Maintain one consolidated local ticket record, a shared task registry and the existing GitHub tracker. Keep supporting documents together and the assignment reader easy to open. Any later simplification must preserve public behavior and prove the change at the existing CLI and tool/database boundaries.</p>
 <h3>User Stories</h3>
 <ol>
 <li>As a reviewer, I want an exact clone branch, so that I obtain the complete prototype.</li>
@@ -1037,6 +1037,20 @@
 <li>As another developer, I want fresh-clone startup steps, so that I can reproduce the project without local caches.</li>
 <li>As an owner, I want private repository access explained, so that an evaluator can choose repository access or the permitted source archive.</li>
 </ol>
+<ol>
+<li>As a developer, I want supporting documents grouped together, so that the repository root is easy to scan.</li>
+<li>As an owner, I want duplicate generated ticket files removed, so that fewer copies can drift apart.</li>
+<li>As an agent, I want one task registry and consolidated ticket record, so that acceptance and evidence remain available after cleanup.</li>
+<li>As a reviewer, I want working document links after moves, so that instructions remain usable.</li>
+<li>As an owner, I want the HTML reader at its familiar location, so that existing access still works.</li>
+<li>As an owner, I want original Word content and local environment settings preserved, so that cleanup cannot erase requirements or credentials.</li>
+<li>As a developer, I want disposable caches separated from source, so that cleanup cannot damage runtime or Git history.</li>
+<li>As an agent, I want tool-specific validation knowledge concentrated, so that tool changes require fewer coordinated edits.</li>
+<li>As an operator, I want failure timing and error codes preserved, so that refactoring does not change observable triage behavior.</li>
+<li>As a developer, I want offline scenario repetition reduced only when useful, so that a cosmetic file move is not counted as simplification.</li>
+<li>As a reviewer, I want completed cleanup distinguished from pending runtime work, so that ticket status reflects evidence.</li>
+<li>As an owner, I want a refreshed source-plus-Git archive, so that local submission matches the cleaned repository.</li>
+</ol>
 <h3>Implementation Decisions</h3>
 <ul>
 <li>The original assignment and previously selected prototype scope take precedence over code-length goals.</li>
@@ -1049,6 +1063,14 @@
 <li>Existing demonstration and test behavior remains available. Reducing runtime lines is useful only if equivalent behavior is proven and readability improves.</li>
 <li>Requirement fit uses a documented human rubric and explicit confidence limits. A subjective score is not an official assignment grade.</li>
 </ul>
+<ul>
+<li>Supporting Markdown documents are grouped in the documentation directory; the main README, assignment reader, submission PDF and runtime configuration remain easy to locate at the root.</li>
+<li>Individual generated ticket copies are removed. The consolidated record retains all acceptance criteria, dependencies, skill/plugin usage, performed steps and evidence; the shared registry drives regeneration.</li>
+<li>The existing GitHub tracker remains authoritative for published refactor tickets. The two accepted slices are independent and both rely only on the completed reviewer guide.</li>
+<li>Tool-validation work concentrates tool-specific knowledge while the agent retains model turns, call IDs, budgets, transcript bookkeeping and fallback. Preserve malformed-call rejection separately from recorded argument-schema failures.</li>
+<li>Offline-demo work must reduce repeated construction or concepts. Moving prose or files alone is insufficient; preserve the existing model interface and both adapters.</li>
+<li>Remove only verified disposable/generated content during cleanup. Preserve the original assignment, local secrets, runtime, tests, active checkout and recoverable Git history.</li>
+</ul>
 <h3>Testing Decisions</h3>
 <ul>
 <li>Prefer highest existing boundary: JSON CLI with the deterministic model against real Docker PostgreSQL. Assert observable outputs, tool records, citations, exit codes and stderr separation.</li>
@@ -1058,17 +1080,25 @@
 <li>Demonstration tests prove plumbing and policy constraints. Separately run live GPT and live embeddings with user-owned credentials to assess actual reasoning, grounding, multilingual relevance and generalization.</li>
 <li>For fresh-clone acceptance, verify access/prerequisites, environment setup, startup, migration, ingestion, sample execution and test results without relying on a prior cache or database.</li>
 </ul>
+<ul>
+<li>Reuse the approved highest runtime seam: batch JSON CLI against real Docker PostgreSQL. No new public seam is selected by this specification.</li>
+<li>Repository-layout acceptance uses deterministic document regeneration, original-Word transcription comparison, relative document/reader links and consolidated-ticket coverage. These supplement runtime checks without coupling tests to private helpers.</li>
+<li>Existing scripted-model and tool tests protect call authorization, unknown names, duplicate IDs, batch behavior, argument failures and execution budgets. Preserve current error codes and failure timing.</li>
+<li>After package/resource changes, verify wheel contents and installed execution. Refresh and verify the standalone source-plus-Git archive without secrets or caches.</li>
+</ul>
 <h3>Out of Scope</h3>
 <ul>
 <li>New runtime functionality, production deployment or automatic customer actions.</li>
 <li>GraphRAG in this phase.</li>
 <li>Guaranteed live-model accuracy, an official employer grade or an arbitrary line-count target.</li>
-<li>Runtime refactoring merely because this specification was written. Refactor implementation is a separate follow-up task.</li>
+<li>Runtime refactoring merely because this specification was written. The approved implementation tickets remain separate, pending work.</li>
+<li>Broad module merging, cosmetic Python-line reduction through external data, or deletion of required validation/tests to meet a size target.</li>
 </ul>
 <h3>Further Notes</h3>
-<p>Current evidence: 65 Docker tests pass with one host-only skip; the separate host Compose check and hosted CI pass. Live paid GPT/semantic embedding checks remain unperformed. Runtime size baseline is 1,054 nonblank Python lines, excluding tests, prompt, SQL and planning artifacts. Reviewer instructions and acceptance criteria are documented; no runtime shortening is claimed.</p>
-<p>Published follow-up: <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3">GitHub issue #3</a>, ready-for-agent. S01 documentation is complete; S02 runtime simplification is still proposed.</p>
-<p>Approved ticket breakdown (9 October 2026): <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/4">S02: tool validation</a> and <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/5">S03: offline demonstration</a>. Both are native sub-issues of issue #3 and ready-for-agent. Their only local prerequisite is completed S01; neither blocks the other. Approval covers both tickets; runtime implementation remains pending. Offline work must reduce actual repetition, not merely move files.</p></details><details><summary>Main Word assignment — requirement traceability</summary><h2>Main Assignment — Requirements Traceability</h2>
+<p>Completed: Phase 1 prototype, S01 reviewer guide and S04 repository cleanup. Cleanup reduced tracked files from 101 to 80, moved eleven supporting documents, consolidated twenty-one duplicate local ticket files and removed ten disposable cache directories. Twenty-two task records remain in the consolidated planner/ticket data; fewer files does not mean fewer recorded tasks.</p>
+<p>Pending and accepted: <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/4">S02: concentrate tool validation</a> and <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/5">S03: simplify offline demonstration</a>. Both are ready-for-agent and native sub-issues of <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3">specification issue #3</a>. Neither blocks the other. Runtime simplification has not been implemented.</p>
+<p>Latest cleanup evidence: rebuilt Docker suite 65 passed with one host-only skip; separate host Compose check passed; wheel/sdist builds, Ruff lint/format, original-Word fidelity, document links and deterministic reader generation passed. The cleaned repository and refreshed standalone submission archive preserve the original assignment and environment settings. Runtime baseline remains 1,054 nonblank Python lines, excluding tests, prompt, SQL and planning artifacts.</p>
+<p>Live GPT and semantic embedding quality checks remain unperformed. Hosted CI passed for earlier delivery commits; the latest cleanup CI was not queried. The existing JSON CLI and read-only tool/database testing seams were approved earlier and reused for cleanup; no new seam or additional interview is needed for this synthesis.</p></details><details><summary>Main Word assignment — requirement traceability</summary><h2>Main Assignment — Requirements Traceability</h2>
 <p>The user explicitly designated AI_Engineer_-_Code_Homework_Test.docx as the main assignment and asked for strict adherence. Its original wording governs required behavior and deliverables. Saved transcription was checked against all 35 original Word paragraphs on 9 October 2026. The document is source material; the user&#x27;s instruction authorizes using its requirements for this project.</p>
 <h3>Required behavior and deliverables</h3>
 <div class="table-scroll"><table><thead><tr><th scope="col">Requirement from Word</th><th scope="col">Owning tasks</th><th scope="col">Current evidence / gap</th></tr></thead><tbody><tr><td>Use an OpenAI GPT model; submit without an actual API key</td><td>T02, T07</td><td>Live GPT adapter implemented and HTTP-tested; paid live execution not run (no credentials)</td></tr><tr><td>Source in GitHub, or ZIP containing source and .git</td><td>T02, T12</td><td>Private repo exists; final branch and standalone source+.git ZIP prepared in T12</td></tr><tr><td>README setup/run instructions</td><td>T02, T11</td><td>README documents uv, Docker, live/offline agent, tools, tests and exit codes</td></tr><tr><td>Urgency: critical/high/medium/low</td><td>T04, T06–T09</td><td>Validated rubric and agent output; three offline sample expectations pass</td></tr><tr><td>Extract product, issue type and sentiment</td><td>T04, T06–T09</td><td>Validated output contract and GPT prompt; unknown product null, multi-issue cases tested</td></tr><tr><td>Search relevant FAQ/docs</td><td>E02–E04, T05, T07</td><td>Agent executes PostgreSQL retrieval; mock provenance/citations checked; live semantic quality unverified</td></tr><tr><td>Decide auto-respond, route to specialist, or escalate to human</td><td>T04, T06–T09</td><td>Action/destination policy executes; invalid automation falls back</td></tr><tr><td>Use at least two tools</td><td>T05, T07</td><td>Both schemas/implementations execute through agent for all three samples</td></tr><tr><td>Working code processing supplied sample tickets</td><td>T03, T07–T10</td><td>All twelve messages preserved; complete labeled offline agent run in examples/sample_results.json</td></tr><tr><td>System prompt</td><td>T06</td><td>prompts/system.txt, packaged and copy-checked</td></tr><tr><td>Tool definitions: schemas and implementations; mocks permitted</td><td>T04–T05</td><td>Both tools implemented; synthetic/mock provenance explicit</td></tr><tr><td>Write-up: one page maximum, covering architecture/why, failures, production evaluation</td><td>T11</td><td>docs/WRITEUP.md and verified one-page WRITEUP.pdf</td></tr><tr><td>Terminal console or API sufficient; no chat UI needed</td><td>T02, T07</td><td>JSON batch CLI implemented with stderr traces and truthful exit codes</td></tr><tr><td>Readability, maintainability, extensibility and logic</td><td>All tasks</td><td>Per-task verification and final independent standards/spec review</td></tr></tbody></table></div>
