@@ -29,3 +29,7 @@ def test_compose_requires_ready_database_and_isolated_persistent_storage():
         config["services"]["app"]["depends_on"]["migrate"]["condition"]
         == "service_completed_successfully"
     )
+    api = config["services"]["api"]
+    assert api["ports"][0]["host_ip"] == "127.0.0.1"
+    assert api["depends_on"]["migrate"]["condition"] == "service_completed_successfully"
+    assert api["image"] == config["services"]["app"]["image"]

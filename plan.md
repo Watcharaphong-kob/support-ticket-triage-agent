@@ -267,11 +267,11 @@ GitHub: [#8](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/is
 
 Blocked by F01.
 
-- [ ] Write failing API tests for one ticket, batch input, invalid JSON/schema, empty/oversized batches, duplicate IDs, fallback output and missing configuration.
-- [ ] Add the small FastAPI module and local Docker/API startup command; reuse the shared batch validator and triage function.
-- [ ] Compare API and CLI envelopes for identical injected model/tool results. Test simultaneous requests to prove customer/evidence isolation.
-- [ ] Verify invalid requests invoke neither model nor tools, Thai JSON survives HTTP, and health reports liveness accurately.
-- [ ] Run terminal + API tests, review the diff and commit a working dual-entry-point slice. Record results here.
+- [x] Write failing API tests for one ticket, batch input, invalid JSON/schema, empty/oversized batches, duplicate IDs, fallback output and missing configuration.
+- [x] Add the small FastAPI module and local Docker/API startup command; reuse the shared batch validator and triage function.
+- [x] Compare API and CLI envelopes for identical injected model/tool results. Test simultaneous requests to prove customer/evidence isolation.
+- [x] Verify invalid requests invoke neither model nor tools, Thai JSON survives HTTP, and health reports liveness accurately.
+- [x] Run terminal + API tests, review the diff and commit a working dual-entry-point slice. Record results here.
 
 ### F03 — Submission and quality evidence
 
@@ -328,3 +328,11 @@ Skill usage for this plan/spec: ask-matt before/after, to-spec, Superpowers brai
 - Live GPT and semantic embedding quality not checked. Framework branch runtime requires reviewer-supplied GPT credentials; deterministic models exist only in tests, and the original offline demo remains on feat/triage-agent.
 
 F01 post-task ask-matt: verification complete → code-review → next frontier F02. Standards: zero violations, one nonblocking schema-ownership duplication addressed in tools.py and re-reviewed with no findings. Spec: zero findings. Final rebuilt Docker suite after that refactor: 68 passed / 1 host-only skip; host Compose check 1 passed. No live quality claim. F01 implementation commit cc85d6b; follow-up review cleanup committed next.
+
+### F02 — verification before review (2026-10-09)
+
+- Pre-task ask-matt: implement / TDD at the approved HTTP seam; reuse F01 shared triage. Skills: ask-matt, implement, tdd / Superpowers test-driven-development, systematic-debugging, verification-before-completion; code-review follows. Tools/plugins: shell, uv, Docker; FastAPI primary docs checked.
+- Steps: lock FastAPI 0.143.0 and Uvicorn 0.54.0; add one 26-line HTTP transport module; expose POST /triage and GET /health; add loopback Docker API service sharing the application image/DB/migration; default API_PORT=8000.
+- RED→GREEN: missing HTTP routes and missing Compose API service. Reused real triage for CLI/API parity and concurrent request isolation; invalid requests invoke no provider/tools, accepted failures remain explicit result fallbacks in HTTP 200, missing config is sanitized 503 and malformed input is 422.
+- Full rebuilt Docker suite: 78 passed, 1 host-only skip. Includes actual PostgreSQL parity, Thai output and barrier-forced concurrent requests. Host API checks: 8 passed / 2 DB skips; host Compose check: 1 passed. Local HTTP /health and /openapi.json responded correctly. Ruff and whitespace checks passed.
+- Restricted Windows TestClient run stalled; terminated and used the unrestricted host run plus Linux Docker suite. No live GPT/semantic quality calls; deterministic injected chat models are test-only.

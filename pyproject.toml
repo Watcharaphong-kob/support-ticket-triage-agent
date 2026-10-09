@@ -9,6 +9,7 @@ description = "Support ticket triage with OpenAI GPT and read-only tools"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "fastapi>=0.115,<1",
     "langchain>=1,<2",
     "langchain-openai>=1,<2",
     "langgraph>=1,<2",
@@ -17,6 +18,7 @@ dependencies = [
     "psycopg[binary]>=3.2,<4",
     "pydantic>=2,<3",
     "tiktoken>=0.9,<1",
+    "uvicorn>=0.35,<1",
 ]
 
 [project.scripts]
