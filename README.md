@@ -7,7 +7,7 @@ Prototype for the **main Word assignment**: classify urgency, extract product/is
 Requires Git, Docker Desktop with Compose, and your own OpenAI GPT key/model. No key is included. The repository is private: reviewers need access from the owner.
 
 ```powershell
-git clone --branch feat/langchain-langgraph https://github.com/Watcharaphong-kob/support-ticket-triage-agent.git
+git clone https://github.com/Watcharaphong-kob/support-ticket-triage-agent.git
 cd support-ticket-triage-agent
 Copy-Item .env.example .env
 # Edit .env: replace POSTGRES_PASSWORD, set OPENAI_API_KEY and OPENAI_MODEL.
@@ -117,7 +117,7 @@ Semantic correctness is evaluated separately: manually label held-out English/Th
 - [One-page write-up](WRITEUP.pdf), with [editable source](docs/WRITEUP.md).
 - [Main assignment traceability](docs/ASSIGNMENT_REQUIREMENTS.md), [faithful source](docs/assignment_source.json), [offline reader](ASSIGNMENT_READER.html).
 - [Spec, architecture, tickets and verification evidence](plan.md); GitHub spec #6 with children #7–#9.
-- Source/uv lock/Compose/tests on **feat/langchain-langgraph**. The original prototype branch is preserved.
+- Source/uv lock/Compose/tests on the default **main** branch, ready for GitHub submission. The original prototype and framework development branches are preserved.
 
 Knowledge/customer fixtures are synthetic, permitted by the Word assignment. uv, both CLI/API, framework choice and Docker classic RAG are owner scope; the assignment requires at least two tools and allows terminal or API. This prototype needs approved real knowledge, authentication/tenant controls, observability and live evaluation before production. GraphRAG is next phase.
 

@@ -2,7 +2,7 @@
 
 Status: design and F01–F03 ticket breakdown approved by the owner on 2026-10-09. F01–F03 implementation and delivery verification are complete. Live GPT/semantic quality and reviewer access remain explicitly unverified. Keep planning updates and task evidence in this file.
 
-Branch: `feat/langchain-langgraph`, based on `feat/triage-agent` at `c295253`. The previous prototype remains available on its delivery branch.
+Submission branch: `main`. Development branch: `feat/langchain-langgraph`, based on `feat/triage-agent` at `c295253`. The previous prototype remains available on its delivery branch.
 
 ## Problem Statement
 
@@ -362,3 +362,10 @@ F03 post-task ask-matt: delivery verification and two-axis code review complete 
 - Preserved .env, installed uv environment, active worktree, original Word, original submission ZIP/manifest, Git history and DB volumes. Older clean-checkout/zip-verification directories had differing files and remain under ignored .delivery rather than risking unique work.
 - Automatic approval review initially rejected broad verification-folder deletion because submission artifacts were unverified. Cleanup proceeded only with verified duplicates and reproducible files; differing checkouts were excluded.
 - Post-cleanup verification passed: reader/source/link checks, Ruff lint/format (33 Python files), installed terminal version, packaged prompt/migration resources and Git whitespace checks. No runtime code changed; the previous 78-pass Docker result remains historical evidence, not a newly rerun suite.
+
+### GitHub main submission — 2026-10-09
+
+- Owner requested GitHub submission through main instead of ZIP. ask-matt routing: branch integration and delivery verification. Keep the reviewed 58-file framework tree and all existing branch history.
+- The older main branch contains divergent planning commits. Integrate its history with an ours-strategy merge into the reviewed framework tree, then advance GitHub main with a normal push; no force push or history deletion.
+- README clone instructions now use the default branch; reader and requirement traceability point to main. No local .env, caches, archives or verification folders are tracked.
+- GitHub repository remains private; reviewer access must be granted by the owner before submitting the repository URL. ZIP is not the selected submission method.

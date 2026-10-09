@@ -5,7 +5,7 @@ The owner designated AI_Engineer_-_Code_Homework_Test.docx as the main assignmen
 | Requirement from Word | Framework delivery | Evidence / limit |
 | --- | --- | --- |
 | OpenAI GPT, no submitted API key | Configured ChatOpenAI | Mock HTTP contract tests; paid live quality unverified |
-| Source in GitHub or source+.git ZIP | feat/langchain-langgraph | Private GitHub; owner must grant reviewer access |
+| Source in GitHub or source+.git ZIP | Default main branch | Private GitHub; owner must grant reviewer access |
 | README setup/run instructions | uv / Docker / CLI / API | Fresh-clone check recorded in plan.md |
 | Four urgency levels | Strict result contract, prompt and policy | Scripted sample/policy tests; not an official answer key |
 | Product, issue type, sentiment | Structured result and full-thread prompt | Unknown product remains null; secondary issues retained |

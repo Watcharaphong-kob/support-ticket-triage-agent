@@ -39,7 +39,7 @@ customer history + PostgreSQL RAG → evidence/policy check → result or human 
 tests/fake vectors establish wiring, not live GPT or semantic quality.</p>
 <p><a href="README.md">Setup / tests / API</a> · <a href="WRITEUP.pdf">One-page write-up</a> · <a
 href="docs/ASSIGNMENT_REQUIREMENTS.md">Requirements</a> · <a
-href="{REPO}/tree/feat/langchain-langgraph">GitHub branch</a></p></section>
+href="{REPO}/tree/main">GitHub submission</a></p></section>
 <section id="stack"><h2>Tech stack</h2><p>Python 3.11+, uv lock, LangChain create_agent /
 LangGraph, ChatOpenAI, Pydantic, FastAPI / Uvicorn, Docker PostgreSQL / pgvector, pytest /
 Ruff.</p>
