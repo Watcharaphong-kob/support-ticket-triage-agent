@@ -1,0 +1,17 @@
+.git
+.worktrees
+.venv
+.uv-cache
+.bootstrap
+.env
+.env.*
+!.env.example
+__pycache__
+.pytest_cache
+.ruff_cache
+dist
+build
+*.egg-info
+*.docx
+*.zip
+*.log

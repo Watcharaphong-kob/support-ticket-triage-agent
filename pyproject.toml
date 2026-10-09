@@ -8,7 +8,13 @@ version = "0.1.0"
 description = "Support ticket triage with OpenAI GPT and read-only tools"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["openai>=2,<3", "pydantic>=2,<3"]
+dependencies = [
+    "openai>=2,<3",
+    "pgvector>=0.4,<1",
+    "psycopg[binary]>=3.2,<4",
+    "pydantic>=2,<3",
+    "tiktoken>=0.9,<1",
+]
 
 [project.scripts]
 triage-agent = "triage_agent.cli:main"
@@ -18,6 +24,9 @@ dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+"triage_agent.knowledge" = ["migrations/*.sql"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,0 +1,17 @@
+[
+  {
+    "id":"mock-billing-en", "title":"Illustrative billing escalation guidance",
+    "content":"Synthetic example only: repeated reported payment charges with missing Pro access require billing review. Preserve whether charges are pending or settled as unknown. Request human investigation; do not promise a refund, reversal deadline, or confirmed payment outcome.",
+    "locale":"en", "product":null, "issue_type":"billing", "version":"1", "is_mock":true
+  },
+  {
+    "id":"mock-access-th", "title":"ตัวอย่างการตรวจสอบ error 500",
+    "content":"เอกสารตัวอย่าง ไม่ใช่นโยบายจริง: ระบบเข้าไม่ได้ ขึ้น error 500 หลายเครื่องและเพื่อนร่วมงานได้รับผลกระทบ ควรส่งให้ทีม incident ตรวจสอบอย่างเร่งด่วน แม้ status page บอกว่า all systems operational ไม่ยืนยันว่า region Asia มีปัญหา รักษาข้อมูลที่ยังไม่ยืนยันและห้ามสัญญาเวลาซ่อม",
+    "locale":"th", "product":null, "issue_type":"service_access", "version":"1", "is_mock":true
+  },
+  {
+    "id":"mock-theme-en", "title":"Illustrative theme issue investigation",
+    "content":"Synthetic example only: when System Default stays light despite macOS dark mode, record a possible theme bug for product support. Preserve a separate feature request for scheduled dark mode. Do not repeat failed settings advice or claim a dark-mode toggle or scheduling feature actually exists.",
+    "locale":"en", "product":null, "issue_type":"theme", "version":"1", "is_mock":true
+  }
+]

@@ -1,0 +1,104 @@
+[
+  {
+    "ticket_id": "ticket-001",
+    "customer_id": "customer-001",
+    "is_synthetic_id": true,
+    "source_sample": 1,
+    "locale": "en",
+    "customer_info": "Free plan (upgrade attempted), 4 months on free tier, first time contacting support",
+    "messages": [
+      {
+        "sequence": 1,
+        "relative_time": "3 hours ago",
+        "text": "My payment failed when I tried to upgrade to Pro. Can you check what's wrong?",
+        "supplied_translation": null
+      },
+      {
+        "sequence": 2,
+        "relative_time": "2 hours ago",
+        "text": "I tried again with a different card. Now I see TWO pending charges but my account still shows Free plan??",
+        "supplied_translation": null
+      },
+      {
+        "sequence": 3,
+        "relative_time": "1 hour ago",
+        "text": "Okay this is getting ridiculous. Just checked my bank app - I have THREE charges of $29.99 now. None of them refunded. And I STILL don't have Pro access.",
+        "supplied_translation": null
+      },
+      {
+        "sequence": 4,
+        "relative_time": "just now",
+        "text": "HELLO?? Is anyone there??? I need this fixed NOW. I have a presentation in 2 hours and I need the Pro export features. If these charges aren't reversed by end of day I'm disputing all of them with my bank.",
+        "supplied_translation": null
+      }
+    ]
+  },
+  {
+    "ticket_id": "ticket-002",
+    "customer_id": "customer-002",
+    "is_synthetic_id": true,
+    "source_sample": 2,
+    "locale": "th",
+    "customer_info": "Enterprise plan, Thailand region, 45 seats, 8 months customer, first critical issue",
+    "messages": [
+      {
+        "sequence": 1,
+        "relative_time": "2 hours ago",
+        "text": "ระบบเข้าไม่ได้ครับ ขึ้น error 500",
+        "supplied_translation": "Can't access the system, showing error 500"
+      },
+      {
+        "sequence": 2,
+        "relative_time": "1.5 hours ago",
+        "text": "ลองหลายเครื่องแล้ว ทั้ง Chrome, Safari, Firefox ผลเหมือนกันหมด เพื่อนร่วมงานก็เข้าไม่ได้เหมือนกัน",
+        "supplied_translation": "Tried multiple machines - Chrome, Safari, Firefox - same result. Coworkers also can't access"
+      },
+      {
+        "sequence": 3,
+        "relative_time": "45 mins ago",
+        "text": "ตอนนี้ลูกค้าโวยเข้ามาเยอะมาก เรามี demo กับลูกค้ารายใหญ่บ่ายนี้ ถ้าระบบไม่กลับมา deal นี้อาจจะหลุด",
+        "supplied_translation": "Customers are flooding in with complaints now. We have a demo with a major client this afternoon. If the system doesn't come back, we might lose this deal"
+      },
+      {
+        "sequence": 4,
+        "relative_time": "just now",
+        "text": "เช็ค status.company.com แล้ว บอกว่า all systems operational แต่เราใช้งานไม่ได้จริงๆ ช่วยเช็คให้หน่อยได้ไหมครับ region Asia มีปัญหาหรือเปล่า?",
+        "supplied_translation": "Checked status.company.com - it says all systems operational, but we really can't use it. Can you please check? Is there an issue with the Asia region?"
+      }
+    ]
+  },
+  {
+    "ticket_id": "ticket-003",
+    "customer_id": "customer-003",
+    "is_synthetic_id": true,
+    "source_sample": 3,
+    "locale": "en",
+    "customer_info": "Pro plan, 5 months customer, active user (daily logins), no previous support tickets",
+    "messages": [
+      {
+        "sequence": 1,
+        "relative_time": "2 days ago",
+        "text": "Hey, just wondering if you support dark mode? No rush 😊",
+        "supplied_translation": null
+      },
+      {
+        "sequence": 2,
+        "relative_time": "1 day ago",
+        "text": "Thanks for the reply! Oh nice, so it's in Settings > Appearance. Found it! But hmm I'm on Pro plan and I only see 'Light' and 'System Default' options. No dark mode toggle?",
+        "supplied_translation": null
+      },
+      {
+        "sequence": 3,
+        "relative_time": "1 day ago, 3 hours later",
+        "text": "Okay so I switched to 'System Default' and my Mac is set to dark mode, but your app still shows light theme. Is this a bug or am I missing something?",
+        "supplied_translation": null
+      },
+      {
+        "sequence": 4,
+        "relative_time": "today",
+        "text": "Also random question while I have you - is there a way to schedule dark mode? Like auto-switch at 6pm? Some apps have that. Would be cool if you guys added it 👀",
+        "supplied_translation": null
+      }
+    ]
+  }
+]

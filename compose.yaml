@@ -1,0 +1,49 @@
+name: ooca-triage-prototype
+
+x-application: &application
+  image: ooca-triage-prototype:local
+  environment:
+    PGHOST: db
+    PGPORT: "5432"
+    PGUSER: triage
+    PGDATABASE: triage
+    PGPASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in an ignored .env file}
+    EMBEDDING_BACKEND: ${EMBEDDING_BACKEND:-fake}
+    EMBEDDING_MODEL: ${EMBEDDING_MODEL:-fake-token-v1}
+    EMBEDDING_DIMENSION: ${EMBEDDING_DIMENSION:-64}
+    OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+    OPENAI_MODEL: ${OPENAI_MODEL:-}
+
+services:
+  db:
+    image: pgvector/pgvector:0.8.7-pg17-bookworm
+    environment:
+      POSTGRES_USER: triage
+      POSTGRES_DB: triage
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in an ignored .env file}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-54329}:5432"
+    volumes:
+      - knowledge_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U triage -d triage"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  migrate:
+    <<: *application
+    command: ["python", "-m", "triage_agent.knowledge.manage", "migrate"]
+    depends_on:
+      db:
+        condition: service_healthy
+  app:
+    <<: *application
+    build: .
+    command: ["python", "-m", "triage_agent", "--help"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  knowledge_data:

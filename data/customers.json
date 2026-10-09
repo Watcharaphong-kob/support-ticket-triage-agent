@@ -1,0 +1,5 @@
+[
+  {"customer_id":"customer-001","plan":"Free","tenure_months":4,"region":null,"seats":null,"prior_support_summary":"first time contacting support","is_synthetic":true,"source_sample":1},
+  {"customer_id":"customer-002","plan":"Enterprise","tenure_months":8,"region":"Thailand","seats":45,"prior_support_summary":"first critical issue; other prior support history unspecified","is_synthetic":true,"source_sample":2},
+  {"customer_id":"customer-003","plan":"Pro","tenure_months":5,"region":null,"seats":null,"prior_support_summary":"no previous support tickets; active user (daily logins)","is_synthetic":true,"source_sample":3}
+]

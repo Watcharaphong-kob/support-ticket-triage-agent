@@ -1,0 +1,145 @@
+{
+  "source": "AI_Engineer_-_Code_Homework_Test.docx",
+  "paragraphs": [
+    {
+      "index": 0,
+      "text": "AI Engineer - Code Homework Test"
+    },
+    {
+      "index": 1,
+      "text": "Time: 150 - 240 minutes recommended."
+    },
+    {
+      "index": 3,
+      "text": "Please use GPT OpenAI model, DON’T need to provide API KEY. We will use our own key."
+    },
+    {
+      "index": 4,
+      "text": "Provide the source code in a GitHub repository. If you cannot push to Github you can zip the source code file with .git"
+    },
+    {
+      "index": 5,
+      "text": "Include a README file with instructions on how to set up and run the application."
+    },
+    {
+      "index": 6,
+      "text": "We advise spending at least 150 - 240 minutes on the test – if you want to spend more or less time on it, that’s completely up to you."
+    },
+    {
+      "index": 7,
+      "text": "Our scoring will be determined in 4 criterias:"
+    },
+    {
+      "index": 8,
+      "text": "Readability"
+    },
+    {
+      "index": 9,
+      "text": "Maintainability"
+    },
+    {
+      "index": 10,
+      "text": "Extensibility"
+    },
+    {
+      "index": 11,
+      "text": "Logic"
+    },
+    {
+      "index": 13,
+      "text": "The Assignment: \"Support Ticket Triage Agent\""
+    },
+    {
+      "index": 14,
+      "text": "Scenario"
+    },
+    {
+      "index": 15,
+      "text": "Build an AI agent that triages incoming customer support tickets. The agent should:"
+    },
+    {
+      "index": 16,
+      "text": "Classify ticket urgency (critical/high/medium/low)"
+    },
+    {
+      "index": 17,
+      "text": "Extract key information (product, issue type, customer sentiment)"
+    },
+    {
+      "index": 18,
+      "text": "Search a knowledge base — find relevant FAQ/docs to help answer"
+    },
+    {
+      "index": 19,
+      "text": "Decide next action: auto-respond, route to specialist, or escalate to human"
+    },
+    {
+      "index": 20,
+      "text": "Use at least 2 tools (e.g., check customer history, lookup knowledge base)"
+    },
+    {
+      "index": 21,
+      "text": "What to deliver"
+    },
+    {
+      "index": 22,
+      "text": "Don’t need to build a Chat UI on it, it can be a terminal console or API."
+    },
+    {
+      "index": 23,
+      "text": "Working code — Agent that processes sample tickets"
+    },
+    {
+      "index": 24,
+      "text": "System prompt — The instructions driving the agent"
+    },
+    {
+      "index": 25,
+      "text": "Tool definitions — Schema + implementation (can be mocked)"
+    },
+    {
+      "index": 26,
+      "text": "Brief write-up (1 page max):"
+    },
+    {
+      "index": 27,
+      "text": "Architecture decisions and why"
+    },
+    {
+      "index": 28,
+      "text": "What could go wrong and how you'd handle it"
+    },
+    {
+      "index": 29,
+      "text": "How you'd evaluate this agent in production"
+    },
+    {
+      "index": 30,
+      "text": "Sample tickets provided"
+    },
+    {
+      "index": 32,
+      "text": "1) Customer info: Free plan (upgrade attempted), 4 months on free tier, first time contacting support"
+    },
+    {
+      "index": 33,
+      "text": "Message 1 (3 hours ago):\"My payment failed when I tried to upgrade to Pro. Can you check what's wrong?\"Message 2 (2 hours ago):\"I tried again with a different card. Now I see TWO pending charges but my account still shows Free plan??\"Message 3 (1 hour ago):\"Okay this is getting ridiculous. Just checked my bank app - I have THREE charges of $29.99 now. None of them refunded. And I STILL don't have Pro access.\"Message 4 (just now):\"HELLO?? Is anyone there??? I need this fixed NOW. I have a presentation in 2 hours and I need the Pro export features. If these charges aren't reversed by end of day I'm disputing all of them with my bank.\""
+    },
+    {
+      "index": 35,
+      "text": "2) Customer info: Enterprise plan, Thailand region, 45 seats, 8 months customer, first critical issue"
+    },
+    {
+      "index": 36,
+      "text": "Message 1 (2 hours ago):\"ระบบเข้าไม่ได้ครับ ขึ้น error 500\"(Thai: Can't access the system, showing error 500)Message 2 (1.5 hours ago):\"ลองหลายเครื่องแล้ว ทั้ง Chrome, Safari, Firefox ผลเหมือนกันหมด เพื่อนร่วมงานก็เข้าไม่ได้เหมือนกัน\"(Thai: Tried multiple machines - Chrome, Safari, Firefox - same result. Coworkers also can't access)Message 3 (45 mins ago):\"ตอนนี้ลูกค้าโวยเข้ามาเยอะมาก เรามี demo กับลูกค้ารายใหญ่บ่ายนี้ ถ้าระบบไม่กลับมา deal นี้อาจจะหลุด\"(Thai: Customers are flooding in with complaints now. We have a demo with a major client this afternoon. If the system doesn't come back, we might lose this deal)Message 4 (just now):\"เช็ค status.company.com แล้ว บอกว่า all systems operational แต่เราใช้งานไม่ได้จริงๆ ช่วยเช็คให้หน่อยได้ไหมครับ region Asia มีปัญหาหรือเปล่า?\"(Thai: Checked status.company.com - it says all systems operational, but we really can't use it. Can you please check? Is there an issue with the Asia region?)"
+    },
+    {
+      "index": 38,
+      "text": "3) Customer info: Pro plan, 5 months customer, active user (daily logins), no previous support tickets"
+    },
+    {
+      "index": 39,
+      "text": "Message 1 (2 days ago):\"Hey, just wondering if you support dark mode? No rush 😊\"Message 2 (1 day ago):\"Thanks for the reply! Oh nice, so it's in Settings > Appearance. Found it! But hmm I'm on Pro plan and I only see 'Light' and 'System Default' options. No dark mode toggle?\"Message 3 (1 day ago, 3 hours later):\"Okay so I switched to 'System Default' and my Mac is set to dark mode, but your app still shows light theme. Is this a bug or am I missing something?\"Message 4 (today):\"Also random question while I have you - is there a way to schedule dark mode? Like auto-switch at 6pm? Some apps have that. Would be cool if you guys added it 👀\""
+    }
+  ]
+}
