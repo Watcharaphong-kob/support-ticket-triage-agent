@@ -123,7 +123,7 @@ At 150 minutes, use the same two mocked tools, CLI, and three full tickets; redu
 ### Working checklist
 
 - [x] T01 — Design approved by the user; use uv for package management
-- [ ] T02 — Runnable project/configuration
+- [x] T02 — uv package/configuration and CLI startup implemented; 8 tests and packaging checks pass (docs/T02_SETUP_STATUS.md)
 - [ ] T03 — Complete sample fixtures
 - [ ] T04 — Validated contracts
 - [ ] T05 — Two executable tools
@@ -156,10 +156,10 @@ Use three concise paragraphs in WRITEUP.md: (1) why a CLI, explicit tool loop, s
 
 ## 9. Design decisions still open
 
-T01 now has a concrete design draft at docs/superpowers/specs/2026-10-09-ticket-triage-design.md: Python CLI, structured output, two read-only tools, severity/action rules, and execution limits. Review that document before T02. The GPT model is configured by the runner and verified at integration; no model version is imposed by the assignment. These choices do not prevent reading the source or using this draft planner. There is no submission deadline or required deployment environment in the supplied document.
+T01 is approved at docs/superpowers/specs/2026-10-09-ticket-triage-design.md: Python CLI, structured output, two read-only tools, severity/action rules, and execution limits. The user selected uv for package management; T02 now provides the package/configuration baseline. The GPT model is configured by the runner and verified at integration; no model version is imposed by the assignment. There is no submission deadline or required deployment environment in the supplied document.
 
 ## 10. GitHub repository and worktree plan
 
 See GITHUB_REPO_PLAN.md for the proposed repository layout, initialization sequence, isolated worktree workflow, commit groups, optional issues, CI, and submission checks. Suggested repository: support-ticket-triage-agent; main as the default branch; one implementation branch/worktree. These names are recommendations, not resources already created.
 
-Current Git inspection: this workspace is not a repository, so a worktree cannot yet be created from it. Initialize and commit the baseline during T02; prefer managed worktree tools for implementation. Verify and submit from main during T12. The repository tasks fit the existing 210-minute plan. For the ZIP fallback, package the primary repository with its actual .git directory rather than a linked worktree's metadata pointer.
+T02 initialized local Git and an ignored implementation worktree and created the private GitHub repository at https://github.com/Watcharaphong-kob/support-ticket-triage-agent. uv manages pyproject.toml and the committed uv.lock. Verify the full application and submit from main during T12. The repository tasks fit the existing 210-minute plan. For the ZIP fallback, package the primary repository with its actual .git directory rather than a linked worktree's metadata pointer.

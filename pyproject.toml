@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "support-ticket-triage-agent"
+version = "0.1.0"
+description = "Support ticket triage with OpenAI GPT and read-only tools"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["openai>=2,<3", "pydantic>=2,<3"]
+
+[project.scripts]
+triage-agent = "triage_agent.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

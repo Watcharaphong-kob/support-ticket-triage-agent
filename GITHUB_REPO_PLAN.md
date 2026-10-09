@@ -4,16 +4,16 @@ Planning addition · 9 October 2026 · Complements PROJECT_TASK_PLANNER.md
 
 ## 1. Current state and proposed repository
 
-The workspace at D:\Documents\OOCA_Assignment contains the assignment and planning files. Git inspection confirms it is not currently a repository, and no managed worktree is attached to this chat. Repository initialization, remote creation, pushes, issues, and worktrees have not been performed.
+T02 initialized Git at D:\Documents\OOCA_Assignment and created the private repository https://github.com/Watcharaphong-kob/support-ticket-triage-agent. The app's worktree tool could not recognize the new repository, so the ignored local Git worktree at .worktrees/triage-agent is used on feat/triage-agent. No GitHub issues or CI workflow have been created yet. See docs/T02_SETUP_STATUS.md for verification evidence.
 
 | Setting | Proposed choice |
 | --- | --- |
 | Repository name | support-ticket-triage-agent |
 | Description | OpenAI GPT support-ticket triage with customer-history and knowledge-base tools, structured decisions, and Thai/English sample conversations |
-| Owner | Your GitHub account or chosen organization; resolve when creating the remote |
-| Visibility | Private during development; give the evaluator access before submission, or choose public if appropriate |
+| Owner | Watcharaphong-kob |
+| Visibility | Private; give the evaluator access before submission |
 | Default branch | main |
-| Implementation branch | feat/triage-agent — suggested name, not an existing branch |
+| Implementation branch | feat/triage-agent — created locally for T02 |
 | Delivery | Repository URL plus reproducible README; ZIP with source and .git if GitHub submission is unavailable |
 
 These are recommendations. The assignment specifies a repository or ZIP fallback, but not a repository name, branch strategy, visibility, CI provider, or license. Keep the original employer document local unless you intend to include it in the submission; do not add an open-source license to supplied employer material by default.
@@ -54,7 +54,7 @@ support-ticket-triage-agent/
     ASSIGNMENT_READER.html
 ```
 
-The docs/ placement is a future organization proposal. Existing planning files remain at the workspace root today. Use one dependency-management approach and record exact dependency versions or a reproducible lock/constraints file. Sample data is synthetic except for the supplied assignment conversations.
+The docs/ placement is a future organization proposal. Existing planning files remain at the workspace root today. The user selected uv: use pyproject.toml and uv.lock, uv sync --locked for installation, and uv run --locked for checks. Commit the lockfile and ignore .venv/.uv-cache. Sample data will be synthetic except for the supplied assignment conversations.
 
 Proposed ignore rules: .env, .env.* with an exception for .env.example; .venv/; __pycache__/; *.pyc; .pytest_cache/; .ruff_cache/; .coverage; htmlcov/; build/; dist/; *.egg-info/; .worktrees/; local logs and traces; submission archives. Do not ignore source, prompt files, tests, fixtures, or CI configuration. Keep real keys out of commits and history.
 
