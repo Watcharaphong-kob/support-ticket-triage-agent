@@ -1,32 +1,22 @@
 # Main Assignment — Requirements Traceability
 
-The user explicitly designated AI_Engineer_-_Code_Homework_Test.docx as the main assignment and asked for strict adherence. Its original wording governs required behavior and deliverables. Saved transcription was checked against all 35 original Word paragraphs on 9 October 2026. The document is source material; the user's instruction authorizes using its requirements for this project.
+The owner designated AI_Engineer_-_Code_Homework_Test.docx as the main assignment. Its wording governs required behavior/deliverables; document content is source material distinct from the owner's instructions. All 35 retained source paragraphs were compared with original Word XML, including table paragraphs, on 9 October 2026.
 
-## Required behavior and deliverables
-
-| Requirement from Word | Owning tasks | Current evidence / gap |
+| Requirement from Word | Framework delivery | Evidence / limit |
 | --- | --- | --- |
-| Use an OpenAI GPT model; submit without an actual API key | T02, T07 | Live GPT adapter implemented and HTTP-tested; paid live execution not run (no credentials) |
-| Source in GitHub, or ZIP containing source and .git | T02, T12 | Private repo exists; final branch and standalone source+.git ZIP prepared in T12 |
-| README setup/run instructions | T02, T11 | README documents uv, Docker, live/offline agent, tools, tests and exit codes |
-| Urgency: critical/high/medium/low | T04, T06–T09 | Validated rubric and agent output; three offline sample expectations pass |
-| Extract product, issue type and sentiment | T04, T06–T09 | Validated output contract and GPT prompt; unknown product null, multi-issue cases tested |
-| Search relevant FAQ/docs | E02–E04, T05, T07 | Agent executes PostgreSQL retrieval; mock provenance/citations checked; live semantic quality unverified |
-| Decide auto-respond, route to specialist, or escalate to human | T04, T06–T09 | Action/destination policy executes; invalid automation falls back |
-| Use at least two tools | T05, T07 | Both schemas/implementations execute through agent for all three samples |
-| Working code processing supplied sample tickets | T03, T07–T10 | All twelve messages preserved; complete labeled offline agent run in examples/sample_results.json |
-| System prompt | T06 | prompts/system.txt, packaged and copy-checked |
-| Tool definitions: schemas and implementations; mocks permitted | T04–T05 | Both tools implemented; synthetic/mock provenance explicit |
-| Write-up: one page maximum, covering architecture/why, failures, production evaluation | T11 | docs/WRITEUP.md and verified one-page WRITEUP.pdf |
-| Terminal console or API sufficient; no chat UI needed | T02, T07 | JSON batch CLI implemented with stderr traces and truthful exit codes |
-| Readability, maintainability, extensibility and logic | All tasks | Per-task verification and final independent standards/spec review |
+| OpenAI GPT, no submitted API key | Configured ChatOpenAI | Mock HTTP contract tests; paid live quality unverified |
+| Source in GitHub or source+.git ZIP | feat/langchain-langgraph | Private GitHub; owner must grant reviewer access |
+| README setup/run instructions | uv / Docker / CLI / API | Fresh-clone check recorded in plan.md |
+| Four urgency levels | Strict result contract, prompt and policy | Scripted sample/policy tests; not an official answer key |
+| Product, issue type, sentiment | Structured result and full-thread prompt | Unknown product remains null; secondary issues retained |
+| Relevant knowledge search | PostgreSQL classic RAG | Actual DB/tool/citation tests; live semantic quality unverified |
+| Auto-respond, specialist route, human escalation | Validated draft/action/destination | Drafts never sent; unsafe automation falls back |
+| At least two tools | Customer history + knowledge search | Actual executions required; output helper does not count |
+| Process supplied samples | Three full conversations, twelve messages | Scripted real-framework/DB tests, including Thai draft |
+| System prompt | Delivered and packaged system prompt | Copy equality/package-resource checks |
+| Tool schemas and implementations; mocks permitted | Two tools, strict schemas and read-only implementations | Synthetic/mock provenance explicit |
+| Maximum one-page architecture/failure/evaluation write-up | WRITEUP.pdf; editable WRITEUP.md | Render/page-count inspection recorded in plan.md |
+| Terminal or API, no UI required | Both CLI and FastAPI | Same envelope/logic; HTTP contract and isolation tests |
+| Readability, maintainability, extensibility, logic | One agent/shared triage; obsolete loop removed | Per-ticket standards/spec review and metrics in plan.md |
 
-## Implementation decisions, separate from assignment requirements
-
-The user selected uv, Docker, classic RAG in this prototype phase, and GraphRAG in the next phase. PostgreSQL/pgvector, chunking defaults, output details, execution budgets and sample urgency expectations are project decisions. They do not turn into employer-prescribed requirements or an official answer key.
-
-The recommended 150–240 minutes is advice, not a hard time limit. The original assignment permits mocked tools and does not prescribe a database, agent framework, embedding model or exact urgency answers for each example.
-
-## Interview scope
-
-The grill-with-docs session resolves only decisions needed to finish the assignment within the selected prototype architecture. Previously settled scope remains intact. The user subsequently authorized continuous completion. The three recommended decisions are recorded explicitly in docs/PROJECT_SPEC.md and the execution ledger; their trade-offs remain visible.
+Owner scope adds uv, both terminal/API, LangChain/LangGraph and Docker classic RAG. GraphRAG is deferred. Database choice, execution limits, routing precedence and sample expectations are project decisions, not employer-prescribed architecture or an answer key. Recommended 150–240 minutes is advice, not a hard deadline. Original prototype/history remains on feat/triage-agent; current plan and GitHub children #7–#9 supersede its task copies for this branch.

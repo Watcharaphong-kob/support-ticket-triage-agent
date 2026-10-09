@@ -54,7 +54,7 @@ Use one LangChain agent running on LangGraph, two scoped read-only tools and one
 - A liveness endpoint describes process health only. The HTTP listener remains local; no public hosting or authentication system is added in this phase.
 - Customer scope, retrieved documents and tool execution records belong to one invocation. No mutable global trace, persistent conversation memory or checkpoints.
 - Preserve existing PostgreSQL ingestion/search and embedding-space protection. Framework graph execution is distinct from GraphRAG; no graph knowledge database is introduced.
-- Proposed intentional changes: no canned production model on this branch, zero automatic provider retries, and critical incident routing taking priority over billing routing. Implement only after review; retain equivalent requirements and explicit failures.
+- Approved intentional changes: no canned production model on this branch, zero automatic provider retries, and critical incident routing taking priority over billing routing. Preserve equivalent requirements and explicit failures; approval granted 2026-10-09.
 - Limit each run to six model requests and eight tool calls, with thirty-second provider timeouts. Distinguish recursion steps and structured-output helpers from real tools and call budgets.
 - Shortest readable code means fewer necessary concepts and repeated paths. Do not compress code, delete validation or merely move prose to claim a reduction.
 - Keep one system prompt, existing package resources, a shared result contract and one production framework agent. Add no second agent architecture or generic tool registry.
@@ -64,7 +64,7 @@ Use one LangChain agent running on LangGraph, two scoped read-only tools and one
 
 - Highest shared runtime seam: batch triage with actual tools against Docker PostgreSQL and an injected scripted chat model. Assert outcomes, real tool records, grounding, scoped history and fallback instead of private helper structure.
 - Reuse prior agent, CLI, policy, provider-contract and real-database tests where their behavior still applies. Replace tests coupled solely to the removed custom-loop implementation.
-- Proposed new public seam: HTTP requests through FastAPI's test client. Compare HTTP and CLI outcomes for the same injected model/tool results; cover schema errors and concurrent request isolation. This new seam and the contract are for written-design review before implementation.
+- Approved HTTP seam: HTTP requests through FastAPI's test client. Compare HTTP and CLI outcomes for the same injected model/tool results; cover schema errors and concurrent request isolation. Design/seam review approved before implementation.
 - Exercise the three faithful source tickets, all twelve messages, unknown/foreign customers, invented citations, provider/DB failures, invalid calls, bounded execution, critical billing and Thai drafts.
 - Verify fresh-clone locked install, package resources, migration/ingestion, terminal/API startup and complete Docker tests. Run no tests merely to mirror moved helpers.
 - Test live GPT using the three source conversations plus unseen cases with an owner-supplied key. Evaluate live semantic embeddings independently of deterministic fake vectors. Disclose unavailable live evidence.
@@ -80,15 +80,15 @@ Use one LangChain agent running on LangGraph, two scoped read-only tools and one
 
 ## Further Notes
 
-Published specification: [GitHub issue #6](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/6), labeled ready-for-agent. Publication does not waive the written-design review gate.
+Published specification: [GitHub issue #6](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/6), labeled ready-for-agent. The owner approved the design and breakdown on 2026-10-09; task evidence follows below.
 
-This is a proposed framework specification on feat/langchain-langgraph, based on completed prototype commit c295253. Existing source and tests still implement the original custom-loop prototype; neither the new framework agent nor HTTP endpoint has been implemented. The inherited baseline has 1,054 nonblank runtime Python lines and 80 tracked files; this planning branch adds one document.
+This framework implementation on feat/langchain-langgraph is based on completed prototype c295253. F01 and F02 implement the framework agent and shared HTTP/terminal access; F03 delivery verification is in progress. Baseline: 1,054 nonblank runtime Python lines and 80 tracked files. Original custom-loop prototype and its historical docs remain on feat/triage-agent.
 
-The current terminal/tool/database testing seams are reused. The HTTP seam and intentional retry/offline/routing changes remain explicit review points. The implementation checklist below is provisional and stays in this same document. The owner's earlier classic-RAG-only and prototype decisions remain in force.
+Terminal/tool/database testing seams are reused. The HTTP seam and retry/offline/routing changes were approved, tested and reviewed. The implementation checklist and actual evidence stay in this document. The owner's earlier classic-RAG-only and prototype decisions remain in force.
 
 ## System architecture
 
-These diagrams describe the proposed implementation, not currently running framework/API code. LangGraph is the execution runtime; PostgreSQL remains the knowledge store.
+These diagrams describe the implemented framework/API architecture. LangGraph is the execution runtime; PostgreSQL remains the knowledge store.
 
 ### 1. Modules and trust
 
@@ -233,7 +233,7 @@ Do not count structured-output helpers as either required tool. Do not add refun
 - Use built-in per-run model/tool limit middleware: at most six model requests and eight tool calls. A separate graph recursion guard must be documented as a graph-step limit, not a substitute for either call budget.
 - Fail closed for unknown tools, malformed arguments, foreign customer access, invalid call IDs, tool/provider errors, invalid structured output, missing required tool evidence or invented citations. Preserve pre-execution rejection of unauthorized calls; check full batches before any execution where necessary.
 - Do not rely on prompt instructions alone for authorization or citation validity. Keep application checks small and concentrated in the existing tool/policy modules.
-- Define routing precedence explicitly: critical impact routes to incident review; otherwise billing issues route to human billing review; otherwise apply the proposed action with existing evidence checks. This resolves the original critical-plus-billing destination conflict and needs a regression test.
+- Define routing precedence explicitly: critical impact routes to incident review; otherwise billing issues route to human billing review; otherwise apply the proposed action with existing evidence checks. This resolves the original critical-plus-billing destination conflict; the regression test passes.
 - Auto-response remains draft-only, low urgency, supported by retrieved evidence and known customer history. No response is sent automatically.
 - Preserve missing-history uncertainty and mock-knowledge labeling. Thai tickets require Thai drafts. Treat customer/knowledge content as untrusted data; semantic grounding still requires evaluation.
 - Prevent embedding-space changes from contaminating an existing index; continue using a separate database/volume for a different model or dimension.
@@ -275,7 +275,7 @@ Blocked by F01.
 
 ### F03 — Submission and quality evidence
 
-GitHub: [#9](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/9). Pending; native blocker #8.
+GitHub: [#9](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/9). In progress; native blocker #8 completed.
 
 Blocked by F02.
 
@@ -303,7 +303,7 @@ Use three compact sections in the existing write-up, with no task history:
 - Code gets simpler by removing a second implementation and repetition, not hiding complexity or dropping checks.
 - Write-up is verified as one page and covers all three requested topics.
 - No secrets, paid keys or unnecessary new planning files are committed.
-- This plan is a proposal. Approve its architecture, API contract and intentional retry/offline/policy changes before implementation. Implementation work will use this same file for detailed steps and progress.
+- The owner approved the architecture, API contract and retry/offline/policy changes on 2026-10-09. This file records implementation steps, progress and evidence.
 
 ## Primary references checked
 
@@ -313,7 +313,7 @@ Use three compact sections in the existing write-up, with no task history:
 - [Built-in model/tool limit middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in)
 - [FastAPI request bodies](https://fastapi.tiangolo.com/tutorial/body/)
 
-Skill usage for this plan/spec: ask-matt before/after, to-spec, Superpowers brainstorming, reuse of the existing isolated worktree, primary documentation verification and pre-delivery checks. No framework dependencies or runtime code were installed/changed while writing the plan.
+Skill usage during the original plan/spec stage: ask-matt before/after, to-spec, Superpowers brainstorming, reuse of the existing isolated worktree, primary documentation verification and pre-delivery checks. No framework dependencies or runtime code were installed/changed while writing the plan.
 
 ## Implementation evidence
 
