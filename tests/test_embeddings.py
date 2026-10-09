@@ -69,3 +69,12 @@ def test_live_adapter_rejects_oversized_text_before_provider_request():
     )
     with pytest.raises(KnowledgeError, match="token"):
         embedder.embed(["word " * 9000])
+
+
+def test_chunks_keep_sections_separate_and_repeat_heading_on_long_passages():
+    text = "# Billing\npayment charges require review\n\n# Themes\ndark mode needs investigation"
+    chunks = chunk_text(text)
+    assert len(chunks) == 2
+    assert all(not ("Billing" in c and "Themes" in c) for c in chunks)
+    long = "# Billing\n" + "payment charges require review " * 400
+    assert all(c.startswith("# Billing\n") for c in chunk_text(long))

@@ -1,6 +1,7 @@
 """Token-bounded Unicode-safe chunks with stable identities and source provenance."""
 
 import hashlib
+import re
 from dataclasses import dataclass
 
 import tiktoken
@@ -17,6 +18,31 @@ def content_hash(text: str) -> str:
 def chunk_text(text: str, size: int = 500, overlap: int = 60) -> list[str]:
     if size < 8 or not 0 <= overlap < size:
         raise KnowledgeError("Invalid chunk size/overlap")
+    encoding = tiktoken.get_encoding("cl100k_base")
+    result = []
+    for section in filter(None, re.split(r"(?m)(?=^#{1,6} )", text)):
+        heading = ""
+        if re.match(r"^#{1,6} ", section):
+            first, separator, body = section.partition("\n")
+            if not separator:
+                result.extend(_token_windows(section, size, overlap))
+                continue
+            heading, section = first + separator, body
+        heading_tokens = len(encoding.encode(heading, disallowed_special=()))
+        budget = size - heading_tokens
+        if budget < 8:
+            raise KnowledgeError("Section heading exceeds chunk token budget")
+        paragraphs = list(filter(None, re.split(r"(?<=\n\n)", section)))
+        if not paragraphs:
+            result.append(heading)
+        for paragraph in paragraphs:
+            result.extend(
+                heading + c for c in _token_windows(paragraph, budget, min(overlap, budget - 1))
+            )
+    return result
+
+
+def _token_windows(text: str, size: int, overlap: int) -> list[str]:
     encoding = tiktoken.get_encoding("cl100k_base")
     tokens = encoding.encode(text, disallowed_special=())
     chunks, start = [], 0
