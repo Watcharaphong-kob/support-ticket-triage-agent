@@ -64,7 +64,6 @@ def main(argv=None):
                         "search_knowledge_base",
                         {
                             "query": "\n".join(m.text for m in ticket.messages),
-                            "locale": ticket.locale,
                         },
                     )
                     output["tickets"].append(

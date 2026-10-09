@@ -6,10 +6,10 @@
 @media(max-width:900px){.layout{grid-template-columns:1fr;padding:14px;gap:14px}aside{position:static}.sub,.aside-note{display:none}nav{display:flex;flex-wrap:wrap;gap:3px}nav a{background:#e5eded;font-size:13px;padding:6px 10px}.page{padding:24px 20px}.stats{gap:7px}.stats>div{padding:12px}.stats b{font-size:21px}}
 @media(max-width:480px){.tiles{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stats>div{display:flex;gap:16px;align-items:center}}
 @media print{body{background:white;font-size:10pt}.layout{display:block;padding:0}aside,footer,.skip{display:none}.page,.enhanced .page{display:block!important;box-shadow:none;border:0;padding:0;break-before:page}.page:first-child{break-before:auto}h2,h3,h4{break-after:avoid}tr,.message{break-inside:avoid}.table-scroll{overflow:visible}table{font-size:9pt}pre{white-space:pre-wrap;background:#f1f4f5;color:var(--ink)}.tiles{display:none}}
-</style></head><body><a class="skip" href="#overview">Skip to content</a><div class="layout"><aside><div class="brand">OOCA Assignment</div><div class="sub">SUPPORT TICKET TRIAGE</div><nav aria-label="Document views"><a href="#overview">Overview</a><a href="#planner">Task planner</a><a href="#todo">TODO list</a><a href="#tickets">Tickets</a><a href="#spec">Spec</a><a href="#stack">Tech stack</a><a href="#knowledge">Knowledge system</a><a href="#github">GitHub plan</a><a href="#t02">Verified setup</a><a href="#original">Original assignment</a></nav><div class="aside-note">9/17 Phase 1 tasks done<br>Offline reader · Ctrl+P to print<br>Task data: docs/project_tasks.json</div></aside><main><section class="page" id="overview" tabindex="-1"><div class="eyebrow">PROJECT WORKSPACE · 9 October 2026</div>
+</style></head><body><a class="skip" href="#overview">Skip to content</a><div class="layout"><aside><div class="brand">OOCA Assignment</div><div class="sub">SUPPORT TICKET TRIAGE</div><nav aria-label="Document views"><a href="#overview">Overview</a><a href="#planner">Task planner</a><a href="#todo">TODO list</a><a href="#tickets">Tickets</a><a href="#spec">Spec</a><a href="#stack">Tech stack</a><a href="#knowledge">Knowledge system</a><a href="#github">GitHub plan</a><a href="#t02">Verified setup</a><a href="#original">Original assignment</a></nav><div class="aside-note">16/17 Phase 1 tasks done<br>Offline reader · Ctrl+P to print<br>Task data: docs/project_tasks.json</div></aside><main><section class="page" id="overview" tabindex="-1"><div class="eyebrow">PROJECT WORKSPACE · 9 October 2026</div>
 <h2>Support Ticket<br>Triage Agent</h2><p class="lead">The assignment, spec, stack and execution plan in one offline reader.</p>
-<div class="stats"><div><b>9/17</b><span>Phase 1 tasks complete</span></div><div><b>Classic RAG</b><span>Docker + PostgreSQL + pgvector</span></div><div><b>Prototype</b><span>GraphRAG deferred to Phase 2</span></div></div>
-<div class="note">Docker, classic RAG and both tools implemented through T05; see Tickets for review status and evidence. The GPT prompt and agent loop remain pending. Next: T06. Live embeddings not verified.</div>
+<div class="stats"><div><b>16/17</b><span>Phase 1 tasks complete</span></div><div><b>Classic RAG</b><span>Docker + PostgreSQL + pgvector</span></div><div><b>Prototype</b><span>GraphRAG deferred to Phase 2</span></div></div>
+<div class="note">GPT prompt, bounded agent loop, JSON CLI, Docker classic RAG and both tools implemented; see Tickets for evidence. Next: Phase 1 complete. Live embeddings not verified.</div>
 <div class="tiles"><a href="#spec"><b>Project spec</b><span>Scope, contracts and acceptance</span></a><a href="#stack"><b>Tech stack</b><span>Installed tools and proposed choices</span></a><a href="#todo"><b>TODO list</b><span>One shared list; verified status</span></a><a href="#original"><b>Original assignment</b><span>All conversations, including Thai</span></a></div>
 <h2>Assignment Summary</h2>
 <h3>What you need to build</h3>
@@ -31,14 +31,14 @@
 <p>The document does not specify a model version, programming language, official sample labels, submission deadline, or deployment platform. Confirm those design choices before implementation. This deliverable is planning and document conversion; it does not implement or publish the project.</p></section><section class="page" id="planner" tabindex="-1"><h2>Project Task Planner</h2>
 <p>9 October 2026 · Rebuilt from docs/project_tasks.json</p>
 <h3>Current position</h3>
-<p>9 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: T06. Full GPT ticket processing is pending.</p>
+<p>16 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: Phase 1 complete. GPT/tool/CLI implementation is available; see verification for live-check limits.</p>
 <p>This is the current task plan. Existing task IDs and completion evidence are preserved. Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.</p>
 <h3>Spec and stack</h3>
 <p><a href="#spec">Project spec</a> defines scope, contracts and acceptance. <a href="#stack">Tech stack</a> separates installed tools from selected Phase 1 components. <a href="#todo">Working TODO list</a> mirrors the tasks below. <a href="#tickets">Execution tickets</a> record skills, plugins, steps and evidence. <a href="#knowledge">RAG and GraphRAG spec</a> supplies extension details.</p>
 <h3>Phases and timing</h3>
 <p>The original homework estimate was 210 minutes and the assignment recommends 150–240 minutes. Docker and real classic RAG expand that scope. A revised Phase 1 estimate is not assigned; original task minutes below are historical references, not a total for this prototype.</p>
 <h3>Phase 1 — Docker classic RAG prototype</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Min</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>T01</td><td>done</td><td>10</td><td>—</td><td>Approve architecture and contracts</td></tr><tr><td>T02</td><td>done</td><td>10</td><td>T01</td><td>Set up uv package and GitHub</td></tr><tr><td>E01</td><td>done</td><td>TBD</td><td>T01</td><td>Select Phase 1 prototype architecture</td></tr><tr><td>T03</td><td>done</td><td>15</td><td>T02</td><td>Create complete bilingual ticket fixtures</td></tr><tr><td>T04</td><td>done</td><td>15</td><td>T03</td><td>Define validated input/tool/result contracts</td></tr><tr><td>E02</td><td>done</td><td>TBD</td><td>E01, T02</td><td>Set up Docker Compose and PostgreSQL/pgvector</td></tr><tr><td>E03</td><td>done</td><td>TBD</td><td>E02</td><td>Implement classic RAG ingestion and embeddings</td></tr><tr><td>E04</td><td>done</td><td>TBD</td><td>E03, T04</td><td>Implement PostgreSQL classic RAG knowledge search</td></tr><tr><td>T05</td><td>done</td><td>20</td><td>T03, T04, E04</td><td>Wire history and classic RAG tools</td></tr><tr><td>T06</td><td>todo</td><td>15</td><td>T04, T05</td><td>Write grounded bilingual system prompt</td></tr><tr><td>T07</td><td>todo</td><td>35</td><td>T02, T04, T05, T06</td><td>Build bounded GPT/tool execution loop</td></tr><tr><td>T08</td><td>todo</td><td>20</td><td>T07</td><td>Apply action policy and integrate JSON CLI</td></tr><tr><td>E06</td><td>todo</td><td>TBD</td><td>E04</td><td>Test classic RAG against Docker PostgreSQL</td></tr><tr><td>T09</td><td>todo</td><td>25</td><td>T08, E06</td><td>Verify scenarios and failure paths offline</td></tr><tr><td>T10</td><td>todo</td><td>15</td><td>T09</td><td>Run demos and record live verification</td></tr><tr><td>T11</td><td>todo</td><td>20</td><td>T10</td><td>Finish README and one-page write-up</td></tr><tr><td>T12</td><td>todo</td><td>10</td><td>T11</td><td>Verify clean checkout and submit</td></tr></tbody></table></div>
+<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Min</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>T01</td><td>done</td><td>10</td><td>—</td><td>Approve architecture and contracts</td></tr><tr><td>T02</td><td>done</td><td>10</td><td>T01</td><td>Set up uv package and GitHub</td></tr><tr><td>E01</td><td>done</td><td>TBD</td><td>T01</td><td>Select Phase 1 prototype architecture</td></tr><tr><td>T03</td><td>done</td><td>15</td><td>T02</td><td>Create complete bilingual ticket fixtures</td></tr><tr><td>T04</td><td>done</td><td>15</td><td>T03</td><td>Define validated input/tool/result contracts</td></tr><tr><td>E02</td><td>done</td><td>TBD</td><td>E01, T02</td><td>Set up Docker Compose and PostgreSQL/pgvector</td></tr><tr><td>E03</td><td>done</td><td>TBD</td><td>E02</td><td>Implement classic RAG ingestion and embeddings</td></tr><tr><td>E04</td><td>done</td><td>TBD</td><td>E03, T04</td><td>Implement PostgreSQL classic RAG knowledge search</td></tr><tr><td>T05</td><td>done</td><td>20</td><td>T03, T04, E04</td><td>Wire history and classic RAG tools</td></tr><tr><td>T06</td><td>done</td><td>15</td><td>T04, T05</td><td>Write grounded bilingual system prompt</td></tr><tr><td>T07</td><td>done</td><td>35</td><td>T02, T04, T05, T06</td><td>Build bounded GPT/tool execution loop</td></tr><tr><td>T08</td><td>done</td><td>20</td><td>T07</td><td>Apply action policy and integrate JSON CLI</td></tr><tr><td>E06</td><td>done</td><td>TBD</td><td>E04</td><td>Test classic RAG against Docker PostgreSQL</td></tr><tr><td>T09</td><td>done</td><td>25</td><td>T08, E06</td><td>Verify scenarios and failure paths offline</td></tr><tr><td>T10</td><td>done</td><td>15</td><td>T09</td><td>Run demos and record live verification</td></tr><tr><td>T11</td><td>done</td><td>20</td><td>T10</td><td>Finish README and one-page write-up</td></tr><tr><td>T12</td><td>in_progress</td><td>10</td><td>T11</td><td>Verify clean checkout and submit</td></tr></tbody></table></div>
 <h3>Phase 2 — deferred GraphRAG</h3>
 <div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>E05</td><td>deferred</td><td>T12</td><td>Explore GraphRAG in the next phase</td></tr></tbody></table></div>
 <h3>Task contracts</h3>
@@ -103,35 +103,63 @@
 <p>Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
 <p><a href="#tickets">Execution ticket</a></p>
 <h4>T06 — Write grounded bilingual system prompt</h4>
-<p>Phase: Data &amp; tools. Status: todo. Depends on: T04, T05. Estimate: 15 min (historical).</p>
+<p>Phase: Data &amp; tools. Status: done. Depends on: T04, T05. Estimate: 15 min (historical).</p>
 <p>Outputs: <code>prompts/system.txt</code>.</p>
 <p>Acceptance: Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
 <h4>T07 — Build bounded GPT/tool execution loop</h4>
-<p>Phase: Agent &amp; decisions. Status: todo. Depends on: T02, T04, T05, T06. Estimate: 35 min (historical).</p>
+<p>Phase: Agent &amp; decisions. Status: done. Depends on: T02, T04, T05, T06. Estimate: 35 min (historical).</p>
 <p>Outputs: <code>src/triage_agent/agent.py</code>, <code>tests/test_agent.py</code>.</p>
 <p>Acceptance: Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests &lt;=6 and tool executions &lt;=8 enforced.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
 <h4>T08 — Apply action policy and integrate JSON CLI</h4>
-<p>Phase: Agent &amp; decisions. Status: todo. Depends on: T07. Estimate: 20 min (historical).</p>
+<p>Phase: Agent &amp; decisions. Status: done. Depends on: T07. Estimate: 20 min (historical).</p>
 <p>Outputs: <code>src/triage_agent/policy.py</code>, <code>src/triage_agent/cli.py</code>, <code>tests/test_policy.py</code>.</p>
 <p>Acceptance: Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
 <h4>E06 — Test classic RAG against Docker PostgreSQL</h4>
-<p>Phase: Phase 1 RAG verification. Status: todo. Depends on: E04. Estimate: TBD.</p>
+<p>Phase: Phase 1 RAG verification. Status: done. Depends on: E04. Estimate: TBD.</p>
 <p>Outputs: <code>tests/test_retrieval.py</code>, <code>docs/retrieval_evaluation.md</code>.</p>
 <p>Acceptance: Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
 <h4>T09 — Verify scenarios and failure paths offline</h4>
-<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T08, E06. Estimate: 25 min (historical).</p>
+<p>Phase: Verification &amp; delivery. Status: done. Depends on: T08, E06. Estimate: 25 min (historical).</p>
 <p>Outputs: <code>tests/test_agent.py</code>, <code>tests/test_policy.py</code>, <code>tests/test_tools.py</code>.</p>
 <p>Acceptance: Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
 <h4>T10 — Run demos and record live verification</h4>
-<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T09. Estimate: 15 min (historical).</p>
+<p>Phase: Verification &amp; delivery. Status: done. Depends on: T09. Estimate: 15 min (historical).</p>
 <p>Outputs: <code>examples/sample_results.json</code>, <code>docs/verification.md</code>.</p>
 <p>Acceptance: Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.</p>
+<p>Skills used: ask-matt (before and after), implement, superpowers:executing-plans, superpowers:verification-before-completion.</p>
+<p>Plugins used: Superpowers: execution and verification.</p>
+<p>Verification: Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
 <h4>T11 — Finish README and one-page write-up</h4>
-<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T10. Estimate: 20 min (historical).</p>
-<p>Outputs: <code>README.md</code>, <code>WRITEUP.md</code>.</p>
+<p>Phase: Verification &amp; delivery. Status: done. Depends on: T10. Estimate: 20 min (historical).</p>
+<p>Outputs: <code>README.md</code>, <code>WRITEUP.md</code>, <code>WRITEUP.pdf</code>.</p>
 <p>Acceptance: README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.</p>
+<p>Skills used: ask-matt (before and after), implement, superpowers:executing-plans, superpowers:verification-before-completion, pdf:pdf.</p>
+<p>Plugins used: Superpowers: execution and verification, PDF: authored/rendered one-page write-up.</p>
+<p>Verification: Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
 <h4>T12 — Verify clean checkout and submit</h4>
-<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T11. Estimate: 10 min (historical).</p>
+<p>Phase: Verification &amp; delivery. Status: in_progress. Depends on: T11. Estimate: 10 min (historical).</p>
 <p>Outputs: <code>.github/workflows/ci.yml</code>, <code>docs/verification.md</code>.</p>
 <p>Acceptance: Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</p>
 <h4>E05 — Explore GraphRAG in the next phase</h4>
@@ -140,7 +168,7 @@
 <p>Acceptance: Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</p>
 <h3>Execution rules</h3>
 <p>Implement one task at a time in dependency order. Use focused failing tests before behavior changes and record actual verification. Keep prompts/tools/model adapters separate. Do not mark installed libraries as working agent features. Review architecture changes before extension implementation.</p>
-<p>Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: T06.</p>
+<p>Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: Phase 1 complete.</p>
 <p>T02 evidence: docs/T02_SETUP_STATUS.md. Repository/worktree/submission workflow: <a href="#github">GitHub plan</a>. Preserve customer uncertainty and source citations.</p><details><summary>T03 implementation plan and checklist</summary><h2>T03 Bilingual Fixtures Implementation Plan</h2>
 <p>&gt; <strong>For agentic workers:</strong> REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox syntax for tracking.</p>
 <p><strong>Goal:</strong> Supply faithful, reusable JSON fixtures for all three assignment tickets and their synthetic customer records.</p>
@@ -234,7 +262,7 @@
 <li>The user authorized continued implementation/testing through T05. Ask-matt was consulted before and after T03, T04, E02, E03, E04 and T05; verification and independent standards/spec review followed. The per-task tickets record steps and results. GPT-loop implementation remains pending; GitHub issue publication is separate from local ticket creation.</li>
 </ul>
 <p>Skill source: C:/Users/ASUS/.codex/skills/ask-matt/SKILL.md. This workflow implements the user&#x27;s instruction; ask-matt itself does not certify successful results.</p></details></section><section class="page" id="todo" tabindex="-1"><h2>Project TODO</h2>
-<p>9 October 2026 · 9/17 Phase 1 tasks done · Next: T06</p>
+<p>9 October 2026 · 16/17 Phase 1 tasks done · Next: Phase 1 complete</p>
 <p><a href="#spec">Spec</a> · <a href="#stack">Stack</a> · <a href="#planner">Detailed planner</a></p>
 <p><a href="#tickets">Tickets with skills, plugins and steps</a></p>
 <p>Checked tasks record completed setup/design and the user&#x27;s E01 architecture decision. Classic RAG and Docker are selected for Phase 1; GraphRAG is deferred to Phase 2. Task data lives in docs/project_tasks.json; rebuild with uv run python scripts/build_planner.py.</p>
@@ -260,7 +288,7 @@
 <li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T05 — Wire history and classic RAG tools</strong> (done): Both tool schemas execute: fixture customer lookup and Docker PostgreSQL/pgvector KB retrieval; unknown customers, empty matches and DB errors explicit; mock knowledge flagged.</li>
 </ul>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>T06 — Write grounded bilingual system prompt</strong> (todo): Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T06 — Write grounded bilingual system prompt</strong> (done): Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.</li>
 </ul>
 <h3>Phase 1 RAG infrastructure</h3>
 <ul>
@@ -274,34 +302,34 @@
 </ul>
 <h3>Agent &amp; decisions</h3>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>T07 — Build bounded GPT/tool execution loop</strong> (todo): Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests &lt;=6 and tool executions &lt;=8 enforced.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T07 — Build bounded GPT/tool execution loop</strong> (done): Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests &lt;=6 and tool executions &lt;=8 enforced.</li>
 </ul>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>T08 — Apply action policy and integrate JSON CLI</strong> (todo): Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T08 — Apply action policy and integrate JSON CLI</strong> (done): Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.</li>
 </ul>
 <h3>Phase 1 RAG verification</h3>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>E06 — Test classic RAG against Docker PostgreSQL</strong> (todo): Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>E06 — Test classic RAG against Docker PostgreSQL</strong> (done): Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.</li>
 </ul>
 <h3>Verification &amp; delivery</h3>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>T09 — Verify scenarios and failure paths offline</strong> (todo): Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T09 — Verify scenarios and failure paths offline</strong> (done): Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.</li>
 </ul>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>T10 — Run demos and record live verification</strong> (todo): Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T10 — Run demos and record live verification</strong> (done): Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.</li>
 </ul>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>T11 — Finish README and one-page write-up</strong> (todo): README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T11 — Finish README and one-page write-up</strong> (done): README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.</li>
 </ul>
 <ul>
-<li><input type="checkbox" disabled aria-label="Task status"> <strong>T12 — Verify clean checkout and submit</strong> (todo): Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T12 — Verify clean checkout and submit</strong> (in_progress): Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</li>
 </ul>
 <h3>Phase 2 â€” deferred GraphRAG</h3>
 <ul>
 <li><input type="checkbox" disabled aria-label="Task status"> <strong>E05 — Explore GraphRAG in the next phase</strong> (deferred): Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</li>
 </ul>
 <h3>Before submission</h3>
-<p>Follow T12 acceptance. The GPT agent and prompt remain pending. Current verification covers fixtures, schemas, Docker, ingestion, retrieval and both tools. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.</p></section><section class="page" id="tickets" tabindex="-1"><h2>Execution Tickets</h2>
+<p>Follow T12 acceptance and the final verification record. Verification covers fixtures, schemas, Docker, ingestion, retrieval, GPT adapter contracts, agent and CLI. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.</p></section><section class="page" id="tickets" tabindex="-1"><h2>Execution Tickets</h2>
 <p>9 October 2026 · Local project tickets</p>
 <p>Each ticket records dependencies, acceptance, skills/plugins and simple steps. Completed steps are evidence; planned steps are not claimed as executed.</p>
 <p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub Phase 1 tracking issue</a> · ready-for-agent. The local task tickets below contain per-task execution details.</p>
@@ -480,140 +508,175 @@
 <p>Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
 <p>Implementation commit: d61e1ca; review fix f82298b.</p>
 <h3>T06 — Write grounded bilingual system prompt</h3>
-<p>Status: todo. Scope: phase1. Dependencies: T04, T05.</p>
+<p>Status: done. Scope: phase1. Dependencies: T04, T05.</p>
 <h3>Acceptance</h3>
 <p>Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.</p>
 <h3>Skills and plugins</h3>
-<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
-<h3>Planned steps</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
 <ol>
-<li>Read dependencies and acceptance; consult ask-matt.</li>
+<li>Consulted ask-matt and read the task acceptance before work.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Implemented write grounded bilingual system prompt at public prompt/model/policy/CLI seams.</li>
 </ol>
 <ol>
-<li>Implement the smallest required change.</li>
+<li>Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.</li>
 </ol>
 <ol>
-<li>Consult ask-matt, test and review; record evidence before completion.</li>
+<li>Consulted ask-matt after the task: verification passed; include this work in final two-axis review.</li>
 </ol>
+<h3>Verification</h3>
+<p>Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p>Implementation commit: Completion branch; final hash recorded in docs/verification.md.</p>
 <h3>T07 — Build bounded GPT/tool execution loop</h3>
-<p>Status: todo. Scope: phase1. Dependencies: T02, T04, T05, T06.</p>
+<p>Status: done. Scope: phase1. Dependencies: T02, T04, T05, T06.</p>
 <h3>Acceptance</h3>
 <p>Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests &lt;=6 and tool executions &lt;=8 enforced.</p>
 <h3>Skills and plugins</h3>
-<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
-<h3>Planned steps</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
 <ol>
-<li>Read dependencies and acceptance; consult ask-matt.</li>
+<li>Consulted ask-matt and read the task acceptance before work.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Implemented build bounded gpt/tool execution loop at public prompt/model/policy/CLI seams.</li>
 </ol>
 <ol>
-<li>Implement the smallest required change.</li>
+<li>Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.</li>
 </ol>
 <ol>
-<li>Consult ask-matt, test and review; record evidence before completion.</li>
+<li>Consulted ask-matt after the task: verification passed; include this work in final two-axis review.</li>
 </ol>
+<h3>Verification</h3>
+<p>Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p>Implementation commit: Completion branch; final hash recorded in docs/verification.md.</p>
 <h3>T08 — Apply action policy and integrate JSON CLI</h3>
-<p>Status: todo. Scope: phase1. Dependencies: T07.</p>
+<p>Status: done. Scope: phase1. Dependencies: T07.</p>
 <h3>Acceptance</h3>
 <p>Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.</p>
 <h3>Skills and plugins</h3>
-<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
-<h3>Planned steps</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
 <ol>
-<li>Read dependencies and acceptance; consult ask-matt.</li>
+<li>Consulted ask-matt and read the task acceptance before work.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Implemented apply action policy and integrate json cli at public prompt/model/policy/CLI seams.</li>
 </ol>
 <ol>
-<li>Implement the smallest required change.</li>
+<li>Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.</li>
 </ol>
 <ol>
-<li>Consult ask-matt, test and review; record evidence before completion.</li>
+<li>Consulted ask-matt after the task: verification passed; include this work in final two-axis review.</li>
 </ol>
+<h3>Verification</h3>
+<p>Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p>Implementation commit: Completion branch; final hash recorded in docs/verification.md.</p>
 <h3>E06 — Test classic RAG against Docker PostgreSQL</h3>
-<p>Status: todo. Scope: phase1. Dependencies: E04.</p>
+<p>Status: done. Scope: phase1. Dependencies: E04.</p>
 <h3>Acceptance</h3>
 <p>Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.</p>
 <h3>Skills and plugins</h3>
-<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
-<h3>Planned steps</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
 <ol>
-<li>Read dependencies and acceptance; consult ask-matt.</li>
+<li>Consulted ask-matt and read the task acceptance before work.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Implemented test classic rag against docker postgresql at public prompt/model/policy/CLI seams.</li>
 </ol>
 <ol>
-<li>Implement the smallest required change.</li>
+<li>Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.</li>
 </ol>
 <ol>
-<li>Consult ask-matt, test and review; record evidence before completion.</li>
+<li>Consulted ask-matt after the task: verification passed; include this work in final two-axis review.</li>
 </ol>
+<h3>Verification</h3>
+<p>Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p>Implementation commit: Completion branch; final hash recorded in docs/verification.md.</p>
 <h3>T09 — Verify scenarios and failure paths offline</h3>
-<p>Status: todo. Scope: phase1. Dependencies: T08, E06.</p>
+<p>Status: done. Scope: phase1. Dependencies: T08, E06.</p>
 <h3>Acceptance</h3>
 <p>Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.</p>
 <h3>Skills and plugins</h3>
-<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
-<h3>Planned steps</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).</p>
+<p>Plugins used: Superpowers: inline execution, debugging and verification.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
 <ol>
-<li>Read dependencies and acceptance; consult ask-matt.</li>
+<li>Consulted ask-matt and read the task acceptance before work.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Implemented verify scenarios and failure paths offline at public prompt/model/policy/CLI seams.</li>
 </ol>
 <ol>
-<li>Implement the smallest required change.</li>
+<li>Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.</li>
 </ol>
 <ol>
-<li>Consult ask-matt, test and review; record evidence before completion.</li>
+<li>Consulted ask-matt after the task: verification passed; include this work in final two-axis review.</li>
 </ol>
+<h3>Verification</h3>
+<p>Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.</p>
+<p>Implementation commit: Completion branch; final hash recorded in docs/verification.md.</p>
 <h3>T10 — Run demos and record live verification</h3>
-<p>Status: todo. Scope: phase1. Dependencies: T09.</p>
+<p>Status: done. Scope: phase1. Dependencies: T09.</p>
 <h3>Acceptance</h3>
 <p>Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.</p>
 <h3>Skills and plugins</h3>
-<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
-<h3>Planned steps</h3>
+<p>Skills used: ask-matt (before and after), implement, superpowers:executing-plans, superpowers:verification-before-completion.</p>
+<p>Plugins used: Superpowers: execution and verification.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
 <ol>
-<li>Read dependencies and acceptance; consult ask-matt.</li>
+<li>Consulted ask-matt and checked the task acceptance.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Rebuilt the image and ran all three source tickets with real PostgreSQL and the labeled offline model.</li>
 </ol>
 <ol>
-<li>Implement the smallest required change.</li>
+<li>Recorded samples and separate live-provider verification limits.</li>
 </ol>
 <ol>
-<li>Consult ask-matt, test and review; record evidence before completion.</li>
+<li>Consulted ask-matt after the task; artifact checks passed.</li>
 </ol>
+<h3>Verification</h3>
+<p>Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.</p>
+<p>Implementation commit: Completion branch; final delivery commit recorded in docs/verification.md.</p>
 <h3>T11 — Finish README and one-page write-up</h3>
-<p>Status: todo. Scope: phase1. Dependencies: T10.</p>
+<p>Status: done. Scope: phase1. Dependencies: T10.</p>
 <h3>Acceptance</h3>
 <p>README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.</p>
 <h3>Skills and plugins</h3>
-<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
-<h3>Planned steps</h3>
+<p>Skills used: ask-matt (before and after), implement, superpowers:executing-plans, superpowers:verification-before-completion, pdf:pdf.</p>
+<p>Plugins used: Superpowers: execution and verification, PDF: authored/rendered one-page write-up.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
 <ol>
-<li>Read dependencies and acceptance; consult ask-matt.</li>
+<li>Consulted ask-matt and checked the task acceptance.</li>
 </ol>
 <ol>
-<li>Add a failing behavior check at the agreed public boundary.</li>
+<li>Wrote complete uv/Docker/live/offline/CLI/tool setup and run instructions.</li>
 </ol>
 <ol>
-<li>Implement the smallest required change.</li>
+<li>Wrote the architecture, failure and evaluation write-up; generated and visually checked a one-page PDF.</li>
 </ol>
 <ol>
-<li>Consult ask-matt, test and review; record evidence before completion.</li>
+<li>Consulted ask-matt after the task; artifact checks passed.</li>
 </ol>
+<h3>Verification</h3>
+<p>Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.</p>
+<p>Implementation commit: Completion branch; final delivery commit recorded in docs/verification.md.</p>
 <h3>T12 — Verify clean checkout and submit</h3>
-<p>Status: todo. Scope: phase1. Dependencies: T11.</p>
+<p>Status: in_progress. Scope: phase1. Dependencies: T11.</p>
 <h3>Acceptance</h3>
 <p>Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</p>
 <h3>Skills and plugins</h3>
@@ -650,7 +713,8 @@
 <ol>
 <li>Consult ask-matt, test and review; record evidence before completion.</li>
 </ol></section><section class="page" id="spec" tabindex="-1"><h2>Phase 1 Spec — Docker Classic RAG Prototype</h2>
-<p>9 October 2026 · User-selected phase scope · Implementation authorized through T05</p>
+<p>9 October 2026 · User-selected phase scope · Continuous Phase 1 completion authorized</p>
+<p>The original AI_Engineer_-_Code_Homework_Test.docx is the main assignment, as explicitly directed by the user. Follow its requirements strictly; the architecture and policy choices here implement those requirements and are not an official assignment answer key. See docs/ASSIGNMENT_REQUIREMENTS.md for required-versus-selected traceability.</p>
 <h3>Problem Statement</h3>
 <p>The user needs a demonstrable support-ticket triage prototype that reads whole conversations, retrieves supporting knowledge, and makes justified urgency/routing decisions. Earlier planning offered several database and retrieval options without selecting one, leaving the next implementation steps unclear.</p>
 <h3>Solution</h3>
@@ -701,7 +765,7 @@
 <li><strong>Embeddings:</strong> Configure model and dimension separately from GPT. Ingest/query embeddings must share compatible model/version/dimensions. Reject mismatches; changing embedding space requires an intentional rebuild. Deterministic fake embeddings are test data, not proof of semantic quality.</li>
 <li><strong>Schema:</strong> Documents retain identity, title, source/version, locale, metadata, hash and mock status. Chunks reference documents and retain text, sequence, embedding, model/dimension, index version and hash. Enforce referential integrity and uniqueness for repeatable imports.</li>
 <li><strong>Retrieval interface:</strong> Exact vector similarity over a small corpus, maximum five chunks, explicit metadata filters, parameterized read-only queries. Return tool-compatible IDs/titles/excerpts/locale/mock status and resolvable provenance. Ranking scores are not factual confidence. No arbitrary model-written SQL.</li>
-<li><strong>Two tools:</strong> Customer-history lookup reads fixtures; knowledge search reads Docker PostgreSQL/pgvector. Both must succeed before completed demonstration triage. Empty search is valid but does not justify a fabricated auto-response; database failure is an error, not no-match.</li>
+<li><strong>Two tools:</strong> Customer-history lookup reads fixtures; knowledge search reads Docker PostgreSQL/pgvector. Both must execute before completed triage; history not_found permits disclosed uncertainty, while actual tool errors require fallback. Empty search is valid but does not justify a fabricated auto-response; database failure is an error, not no-match.</li>
 <li><strong>Policies:</strong> Billing sample is high with billing escalation; Thai access failure is critical with incident escalation; theme behavior is low with product-support routing. These are project expectations, not an official assignment answer key. Preserve unknown financial state and unconfirmed regional hypotheses.</li>
 <li><strong>Result interface:</strong> Keep ticket ID, completed/fallback status, urgency, product, primary issue, sentiment, secondary issues, action/destination, rationale, draft, retrieved source IDs, uncertainties, tool records and structured error. Unknown product remains null. Technical fallback escalates to human support; unknown fallback urgency may be null.</li>
 <li><strong>Limits:</strong> Provider timeout 30 seconds; maximum six model requests including one possible retry, and eight tool executions per ticket. Exhaustion produces fallback. Database connection/query timeouts must also be bounded; choose and record concrete values during infrastructure implementation.</li>
@@ -717,7 +781,7 @@
 <li>Fake-model cases exercise all three tickets, both required tools, invalid output/citations, budgets, injection attempts and action/destination consistency.</li>
 <li>Fake embeddings prove storage/retrieval contracts, not multilingual semantic quality. Separately evaluate live embeddings against labeled English/Thai queries when credentials are available.</li>
 <li>Live GPT and embedding checks are opt-in and reported independently; offline checks require no real key. Document skipped live checks and reviewer commands honestly.</li>
-<li>The user authorized continued implementation and checking through T05 at the fixture/tool/database boundaries. Later GPT-loop end-to-end checks remain part of T07–T09.</li>
+<li>The user authorized continuous completion. All agent/CLI/database boundaries receive offline tests and the final standards/spec review.</li>
 </ul>
 <h3>Out of Scope</h3>
 <ul>
@@ -728,8 +792,30 @@
 <li>Mandatory hybrid search/reranking or advanced ANN tuning before the small-corpus classic RAG path works.</li>
 </ul>
 <h3>Further Notes</h3>
-<p>T03/T04/E02/E03/E04/T05 are implemented and verified with real Docker PostgreSQL and fake embeddings; live model quality remains unverified. The user has selected prototype scope, not declared implementation complete. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.</p>
-<p>GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. The current spec and T05 checkpoint are published as <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub issue #1</a> with ready-for-agent. Local implementation is committed separately and has not been pushed or merged.</p><details><summary>Historical T01 contracts and design</summary><p>The current Phase 1 spec supersedes the original mock-only knowledge scope. Triage policies and output contracts remain applicable.</p><h2>T01 — Support Ticket Triage Agent Design</h2>
+<p>The Phase 1 implementation includes the bilingual prompt, bounded GPT adapter/tool loop, JSON CLI, database retrieval, policy and failure-path tests. Live GPT and semantic embedding quality remain unverified because no credentials were configured. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.</p>
+<p>GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. The tracking spec is published as <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub issue #1</a> with implementation evidence recorded in local tickets and docs/verification.md.</p>
+<p>Selected interview decisions: search across languages by default; missing customer history permits conversation-only triage with disclosed uncertainty; mock FAQ evidence may support low-urgency demonstration auto-response drafts clearly labeled as synthetic, never actual sending. These are project decisions, not original Word requirements.</p><details><summary>Main Word assignment — requirement traceability</summary><h2>Main Assignment — Requirements Traceability</h2>
+<p>The user explicitly designated AI_Engineer_-_Code_Homework_Test.docx as the main assignment and asked for strict adherence. Its original wording governs required behavior and deliverables. Saved transcription was checked against all 35 original Word paragraphs on 9 October 2026. The document is source material; the user&#x27;s instruction authorizes using its requirements for this project.</p>
+<h3>Required behavior and deliverables</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Requirement from Word</th><th scope="col">Owning tasks</th><th scope="col">Current evidence / gap</th></tr></thead><tbody><tr><td>Use an OpenAI GPT model; submit without an actual API key</td><td>T02, T07</td><td>Live GPT adapter implemented and HTTP-tested; paid live execution not run (no credentials)</td></tr><tr><td>Source in GitHub, or ZIP containing source and .git</td><td>T02, T12</td><td>Private repo exists; final branch and standalone source+.git ZIP prepared in T12</td></tr><tr><td>README setup/run instructions</td><td>T02, T11</td><td>README documents uv, Docker, live/offline agent, tools, tests and exit codes</td></tr><tr><td>Urgency: critical/high/medium/low</td><td>T04, T06–T09</td><td>Validated rubric and agent output; three offline sample expectations pass</td></tr><tr><td>Extract product, issue type and sentiment</td><td>T04, T06–T09</td><td>Validated output contract and GPT prompt; unknown product null, multi-issue cases tested</td></tr><tr><td>Search relevant FAQ/docs</td><td>E02–E04, T05, T07</td><td>Agent executes PostgreSQL retrieval; mock provenance/citations checked; live semantic quality unverified</td></tr><tr><td>Decide auto-respond, route to specialist, or escalate to human</td><td>T04, T06–T09</td><td>Action/destination policy executes; invalid automation falls back</td></tr><tr><td>Use at least two tools</td><td>T05, T07</td><td>Both schemas/implementations execute through agent for all three samples</td></tr><tr><td>Working code processing supplied sample tickets</td><td>T03, T07–T10</td><td>All twelve messages preserved; complete labeled offline agent run in examples/sample_results.json</td></tr><tr><td>System prompt</td><td>T06</td><td>prompts/system.txt, packaged and copy-checked</td></tr><tr><td>Tool definitions: schemas and implementations; mocks permitted</td><td>T04–T05</td><td>Both tools implemented; synthetic/mock provenance explicit</td></tr><tr><td>Write-up: one page maximum, covering architecture/why, failures, production evaluation</td><td>T11</td><td>WRITEUP.md and verified one-page WRITEUP.pdf</td></tr><tr><td>Terminal console or API sufficient; no chat UI needed</td><td>T02, T07</td><td>JSON batch CLI implemented with stderr traces and truthful exit codes</td></tr><tr><td>Readability, maintainability, extensibility and logic</td><td>All tasks</td><td>Per-task verification and final independent standards/spec review</td></tr></tbody></table></div>
+<h3>Implementation decisions, separate from assignment requirements</h3>
+<p>The user selected uv, Docker, classic RAG in this prototype phase, and GraphRAG in the next phase. PostgreSQL/pgvector, chunking defaults, output details, execution budgets and sample urgency expectations are project decisions. They do not turn into employer-prescribed requirements or an official answer key.</p>
+<p>The recommended 150–240 minutes is advice, not a hard time limit. The original assignment permits mocked tools and does not prescribe a database, agent framework, embedding model or exact urgency answers for each example.</p>
+<h3>Interview scope</h3>
+<p>The grill-with-docs session resolves only decisions needed to finish the assignment within the selected prototype architecture. Previously settled scope remains intact. The user subsequently authorized continuous completion. The three recommended decisions are recorded explicitly in PROJECT_SPEC.md and the execution ledger; their trade-offs remain visible.</p></details><details><summary>Support-ticket glossary</summary><h2>Support Ticket Triage</h2>
+<p>Language for interpreting the original assignment and customer conversations.</p>
+<h3>Language</h3>
+<p><strong>Ticket</strong>: A customer support case containing the supplied customer context and the full conversation about unresolved issues. _Avoid_: A single message, chat session</p>
+<p><strong>Message</strong>: One contribution in a ticket conversation, retaining its original wording, order and supplied relative time. _Avoid_: Summary, triage decision</p>
+<p><strong>Customer report</strong>: A claim made by the customer, which can justify investigation without establishing that the claimed payment state or incident is confirmed. _Avoid_: Verified fact, confirmed incident</p>
+<p><strong>Customer history</strong>: The available account and prior-support context associated with a customer. _Avoid_: Verified payment ledger, live account state</p>
+<p><strong>Knowledge article</strong>: A source FAQ or document containing information relevant to a support issue. _Avoid_: Agent instruction, customer history</p>
+<p><strong>Mock knowledge</strong>: Illustrative FAQ or document content used for a demonstration, with no authority to establish actual company policies or incident status. _Avoid_: Verified company policy, live status</p>
+<p><strong>Citation</strong>: A reference identifying the retrieved knowledge source supporting a stated answer or explanation. _Avoid_: Confidence score, proof of a customer report</p>
+<p><strong>Urgency</strong>: The ticket&#x27;s critical, high, medium or low level of need for attention, based on reported impact and time sensitivity. _Avoid_: Customer sentiment, account tier</p>
+<p><strong>Next action</strong>: The selected response path: auto-respond, route to a specialist, or escalate to a human. _Avoid_: Urgency, executed account change</p>
+<p><strong>Draft response</strong>: Proposed customer-facing wording associated with the selected next action. _Avoid_: Sent message, completed resolution</p>
+<p><strong>Fallback</strong>: A disclosed inability to complete reliable triage, accompanied by human escalation and the known failure cause. _Avoid_: Completed triage, no-match</p></details><details><summary>Historical T01 contracts and design</summary><p>The current Phase 1 spec supersedes the original mock-only knowledge scope. Triage policies and output contracts remain applicable.</p><h2>T01 — Support Ticket Triage Agent Design</h2>
 <p>9 October 2026 · T01 approved by the user · T02 authorized; use uv for package management</p>
 <h3>Purpose and success criteria</h3>
 <p>Create a small homework submission demonstrating grounded triage of complete customer conversations using an OpenAI GPT model and at least two executable tools. It must process all three supplied tickets, preserve Thai text, produce understandable decisions, and include the prompt, tool definitions, README, and maximum-one-page write-up. Readability, maintainability, extensibility, and logic take priority within the recommended 150–240 minutes.</p>
@@ -774,9 +860,9 @@
 <p>T01 status: <strong>approved by the user</strong>. T02 is authorized with uv as the package manager and creation of one GitHub repository. Initialize Git and commit the reviewed baseline at T02, then use the managed worktree workflow from GITHUB_REPO_PLAN.md for project implementation. Repository and verification evidence will be recorded with the completed T02 task.</p></details></section><section class="page" id="stack" tabindex="-1"><h2>Tech Stack</h2>
 <p>9 October 2026 · Versions read from committed uv.lock</p>
 <h3>Installed baseline</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Component</th><th scope="col">Technology</th><th scope="col">Version / choice</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Language</td><td>Python</td><td>&gt;=3.11; development default 3.12</td><td>Package ready</td></tr><tr><td>Packages</td><td>uv</td><td>pyproject.toml + uv.lock + ignored .venv</td><td>Ready</td></tr><tr><td>Model client</td><td>openai</td><td>2.54.0</td><td>Installed; agent integration T07</td></tr><tr><td>Validation</td><td>pydantic</td><td>2.14.0</td><td>Installed; schemas T04</td></tr><tr><td>CLI</td><td>argparse</td><td>Python standard library</td><td>Startup ready; processing pending</td></tr><tr><td>Tests</td><td>pytest</td><td>9.1.1</td><td>8 setup tests passed at T02</td></tr><tr><td>Lint / format</td><td>ruff</td><td>0.16.10</td><td>T02 checks passed</td></tr><tr><td>Build</td><td>setuptools</td><td>&gt;=77 build backend</td><td>Wheel/source build verified</td></tr><tr><td>Source control</td><td>Git + private GitHub</td><td>main + feat/triage-agent</td><td>Repository ready</td></tr></tbody></table></div>
+<div class="table-scroll"><table><thead><tr><th scope="col">Component</th><th scope="col">Technology</th><th scope="col">Version / choice</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Language</td><td>Python</td><td>&gt;=3.11; development default 3.12</td><td>Package ready</td></tr><tr><td>Packages</td><td>uv</td><td>pyproject.toml + uv.lock + ignored .venv</td><td>Ready</td></tr><tr><td>Model client</td><td>openai</td><td>2.54.0</td><td>GPT adapter implemented; mocked HTTP verified</td></tr><tr><td>Validation</td><td>pydantic</td><td>2.14.0</td><td>Installed; schemas T04</td></tr><tr><td>CLI</td><td>argparse</td><td>Python standard library</td><td>JSON batch processing implemented</td></tr><tr><td>Tests</td><td>pytest</td><td>9.1.1</td><td>8 setup tests passed at T02</td></tr><tr><td>Lint / format</td><td>ruff</td><td>0.16.10</td><td>T02 checks passed</td></tr><tr><td>Build</td><td>setuptools</td><td>&gt;=77 build backend</td><td>Wheel/source build verified</td></tr><tr><td>Source control</td><td>Git + private GitHub</td><td>main + feat/triage-agent</td><td>Repository ready</td></tr></tbody></table></div>
 <h3>Selected Phase 1 components</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Area</th><th scope="col">Technology / decision</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Main agent</td><td>openai SDK with explicit bounded tool loop</td><td>Selected; T07 pending</td></tr><tr><td>Customer / ticket data</td><td>Synthetic UTF-8 JSON fixtures</td><td>T03 implemented</td></tr><tr><td>Runtime</td><td>Docker Engine 28.5.1 + Compose 2.40.0; Python 3.12.14 image + uv 0.12.6</td><td>Startup verified</td></tr><tr><td>Knowledge database</td><td>PostgreSQL 17 + pgvector 0.8.7</td><td>Healthy Docker service; migrations verified</td></tr><tr><td>Database client</td><td>psycopg 3.3.6 + pgvector 0.5.1</td><td>uv-locked</td></tr><tr><td>Retrieval</td><td>Classic RAG; exact cosine search, top 5, metadata filters, 0.2 ranking cutoff</td><td>Real DB tests passed</td></tr><tr><td>Chunk tokenizer</td><td>tiktoken 0.14.0; cl100k_base</td><td>Unicode-safe 500 tokens / 60 overlap</td></tr><tr><td>Embeddings</td><td>Fake lexical vectors by default; opt-in OpenAI model/dimension</td><td>Adapter tested with mock HTTP; live semantic quality pending</td></tr><tr><td>Phase 2</td><td>GraphRAG; backend decision in next phase</td><td>Deferred; no graph dependencies now</td></tr><tr><td>CI</td><td>GitHub Actions + uv offline checks</td><td>Planned; no workflow yet</td></tr></tbody></table></div>
+<div class="table-scroll"><table><thead><tr><th scope="col">Area</th><th scope="col">Technology / decision</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Main agent</td><td>openai SDK with explicit bounded tool loop</td><td>Implemented; 6 requests / 8 tool executions</td></tr><tr><td>Customer / ticket data</td><td>Synthetic UTF-8 JSON fixtures</td><td>T03 implemented</td></tr><tr><td>Runtime</td><td>Docker Engine 28.5.1 + Compose 2.40.0; Python 3.12.14 image + uv 0.12.6</td><td>Startup verified</td></tr><tr><td>Knowledge database</td><td>PostgreSQL 17 + pgvector 0.8.7</td><td>Healthy Docker service; migrations verified</td></tr><tr><td>Database client</td><td>psycopg 3.3.6 + pgvector 0.5.1</td><td>uv-locked</td></tr><tr><td>Retrieval</td><td>Classic RAG; exact cosine search, top 5, metadata filters, 0.2 ranking cutoff</td><td>Real DB tests passed</td></tr><tr><td>Chunk tokenizer</td><td>tiktoken 0.14.0; cl100k_base</td><td>Unicode-safe 500 tokens / 60 overlap</td></tr><tr><td>Embeddings</td><td>Fake lexical vectors by default; opt-in OpenAI model/dimension</td><td>Adapter tested with mock HTTP; live semantic quality pending</td></tr><tr><td>Phase 2</td><td>GraphRAG; backend decision in next phase</td><td>Deferred; no graph dependencies now</td></tr><tr><td>CI</td><td>GitHub Actions + uv offline checks</td><td>Configured; local-equivalent checks verified</td></tr></tbody></table></div>
 <h3>Stack decisions</h3>
 <p>Phase 1 is a prototype using one knowledge database and the existing model SDK. Classic RAG retrieves passages; GraphRAG relationships and traversal belong to Phase 2. Pin compatible Docker images and new dependencies during setup. Details are in <a href="#knowledge">knowledge-system spec</a>.</p>
 <h3>Configuration and commands</h3>
@@ -788,7 +874,7 @@ uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv build
 uv run --locked python scripts/build_planner.py</code></pre></section><section class="page" id="knowledge" tabindex="-1"><h2>Agent and Knowledge System — Phase 1</h2>
-<p>9 October 2026 · Selected architecture · Implemented through T05</p>
+<p>9 October 2026 · Selected architecture · Phase 1 prototype implemented</p>
 <h3>Phase decision</h3>
 <p>The user selected <strong>classic RAG using Docker for this prototype phase</strong>. Phase 1 uses PostgreSQL with pgvector as its sole knowledge database. GraphRAG belongs to Phase 2; its backend and libraries will be evaluated then. The existing OpenAI SDK and application-owned tool loop remain the agent approach.</p>
 <p>The <a href="#spec">current project spec</a> defines acceptance. <a href="#planner">Task planner</a> and <a href="#todo">TODO</a> include Docker and classic RAG as Phase 1 work.</p>
@@ -824,8 +910,8 @@ uv run --locked python scripts/build_planner.py</code></pre></section><section c
 <p>Planning addition · 9 October 2026 · Complements PROJECT_TASK_PLANNER.md</p>
 <p>Current scope: Phase 1 Docker classic RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. The invoked to-spec workflow published the spec/checkpoint as issue #1. Older layout and commit-group suggestions below are expanded by the current planner.</p>
 <h3>1. Current state and proposed repository</h3>
-<p>T02 initialized Git and created the private repository. Implementation through T05 is committed locally on feat/triage-agent in .worktrees/triage-agent. <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub issue #1</a> tracks the Phase 1 spec/checkpoint with ready-for-agent. No new code push, merge or CI workflow is claimed. See docs/T05_IMPLEMENTATION_STATUS.md for evidence.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Setting</th><th scope="col">Proposed choice</th></tr></thead><tbody><tr><td>Repository name</td><td>support-ticket-triage-agent</td></tr><tr><td>Description</td><td>OpenAI GPT support-ticket triage with customer-history and knowledge-base tools, structured decisions, and Thai/English sample conversations</td></tr><tr><td>Owner</td><td>Watcharaphong-kob</td></tr><tr><td>Visibility</td><td>Private; give the evaluator access before submission</td></tr><tr><td>Default branch</td><td>main</td></tr><tr><td>Implementation branch</td><td>feat/triage-agent — created locally for T02</td></tr><tr><td>Delivery</td><td>Repository URL plus reproducible README; ZIP with source and .git if GitHub submission is unavailable</td></tr></tbody></table></div>
+<p>T02 created the private repository. Completed Phase 1 code is delivered on feat/triage-agent; docs/verification.md records review, tests and delivery evidence. <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub issue #1</a> tracks the spec. The main branch retains its original setup until reviewed integration; use the delivery branch or standalone source+.git ZIP. CI is configured for pushes/PRs; remote execution status is reported separately.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Setting</th><th scope="col">Proposed choice</th></tr></thead><tbody><tr><td>Repository name</td><td>support-ticket-triage-agent</td></tr><tr><td>Description</td><td>OpenAI GPT support-ticket triage with customer-history and knowledge-base tools, structured decisions, and Thai/English sample conversations</td></tr><tr><td>Owner</td><td>Watcharaphong-kob</td></tr><tr><td>Visibility</td><td>Private; give the evaluator access before submission</td></tr><tr><td>Default branch</td><td>main</td></tr><tr><td>Implementation branch</td><td>feat/triage-agent — completed Phase 1 delivery branch</td></tr><tr><td>Delivery</td><td>Repository URL plus reproducible README; ZIP with source and .git if GitHub submission is unavailable</td></tr></tbody></table></div>
 <p>These are recommendations. The assignment specifies a repository or ZIP fallback, but not a repository name, branch strategy, visibility, CI provider, or license. Keep the original employer document local unless you intend to include it in the submission; do not add an open-source license to supplied employer material by default.</p>
 <h3>2. Planned repository layout</h3>
 <pre><code>support-ticket-triage-agent/

@@ -6,7 +6,7 @@ Current scope: Phase 1 Docker classic RAG prototype using PostgreSQL + pgvector.
 
 ## 1. Current state and proposed repository
 
-T02 initialized Git and created the private repository. Implementation through T05 is committed locally on feat/triage-agent in .worktrees/triage-agent. [GitHub issue #1](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1) tracks the Phase 1 spec/checkpoint with ready-for-agent. No new code push, merge or CI workflow is claimed. See docs/T05_IMPLEMENTATION_STATUS.md for evidence.
+T02 created the private repository. Completed Phase 1 code is delivered on feat/triage-agent; docs/verification.md records review, tests and delivery evidence. [GitHub issue #1](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1) tracks the spec. The main branch retains its original setup until reviewed integration; use the delivery branch or standalone source+.git ZIP. CI is configured for pushes/PRs; remote execution status is reported separately.
 
 | Setting | Proposed choice |
 | --- | --- |
@@ -15,7 +15,7 @@ T02 initialized Git and created the private repository. Implementation through T
 | Owner | Watcharaphong-kob |
 | Visibility | Private; give the evaluator access before submission |
 | Default branch | main |
-| Implementation branch | feat/triage-agent — created locally for T02 |
+| Implementation branch | feat/triage-agent — completed Phase 1 delivery branch |
 | Delivery | Repository URL plus reproducible README; ZIP with source and .git if GitHub submission is unavailable |
 
 These are recommendations. The assignment specifies a repository or ZIP fallback, but not a repository name, branch strategy, visibility, CI provider, or license. Keep the original employer document local unless you intend to include it in the submission; do not add an open-source license to supplied employer material by default.

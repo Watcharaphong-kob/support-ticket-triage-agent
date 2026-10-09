@@ -26,13 +26,19 @@ class CliTests(unittest.TestCase):
         self.assertEqual(caught.exception.code, 0)
         self.assertIn("0.1.0", output.getvalue())
 
-    def test_unimplemented_processing_fails_visibly_without_fake_json(self):
+    def test_missing_input_fails_visibly_without_fake_json(self):
         output, errors = io.StringIO(), io.StringIO()
         with redirect_stdout(output), redirect_stderr(errors):
             result = main(["--input", "tickets.json", "--trace"])
         self.assertEqual(result, 2)
         self.assertEqual(output.getvalue(), "")
-        self.assertIn("not implemented", errors.getvalue())
+        self.assertIn("Input/configuration", errors.getvalue())
+
+    def test_offline_mode_is_explicit_in_help(self):
+        output = io.StringIO()
+        with redirect_stdout(output):
+            main([])
+        self.assertIn("--offline", output.getvalue())
 
 
 if __name__ == "__main__":

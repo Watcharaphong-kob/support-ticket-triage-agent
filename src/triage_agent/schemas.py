@@ -156,7 +156,12 @@ class TriageResult(Contract):
         else:
             if self.error is not None or self.urgency is None or self.issue_type is None:
                 raise ValueError("Completed result requires urgency/issue and no error")
-            succeeded = {c.name for c in self.tool_calls if c.status == "ok"}
+            succeeded = {
+                c.name
+                for c in self.tool_calls
+                if c.status == "ok"
+                or (c.name == "get_customer_history" and c.status == "not_found")
+            }
             if succeeded != {"get_customer_history", "search_knowledge_base"}:
                 raise ValueError("Both tools must succeed before completed triage")
         allowed = {

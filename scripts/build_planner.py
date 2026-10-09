@@ -131,7 +131,7 @@ def main():
         for task in phase1
         if task["status"] == "todo" and set(task["depends_on"]) <= done
     ]
-    next_task = ready[0] if ready else "Review in progress"
+    next_task = ready[0] if ready else "Phase 1 complete"
     assert len({task["id"] for task in tasks}) == len(tasks)
     assert sum(task["minutes"] for task in baseline) == data["baseline_minutes"]
     assert all(
@@ -144,7 +144,7 @@ def main():
         "## Current position",
         f"{len(done)} of {len(phase1)} Phase 1 tasks complete. T01 design is approved; "
         "T02 setup is verified and pushed; E01 architecture selection is approved. "
-        f"Next ready task: {next_task}. Full GPT ticket processing is pending.",
+        f"Next ready task: {next_task}. GPT/tool/CLI implementation is available; see verification for live-check limits.",
         "This is the current task plan. Existing task IDs and completion evidence are preserved. "
         "Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. "
         "GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.",
@@ -227,8 +227,8 @@ def main():
         todo.append("")
     todo += [
         "## Before submission",
-        "Follow T12 acceptance. The GPT agent and prompt remain pending. "
-        "Current verification covers fixtures, schemas, Docker, ingestion, retrieval and both tools. "
+        "Follow T12 acceptance and the final verification record. "
+        "Verification covers fixtures, schemas, Docker, ingestion, retrieval, GPT adapter contracts, agent and CLI. "
         "Live provider calls have not run. "
         "The historical 210-minute estimate does not cover the expanded Phase 1 scope.",
     ]
@@ -302,9 +302,9 @@ def main():
         "| --- | --- | --- | --- |",
         "| Language | Python | >=3.11; development default 3.12 | Package ready |",
         "| Packages | uv | pyproject.toml + uv.lock + ignored .venv | Ready |",
-        f"| Model client | openai | {versions['openai']} | Installed; agent integration T07 |",
+        f"| Model client | openai | {versions['openai']} | GPT adapter implemented; mocked HTTP verified |",
         f"| Validation | pydantic | {versions['pydantic']} | Installed; schemas T04 |",
-        "| CLI | argparse | Python standard library | Startup ready; processing pending |",
+        "| CLI | argparse | Python standard library | JSON batch processing implemented |",
         f"| Tests | pytest | {versions['pytest']} | 8 setup tests passed at T02 |",
         f"| Lint / format | ruff | {versions['ruff']} | T02 checks passed |",
         "| Build | setuptools | >=77 build backend | Wheel/source build verified |",
@@ -312,7 +312,7 @@ def main():
         "## Selected Phase 1 components",
         "| Area | Technology / decision | Status |",
         "| --- | --- | --- |",
-        "| Main agent | openai SDK with explicit bounded tool loop | Selected; T07 pending |",
+        "| Main agent | openai SDK with explicit bounded tool loop | Implemented; 6 requests / 8 tool executions |",
         "| Customer / ticket data | Synthetic UTF-8 JSON fixtures | T03 implemented |",
         "| Runtime | Docker Engine 28.5.1 + Compose 2.40.0; Python 3.12.14 image + uv 0.12.6 | Startup verified |",
         "| Knowledge database | PostgreSQL 17 + pgvector 0.8.7 | Healthy Docker service; migrations verified |",
@@ -321,7 +321,7 @@ def main():
         f"| Chunk tokenizer | tiktoken {versions.get('tiktoken', 'pending')}; cl100k_base | Unicode-safe 500 tokens / 60 overlap |",
         "| Embeddings | Fake lexical vectors by default; opt-in OpenAI model/dimension | Adapter tested with mock HTTP; live semantic quality pending |",
         "| Phase 2 | GraphRAG; backend decision in next phase | Deferred; no graph dependencies now |",
-        "| CI | GitHub Actions + uv offline checks | Planned; no workflow yet |",
+        "| CI | GitHub Actions + uv offline checks | Configured; local-equivalent checks verified |",
         "## Stack decisions",
         "Phase 1 is a prototype using one knowledge database and the existing model SDK. "
         "Classic RAG retrieves passages; GraphRAG relationships and traversal belong to Phase 2. "
@@ -358,7 +358,7 @@ def main():
     overview = f"""<div class="eyebrow">PROJECT WORKSPACE · {date}</div>
 <h2>Support Ticket<br>Triage Agent</h2><p class="lead">The assignment, spec, stack and execution plan in one offline reader.</p>
 <div class="stats"><div><b>{len(done)}/{len(phase1)}</b><span>Phase 1 tasks complete</span></div><div><b>Classic RAG</b><span>Docker + PostgreSQL + pgvector</span></div><div><b>Prototype</b><span>GraphRAG deferred to Phase 2</span></div></div>
-<div class="note">Docker, classic RAG and both tools implemented through T05; see Tickets for review status and evidence. The GPT prompt and agent loop remain pending. Next: {next_task}. Live embeddings not verified.</div>
+<div class="note">GPT prompt, bounded agent loop, JSON CLI, Docker classic RAG and both tools implemented; see Tickets for evidence. Next: {next_task}. Live embeddings not verified.</div>
 <div class="tiles"><a href="#spec"><b>Project spec</b><span>Scope, contracts and acceptance</span></a><a href="#stack"><b>Tech stack</b><span>Installed tools and proposed choices</span></a><a href="#todo"><b>TODO list</b><span>One shared list; verified status</span></a><a href="#original"><b>Original assignment</b><span>All conversations, including Thai</span></a></div>
 {markdown((ROOT / "ASSIGNMENT_SUMMARY.md").read_text(encoding="utf-8"))}"""
     pages = [
@@ -383,6 +383,11 @@ def main():
             "spec",
             "Spec",
             markdown((ROOT / "PROJECT_SPEC.md").read_text(encoding="utf-8"))
+            + "<details><summary>Main Word assignment — requirement traceability</summary>"
+            + markdown((ROOT / "docs/ASSIGNMENT_REQUIREMENTS.md").read_text(encoding="utf-8"))
+            + "</details><details><summary>Support-ticket glossary</summary>"
+            + markdown((ROOT / "GLOSSARY.md").read_text(encoding="utf-8"))
+            + "</details>"
             + "<details><summary>Historical T01 contracts and design</summary><p>The current Phase 1 spec supersedes the original mock-only knowledge scope. Triage policies and output contracts remain applicable.</p>"
             + markdown(
                 (ROOT / "docs/superpowers/specs/2026-10-09-ticket-triage-design.md").read_text(

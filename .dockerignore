@@ -1,4 +1,5 @@
 .git
+.delivery
 .worktrees
 .venv
 .uv-cache

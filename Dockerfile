@@ -6,6 +6,7 @@ COPY pyproject.toml uv.lock README.md ./
 RUN uv sync --locked --no-install-project
 COPY src ./src
 COPY data ./data
+COPY prompts ./prompts
 COPY tests ./tests
 COPY docs/assignment_source.json ./docs/assignment_source.json
 RUN uv sync --locked

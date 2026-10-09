@@ -252,7 +252,7 @@ Implementation commit: d61e1ca; review fix f82298b.
 
 ## T06 — Write grounded bilingual system prompt
 
-Status: todo. Scope: phase1. Dependencies: T04, T05.
+Status: done. Scope: phase1. Dependencies: T04, T05.
 
 ## Acceptance
 
@@ -260,21 +260,31 @@ Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty,
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
 
-## Planned steps
+Plugins used: Superpowers: inline execution, debugging and verification.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt and read the task acceptance before work.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Implemented write grounded bilingual system prompt at public prompt/model/policy/CLI seams.
+
+3. Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.
+
+4. Consulted ask-matt after the task: verification passed; include this work in final two-axis review.
+
+## Verification
+
+Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+
+Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
 ## T07 — Build bounded GPT/tool execution loop
 
-Status: todo. Scope: phase1. Dependencies: T02, T04, T05, T06.
+Status: done. Scope: phase1. Dependencies: T02, T04, T05, T06.
 
 ## Acceptance
 
@@ -282,21 +292,31 @@ Actual tool calls and results flow through adapter; both tools succeed before co
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
 
-## Planned steps
+Plugins used: Superpowers: inline execution, debugging and verification.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt and read the task acceptance before work.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Implemented build bounded gpt/tool execution loop at public prompt/model/policy/CLI seams.
+
+3. Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.
+
+4. Consulted ask-matt after the task: verification passed; include this work in final two-axis review.
+
+## Verification
+
+Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+
+Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
 ## T08 — Apply action policy and integrate JSON CLI
 
-Status: todo. Scope: phase1. Dependencies: T07.
+Status: done. Scope: phase1. Dependencies: T07.
 
 ## Acceptance
 
@@ -304,21 +324,31 @@ Action/destination and citations validated; failure escalates visibly; JSON stdo
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
 
-## Planned steps
+Plugins used: Superpowers: inline execution, debugging and verification.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt and read the task acceptance before work.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Implemented apply action policy and integrate json cli at public prompt/model/policy/CLI seams.
+
+3. Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.
+
+4. Consulted ask-matt after the task: verification passed; include this work in final two-axis review.
+
+## Verification
+
+Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+
+Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
 ## E06 — Test classic RAG against Docker PostgreSQL
 
-Status: todo. Scope: phase1. Dependencies: E04.
+Status: done. Scope: phase1. Dependencies: E04.
 
 ## Acceptance
 
@@ -326,21 +356,31 @@ Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector u
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
 
-## Planned steps
+Plugins used: Superpowers: inline execution, debugging and verification.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt and read the task acceptance before work.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Implemented test classic rag against docker postgresql at public prompt/model/policy/CLI seams.
+
+3. Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.
+
+4. Consulted ask-matt after the task: verification passed; include this work in final two-axis review.
+
+## Verification
+
+Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+
+Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
 ## T09 — Verify scenarios and failure paths offline
 
-Status: todo. Scope: phase1. Dependencies: T08, E06.
+Status: done. Scope: phase1. Dependencies: T08, E06.
 
 ## Acceptance
 
@@ -348,21 +388,31 @@ Three evidence-based sample cases, invalid output/citations, unknown tools, erro
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
 
-## Planned steps
+Plugins used: Superpowers: inline execution, debugging and verification.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt and read the task acceptance before work.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Implemented verify scenarios and failure paths offline at public prompt/model/policy/CLI seams.
+
+3. Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.
+
+4. Consulted ask-matt after the task: verification passed; include this work in final two-axis review.
+
+## Verification
+
+Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+
+Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
 ## T10 — Run demos and record live verification
 
-Status: todo. Scope: phase1. Dependencies: T09.
+Status: done. Scope: phase1. Dependencies: T09.
 
 ## Acceptance
 
@@ -370,21 +420,31 @@ Compose sample run processes all three tickets; tool results/citations justified
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, superpowers:executing-plans, superpowers:verification-before-completion.
 
-## Planned steps
+Plugins used: Superpowers: execution and verification.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt and checked the task acceptance.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Rebuilt the image and ran all three source tickets with real PostgreSQL and the labeled offline model.
+
+3. Recorded samples and separate live-provider verification limits.
+
+4. Consulted ask-matt after the task; artifact checks passed.
+
+## Verification
+
+Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.
+
+Implementation commit: Completion branch; final delivery commit recorded in docs/verification.md.
 
 ## T11 — Finish README and one-page write-up
 
-Status: todo. Scope: phase1. Dependencies: T10.
+Status: done. Scope: phase1. Dependencies: T10.
 
 ## Acceptance
 
@@ -392,21 +452,31 @@ README covers uv and Docker Compose, migrations, ingestion, tests and samples; o
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, superpowers:executing-plans, superpowers:verification-before-completion, pdf:pdf.
 
-## Planned steps
+Plugins used: Superpowers: execution and verification, PDF: authored/rendered one-page write-up.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt and checked the task acceptance.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Wrote complete uv/Docker/live/offline/CLI/tool setup and run instructions.
+
+3. Wrote the architecture, failure and evaluation write-up; generated and visually checked a one-page PDF.
+
+4. Consulted ask-matt after the task; artifact checks passed.
+
+## Verification
+
+Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.
+
+Implementation commit: Completion branch; final delivery commit recorded in docs/verification.md.
 
 ## T12 — Verify clean checkout and submit
 
-Status: todo. Scope: phase1. Dependencies: T11.
+Status: in_progress. Scope: phase1. Dependencies: T11.
 
 ## Acceptance
 

@@ -1,6 +1,6 @@
 # Agent and Knowledge System — Phase 1
 
-9 October 2026 · Selected architecture · Implemented through T05
+9 October 2026 · Selected architecture · Phase 1 prototype implemented
 
 ## Phase decision
 

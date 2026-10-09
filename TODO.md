@@ -1,6 +1,6 @@
 # Project TODO
 
-9 October 2026 · 9/17 Phase 1 tasks done · Next: T06
+9 October 2026 · 16/17 Phase 1 tasks done · Next: Phase 1 complete
 
 [Spec](PROJECT_SPEC.md) · [Stack](TECH_STACK.md) · [Detailed planner](PROJECT_TASK_PLANNER.md)
 
@@ -30,7 +30,7 @@ Checked tasks record completed setup/design and the user's E01 architecture deci
 
 - [x] **T05 — Wire history and classic RAG tools** (done): Both tool schemas execute: fixture customer lookup and Docker PostgreSQL/pgvector KB retrieval; unknown customers, empty matches and DB errors explicit; mock knowledge flagged.
 
-- [ ] **T06 — Write grounded bilingual system prompt** (todo): Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.
+- [x] **T06 — Write grounded bilingual system prompt** (done): Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.
 
 
 
@@ -46,27 +46,27 @@ Checked tasks record completed setup/design and the user's E01 architecture deci
 
 ## Agent & decisions
 
-- [ ] **T07 — Build bounded GPT/tool execution loop** (todo): Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests <=6 and tool executions <=8 enforced.
+- [x] **T07 — Build bounded GPT/tool execution loop** (done): Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests <=6 and tool executions <=8 enforced.
 
-- [ ] **T08 — Apply action policy and integrate JSON CLI** (todo): Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.
+- [x] **T08 — Apply action policy and integrate JSON CLI** (done): Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.
 
 
 
 ## Phase 1 RAG verification
 
-- [ ] **E06 — Test classic RAG against Docker PostgreSQL** (todo): Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.
+- [x] **E06 — Test classic RAG against Docker PostgreSQL** (done): Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.
 
 
 
 ## Verification & delivery
 
-- [ ] **T09 — Verify scenarios and failure paths offline** (todo): Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.
+- [x] **T09 — Verify scenarios and failure paths offline** (done): Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.
 
-- [ ] **T10 — Run demos and record live verification** (todo): Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.
+- [x] **T10 — Run demos and record live verification** (done): Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.
 
-- [ ] **T11 — Finish README and one-page write-up** (todo): README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.
+- [x] **T11 — Finish README and one-page write-up** (done): README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.
 
-- [ ] **T12 — Verify clean checkout and submit** (todo): Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.
+- [ ] **T12 — Verify clean checkout and submit** (in_progress): Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.
 
 
 
@@ -78,4 +78,4 @@ Checked tasks record completed setup/design and the user's E01 architecture deci
 
 ## Before submission
 
-Follow T12 acceptance. The GPT agent and prompt remain pending. Current verification covers fixtures, schemas, Docker, ingestion, retrieval and both tools. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.
+Follow T12 acceptance and the final verification record. Verification covers fixtures, schemas, Docker, ingestion, retrieval, GPT adapter contracts, agent and CLI. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.

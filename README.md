@@ -1,89 +1,85 @@
 # Support Ticket Triage Agent
 
-AI Engineer homework: an OpenAI GPT agent for support-ticket urgency, extraction, knowledge retrieval, and routing, including Thai and English conversations.
+Phase 1 prototype for the **main Word assignment**: a Python CLI with an OpenAI GPT tool loop, customer-history lookup and Docker PostgreSQL/pgvector classic RAG. GraphRAG is deferred to Phase 2. The three original English/Thai conversations retain all twelve messages, relative times and supplied translations.
 
-## Current status
+[Assignment reader](ASSIGNMENT_READER.html) · [Spec](PROJECT_SPEC.md) · [TODO](TODO.md) · [Tickets](TICKETS.md) · [Main assignment traceability](docs/ASSIGNMENT_REQUIREMENTS.md) · [One-page write-up](WRITEUP.md) · [Verification](docs/verification.md)
 
-Implemented through T05: faithful bilingual fixtures, validated contracts, Docker PostgreSQL/pgvector, ingestion and both read-only tools. The bounded GPT loop and triage prompt remain T06–T08 work. Providing --input to triage-agent still prints an explicit unfinished-processing error and exits with code 2.
+## Run the complete offline demonstration
 
-Phase 1 is a Docker classic-RAG prototype. Fake lexical embeddings demonstrate database/tool contracts; they do not prove semantic or multilingual retrieval quality. An opt-in OpenAI embedding adapter is implemented, but no live provider check has run. GraphRAG is deferred to Phase 2.
-
-## Docker setup and T05 demonstration
-
-Prerequisites: Docker Desktop with Linux containers and Compose. Copy .env.example to an ignored .env and replace POSTGRES_PASSWORD with your own local password. Compose loads that file; the Python program itself uses environment variables only. Keep the same password for the existing named database volume.
+Prerequisites: Docker Desktop with Linux containers and Docker Compose. Run from the repository root. Compose loads `.env`; host Python reads environment variables only.
 
 ```powershell
 Copy-Item .env.example .env
-# Edit .env: replace POSTGRES_PASSWORD before starting.
+# Edit .env and replace POSTGRES_PASSWORD with your own local password.
 docker compose up -d --build app
 docker compose run --rm app python -m triage_agent.knowledge.manage ingest
-docker compose run --rm app python -m triage_agent.knowledge.manage tool-demo
-docker compose run --rm app python -m triage_agent.knowledge.manage search --query "payment charges" --issue-type billing
+docker compose run --rm app python -m triage_agent --input data/sample_tickets.json --offline --trace
 docker compose run --rm -e TRIAGE_TEST_DATABASE=1 app python -m pytest -q -p no:cacheprovider
 docker compose down
 ```
 
-The database binds to 127.0.0.1:54329 by default and retains knowledge_data on stop. Startup waits for health and repeatable migrations. The app is a one-shot CLI container, so successful help/demo commands exit. No API key is needed with EMBEDDING_BACKEND=fake. Tests create and remove a uniquely named disposable schema; seeded demonstration articles remain intact. Compose configuration is tested on the host, since the app image does not contain Docker.
+`--offline` uses simple deterministic scenario rules and fake lexical embeddings. Output says `offline_demo`; it demonstrates wiring and policy, not GPT quality or semantic retrieval. The example knowledge/customer records are synthetic, allowed by the assignment. Nothing sends replies or changes accounts. Results include mock provenance and uncertainty. [Recorded samples](examples/sample_results.json) use the real database.
 
-To use host uv commands against this database, set PGHOST=127.0.0.1, PGPORT=54329, PGUSER=triage, PGDATABASE=triage and PGPASSWORD to the same local password. Then run uv run --locked python -m triage_agent.knowledge.manage with the commands above.
+The app is a one-shot CLI container: a successful command exits. DB startup waits for health and repeatable migrations; knowledge persists in a named volume. The port binds only to `127.0.0.1:54329`. Keep the same password when reusing a volume. Tests create/drop a uniquely named temporary schema and preserve seeded demonstration articles.
 
-For live embeddings, set EMBEDDING_BACKEND=openai, EMBEDDING_MODEL to your chosen compatible model, EMBEDDING_DIMENSION to its supported dimension and OPENAI_API_KEY. Ingest/query must use the same embedding space. Use a separate Compose project/database volume when switching from fake vectors; the existing space is deliberately rejected. Never silently mix models or delete a volume to resolve a mismatch. Provider calls have a 30-second timeout and no SDK retries. Queries/ingestion have five-second database statement/connect timeouts. Retrieval uses exact cosine similarity, a prototype 0.2 ranking cutoff, at most five passages, and metadata filters; tune the cutoff during live evaluation.
+## Run live GPT
 
-Images and Python dependencies are pinned by version and uv.lock. The embedding request/dimension contract follows [the official OpenAI reference](https://developers.openai.com/api/reference/python/resources/embeddings/methods/create); readiness follows [Compose guidance](https://docs.docker.com/compose/how-tos/startup-order/). See [pgvector documentation](https://github.com/pgvector/pgvector) and [uv Docker integration](https://docs.astral.sh/uv/guides/integration/docker/).
-
-## Setup
-
-Prerequisites: Git, uv, and Python 3.11 or later. The development default in .python-version is 3.12.
+Set your own `OPENAI_API_KEY` and `OPENAI_MODEL` in the ignored `.env`. Select an OpenAI GPT model supporting Chat Completions, function tools and JSON mode. Keys are never included in the submission. Then omit `--offline`:
 
 ```powershell
-git clone https://github.com/Watcharaphong-kob/support-ticket-triage-agent.git
-cd support-ticket-triage-agent
+docker compose run --rm app python -m triage_agent --input data/sample_tickets.json --trace
+```
+
+GPT can use the existing fake-vector knowledge space for a tool-loop smoke test; output identifies the embedding model. For live semantic embeddings, create a **separate Compose project/database volume** and set `EMBEDDING_BACKEND=openai`, your chosen `EMBEDDING_MODEL`, supported `EMBEDDING_DIMENSION`, and key. Example project isolation:
+
+```powershell
+# After editing .env for live models, avoid the original project's host port.
+$env:POSTGRES_PORT = '54330'
+docker compose -p ooca-triage-live up -d --build app
+docker compose -p ooca-triage-live run --rm app python -m triage_agent.knowledge.manage ingest
+docker compose -p ooca-triage-live run --rm app python -m triage_agent --input data/sample_tickets.json --trace
+docker compose -p ooca-triage-live down
+Remove-Item Env:POSTGRES_PORT
+```
+
+Do not mix embedding models/dimensions in one database. Incompatible spaces are rejected, not silently reindexed. No paid/live checks were run during implementation; see [verification](docs/verification.md). HTTP contract tests cover both provider adapters. API usage follows the [OpenAI Chat Completions reference](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create).
+
+## Develop with uv
+
+Python 3.11+ (tested on 3.12), uv 0.12.6 and a running Compose DB:
+
+```powershell
 uv sync --locked
 uv run --locked triage-agent --help
 uv run --locked python -m triage_agent --version
-```
-
-uv manages the local .venv. Commit pyproject.toml and uv.lock; do not commit the environment. For a supported locally installed Python version, use uv sync --locked --python 3.11 (or another supported version).
-
-## Configuration
-
-Help, version, and offline tests need no API key. Later live execution will require both OPENAI_API_KEY and OPENAI_MODEL, supplied by the runner. .env.example contains empty example values. Copying it to .env does not automatically load it; set variables in your shell. A real key must never be committed.
-
-```powershell
-$env:OPENAI_API_KEY = "your-own-key"
-$env:OPENAI_MODEL = "your-selected-tool-capable-gpt-model"
-```
-
-On macOS/Linux, use export OPENAI_API_KEY and export OPENAI_MODEL. The config object hides the key from its repr and reports missing variable names without printing their values. No default model version is assumed.
-
-## Verification
-
-```powershell
-uv run --locked pytest
-uv run --locked ruff check .
-uv run --locked ruff format --check .
+uv run --locked python -m pytest -q
+uv run --locked python -m ruff check src tests scripts
+uv run --locked python -m ruff format --check src tests scripts
 uv build
+uv run --locked python scripts/build_planner.py
+uv run --locked python scripts/check_delivery.py
 ```
 
-Tests cover setup, source fidelity, contracts, fake/live adapter HTTP boundaries, Unicode chunks, real PostgreSQL ingestion/retrieval and both tools. Host tests skip database integration unless TRIAGE_TEST_DATABASE=1 and PG variables are set. They do not verify the unimplemented GPT triage loop or live OpenAI calls. Build outputs go to ignored dist/.
+Host tests skip DB integration unless `TRIAGE_TEST_DATABASE=1`. To run against Compose, set `PGHOST=127.0.0.1`, `PGPORT=54329`, `PGUSER=triage`, `PGDATABASE=triage`, `PGPASSWORD` to your local password, and `TRIAGE_TEST_DATABASE=1`. The full container command above is simpler and requires no host DB setup. CI performs host lint/delivery checks and the complete Docker test suite without paid keys.
 
-Use uv add for runtime dependencies and uv add --dev for development tools. Commit the resulting pyproject.toml and uv.lock changes together. The [uv project guide](https://docs.astral.sh/uv/guides/projects/) explains locking and environment management.
+## Input, output and tools
 
-## Planning documents
+`--input` accepts one ticket object or a list of 1–100 unique tickets, following [sample input](data/sample_tickets.json) and `Ticket` in [schemas](src/triage_agent/schemas.py). `--customers` selects a synthetic customer fixture file. All fields are validated; original message order is retained.
 
-Task execution follows [the before/after checking workflow](docs/TASK_WORKFLOW.md): consult ask-matt, choose the appropriate implementation/testing/review route, and record evidence before marking tasks complete.
+Stdout contains one JSON object with `mode`, `embedding_model` and `results`. Each result contains urgency, product (null if unknown), issue_type, customer_sentiment, secondary_issues, next_action/destination, rationale, draft_response, knowledge_sources (retrieved chunk IDs), uncertainties, actual tool_calls, status and error. `--trace` writes safe tool status records to stderr. Exit codes: **0** all completed, **1** at least one fallback, **2** invalid input/configuration. Invalid batches fail before any ticket processing. Fallback never pretends successful classification.
 
-- PROJECT_TASK_PLANNER.md — tasks and acceptance criteria.
-- PROJECT_SPEC.md — scope, policy, contracts, and acceptance in one current spec page.
-- TECH_STACK.md — installed baseline and selected Phase 1 components.
-- TODO.md — tech stack, spec checkpoints, and current working task list.
-- TICKETS.md — each task's skills/plugins, simple steps, acceptance and evidence.
-- docs/T05_IMPLEMENTATION_STATUS.md — verification, review fix and remaining scope.
-- AGENT_KNOWLEDGE_SPEC.md — selected Docker/classic RAG contracts and deferred Phase 2 GraphRAG.
-- GITHUB_REPO_PLAN.md — branches, worktrees, CI, submission.
-- docs/superpowers/specs/2026-10-09-ticket-triage-design.md — approved design.
-- ASSIGNMENT_READER.html — readable source and planning documents; opens offline.
+[System prompt](prompts/system.txt) is packaged with the application; delivery-copy equality is checked. [Tools](src/triage_agent/tools.py) supply JSON schemas and implementations for `get_customer_history(customer_id)` and `search_knowledge_base(query, product?, issue_type?, locale?)`. History `not_found` discloses uncertainty; infrastructure errors fall back. Search is across languages unless explicitly filtered. Returned source/chunk IDs, excerpts, versions, locale, mock flag and scores provide provenance; similarity is not confidence. Empty search cannot justify auto-response.
 
-Planner, TODO, and reader task statuses come from docs/project_tasks.json. Regenerate the documents with uv run --locked python scripts/build_planner.py. The reader has separate Spec and Tech Stack views; old original/spec/stack bookmarks remain supported. Source transcription is stored in docs/assignment_source.json so regeneration also works without the locally excluded DOCX.
+The loop permits at most **6 model requests / 8 tool executions** per ticket, with 30-second provider timeouts, zero SDK retries and one shared transient retry/output correction. Parameterized read-only retrieval has 5-second connection/statement timeouts. Tools cannot execute shell commands, arbitrary SQL, URLs or billing changes. Application policy validates tool execution, citations, action/destination, low-urgency auto-response evidence and Thai draft language; prompt grounding remains fallible.
 
-The original DOCX stays local and is excluded from Git. The planning reader includes its textual transcription. The repository is private; give the evaluator access before submission. No actual API key is included.
+[Retrieval evaluation](docs/retrieval_evaluation.md) describes exact cosine top-five search, the prototype 0.2 cutoff, Unicode-safe section-aware 500-token chunks/60-token overlap, and live evaluation needed before production. [Knowledge spec](AGENT_KNOWLEDGE_SPEC.md) describes embedding-space validation and Phase 2 boundaries.
+
+Management commands: `python -m triage_agent.knowledge.manage migrate|ingest|stats|search|tool-demo`. Search accepts `--query`, `--locale`, `--product`, `--issue-type`. Example:
+
+```powershell
+docker compose run --rm app python -m triage_agent.knowledge.manage search --query 'payment charges' --issue-type billing
+```
+
+## Submission
+
+The private [GitHub repository](https://github.com/Watcharaphong-kob/support-ticket-triage-agent) contains the delivery branch `feat/triage-agent`; use that branch for the completed prototype. Reviewer access is controlled by the repository owner. A source ZIP with an actual standalone `.git` directory is also provided locally as permitted by the Word assignment. It excludes `.env`, caches and virtual environments. Original Word content is transcribed in `docs/assignment_source.json`; it remains the main authority, distinct from selected architecture/policy choices.

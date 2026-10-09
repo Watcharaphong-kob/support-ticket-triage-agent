@@ -26,6 +26,7 @@ dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
 where = ["src"]
 
 [tool.setuptools.package-data]
+"triage_agent" = ["prompts/*.txt"]
 "triage_agent.knowledge" = ["migrations/*.sql"]
 
 [tool.pytest.ini_options]

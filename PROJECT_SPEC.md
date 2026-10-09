@@ -1,6 +1,8 @@
 # Phase 1 Spec — Docker Classic RAG Prototype
 
-9 October 2026 · User-selected phase scope · Implementation authorized through T05
+9 October 2026 · User-selected phase scope · Continuous Phase 1 completion authorized
+
+The original AI_Engineer_-_Code_Homework_Test.docx is the main assignment, as explicitly directed by the user. Follow its requirements strictly; the architecture and policy choices here implement those requirements and are not an official assignment answer key. See docs/ASSIGNMENT_REQUIREMENTS.md for required-versus-selected traceability.
 
 ## Problem Statement
 
@@ -58,7 +60,7 @@ This phase is a prototype. GraphRAG is deferred to Phase 2 and is not a current 
 - **Embeddings:** Configure model and dimension separately from GPT. Ingest/query embeddings must share compatible model/version/dimensions. Reject mismatches; changing embedding space requires an intentional rebuild. Deterministic fake embeddings are test data, not proof of semantic quality.
 - **Schema:** Documents retain identity, title, source/version, locale, metadata, hash and mock status. Chunks reference documents and retain text, sequence, embedding, model/dimension, index version and hash. Enforce referential integrity and uniqueness for repeatable imports.
 - **Retrieval interface:** Exact vector similarity over a small corpus, maximum five chunks, explicit metadata filters, parameterized read-only queries. Return tool-compatible IDs/titles/excerpts/locale/mock status and resolvable provenance. Ranking scores are not factual confidence. No arbitrary model-written SQL.
-- **Two tools:** Customer-history lookup reads fixtures; knowledge search reads Docker PostgreSQL/pgvector. Both must succeed before completed demonstration triage. Empty search is valid but does not justify a fabricated auto-response; database failure is an error, not no-match.
+- **Two tools:** Customer-history lookup reads fixtures; knowledge search reads Docker PostgreSQL/pgvector. Both must execute before completed triage; history not_found permits disclosed uncertainty, while actual tool errors require fallback. Empty search is valid but does not justify a fabricated auto-response; database failure is an error, not no-match.
 - **Policies:** Billing sample is high with billing escalation; Thai access failure is critical with incident escalation; theme behavior is low with product-support routing. These are project expectations, not an official assignment answer key. Preserve unknown financial state and unconfirmed regional hypotheses.
 - **Result interface:** Keep ticket ID, completed/fallback status, urgency, product, primary issue, sentiment, secondary issues, action/destination, rationale, draft, retrieved source IDs, uncertainties, tool records and structured error. Unknown product remains null. Technical fallback escalates to human support; unknown fallback urgency may be null.
 - **Limits:** Provider timeout 30 seconds; maximum six model requests including one possible retry, and eight tool executions per ticket. Exhaustion produces fallback. Database connection/query timeouts must also be bounded; choose and record concrete values during infrastructure implementation.
@@ -74,7 +76,7 @@ This phase is a prototype. GraphRAG is deferred to Phase 2 and is not a current 
 - Fake-model cases exercise all three tickets, both required tools, invalid output/citations, budgets, injection attempts and action/destination consistency.
 - Fake embeddings prove storage/retrieval contracts, not multilingual semantic quality. Separately evaluate live embeddings against labeled English/Thai queries when credentials are available.
 - Live GPT and embedding checks are opt-in and reported independently; offline checks require no real key. Document skipped live checks and reviewer commands honestly.
-- The user authorized continued implementation and checking through T05 at the fixture/tool/database boundaries. Later GPT-loop end-to-end checks remain part of T07–T09.
+- The user authorized continuous completion. All agent/CLI/database boundaries receive offline tests and the final standards/spec review.
 
 ## Out of Scope
 
@@ -86,6 +88,8 @@ This phase is a prototype. GraphRAG is deferred to Phase 2 and is not a current 
 
 ## Further Notes
 
-T03/T04/E02/E03/E04/T05 are implemented and verified with real Docker PostgreSQL and fake embeddings; live model quality remains unverified. The user has selected prototype scope, not declared implementation complete. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.
+The Phase 1 implementation includes the bilingual prompt, bounded GPT adapter/tool loop, JSON CLI, database retrieval, policy and failure-path tests. Live GPT and semantic embedding quality remain unverified because no credentials were configured. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.
 
-GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. The current spec and T05 checkpoint are published as [GitHub issue #1](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1) with ready-for-agent. Local implementation is committed separately and has not been pushed or merged.
+GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. The tracking spec is published as [GitHub issue #1](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1) with implementation evidence recorded in local tickets and docs/verification.md.
+
+Selected interview decisions: search across languages by default; missing customer history permits conversation-only triage with disclosed uncertainty; mock FAQ evidence may support low-urgency demonstration auto-response drafts clearly labeled as synthetic, never actual sending. These are project decisions, not original Word requirements.
