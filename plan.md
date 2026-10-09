@@ -1,41 +1,177 @@
-# LangChain / LangGraph Triage Prototype Plan
+# LangChain / LangGraph Triage Specification and Plan
 
 Status: proposed design and delivery checklist. This commit creates the plan only; framework/API implementation has not started. Review this document before coding. Keep all planning updates in this file.
 
 Branch: `feat/langchain-langgraph`, based on `feat/triage-agent` at `c295253`. The previous prototype remains available on its delivery branch.
 
-## Goal and scope
+## Problem Statement
 
-Build the main Word assignment's support-ticket triage agent using LangChain and LangGraph, with the shortest readable implementation that supports both terminal and HTTP use. Preserve urgency, product/issue/sentiment extraction, whole-thread reasoning, knowledge search, two real read-only tools, next-action selection and the three original English/Thai tickets.
+The owner wants a smaller, readable framework implementation of the main Word assignment, usable from both terminal and HTTP. The current prototype has a custom model/tool loop, a bulky canned demonstration model and terminal-only access. A migration must avoid replacing those with a larger custom framework abstraction or duplicating decision logic across transports.
 
-Required deliverables:
+## Solution
 
-1. Working terminal command and HTTP API calling the same triage implementation.
-2. System prompt and two tool definitions, including argument schemas and implementations.
-3. README with clone/setup/ingest/run/test instructions for both entry points.
-4. A verified one-page write-up covering architecture and why, failure handling, and production evaluation.
-5. Tests and sample evidence that distinguish framework wiring from real GPT quality.
+Use one LangChain agent running on LangGraph, two scoped read-only tools and one shared batch triage function. CLI and FastAPI expose the same ticket/result contracts. Reuse Docker PostgreSQL classic RAG and existing fixtures/prompt, validate results against real execution evidence, and deliver a one-page architecture/failure/evaluation write-up. Keep design, implementation steps and evidence in this single planning document.
 
-The original Word assignment remains the authority. Both CLI and API, the framework choice, uv and Docker classic RAG are user requirements added to that assignment. GraphRAG remains a later phase.
+## User Stories
 
-## Approach selection
+1. As a support operator, I want terminal ticket triage, so that I can process saved conversations.
+2. As an integrating developer, I want HTTP ticket triage, so that another application can use the same agent.
+3. As a developer, I want shared triage logic, so that terminal and HTTP results cannot drift.
+4. As a reviewer, I want the whole conversation preserved, so that evolving impact drives urgency.
+5. As a Thai customer, I want original text and Thai drafts preserved, so that language handling is reliable.
+6. As a support operator, I want four urgency levels, so that attention matches reported impact.
+7. As a support operator, I want product, issue type and sentiment extracted, so that decisions explain the case.
+8. As a customer, I want separate issues retained, so that a feature request is not lost inside a bug report.
+9. As a support operator, I want customer-history lookup, so that available context informs triage.
+10. As a reviewer, I want missing history disclosed, so that missing records are not fabricated.
+11. As a support operator, I want relevant knowledge passages, so that proposed responses have evidence.
+12. As a reviewer, I want actual source citations, so that model claims can be checked.
+13. As a reviewer, I want both required tools evidenced, so that a plausible decision cannot pretend execution.
+14. As a customer, I want my history scoped to my ticket, so that another customer's records cannot leak.
+15. As an operator, I want three next-action choices, so that cases can be drafted, routed or escalated.
+16. As an operator, I want visible fallback on failures, so that failed automation requests human review.
+17. As an owner, I want bounded provider/tool calls, so that runaway execution cannot exhaust cost or time.
+18. As a reviewer, I want mock evidence labeled, so that demonstration data is not mistaken for company policy.
+19. As an integrating developer, I want consistent JSON and explicit error behavior, so that clients can handle outcomes.
+20. As an integrating developer, I want request isolation, so that simultaneous requests cannot share ticket evidence.
+21. As a developer, I want invalid batches rejected before work, so that malformed input does not trigger paid calls.
+22. As a developer, I want uv-locked dependencies and Docker setup, so that a fresh clone is reproducible.
+23. As a reviewer, I want tool schemas and implementations delivered, so that agent capabilities are inspectable.
+24. As an owner, I want one-page architecture and evaluation notes, so that submission meets the assignment limit.
+25. As a reviewer, I want live GPT checks distinguished from fake-model tests, so that quality claims are honest.
+26. As a developer, I want obsolete loop/demo code removed after replacement, so that one production agent remains.
+27. As an owner, I want fewer planning files, so that the repository stays easy to read.
+28. As a reviewer, I want a documented submission branch and access, so that I can obtain the intended implementation.
 
-**Recommended: LangChain `create_agent` backed by LangGraph.** LangChain supplies model/tool integration and structured output; LangGraph runs the agent graph. This uses both requested frameworks without maintaining a second hand-written model/tool loop.
+## Implementation Decisions
 
-Alternative: an explicit LangGraph `StateGraph` with custom model, tool and validation nodes. It provides more control but adds state, transitions and failure paths. Use it only if implementation proves that required behavior cannot be expressed clearly with `create_agent` and small middleware. Do not silently switch approaches.
+- The original Word assignment governs behavior and deliverables. Both terminal and HTTP access, LangChain/LangGraph, uv and Docker classic RAG are the owner's additional scope.
+- Prefer LangChain create_agent on LangGraph over a custom graph. A custom graph is an alternative only if required behavior cannot be implemented clearly with the standard agent and small middleware.
+- Use an OpenAI GPT integration, structured decision output, two read-only tools and final application-owned evidence/policy checks. The model cannot author trusted tool records or execution status.
+- Reuse existing ticket, history, knowledge and decision contracts where compatible. One batch validator and one triage function serve both transports; transport modules contain no routing logic.
+- Terminal and HTTP accept one ticket or one-to-one-hundred unique tickets. Malformed/invalid batches execute neither provider nor tools.
+- HTTP uses POST /triage, returning the shared JSON envelope. Invalid input is HTTP 422; required configuration unavailable is sanitized HTTP 503. Accepted batches are HTTP 200 with explicit per-result completion/fallback status.
+- A liveness endpoint describes process health only. The HTTP listener remains local; no public hosting or authentication system is added in this phase.
+- Customer scope, retrieved documents and tool execution records belong to one invocation. No mutable global trace, persistent conversation memory or checkpoints.
+- Preserve existing PostgreSQL ingestion/search and embedding-space protection. Framework graph execution is distinct from GraphRAG; no graph knowledge database is introduced.
+- Proposed intentional changes: no canned production model on this branch, zero automatic provider retries, and critical incident routing taking priority over billing routing. Implement only after review; retain equivalent requirements and explicit failures.
+- Limit each run to six model requests and eight tool calls, with thirty-second provider timeouts. Distinguish recursion steps and structured-output helpers from real tools and call budgets.
+- Shortest readable code means fewer necessary concepts and repeated paths. Do not compress code, delete validation or merely move prose to claim a reduction.
+- Keep one system prompt, existing package resources, a shared result contract and one production framework agent. Add no second agent architecture or generic tool registry.
+- Reuse the existing README and one-page write-up artifacts. This document contains the specification, architecture, tasks and evidence; no extra planning file is needed.
 
-Do not build two independent agents, add a multi-agent supervisor, introduce graph checkpoints, or use deprecated `create_react_agent` examples. This is stateless ticket triage, not a chat application.
+## Testing Decisions
 
-## Small architecture
+- Highest shared runtime seam: batch triage with actual tools against Docker PostgreSQL and an injected scripted chat model. Assert outcomes, real tool records, grounding, scoped history and fallback instead of private helper structure.
+- Reuse prior agent, CLI, policy, provider-contract and real-database tests where their behavior still applies. Replace tests coupled solely to the removed custom-loop implementation.
+- Proposed new public seam: HTTP requests through FastAPI's test client. Compare HTTP and CLI outcomes for the same injected model/tool results; cover schema errors and concurrent request isolation. This new seam and the contract are for written-design review before implementation.
+- Exercise the three faithful source tickets, all twelve messages, unknown/foreign customers, invented citations, provider/DB failures, invalid calls, bounded execution, critical billing and Thai drafts.
+- Verify fresh-clone locked install, package resources, migration/ingestion, terminal/API startup and complete Docker tests. Run no tests merely to mirror moved helpers.
+- Test live GPT using the three source conversations plus unseen cases with an owner-supplied key. Evaluate live semantic embeddings independently of deterministic fake vectors. Disclose unavailable live evidence.
+- Verify exactly one rendered write-up page and complete tool definitions. Measure readability/duplication and runtime size before/after; file or line reduction alone is not acceptance.
 
-```text
-JSON file -> CLI ----+
-                    +-> triage_batch -> per-ticket LangChain agent / LangGraph
-POST /triage -------+                     |-> customer-history tool
-                                          |-> knowledge-search tool -> PostgreSQL
-                                          +-> structured decision -> evidence/policy check
-                                                                    -> JSON result or fallback
+## Out of Scope
+
+- GraphRAG, graph databases, multi-agent supervisors, custom chat UI, persistent conversation memory and checkpoints.
+- Public deployment, authentication implementation, background jobs, billing/account changes or sending customer replies.
+- Automatic completion of implementation merely because this spec is published; design approval still precedes coding.
+- Guarantees of live-model correctness or an arbitrary line-count target.
+- Replacing the chosen knowledge backend or creating parallel planning/ticket artifacts.
+
+## Further Notes
+
+Published specification: [GitHub issue #6](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/6), labeled ready-for-agent. Publication does not waive the written-design review gate.
+
+This is a proposed framework specification on feat/langchain-langgraph, based on completed prototype commit c295253. Existing source and tests still implement the original custom-loop prototype; neither the new framework agent nor HTTP endpoint has been implemented. The inherited baseline has 1,054 nonblank runtime Python lines and 80 tracked files; this planning branch adds one document.
+
+The current terminal/tool/database testing seams are reused. The HTTP seam and intentional retry/offline/routing changes remain explicit review points. The implementation checklist below is provisional and stays in this same document. The owner's earlier classic-RAG-only and prototype decisions remain in force.
+
+## System architecture
+
+These diagrams describe the proposed implementation, not currently running framework/API code. LangGraph is the execution runtime; PostgreSQL remains the knowledge store.
+
+### 1. Modules and trust
+
+```mermaid
+flowchart LR
+    CLI[Terminal JSON input] --> B[Shared batch validator and triage]
+    HTTP[FastAPI POST /triage] --> B
+    B --> A[LangChain create_agent on LangGraph]
+    A <--> GPT[OpenAI GPT]
+    A --> H[Scoped customer-history tool]
+    A --> K[Knowledge-search tool]
+    H --> C[(Synthetic customer fixtures)]
+    K --> DB[(PostgreSQL and pgvector)]
+    H --> E[Invocation-owned execution evidence]
+    K --> E
+    A --> V[Structured decision and policy validation]
+    E --> V
+    V --> R[Completed result or human-review fallback]
+    R --> B
 ```
+
+Customer text, knowledge excerpts and model output are untrusted. Only actual application tool execution supplies trusted IDs/status/citations. Both transports cross the same triage interface; their output formats do not introduce independent decisions.
+
+| Responsibility | Ownership | Why it stays small |
+| --- | --- | --- |
+| Transport | CLI and HTTP entry points | Parse/serialize; call shared triage |
+| Contracts | Existing Pydantic schemas | One definition for both entry points |
+| Agent orchestration | Standard LangChain agent running on LangGraph | No second hand-written loop |
+| History and retrieval | Two scoped tools and existing knowledge implementation | Reuse fixtures and classic RAG |
+| Evidence and action checks | Existing policy plus per-invocation evidence | Validate actual execution, not model claims |
+| Runtime configuration | Existing environment configuration | No settings framework or persistent agent state |
+
+### 2. One ticket execution
+
+```mermaid
+sequenceDiagram
+    participant U as CLI or HTTP caller
+    participant B as Shared triage
+    participant G as LangChain / LangGraph
+    participant M as OpenAI GPT
+    participant T as Two read-only tools
+    participant V as Evidence / policy check
+    U->>B: Ticket or batch JSON
+    B->>B: Validate full batch before processing
+    B->>G: Complete thread and scoped invocation context
+    loop Bounded model / tool execution
+        G->>M: Prompt, conversation and tool definitions
+        M-->>G: Tool requests or structured decision
+        opt Tool requests
+            G->>T: Validate authorization and execute allowed calls
+            T-->>G: Data plus actual execution evidence
+        end
+    end
+    G-->>B: Structured decision and invocation state
+    B->>V: Check both tools, citations, language and action
+    V-->>B: Completed result or disclosed fallback
+    B-->>U: Same JSON envelope through either transport
+```
+
+Invalid input stops before the graph runs. Tool/provider errors, exhausted limits or unverifiable evidence become visible fallback. A graph recursion limit is not the number of model calls; the separate call-limit middleware enforces budgets.
+
+### 3. Local Docker deployment
+
+```mermaid
+flowchart TB
+    Client[Local terminal or HTTP client]
+    subgraph Local[Docker Compose prototype]
+        CLI[One-shot CLI container]
+        API[API container on loopback port 8000]
+        Mig[One-shot migration command]
+        DB[(PostgreSQL / pgvector with persistent volume)]
+        CLI --> DB
+        API --> DB
+        Mig --> DB
+    end
+    Client --> CLI
+    Client --> API
+    CLI --> GPT[External OpenAI endpoint]
+    API --> GPT
+```
+
+CLI and API use one application image with different entry commands; no additional database or agent process is required. API startup and CLI execution depend on healthy PostgreSQL and completed migration. Knowledge ingestion is an explicit setup command. Secrets stay in the ignored environment file; no key appears in delivered source or diagrams. Liveness indicates the process is running, not that provider/DB calls will succeed.
+
 
 - Reuse the existing Pydantic ticket, tool and result contracts, prompt, customer fixtures and PostgreSQL knowledge implementation.
 - Keep one batch validator and one batch triage function. CLI and API handle transport only; neither implements routing or model logic.
@@ -171,4 +307,4 @@ Use three compact sections in the existing write-up, with no task history:
 - [Built-in model/tool limit middleware](https://docs.langchain.com/oss/python/langchain/middleware/built-in)
 - [FastAPI request bodies](https://fastapi.tiangolo.com/tutorial/body/)
 
-Skill usage for this plan: ask-matt before/after, Superpowers brainstorming, reuse of the existing isolated worktree, primary documentation verification and pre-delivery checks. No framework dependencies or runtime code were installed/changed while writing the plan.
+Skill usage for this plan/spec: ask-matt before/after, to-spec, Superpowers brainstorming, reuse of the existing isolated worktree, primary documentation verification and pre-delivery checks. No framework dependencies or runtime code were installed/changed while writing the plan.
