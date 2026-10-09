@@ -19,3 +19,7 @@ T10 before: ask-matt → sample runs/verification. T11 before: ask-matt → deli
 
 T10 complete: rebuilt image suite 63 passed/1 skip; all three sample results recorded as offline_demo/fake-token-v1, actual both-tool records and citations. Ask-matt after → artifact verification passed.
 T11 complete: README includes reproducible commands and live limits; WRITEUP PDF exactly one page, rendered and visually inspected. Ask-matt after → delivery documentation checks passed.
+
+Final standards: 2 important CLI findings. Final spec: 0 actionable findings. Final fixed live embeddings under --offline — test_offline_rejects_live_embedding_configuration_before_constructing_provider RED→GREEN. Final fixed Windows Thai redirected JSON/traces — test_redirected_windows_encoding_preserves_unicode_json RED→GREEN. Whole Docker suite 65 passed/1 host-only skip.
+Final: Ruling: reviewers declined live model/retrieval/semantic injection quality — retain explicit unverified status because no paid credentials are available — cost: future live evaluation may uncover quality issues.
+Final: Ruling: reviewers declined T12 and remote CI — directly verify clean clone and delivery, report remote CI separately — cost: hosted-runner differences may require adjustments.

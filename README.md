@@ -2,7 +2,7 @@
 
 Phase 1 prototype for the **main Word assignment**: a Python CLI with an OpenAI GPT tool loop, customer-history lookup and Docker PostgreSQL/pgvector classic RAG. GraphRAG is deferred to Phase 2. The three original English/Thai conversations retain all twelve messages, relative times and supplied translations.
 
-[Assignment reader](ASSIGNMENT_READER.html) · [Spec](PROJECT_SPEC.md) · [TODO](TODO.md) · [Tickets](TICKETS.md) · [Main assignment traceability](docs/ASSIGNMENT_REQUIREMENTS.md) · [One-page write-up](WRITEUP.md) · [Verification](docs/verification.md)
+[Assignment reader](ASSIGNMENT_READER.html) · [Spec](PROJECT_SPEC.md) · [TODO](TODO.md) · [Tickets](TICKETS.md) · [Main assignment traceability](docs/ASSIGNMENT_REQUIREMENTS.md) · [One-page write-up](WRITEUP.pdf) (editable [source](WRITEUP.md)) · [Verification](docs/verification.md)
 
 ## Run the complete offline demonstration
 
@@ -18,7 +18,7 @@ docker compose run --rm -e TRIAGE_TEST_DATABASE=1 app python -m pytest -q -p no:
 docker compose down
 ```
 
-`--offline` uses simple deterministic scenario rules and fake lexical embeddings. Output says `offline_demo`; it demonstrates wiring and policy, not GPT quality or semantic retrieval. The example knowledge/customer records are synthetic, allowed by the assignment. Nothing sends replies or changes accounts. Results include mock provenance and uncertainty. [Recorded samples](examples/sample_results.json) use the real database.
+`--offline` requires EMBEDDING_BACKEND=fake and rejects live embedding configuration before any provider construction. It uses simple deterministic scenario rules and fake lexical embeddings. Output says `offline_demo`; it demonstrates wiring and policy, not GPT quality or semantic retrieval. The example knowledge/customer records are synthetic, allowed by the assignment. Nothing sends replies or changes accounts. Results include mock provenance and uncertainty. [Recorded samples](examples/sample_results.json) use the real database.
 
 The app is a one-shot CLI container: a successful command exits. DB startup waits for health and repeatable migrations; knowledge persists in a named volume. The port binds only to `127.0.0.1:54329`. Keep the same password when reusing a volume. Tests create/drop a uniquely named temporary schema and preserve seeded demonstration articles.
 

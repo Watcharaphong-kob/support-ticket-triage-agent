@@ -43,3 +43,63 @@ class CliTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+def test_offline_rejects_live_embedding_configuration_before_constructing_provider(
+    monkeypatch, capsys
+):
+    from pathlib import Path
+
+    import triage_agent.cli as cli
+
+    monkeypatch.setenv("EMBEDDING_BACKEND", "openai")
+
+    def forbidden_provider():
+        raise AssertionError("Offline execution must not construct a live embedder")
+
+    monkeypatch.setattr(cli, "configured_embedder", forbidden_provider)
+    path = Path(__file__).resolve().parents[1] / "data/sample_tickets.json"
+    assert cli.main(["--input", str(path), "--offline"]) == 2
+    assert capsys.readouterr().out == ""
+
+
+def test_redirected_windows_encoding_preserves_unicode_json(tmp_path):
+    import json
+    import os
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    current = json.loads((root / "data/sample_tickets.json").read_text(encoding="utf-8"))[1]
+    current["ticket_id"] = "ตั๋ว-002"
+    path = tmp_path / "thai.json"
+    path.write_text(json.dumps(current, ensure_ascii=False), encoding="utf-8")
+    environ = dict(
+        os.environ,
+        PYTHONIOENCODING="cp1252",
+        PGHOST="127.0.0.1",
+        PGPORT="1",
+        EMBEDDING_BACKEND="fake",
+        EMBEDDING_MODEL="fake-token-v1",
+        EMBEDDING_DIMENSION="64",
+    )
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "triage_agent",
+            "--input",
+            str(path),
+            "--customers",
+            str(root / "data/customers.json"),
+            "--offline",
+            "--trace",
+        ],
+        env=environ,
+        capture_output=True,
+        timeout=15,
+    )
+    assert result.returncode == 1
+    assert json.loads(result.stdout.decode("utf-8"))["results"][0]["ticket_id"] == "ตั๋ว-002"
+    assert json.loads(result.stderr.decode("utf-8"))["ticket_id"] == "ตั๋ว-002"

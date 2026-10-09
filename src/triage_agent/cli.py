@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import os
 import sys
 from collections.abc import Sequence
 from pathlib import Path
@@ -18,6 +19,10 @@ from triage_agent.tools import ToolDispatcher
 
 
 def main(argv: Sequence[str] | None = None) -> int:
+    # Preserve Thai JSON when Windows redirects stdout/stderr using a legacy encoding.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(
         prog="triage-agent", description="Support ticket triage prototype"
     )
@@ -47,6 +52,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             if args.offline
             else OpenAIModel(*Settings.from_env().require_live_credentials())
         )
+        if args.offline and os.environ.get("EMBEDDING_BACKEND", "fake").strip() != "fake":
+            raise ValueError("Offline demonstration requires fake embeddings")
         embedder = configured_embedder()
         tools = ToolDispatcher(args.customers, PostgresStore(embedder))
     except (OSError, ValueError, TypeError, KnowledgeError):
