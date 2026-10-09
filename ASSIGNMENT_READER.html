@@ -9,7 +9,7 @@
 </style></head><body>
 <a class="skip" href="#summary">Skip to content</a>
 <header class="hero"><div class="eyebrow">OOCA · AI Engineer Homework</div><h1>Support Ticket<br>Triage Agent</h1><p>Your assignment, explained clearly and organized into a practical project plan. Read the summary first, then the proposed tasks, or jump to the complete source document.</p><div class="badges"><span class="badge">150–240 min recommended</span><span class="badge">2+ tools</span><span class="badge">3 sample conversations</span><span class="badge">CLI or API</span></div></header>
-<div class="layout"><nav aria-label="Document sections"><p>Reading guide</p><a href="#summary">01 · Assignment summary</a><a href="#planner">02 · Project task planner</a><a href="#github">03 · GitHub repo plan</a><a href="#t01">04 · T01 design decisions</a><a href="#t02">05 · T02 setup status</a><a href="#original">06 · Original assignment</a><small>T01 approved · T02 setup · 9 Oct 2026<br>Works offline · Print with Ctrl+P</small></nav><main>
+<div class="layout"><nav aria-label="Document sections"><p>Reading guide</p><a href="#summary">Assignment summary</a><a href="#tech-stack">Tech stack</a><a href="#implementation-spec">Implementation spec</a><a href="#planner">Project planner</a><a href="#todo">TODO list — 2/12 done</a><a href="#knowledge">Agent / DB / RAG / GraphRAG</a><a href="#github">GitHub repo plan</a><a href="#t01">Approved T01 design</a><a href="#t02">T02 setup status</a><a href="#original">Original assignment</a><small>9 Oct 2026 · Works offline<br>Print with Ctrl+P</small></nav><main>
 <section id="summary"><h2>Assignment Summary</h2>
 <h3>What you need to build</h3>
 <p>A Support Ticket Triage Agent that uses an OpenAI GPT model to process complete customer conversations, classify urgency (critical/high/medium/low), extract product/issue type/sentiment, search a knowledge base, and choose auto-response, specialist routing, or human escalation. Use at least two executable tools; mocks are allowed.</p>
@@ -30,6 +30,57 @@
 <p>The document does not specify a model version, programming language, official sample labels, submission deadline, or deployment platform. Confirm those design choices before implementation. This deliverable is planning and document conversion; it does not implement or publish the project.</p></section>
 <section id="planner"><h2>Support Ticket Triage Agent — Project Task Planner</h2>
 <p>T01 approved · T02 setup complete · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx</p>
+<h3 id="tech-stack">Tech stack — approved choices</h3>
+<p>Versions below come from the current project and uv.lock. Installed dependencies do not mean the full agent is implemented. T01 and T02 are done; T03–T12 remain.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Area</th><th scope="col">Technology / version</th><th scope="col">Job</th><th scope="col">Status</th></tr></thead><tbody>
+<tr><td>Language</td><td>Python &gt;=3.11; development default 3.12</td><td>CLI and agent implementation</td><td>Package ready</td></tr>
+<tr><td>Package manager</td><td>uv; installed 0.12.6</td><td>Manage .venv, dependency resolution, and uv.lock</td><td>Ready</td></tr>
+<tr><td>GPT integration</td><td>OpenAI Python SDK 2.54.0</td><td>Model requests and tool-call messages</td><td>Installed; integration at T07</td></tr>
+<tr><td>Validation</td><td>Pydantic 2.14.0</td><td>Ticket, tool, and result schemas</td><td>Installed; contracts at T04</td></tr>
+<tr><td>CLI</td><td>Python argparse; triage-agent / python -m triage_agent</td><td>Input arguments, JSON output, optional traces</td><td>Startup ready; processing pending</td></tr>
+<tr><td>Tests</td><td>pytest 9.1.1</td><td>Offline unit/integration tests</td><td>8 setup tests pass; agent tests at T09</td></tr>
+<tr><td>Code checks</td><td>Ruff 0.16.10</td><td>Lint and formatting</td><td>Setup checks pass</td></tr>
+<tr><td>Packaging</td><td>setuptools &gt;=77 build backend</td><td>Build wheel and source distribution</td><td>Build verified</td></tr>
+<tr><td>Data and retrieval</td><td>UTF-8 JSON fixtures; deterministic mock KB search</td><td>Conversations, history, and FAQ evidence</td><td>T03/T05</td></tr>
+<tr><td>Version control</td><td>Git + private GitHub repository</td><td>Commits, branches, worktree, submission</td><td>Ready</td></tr>
+<tr><td>CI</td><td>GitHub Actions with uv — planned</td><td>Run offline checks without a key</td><td>Not created</td></tr>
+</tbody></table></div>
+<p>Use pyproject.toml for declared dependencies and uv.lock for exact resolved versions. Model selection remains OPENAI_MODEL supplied by the runner; no model version is assumed. Scope is a CLI with two read-only mock tools and JSON results. An API, chat UI, database, and vector store are outside the approved scope.</p>
+<h3 id="implementation-spec">Spec — implementation checklist</h3>
+<p>Expanded library/database/retrieval options are documented in AGENT_KNOWLEDGE_SPEC.md. Recommended extension: existing OpenAI SDK agent + PostgreSQL/pgvector classic RAG. Alternatives: OpenAI Agents SDK or LangGraph for orchestration, SQLite for local records, and Neo4j GraphRAG for relationship-based retrieval. These additions are proposed; none are installed or provisioned. Extension tasks E01–E06 are separate from the approved 210-minute T01–T12 baseline and await architecture selection.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Main component</th><th scope="col">Library / backend to consider</th><th scope="col">Proposed role</th><th scope="col">Decision state</th></tr></thead><tbody>
+<tr><td>Main agent</td><td>openai, or openai-agents as the framework alternative</td><td>Model calls and tool execution</td><td>openai installed; framework change proposed</td></tr>
+<tr><td>Stateful agent workflow</td><td>langgraph</td><td>Explicit workflow state and review/resume</td><td>Alternative; not installed</td></tr>
+<tr><td>Local record database</td><td>Python sqlite3 / SQLite</td><td>Customers, tickets, results, document metadata</td><td>Optional alternative; no schema created</td></tr>
+<tr><td>Classic RAG database</td><td>PostgreSQL + pgvector; psycopg client</td><td>Store chunks/embeddings; retrieve relevant passages</td><td>Recommended extension; not provisioned</td></tr>
+<tr><td>GraphRAG knowledge system</td><td>Neo4j + neo4j + neo4j-graphrag</td><td>Retrieve passages and traverse sourced entity relationships</td><td>Alternative extension; not provisioned</td></tr>
+<tr><td>Hosted retrieval</td><td>OpenAI retrieval / file search</td><td>Managed semantic retrieval alternative</td><td>Optional; no hosted resources created</td></tr>
+</tbody></table></div>
+<p>For classic RAG: import docs → chunk → embed → index → retrieve → cite → draft. For GraphRAG: add sourced entities/edges and bounded graph traversal to retrieval. LangGraph&#x27;s workflow graph does not by itself constitute GraphRAG. See AGENT_KNOWLEDGE_SPEC.md for source links, graph/schema details, bilingual evaluation, and E01–E06 acceptance checks.</p>
+<p>The full approved spec is docs/superpowers/specs/2026-10-09-ticket-triage-design.md. This checklist summarizes its requirements without changing them. TODO.md is the short working list; its T01–T12 identifiers match the task table below.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Spec area</th><th scope="col">Required behavior</th><th scope="col">Owning task</th></tr></thead><tbody>
+<tr><td>Input</td><td>Three whole conversations; four messages each; preserve ordering, relative times, Thai, and supplied translations; no invented timestamps</td><td>T03</td></tr>
+<tr><td>Extraction</td><td>Product, primary issue, sentiment, secondary issues; unknown product stays null</td><td>T04/T07</td></tr>
+<tr><td>Urgency</td><td>critical/high/medium/low based on impact and time sensitivity; account tier alone does not set severity</td><td>T04/T06/T08</td></tr>
+<tr><td>Actions</td><td>auto_respond, route_to_specialist, escalate_to_human; consistent destination; critical and sample-1 billing harm escalate</td><td>T04/T08</td></tr>
+<tr><td>Tools</td><td>Executable get_customer_history and search_knowledge_base; validate arguments; both succeed before completed demonstration triage</td><td>T05/T07</td></tr>
+<tr><td>Grounding</td><td>Use actual retrieved document IDs; label mock evidence; no invented refund, SLA, feature, or regional outage</td><td>T06/T08</td></tr>
+<tr><td>Output</td><td>All approved JSON fields; completed/fallback status; fallback escalates to human_support and may have null urgency</td><td>T04/T08</td></tr>
+<tr><td>Language</td><td>Preserve Thai input and use Thai in the Thai customer&#x27;s draft reply</td><td>T03/T06/T09</td></tr>
+<tr><td>Limits</td><td>30-second provider request timeout; maximum 6 model requests including retry; maximum 8 tool executions per ticket</td><td>T07</td></tr>
+<tr><td>Failure handling</td><td>Explicit errors for bad tools/arguments, missing history, invalid output, failed calls, or exhausted budgets; no fabricated successful triage</td><td>T07/T08</td></tr>
+<tr><td>Configuration</td><td>Environment key/model; no real keys in examples, logs, or commits; offline checks need no key</td><td>T02/T07/T12</td></tr>
+<tr><td>Verification</td><td>Deterministic fake-model tests; sample reasoning checks; live smoke test status reported separately</td><td>T09/T10</td></tr>
+<tr><td>Submission</td><td>Setup/run README, prompt, tool schemas/implementations, maximum-one-page write-up, repo or ZIP with actual .git</td><td>T11/T12</td></tr>
+</tbody></table></div>
+<p>Sample baseline: billing = high / billing_payments escalation; Thai access = critical / incident_on_call escalation; theme = low / product_support routing. These are approved project-policy expectations, not official assignment labels. Customer-reported charges and suspected regional outages remain unverified facts.</p>
+<h4>Everyday commands</h4>
+<pre><code>uv sync --locked
+uv run --locked triage-agent --help
+uv run --locked pytest
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv build</code></pre>
 <h3>1. Assignment conclusion</h3>
 <p>Build a small AI agent that reads the entire support-ticket conversation, classifies urgency, extracts product/issue/sentiment, retrieves relevant knowledge, and selects an appropriate next action. The important challenge is reasoning over changing context: a payment question becomes a financial escalation, a Thai access problem becomes a possible regional incident, and a dark-mode question becomes a bug report plus a feature request.</p>
 <p>The assignment recommends 150–240 minutes. It scores readability, maintainability, extensibility, and logic. A clear console application with observable tool calls and meaningful tests is a suitable submission; a chat UI is unnecessary.</p>
@@ -118,6 +169,7 @@ WRITEUP.md
 <p>Total: <strong>210 minutes</strong>. Critical build sequence: T01 → contracts/fixtures → tools/prompt → agent loop → policy/output → tests/demo → documentation/package.</p>
 <p>At 150 minutes, use the same two mocked tools, CLI, and three full tickets; reduce polish and test breadth, and reserve time for essential checks/documentation. At 240 minutes, spend the extra 30 minutes on broader failure/injection cases and bilingual evaluation. Do not add an API or chat UI at the expense of required deliverables.</p>
 <h4>Working checklist</h4>
+<p>Short working list with stack, spec checkpoints, and per-task deliverables: TODO.md. Progress: 2 of 12 tasks complete. Next: T03, sample fixtures.</p>
 <ul>
 <li>☑ T01 — Design approved by the user; use uv for package management</li>
 <li>☑ T02 — uv package/configuration and CLI startup implemented; 8 tests and packaging checks pass (docs/T02_SETUP_STATUS.md)</li>
@@ -150,6 +202,128 @@ WRITEUP.md
 <h3>10. GitHub repository and worktree plan</h3>
 <p>See GITHUB_REPO_PLAN.md for the proposed repository layout, initialization sequence, isolated worktree workflow, commit groups, optional issues, CI, and submission checks. Suggested repository: support-ticket-triage-agent; main as the default branch; one implementation branch/worktree. These names are recommendations, not resources already created.</p>
 <p>T02 initialized local Git and an ignored implementation worktree and created the private GitHub repository at https://github.com/Watcharaphong-kob/support-ticket-triage-agent. uv manages pyproject.toml and the committed uv.lock. Verify the full application and submit from main during T12. The repository tasks fit the existing 210-minute plan. For the ZIP fallback, package the primary repository with its actual .git directory rather than a linked worktree&#x27;s metadata pointer.</p></section>
+<section id="todo"><h2>Project TODO — Support Ticket Triage Agent</h2>
+<p>9 October 2026 · T01/T02 done · 2 of 12 tasks complete · Next: T03</p>
+<h3>Tech stack</h3>
+<p>Python &gt;=3.11 (development 3.12), uv with pyproject.toml + uv.lock, OpenAI SDK 2.54.0, Pydantic 2.14.0, argparse CLI, pytest 9.1.1, Ruff 0.16.10, setuptools packaging, UTF-8 JSON fixtures, Git/private GitHub. Offline GitHub Actions checks are planned; no workflow exists yet. Dependency versions are from the current uv.lock, not a promise to use those versions forever.</p>
+<p>Model: runner selects a tool-capable OpenAI GPT model through OPENAI_MODEL. Key: runner supplies OPENAI_API_KEY. No actual key goes into the repository. No chat UI, API service, database, or vector store is required by the approved design.</p>
+<h3>Spec checkpoints</h3>
+<p>Agent-library, database, and retrieval design: AGENT_KNOWLEDGE_SPEC.md. Current runtime is the OpenAI SDK with an explicit loop planned. Classic RAG recommendation: PostgreSQL + pgvector. Framework alternatives: openai-agents or langgraph. GraphRAG alternative: neo4j + neo4j-graphrag. New libraries/databases are proposed, not installed.</p>
+<p>Full spec: docs/superpowers/specs/2026-10-09-ticket-triage-design.md. Detailed tasks and requirements: PROJECT_TASK_PLANNER.md.</p>
+<ul>
+<li>☑ Python CLI and uv-managed package baseline; credential-free startup and safe configuration.</li>
+<li>☐ Preserve all three full conversations, Thai text, translations, and relative times.</li>
+<li>☐ Validate urgency, product/issue/sentiment, secondary issues, and all approved result fields.</li>
+<li>☐ Execute both customer-history and KB tools; keep mock facts clearly labeled.</li>
+<li>☐ Apply impact-based urgency and consistent auto-response/routing/escalation rules.</li>
+<li>☐ Ground replies in retrieved IDs; no invented refund, outage, SLA, or feature claims.</li>
+<li>☐ Generate Thai customer drafts for the Thai case.</li>
+<li>☐ Enforce 30-second timeout, maximum 6 model requests and 8 tool executions per ticket.</li>
+<li>☐ Make invalid output/tool failures visible; fallback escalates to human_support.</li>
+<li>☐ Test offline orchestration and sample reasoning; report live-model verification separately.</li>
+<li>☐ Finish README, prompt, tool definitions, one-page write-up, and clean-checkout submission checks.</li>
+</ul>
+<h3>Task list</h3>
+<ul>
+<li>☑ <strong>T01 — Design:</strong> approved Python CLI, severity/action rules, output/tool contracts, and limits.</li>
+<li>☑ <strong>T02 — Setup:</strong> uv package + lockfile, config, CLI, Git/worktree, private GitHub; 8 tests, Ruff, and builds pass.</li>
+<li>☐ <strong>T03 — Fixtures:</strong> data/sample_tickets.json and data/customers.json; three tickets, four messages each; synthetic IDs, Thai/translations, no invented dates.</li>
+<li>☐ <strong>T04 — Contracts:</strong> src/triage_agent/schemas.py; validated input/tool/output types, nullable unknowns, enumerations, and completed/fallback consistency.</li>
+<li>☐ <strong>T05 — Tools:</strong> src/triage_agent/tools.py and data/knowledge_base.json; two callable tools with schemas, bounded mock search, explicit misses/errors.</li>
+<li>☐ <strong>T06 — Prompt:</strong> prompts/system.txt; whole-thread reasoning, grounding, Thai replies, injection resistance, severity and action policy.</li>
+<li>☐ <strong>T07 — Agent:</strong> src/triage_agent/agent.py; GPT adapter, allowlisted tool dispatch, returned tool results, environment key/model, call limits and timeout.</li>
+<li>☐ <strong>T08 — Decisions/output:</strong> src/triage_agent/policy.py and CLI integration; consistent actions, validated citations, explicit fallback, JSON stdout and optional stderr traces.</li>
+<li>☐ <strong>T09 — Tests:</strong> tools, fake-model loop, policies, all three scenarios, errors, budgets, invalid citations, and injection attempts; keep offline checks key-free.</li>
+<li>☐ <strong>T10 — Demo:</strong> run three sample tickets; inspect reasoning and both tool calls; run live GPT smoke check when credentials are available and state actual verification status.</li>
+<li>☐ <strong>T11 — Docs:</strong> complete reviewer README and maximum-one-page WRITEUP.md; architecture, implemented safeguards, production evaluation, labeled examples.</li>
+<li>☐ <strong>T12 — Submission:</strong> clean-checkout run, checks/CI as applicable, secrets review, reviewer access, final repository commit or self-contained ZIP with .git.</li>
+</ul>
+<h3>Baseline case expectations</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Ticket</th><th scope="col">Urgency</th><th scope="col">Action / destination</th><th scope="col">Key check</th></tr></thead><tbody>
+<tr><td>1 — Charges / no Pro</td><td>high</td><td>escalate_to_human / billing_payments</td><td>Preserve deadline and reported financial harm; charges/refund state unverified</td></tr>
+<tr><td>2 — Thai access failure</td><td>critical</td><td>escalate_to_human / incident_on_call</td><td>Preserve coworker/browser evidence and status discrepancy; do not confirm an Asia-wide outage</td></tr>
+<tr><td>3 — Theme / scheduling</td><td>low</td><td>route_to_specialist / product_support</td><td>Separate possible cosmetic bug from feature request; do not invent availability</td></tr>
+</tbody></table></div>
+<p>These labels follow the approved project policy. The assignment supplies no official answer key. Track genuine implementation completion, not installed dependencies, when checking tasks off.</p>
+<h3>Agent / database / RAG extension TODOs</h3>
+<p>These tasks are outside the original 210-minute baseline. Full interfaces, data models, and acceptance criteria are in AGENT_KNOWLEDGE_SPEC.md. Choose the backend before adding dependencies.</p>
+<ul>
+<li>☐ E01 — Select main agent runtime and database/retrieval approach; review the architecture addendum.</li>
+<li>☐ E02 — Add only selected packages with uv; configure database and migrations; commit updated uv.lock.</li>
+<li>☐ E03 — Implement source/chunk IDs, idempotent ingestion, metadata, embedding model/dimensions, and versioned indexes.</li>
+<li>☐ E04 — Implement classic RAG/backend-neutral search behind the existing KB tool, with explicit no-match and citations.</li>
+<li>☐ E05 — If GraphRAG is selected: sourced entities/edges, bounded read-only traversal, and multi-hop test queries.</li>
+<li>☐ E06 — Evaluate English/Thai retrieval, provenance, stale sources, outages, and data isolation; compare relevance, groundedness, latency, and cost.</li>
+</ul></section>
+<section id="knowledge"><h2>Agent, Database, RAG and GraphRAG — Design Options</h2>
+<p>9 October 2026 · Proposed extension for review · No new libraries or databases installed</p>
+<h3>Recommendation</h3>
+<p>Keep the approved homework baseline: Python + uv + OpenAI SDK + Pydantic + two read-only tools. For a real knowledge system, start with <strong>classic RAG using PostgreSQL + pgvector</strong>. Consider <strong>Neo4j GraphRAG</strong> when questions require relationships across products, features, regions, and incidents. Choose the retrieval backend before implementation; the original T01–T12 plan remains the approved 210-minute baseline.</p>
+<p>Framework, database, and retrieval are separate decisions. An agent framework manages execution; a database stores facts; RAG retrieves supporting content. A workflow drawn as a graph is not itself GraphRAG.</p>
+<h3>1. Main agent library</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Option</th><th scope="col">Python package</th><th scope="col">What it does</th><th scope="col">Fit for this project</th></tr></thead><tbody>
+<tr><td>Current approved choice</td><td>openai</td><td>Model client; application owns tool dispatch, validation, limits, and state</td><td>Recommended for the small homework; installed at T02</td></tr>
+<tr><td>OpenAI Agents SDK</td><td>openai-agents</td><td>Agent runtime for tools, turns, guardrails, and orchestration</td><td>First framework alternative if you want the runtime to manage the loop; proposed, not installed</td></tr>
+<tr><td>LangGraph</td><td>langgraph</td><td>Stateful workflow orchestration with explicit control flow</td><td>Consider for durable multi-step workflows or human review/resume; proposed, not installed</td></tr>
+</tbody></table></div>
+<p>OpenAI documents the SDK as an application-side runtime that runs the loop and invokes application tools. See <a href="https://developers.openai.com/api/docs/guides/agents/sdk">OpenAI Agents SDK guidance</a>. LangGraph provides stateful agent orchestration; see <a href="https://docs.langchain.com/oss/python/langgraph/overview">LangGraph overview</a>.</p>
+<p>Choose one main orchestrator. Keep customer-history and knowledge-search implementations behind their existing tool contracts so the agent framework can change without replacing the data layer. Preserve the approved 30-second timeout, six-model-request budget, eight-tool-execution budget, output contract, and failure policy with any framework.</p>
+<p>The installed openai package is the model SDK. openai-agents is a separate proposed dependency, not already part of uv.lock. Versions for new packages must be resolved together with the existing stack when a path is selected.</p>
+<h3>2. Database choices</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Option</th><th scope="col">Library / service</th><th scope="col">Store</th><th scope="col">Retrieval role</th><th scope="col">Status</th></tr></thead><tbody>
+<tr><td>Homework fixtures</td><td>UTF-8 JSON</td><td>Sample customers, conversations, mock FAQ/docs</td><td>Deterministic mock search</td><td>Approved baseline; fixture/tool work pending</td></tr>
+<tr><td>Small local persistence</td><td>Python sqlite3 + SQLite</td><td>Customers, tickets, results, document metadata</td><td>Storage; semantic vector search needs a separate design</td><td>Optional; no extra Python package for sqlite3</td></tr>
+<tr><td>Recommended classic RAG</td><td>PostgreSQL + pgvector; psycopg and pgvector Python integration</td><td>Business records, documents/chunks, embeddings</td><td>Vector similarity plus optional keyword search</td><td>Proposed; not provisioned or installed</td></tr>
+<tr><td>GraphRAG</td><td>Neo4j; neo4j driver + neo4j-graphrag</td><td>Entities, relationships, chunks, embeddings, evidence</td><td>Vector/text retrieval followed by bounded graph traversal</td><td>Proposed; not provisioned or installed</td></tr>
+</tbody></table></div>
+<p>Python&#x27;s <a href="https://docs.python.org/3/library/sqlite3.html">sqlite3 documentation</a> describes its SQLite interface. <a href="https://github.com/pgvector/pgvector">pgvector</a> adds vector similarity search to PostgreSQL and supports combining it with PostgreSQL full-text search. <a href="https://neo4j.com/docs/neo4j-graphrag-python/current/user_guide_rag.html">Neo4j&#x27;s retrieval guide</a> describes vector, hybrid, and Cypher-augmented retrievers.</p>
+<p>Use PostgreSQL as the transactional store if selecting the classic-RAG path. A Neo4j path can retain JSON customer mocks for the homework, or use a separate transactional database later; do not add two databases without a concrete need. Keep customer history separate from the shared knowledge corpus.</p>
+<h3>3. Classic RAG spec — recommended extension</h3>
+<p><strong>Flow:</strong> FAQ/docs → clean and split → embed → index chunks → ticket query → retrieve relevant chunks → agent tool result → grounded draft and triage.</p>
+<p>Proposed components:</p>
+<ul>
+<li><strong>Ingestion:</strong> Import UTF-8 articles with source ID, title, language, product/issue metadata, source version, and mock/verified flag. Start with synthetic English and Thai test content. Stable article/chunk IDs and content hashes make re-ingestion idempotent.</li>
+<li><strong>Chunking:</strong> Preserve section boundaries and source links. Initial trial: 400–600 tokens per chunk with approximately 60 tokens of overlap; tune using retrieval tests, not assumptions. Use a tokenizer compatible with the selected embedding model.</li>
+<li><strong>Embedding:</strong> Select a multilingual-capable embedding model and configure it separately from the GPT model. Record model, output dimension, and index version; changing the embedding space requires re-embedding and rebuilding its compatible index.</li>
+<li><strong>Storage:</strong> documents(id, title, locale, source, version, content_hash, is_mock); chunks(id, document_id, text, metadata, embedding, embedding_model, index_version). Keep customer/ticket/result tables separate.</li>
+<li><strong>Retrieval:</strong> Start with top_k=5, metadata filters, and exact vector similarity for a small corpus. Add keyword/vector fusion only if evaluation shows a benefit. Validate Thai queries explicitly; English tokenization/stemming does not establish Thai retrieval quality.</li>
+<li><strong>Tool output:</strong> Preserve existing document id/title/excerpt/locale/is_mock fields. If adding chunk IDs, scores, or source versions, revise the tool schema and tests together. Scores are ranking signals, not confidence that a statement is true.</li>
+<li><strong>Generation:</strong> Pass retrieved evidence through search_knowledge_base. Require returned document IDs in knowledge_sources. No useful match means explicit uncertainty and appropriate routing/escalation, never invented policy.</li>
+</ul>
+<p>Proposed files: src/triage_agent/knowledge/{base.py,json_store.py,postgres_store.py,ingest.py}; migrations/; tests/test_retrieval.py; data/knowledge_base.json. Add only files needed by the selected backend. Agent code calls a backend-neutral search interface; it does not construct arbitrary SQL.</p>
+<p>OpenAI&#x27;s <a href="https://developers.openai.com/api/docs/guides/retrieval">retrieval guide</a> explains semantic retrieval and embeddings. The PostgreSQL design here is our proposal; it is not an instruction to use OpenAI-hosted vector stores.</p>
+<h3>4. GraphRAG spec — alternative extension</h3>
+<p><strong>Flow:</strong> FAQ/docs → chunks + sourced entities/edges → Neo4j graph and indexes → vector/keyword seed retrieval → bounded relationship traversal → cited context → agent result.</p>
+<p>Use Neo4j&#x27;s HybridCypherRetriever or VectorCypherRetriever when graph relationships add evidence. HybridRetriever alone combines vector/text search; graph expansion requires a traversal stage. The <a href="https://neo4j.com/docs/neo4j-graphrag-python/current/user_guide_rag.html">Neo4j retrieval guide</a> distinguishes these retrievers.</p>
+<p>Proposed graph model:</p>
+<ul>
+<li>Nodes: Article, Chunk, Product, Feature, IssueType, Region, Incident.</li>
+<li>Edges: Article HAS_CHUNK Chunk; Chunk MENTIONS entity; Article ADDRESSES IssueType; Feature BELONGS_TO Product; sourced Incident AFFECTS Product/Region.</li>
+<li>Every factual edge carries source_document_id, source_chunk_id, source_version, and verification/mock status. Unconfirmed customer suspicions must not become verified incident edges.</li>
+<li>Start with manually curated synthetic relationships, then evaluate model-based entity/edge extraction separately. Retain original chunks as the evidence; graph summaries do not replace citations.</li>
+<li>Trial retrieval bounds: five seed chunks and at most two graph hops. Cap returned context and deduplicate citations; evaluate whether expansion improves relevant evidence over classic RAG.</li>
+<li>Run allowlisted parameterized read-only traversal queries. A model-generated arbitrary Cypher query is outside this design.</li>
+</ul>
+<p>Microsoft&#x27;s <a href="https://microsoft.github.io/graphrag/">GraphRAG project</a> is another graph-based knowledge approach. It is a separate indexing/query pipeline; it is not the Neo4j library and is not required for this homework. Compare it only if corpus-level graph summaries become a concrete requirement.</p>
+<p>Good trial query: find documented issues for a product in a region and trace which articles/incident evidence support the answer. The supplied Thai ticket alone cannot prove an Asia-wide incident; GraphRAG must preserve that uncertainty too.</p>
+<h3>5. Decision and acceptance criteria</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Criterion</th><th scope="col">Classic RAG</th><th scope="col">GraphRAG</th></tr></thead><tbody>
+<tr><td>Main evidence</td><td>Relevant document passages</td><td>Passages plus sourced relationships</td></tr>
+<tr><td>Starting corpus</td><td>FAQ/how-to/policy documents</td><td>Corpus with useful product/feature/region/incident links</td></tr>
+<tr><td>Extra work</td><td>Chunking, embeddings, vector index, retrieval evaluation</td><td>Classic retrieval concerns plus graph schema, entity linking, edge provenance, traversal evaluation</td></tr>
+<tr><td>Default recommendation</td><td>Start here for this project</td><td>Adopt when relationship tests show measurable benefit</td></tr>
+</tbody></table></div>
+<p>Acceptance: source/chunk IDs resolve; re-ingestion is idempotent; no cross-customer history leakage; no-match is explicit; English/Thai retrieval tests pass; outdated source versions are identifiable; citations only use retrieved evidence; database outage follows the approved fallback. Measure retrieval recall@5, answer groundedness, routing accuracy, latency, and indexing/query cost. Compare both approaches on the same queries rather than assuming a graph is better.</p>
+<h3>6. Extension TODOs — outside the original time estimate</h3>
+<ul>
+<li>☐ E01 — Choose main agent runtime and JSON/SQLite/PostgreSQL/Neo4j backend; update and review the architecture addendum before coding.</li>
+<li>☐ E02 — Add selected dependencies with uv and commit uv.lock; document local database configuration and migrations using synthetic data.</li>
+<li>☐ E03 — Implement stable article/chunk ingestion and idempotent updates; configure embedding model/dimension/index version if using semantic retrieval.</li>
+<li>☐ E04 — Implement selected RAG search backend behind search_knowledge_base; retain the JSON mock adapter for offline tests.</li>
+<li>☐ E05 — If GraphRAG is selected, add sourced graph nodes/edges, bounded read-only traversals, and relationship-specific evaluation queries.</li>
+<li>☐ E06 — Run bilingual retrieval, no-match, stale-source, outage, provenance, and isolation tests; compare baseline versus retrieval extension; document cost/latency and exact verification status.</li>
+</ul>
+<p>These are planning tasks, not installed capabilities or an approved change to the T01 baseline. Re-estimate extension work after backend selection; it is not included in the 210 minutes for T01–T12.</p></section>
 <section id="github"><h2>GitHub Repository Plan — Support Ticket Triage Agent</h2>
 <p>Planning addition · 9 October 2026 · Complements PROJECT_TASK_PLANNER.md</p>
 <h3>1. Current state and proposed repository</h3>

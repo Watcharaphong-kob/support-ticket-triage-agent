@@ -47,6 +47,8 @@ Use uv add for runtime dependencies and uv add --dev for development tools. Comm
 ## Planning documents
 
 - PROJECT_TASK_PLANNER.md — tasks and acceptance criteria.
+- TODO.md — tech stack, spec checkpoints, and current working task list.
+- AGENT_KNOWLEDGE_SPEC.md — proposed agent libraries, databases, RAG/GraphRAG designs, and extension tasks.
 - GITHUB_REPO_PLAN.md — branches, worktrees, CI, submission.
 - docs/superpowers/specs/2026-10-09-ticket-triage-design.md — approved design.
 - ASSIGNMENT_READER.html — readable source and planning documents; opens offline.

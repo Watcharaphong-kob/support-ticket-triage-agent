@@ -2,6 +2,72 @@
 
 T01 approved · T02 setup complete · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx
 
+## Tech stack — approved choices
+
+Versions below come from the current project and uv.lock. Installed dependencies do not mean the full agent is implemented. T01 and T02 are done; T03–T12 remain.
+
+| Area | Technology / version | Job | Status |
+| --- | --- | --- | --- |
+| Language | Python >=3.11; development default 3.12 | CLI and agent implementation | Package ready |
+| Package manager | uv; installed 0.12.6 | Manage .venv, dependency resolution, and uv.lock | Ready |
+| GPT integration | OpenAI Python SDK 2.54.0 | Model requests and tool-call messages | Installed; integration at T07 |
+| Validation | Pydantic 2.14.0 | Ticket, tool, and result schemas | Installed; contracts at T04 |
+| CLI | Python argparse; triage-agent / python -m triage_agent | Input arguments, JSON output, optional traces | Startup ready; processing pending |
+| Tests | pytest 9.1.1 | Offline unit/integration tests | 8 setup tests pass; agent tests at T09 |
+| Code checks | Ruff 0.16.10 | Lint and formatting | Setup checks pass |
+| Packaging | setuptools >=77 build backend | Build wheel and source distribution | Build verified |
+| Data and retrieval | UTF-8 JSON fixtures; deterministic mock KB search | Conversations, history, and FAQ evidence | T03/T05 |
+| Version control | Git + private GitHub repository | Commits, branches, worktree, submission | Ready |
+| CI | GitHub Actions with uv — planned | Run offline checks without a key | Not created |
+
+Use pyproject.toml for declared dependencies and uv.lock for exact resolved versions. Model selection remains OPENAI_MODEL supplied by the runner; no model version is assumed. Scope is a CLI with two read-only mock tools and JSON results. An API, chat UI, database, and vector store are outside the approved scope.
+
+## Spec — implementation checklist
+
+Expanded library/database/retrieval options are documented in AGENT_KNOWLEDGE_SPEC.md. Recommended extension: existing OpenAI SDK agent + PostgreSQL/pgvector classic RAG. Alternatives: OpenAI Agents SDK or LangGraph for orchestration, SQLite for local records, and Neo4j GraphRAG for relationship-based retrieval. These additions are proposed; none are installed or provisioned. Extension tasks E01–E06 are separate from the approved 210-minute T01–T12 baseline and await architecture selection.
+
+| Main component | Library / backend to consider | Proposed role | Decision state |
+| --- | --- | --- | --- |
+| Main agent | openai, or openai-agents as the framework alternative | Model calls and tool execution | openai installed; framework change proposed |
+| Stateful agent workflow | langgraph | Explicit workflow state and review/resume | Alternative; not installed |
+| Local record database | Python sqlite3 / SQLite | Customers, tickets, results, document metadata | Optional alternative; no schema created |
+| Classic RAG database | PostgreSQL + pgvector; psycopg client | Store chunks/embeddings; retrieve relevant passages | Recommended extension; not provisioned |
+| GraphRAG knowledge system | Neo4j + neo4j + neo4j-graphrag | Retrieve passages and traverse sourced entity relationships | Alternative extension; not provisioned |
+| Hosted retrieval | OpenAI retrieval / file search | Managed semantic retrieval alternative | Optional; no hosted resources created |
+
+For classic RAG: import docs → chunk → embed → index → retrieve → cite → draft. For GraphRAG: add sourced entities/edges and bounded graph traversal to retrieval. LangGraph's workflow graph does not by itself constitute GraphRAG. See AGENT_KNOWLEDGE_SPEC.md for source links, graph/schema details, bilingual evaluation, and E01–E06 acceptance checks.
+
+The full approved spec is docs/superpowers/specs/2026-10-09-ticket-triage-design.md. This checklist summarizes its requirements without changing them. TODO.md is the short working list; its T01–T12 identifiers match the task table below.
+
+| Spec area | Required behavior | Owning task |
+| --- | --- | --- |
+| Input | Three whole conversations; four messages each; preserve ordering, relative times, Thai, and supplied translations; no invented timestamps | T03 |
+| Extraction | Product, primary issue, sentiment, secondary issues; unknown product stays null | T04/T07 |
+| Urgency | critical/high/medium/low based on impact and time sensitivity; account tier alone does not set severity | T04/T06/T08 |
+| Actions | auto_respond, route_to_specialist, escalate_to_human; consistent destination; critical and sample-1 billing harm escalate | T04/T08 |
+| Tools | Executable get_customer_history and search_knowledge_base; validate arguments; both succeed before completed demonstration triage | T05/T07 |
+| Grounding | Use actual retrieved document IDs; label mock evidence; no invented refund, SLA, feature, or regional outage | T06/T08 |
+| Output | All approved JSON fields; completed/fallback status; fallback escalates to human_support and may have null urgency | T04/T08 |
+| Language | Preserve Thai input and use Thai in the Thai customer's draft reply | T03/T06/T09 |
+| Limits | 30-second provider request timeout; maximum 6 model requests including retry; maximum 8 tool executions per ticket | T07 |
+| Failure handling | Explicit errors for bad tools/arguments, missing history, invalid output, failed calls, or exhausted budgets; no fabricated successful triage | T07/T08 |
+| Configuration | Environment key/model; no real keys in examples, logs, or commits; offline checks need no key | T02/T07/T12 |
+| Verification | Deterministic fake-model tests; sample reasoning checks; live smoke test status reported separately | T09/T10 |
+| Submission | Setup/run README, prompt, tool schemas/implementations, maximum-one-page write-up, repo or ZIP with actual .git | T11/T12 |
+
+Sample baseline: billing = high / billing_payments escalation; Thai access = critical / incident_on_call escalation; theme = low / product_support routing. These are approved project-policy expectations, not official assignment labels. Customer-reported charges and suspected regional outages remain unverified facts.
+
+### Everyday commands
+
+```powershell
+uv sync --locked
+uv run --locked triage-agent --help
+uv run --locked pytest
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv build
+```
+
 ## 1. Assignment conclusion
 
 Build a small AI agent that reads the entire support-ticket conversation, classifies urgency, extracts product/issue/sentiment, retrieves relevant knowledge, and selects an appropriate next action. The important challenge is reasoning over changing context: a payment question becomes a financial escalation, a Thai access problem becomes a possible regional incident, and a dark-mode question becomes a bug report plus a feature request.
@@ -121,6 +187,8 @@ Total: **210 minutes**. Critical build sequence: T01 → contracts/fixtures → 
 At 150 minutes, use the same two mocked tools, CLI, and three full tickets; reduce polish and test breadth, and reserve time for essential checks/documentation. At 240 minutes, spend the extra 30 minutes on broader failure/injection cases and bilingual evaluation. Do not add an API or chat UI at the expense of required deliverables.
 
 ### Working checklist
+
+Short working list with stack, spec checkpoints, and per-task deliverables: TODO.md. Progress: 2 of 12 tasks complete. Next: T03, sample fixtures.
 
 - [x] T01 — Design approved by the user; use uv for package management
 - [x] T02 — uv package/configuration and CLI startup implemented; 8 tests and packaging checks pass (docs/T02_SETUP_STATUS.md)
