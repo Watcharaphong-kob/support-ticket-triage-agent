@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="OOCA AI Engineer homework: readable assignment, summary, and draft project task planner."><title>OOCA Assignment — Reader &amp; Project Planner</title><style>
+:root{--ink:#18263a;--muted:#526176;--accent:#125b60;--paper:#fff;--bg:#f1f5f7;--line:#dce5e9}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:1.5rem}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Leelawadee UI",Tahoma,Arial,sans-serif;line-height:1.75;font-size:16px}
+.hero{background:#173a42;color:white;padding:48px max(24px,calc((100vw - 1180px)/2))}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#bce6de;font-weight:700}.hero h1{font-size:clamp(30px,4vw,48px);line-height:1.15;margin:12px 0 18px;max-width:900px}.hero p{max-width:820px;color:#daeeee;margin:0}.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.badge{padding:5px 12px;border:1px solid #66888b;border-radius:24px;font-size:13px}
+.layout{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:215px minmax(0,1fr);gap:28px;padding:32px 24px 64px}nav{position:sticky;top:24px;align-self:start}nav p{font-size:12px;font-weight:700;text-transform:uppercase;color:var(--muted);letter-spacing:.1em}nav a{display:block;padding:10px 12px;margin:4px 0;text-decoration:none;color:var(--ink);border-radius:8px}nav a:hover,nav a:focus{background:#dfece9;color:var(--accent)}nav small{display:block;margin:20px 12px;color:var(--muted)}main{min-width:0}section{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 34px;margin-bottom:24px;box-shadow:0 3px 14px #162b3810}h2{font-size:26px;line-height:1.3;margin:14px 0 22px}h3{font-size:21px;line-height:1.4;margin-top:32px}h4{font-size:17px;margin-top:26px}p{margin:12px 0}li{margin:8px 0}ul{padding-left:24px}.note{border-left:4px solid var(--accent);background:#edf6f3;padding:14px 18px;color:#28454b;margin-bottom:24px}.table-scroll{overflow-x:auto;margin:20px 0;max-width:100%}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}th,td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid var(--line);min-width:100px}th{background:#eaf2f3;font-weight:700}tbody tr:nth-child(even){background:#fafcfc}pre{background:#172c3b;color:#e9f2f6;padding:20px;overflow:auto;border-radius:9px;line-height:1.65;font-size:13px}code{font-family:Consolas,monospace}.message{background:#f4f7fa;border-left:3px solid #94b4bb;padding:16px 20px;border-radius:0 8px 8px 0;white-space:pre-wrap;overflow-wrap:anywhere}.requirement{padding-left:16px;border-left:2px solid #dbe7e6}footer{color:var(--muted);font-size:13px;padding:8px 4px}.skip{position:absolute;left:-10000px}.skip:focus{left:16px;top:16px;background:white;padding:10px;z-index:2}
+@media(max-width:900px){.layout{grid-template-columns:1fr;padding:20px 14px}nav{position:static;display:flex;flex-wrap:wrap;gap:6px}nav p,nav small{display:none}nav a{background:#e5eeef;font-size:14px}section{padding:22px 20px}.hero{padding:32px 22px}}
+@media print{body{background:white;font-size:10pt}.hero{background:white;color:#18263a;padding:0 0 20px}.hero p,.eyebrow{color:#526176}.badges,nav,.skip{display:none}.layout{display:block;max-width:none;padding:0}section{border:0;box-shadow:none;padding:0;border-radius:0;margin:24px 0}h2,h3,h4{break-after:avoid}tr,.message{break-inside:avoid}.table-scroll{overflow:visible}table{font-size:9pt}pre{background:#f0f3f5;color:#18263a;white-space:pre-wrap}a{color:inherit}}
+</style></head><body>
+<a class="skip" href="#summary">Skip to content</a>
+<header class="hero"><div class="eyebrow">OOCA · AI Engineer Homework</div><h1>Support Ticket<br>Triage Agent</h1><p>Your assignment, explained clearly and organized into a practical project plan. Read the summary first, then the proposed tasks, or jump to the complete source document.</p><div class="badges"><span class="badge">150–240 min recommended</span><span class="badge">2+ tools</span><span class="badge">3 sample conversations</span><span class="badge">CLI or API</span></div></header>
+<div class="layout"><nav aria-label="Document sections"><p>Reading guide</p><a href="#summary">01 · Assignment summary</a><a href="#planner">02 · Project task planner</a><a href="#github">03 · GitHub repo plan</a><a href="#t01">04 · T01 design decisions</a><a href="#original">05 · Original assignment</a><small>Planning draft · 9 Oct 2026<br>Works offline · Print with Ctrl+P</small></nav><main>
+<section id="summary"><h2>Assignment Summary</h2>
+<h3>What you need to build</h3>
+<p>A Support Ticket Triage Agent that uses an OpenAI GPT model to process complete customer conversations, classify urgency (critical/high/medium/low), extract product/issue type/sentiment, search a knowledge base, and choose auto-response, specialist routing, or human escalation. Use at least two executable tools; mocks are allowed.</p>
+<h3>What you need to submit</h3>
+<ul>
+<li>Working code processing the three supplied tickets.</li>
+<li>The system prompt and tool schemas plus implementations.</li>
+<li>A README explaining setup and execution.</li>
+<li>A write-up of at most one page covering architecture decisions, failure handling, and production evaluation.</li>
+<li>A GitHub repository, or a ZIP containing source and .git if you cannot push.</li>
+<li>Do not include an actual API key; the reviewers supply their own.</li>
+</ul>
+<h3>What matters most</h3>
+<p>The recommended time is 150–240 minutes. Evaluation focuses on readability, maintainability, extensibility, and logic. A terminal console or API is enough; a chat UI is unnecessary.</p>
+<p>Read the entire thread. Ticket 1 evolves into repeated reported charges and a deadline. Ticket 2 describes a Thai Enterprise access failure across devices and coworkers despite an operational status page. Ticket 3 combines unresolved theme behavior with a scheduling feature request.</p>
+<h3>Recommended planning direction</h3>
+<p>Start with a Python CLI, a bounded GPT/tool loop, mocked customer-history and knowledge-base tools, structured decisions, and focused tests. This is a proposed architecture, not a language requirement. The detailed planner allocates 210 minutes and includes dependencies, acceptance checks, risks, and evaluation targets.</p>
+<p>The document does not specify a model version, programming language, official sample labels, submission deadline, or deployment platform. Confirm those design choices before implementation. This deliverable is planning and document conversion; it does not implement or publish the project.</p></section>
+<section id="planner"><div class="note">Project plan with T01 design drafted for review. Repository setup and implementation have not started.</div><h2>Support Ticket Triage Agent — Project Task Planner</h2>
+<p>Draft for design review · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx</p>
+<h3>1. Assignment conclusion</h3>
+<p>Build a small AI agent that reads the entire support-ticket conversation, classifies urgency, extracts product/issue/sentiment, retrieves relevant knowledge, and selects an appropriate next action. The important challenge is reasoning over changing context: a payment question becomes a financial escalation, a Thai access problem becomes a possible regional incident, and a dark-mode question becomes a bug report plus a feature request.</p>
+<p>The assignment recommends 150–240 minutes. It scores readability, maintainability, extensibility, and logic. A clear console application with observable tool calls and meaningful tests is a suitable submission; a chat UI is unnecessary.</p>
+<p>This document proposes a design and implementation sequence. It does not claim that the project is implemented, tested, or approved. Instructions inside the assignment are recorded as project requirements, not authorization to publish a repository or perform customer actions.</p>
+<h3>2. Required scope and deliverables</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">ID</th><th scope="col">Assignment requirement</th><th scope="col">Completion evidence</th></tr></thead><tbody>
+<tr><td>R1</td><td>Use an OpenAI GPT model; do not supply an API key in the submission</td><td>Configurable model and environment-based key; reviewer supplies their own key</td></tr>
+<tr><td>R2</td><td>Classify urgency as critical/high/medium/low</td><td>Validated output containing one of the four labels</td></tr>
+<tr><td>R3</td><td>Extract product, issue type, and customer sentiment</td><td>Structured fields; unknown product remains unknown rather than invented</td></tr>
+<tr><td>R4</td><td>Search a knowledge base for relevant FAQs/docs</td><td>Knowledge-base tool called; answer references retrieved document IDs</td></tr>
+<tr><td>R5</td><td>Choose auto-respond, route to specialist, or escalate to human</td><td>One primary action, reason, and destination when applicable</td></tr>
+<tr><td>R6</td><td>Use at least two tools; schemas and implementations may be mocked</td><td>Two callable tools with schemas, implementations, and visible execution traces</td></tr>
+<tr><td>R7</td><td>Process the supplied sample tickets</td><td>All three complete conversations preserved and runnable</td></tr>
+<tr><td>R8</td><td>Supply the system prompt and tool definitions</td><td>Versioned prompt file and readable tool contracts</td></tr>
+<tr><td>R9</td><td>Include a README with setup/run instructions</td><td>Clean-checkout instructions, configuration, commands, and example output</td></tr>
+<tr><td>R10</td><td>Brief write-up, maximum one page</td><td>Architecture/why, failure handling, and production evaluation</td></tr>
+<tr><td>R11</td><td>Source in GitHub, or ZIP containing source and .git if unable to push</td><td>Reviewable repository or archive, with secrets excluded</td></tr>
+</tbody></table></div>
+<p>Optional enhancements: JSON output, a minimal API, extra tools, or a larger knowledge base. Keep these behind completion of R1–R11.</p>
+<h3>3. Approaches to consider</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Approach</th><th scope="col">Benefit</th><th scope="col">Trade-off</th></tr></thead><tbody>
+<tr><td>Python CLI with a small explicit tool loop — recommended draft</td><td>Compact structure; easy to demonstrate decisions and tool calls within the time budget</td><td>Requires implementing a bounded dispatch loop and output validation</td></tr>
+<tr><td>TypeScript CLI with the same contracts</td><td>Good fit if TypeScript is your strongest language; explicit typed interfaces</td><td>More setup if the project and environment are new</td></tr>
+<tr><td>API service with an agent framework</td><td>Useful for HTTP integration or a framework you already know</td><td>Adds integration work that the assignment does not require</td></tr>
+</tbody></table></div>
+<p>Recommendation: choose the Python CLI unless your experience strongly favors TypeScript. No particular language, framework, GPT model version, vector database, or deployment platform is specified by the document. These are proposed choices, not assignment requirements.</p>
+<h3>4. Proposed architecture</h3>
+<p>Flow: ticket JSON → input validation → GPT agent with tools → tool dispatcher → mocked customer history/knowledge base → final triage JSON → validation and action policy → console output and trace.</p>
+<ul>
+<li><strong>Ticket loader:</strong> Preserve customer metadata, every message, ordering, relative times, Thai text, and supplied translations. Process each conversation as one ticket, not four unrelated tickets.</li>
+<li><strong>Agent:</strong> Give the model the full ticket, a system prompt, and two tool definitions. Execute requested tool calls and return their results to the model until it produces a final result or reaches a configured limit.</li>
+<li><strong>Tools:</strong> Keep tool implementations independent of the model so mocked data can later be replaced with real services without rewriting triage logic.</li>
+<li><strong>Validation/policy:</strong> Validate enumerations and required fields; reject unsupported document citations and contradictory action fields. On unrecoverable failure, produce an explicit human-review fallback instead of fabricating a successful triage.</li>
+<li><strong>Output/trace:</strong> Print structured triage and a redacted tool trace that demonstrates retrieval and customer context use. The CLI recommends actions; it does not send replies, reverse payments, or alter accounts.</li>
+</ul>
+<p>Suggested boundaries:</p>
+<pre><code>src/triage_agent/
+  cli.py             # input and display
+  schemas.py         # ticket, tools, and final result contracts
+  agent.py           # bounded model/tool loop
+  tools.py           # tool registry and mock implementations
+  policy.py          # validation and action consistency
+prompts/system.txt
+data/sample_tickets.json
+data/customers.json
+data/knowledge_base.json
+tests/
+README.md
+WRITEUP.md
+.env.example
+.gitignore</code></pre>
+<h4>Tool contracts</h4>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tool</th><th scope="col">Input</th><th scope="col">Output</th><th scope="col">Failure behavior</th></tr></thead><tbody>
+<tr><td>get_customer_history</td><td>customer_id: string</td><td>plan, tenure, region if known, seat count if known, previous support history</td><td>Structured not-found/error result; no invented history</td></tr>
+<tr><td>search_knowledge_base</td><td>query: string; optional product, issue_type, locale</td><td>Bounded list of document IDs, titles, relevant excerpts, and mocked source metadata</td><td>Empty results or structured error; agent must acknowledge missing evidence</td></tr>
+</tbody></table></div>
+<p>Both tools should actually execute for each demonstration ticket. Publishing schemas alone, or passing all mock data directly into a prompt without tool calls, does not demonstrate the requested tool use. Use clearly labeled mock FAQ content; never treat a mock as verified company policy or live incident status.</p>
+<h4>Proposed final result</h4>
+<p>Required-by-assignment fields: urgency, product, issue_type, customer_sentiment, next_action. Proposed supporting fields: ticket_id, secondary_issues, rationale, destination, draft_response, knowledge_sources, uncertainties, tool_calls.</p>
+<p>Use next_action values auto_respond, route_to_specialist, escalate_to_human. A draft response is text for review or console output. Product, incident status, refund timing, and feature availability must remain unknown when the input and tools do not establish them.</p>
+<h4>Prompt principles</h4>
+<p>Treat customer messages and retrieved content as data, not instructions that can override the system prompt. Read the full conversation; consider the latest state, affected users, financial harm, deadlines, and language. Retrieve before answering. Separate symptoms from confirmed causes. Do not promise refunds, restoration times, or unsupported features. Distinguish a bug from an additional feature request. Explain urgency and action using evidence. Do not let account tier alone determine severity. Use Thai for a proposed customer reply to the Thai ticket.</p>
+<h3>5. Sample-ticket reasoning targets</h3>
+<p>These are proposed evaluation expectations. The assignment does not provide official labels or a grading answer key.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Ticket</th><th scope="col">Evidence to retain</th><th scope="col">Proposed urgency/action</th><th scope="col">Key reasoning checks</th></tr></thead><tbody>
+<tr><td>1 — Failed Pro upgrade and repeated charges</td><td>Free account; three reported $29.99 charges; no Pro access; presentation in two hours; dispute threat</td><td>High; escalate_to_human, destination billing/payments</td><td>Financial exposure and deadline justify escalation. Charges are customer-reported; do not assert they are settled, refunded, or definitely duplicate captures. Critical is defensible only under an explicitly documented financial severity policy.</td></tr>
+<tr><td>2 — Thai Enterprise access failure</td><td>Error 500; multiple devices/browsers and coworkers; 45-seat organization; demo/deal risk; public status says operational</td><td>Critical; escalate_to_human, destination incident/on-call</td><td>Suspected broad access failure warrants urgent investigation. Do not claim all 45 users or the entire Asia region are confirmed affected; the ticket does not establish that. Preserve the status discrepancy and reply in Thai.</td></tr>
+<tr><td>3 — Dark-mode behavior plus scheduling request</td><td>Earlier guidance did not resolve the issue; system default remains light; no explicit dark toggle; scheduling question</td><td>Low; route_to_specialist, destination product support</td><td>Separate a possible theme bug from a scheduling feature request. Verify behavior against the mock knowledge base; medium or auto_respond may be justified by documented evidence/policy. Do not blindly repeat the previous unsuccessful advice or invent feature availability.</td></tr>
+</tbody></table></div>
+<h3>6. Task planner — recommended 210-minute baseline</h3>
+<p>Estimates are planning assumptions, not guaranteed durations. Dependencies identify what should be complete before starting a task.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Min</th><th scope="col">Depends on</th><th scope="col">Work</th><th scope="col">Acceptance check</th></tr></thead><tbody>
+<tr><td>T01</td><td>10</td><td>—</td><td>Confirm CLI/language, output contract, and severity/action policy</td><td>Record choices and reasoning targets; clarify ambiguity without adding a UI</td></tr>
+<tr><td>T02</td><td>10</td><td>T01</td><td>Create project packaging, configuration, ignore rules, and CLI entry point</td><td>Entry point runs; example config has no real secrets; dependency versions recorded</td></tr>
+<tr><td>T03</td><td>15</td><td>T01</td><td>Encode all three conversations and customer fixtures</td><td>Four messages per ticket; Thai/English and relative times preserved; fabricated IDs labeled fixtures</td></tr>
+<tr><td>T04</td><td>15</td><td>T01, T03</td><td>Define ticket/result schemas and validation</td><td>Invalid urgency/action rejected; unknown values supported; multi-issue output supported</td></tr>
+<tr><td>T05</td><td>20</td><td>T03, T04</td><td>Implement customer-history and knowledge-base tools with schemas</td><td>Both callable independently; misses/errors explicit; mock KB facts labeled</td></tr>
+<tr><td>T06</td><td>15</td><td>T01, T04, T05</td><td>Write the system prompt</td><td>Covers whole-thread reasoning, grounded answers, Thai, escalation, and untrusted content</td></tr>
+<tr><td>T07</td><td>35</td><td>T02, T04, T05, T06</td><td>Integrate GPT and bounded tool-call execution</td><td>Real tool results returned to model; both tools executed; unknown tool/timeout/loop limit handled</td></tr>
+<tr><td>T08</td><td>20</td><td>T04, T07</td><td>Validate decisions; add fallback and readable JSON/trace output</td><td>Consistent action/destination; no unsupported citations/promises; failures visible</td></tr>
+<tr><td>T09</td><td>25</td><td>T03, T05, T08</td><td>Add focused unit and agent-loop tests using a fake model</td><td>Three ticket cases, no KB match, tool error, invalid output, and injection case covered</td></tr>
+<tr><td>T10</td><td>15</td><td>T08, T09</td><td>Run all sample tickets; inspect one live GPT smoke run when a key is available</td><td>Outputs justified; two tools per ticket demonstrated; live versus mocked verification reported honestly</td></tr>
+<tr><td>T11</td><td>20</td><td>T01–T10</td><td>Write README and a maximum-one-page write-up</td><td>Setup/run/tests/config documented; write-up addresses architecture, failures, evaluation</td></tr>
+<tr><td>T12</td><td>10</td><td>T09–T11</td><td>Verify from clean checkout and prepare repository/archive</td><td>All required files present; no secrets; reproducible commands; repository or ZIP with .git</td></tr>
+</tbody></table></div>
+<p>Total: <strong>210 minutes</strong>. Critical build sequence: T01 → contracts/fixtures → tools/prompt → agent loop → policy/output → tests/demo → documentation/package.</p>
+<p>At 150 minutes, use the same two mocked tools, CLI, and three full tickets; reduce polish and test breadth, and reserve time for essential checks/documentation. At 240 minutes, spend the extra 30 minutes on broader failure/injection cases and bilingual evaluation. Do not add an API or chat UI at the expense of required deliverables.</p>
+<h4>Working checklist</h4>
+<ul>
+<li>☐ T01 — Design drafted in docs/superpowers/specs/2026-10-09-ticket-triage-design.md; user review pending</li>
+<li>☐ T02 — Runnable project/configuration</li>
+<li>☐ T03 — Complete sample fixtures</li>
+<li>☐ T04 — Validated contracts</li>
+<li>☐ T05 — Two executable tools</li>
+<li>☐ T06 — System prompt</li>
+<li>☐ T07 — GPT/tool loop</li>
+<li>☐ T08 — Policy, fallback, output, traces</li>
+<li>☐ T09 — Focused tests</li>
+<li>☐ T10 — Sample runs and recorded verification</li>
+<li>☐ T11 — README and one-page write-up</li>
+<li>☐ T12 — Clean-checkout verification and submission package</li>
+</ul>
+<h3>7. Verification and production evaluation</h3>
+<p>For the homework, use deterministic fake-model tests for dispatch/validation and evidence-based assertions for the sample cases. Live model results can vary; assess supported reasoning and action consistency instead of requiring an exact response string. Offline tests demonstrate orchestration, but do not prove that live GPT integration works. If no key is available, document that limitation and give the reviewer a live-run command.</p>
+<p>In production, build a human-labeled dataset covering all urgency levels, action types, issue categories, languages, and multi-message changes. Measure urgency macro-F1 and critical recall, action accuracy, extraction accuracy, grounded-response quality, tool failures, latency, and cost per ticket. Track harmful auto-responses and missed escalations separately. Use human review and sampled disagreement analysis to update the prompt, knowledge base, and policy. Redact customer data in logs; use synthetic fixtures for the homework.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Failure</th><th scope="col">Planned handling</th></tr></thead><tbody>
+<tr><td>Missing key/model access or upstream timeout</td><td>Clear configuration/error output; bounded retries where appropriate; no fake success</td></tr>
+<tr><td>Tool failure, unknown customer, or empty KB</td><td>Explicit tool error/empty result; record uncertainty; human-review fallback when an answer cannot be supported</td></tr>
+<tr><td>Invalid model output or endless calls</td><td>Validate result; cap tool rounds/retries; return a visible fallback result</td></tr>
+<tr><td>Hallucinated cause, refund, SLA, or feature</td><td>Require evidence; validate references; prohibit unsupported promises</td></tr>
+<tr><td>Prompt injection in ticket or KB</td><td>Keep data separate from system instructions; allowlisted tool dispatch; no tools that mutate customer accounts</td></tr>
+<tr><td>Misread Thai or evolving thread</td><td>Preserve source text; bilingual test cases; evaluate full conversations and latest unresolved state</td></tr>
+</tbody></table></div>
+<h3>8. One-page write-up outline</h3>
+<p>Use three concise paragraphs in WRITEUP.md: (1) why a CLI, explicit tool loop, structured results, and replaceable mock tools fit the assignment; (2) the most important failure modes and concrete safeguards implemented; (3) production evaluation using human labels, critical recall, groundedness, action quality, latency/cost, and ongoing review. Describe the final implementation honestly; do not claim proposed safeguards already exist.</p>
+<h3>9. Design decisions still open</h3>
+<p>T01 now has a concrete design draft at docs/superpowers/specs/2026-10-09-ticket-triage-design.md: Python CLI, structured output, two read-only tools, severity/action rules, and execution limits. Review that document before T02. The GPT model is configured by the runner and verified at integration; no model version is imposed by the assignment. These choices do not prevent reading the source or using this draft planner. There is no submission deadline or required deployment environment in the supplied document.</p>
+<h3>10. GitHub repository and worktree plan</h3>
+<p>See GITHUB_REPO_PLAN.md for the proposed repository layout, initialization sequence, isolated worktree workflow, commit groups, optional issues, CI, and submission checks. Suggested repository: support-ticket-triage-agent; main as the default branch; one implementation branch/worktree. These names are recommendations, not resources already created.</p>
+<p>Current Git inspection: this workspace is not a repository, so a worktree cannot yet be created from it. Initialize and commit the baseline during T02; prefer managed worktree tools for implementation. Verify and submit from main during T12. The repository tasks fit the existing 210-minute plan. For the ZIP fallback, package the primary repository with its actual .git directory rather than a linked worktree&#x27;s metadata pointer.</p></section>
+<section id="github"><h2>GitHub Repository Plan — Support Ticket Triage Agent</h2>
+<p>Planning addition · 9 October 2026 · Complements PROJECT_TASK_PLANNER.md</p>
+<h3>1. Current state and proposed repository</h3>
+<p>The workspace at D:\Documents\OOCA_Assignment contains the assignment and planning files. Git inspection confirms it is not currently a repository, and no managed worktree is attached to this chat. Repository initialization, remote creation, pushes, issues, and worktrees have not been performed.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Setting</th><th scope="col">Proposed choice</th></tr></thead><tbody>
+<tr><td>Repository name</td><td>support-ticket-triage-agent</td></tr>
+<tr><td>Description</td><td>OpenAI GPT support-ticket triage with customer-history and knowledge-base tools, structured decisions, and Thai/English sample conversations</td></tr>
+<tr><td>Owner</td><td>Your GitHub account or chosen organization; resolve when creating the remote</td></tr>
+<tr><td>Visibility</td><td>Private during development; give the evaluator access before submission, or choose public if appropriate</td></tr>
+<tr><td>Default branch</td><td>main</td></tr>
+<tr><td>Implementation branch</td><td>feat/triage-agent — suggested name, not an existing branch</td></tr>
+<tr><td>Delivery</td><td>Repository URL plus reproducible README; ZIP with source and .git if GitHub submission is unavailable</td></tr>
+</tbody></table></div>
+<p>These are recommendations. The assignment specifies a repository or ZIP fallback, but not a repository name, branch strategy, visibility, CI provider, or license. Keep the original employer document local unless you intend to include it in the submission; do not add an open-source license to supplied employer material by default.</p>
+<h3>2. Planned repository layout</h3>
+<pre><code>support-ticket-triage-agent/
+  README.md
+  WRITEUP.md                     # maximum one page
+  pyproject.toml                 # package, runtime, dev dependencies
+  .env.example                   # empty/example values only
+  .gitignore
+  .github/
+    workflows/ci.yml
+  src/triage_agent/
+    __init__.py
+    cli.py
+    schemas.py
+    agent.py
+    tools.py
+    policy.py
+  prompts/system.txt
+  data/
+    sample_tickets.json
+    customers.json
+    knowledge_base.json
+  tests/
+    test_tools.py
+    test_agent.py
+    test_policy.py
+  examples/
+    sample_results.json           # label mock versus live output
+  docs/
+    ASSIGNMENT_SUMMARY.md
+    PROJECT_TASK_PLANNER.md
+    GITHUB_REPO_PLAN.md
+    ASSIGNMENT_READER.html</code></pre>
+<p>The docs/ placement is a future organization proposal. Existing planning files remain at the workspace root today. Use one dependency-management approach and record exact dependency versions or a reproducible lock/constraints file. Sample data is synthetic except for the supplied assignment conversations.</p>
+<p>Proposed ignore rules: .env, .env.* with an exception for .env.example; .venv/; __pycache__/; *.pyc; .pytest_cache/; .ruff_cache/; .coverage; htmlcov/; build/; dist/; *.egg-info/; .worktrees/; local logs and traces; submission archives. Do not ignore source, prompt files, tests, fixtures, or CI configuration. Keep real keys out of commits and history.</p>
+<h3>3. Repository setup sequence</h3>
+<ol>
+<li>At T02, initialize local Git on main, after the project design choices are settled.</li>
+<li>Create .gitignore and include the planning documents and project metadata in an explicit initial commit. Review the staged file list; do not blindly stage the employer DOCX or local configuration.</li>
+<li>Create an empty GitHub remote with the selected owner/name/visibility, then connect origin and push the baseline. Choose either local initialization plus an empty remote, or cloning a preinitialized remote; avoid creating conflicting initial histories.</li>
+<li>Create or reuse an isolated implementation worktree from the committed baseline using the workflow below.</li>
+<li>Complete T03–T11 in the implementation branch with meaningful commits and recorded verification.</li>
+<li>At T12, review the diff, merge the reviewed branch into main, verify a clean clone, and prepare the submission URL/archive.</li>
+</ol>
+<p>Repository setup belongs inside T02 and delivery inside T12. This plan does not add another 210-minute schedule. If authentication or remote setup takes too long, continue with local Git and use the assignment&#x27;s ZIP fallback.</p>
+<h3>4. Worktree workflow</h3>
+<p>Git worktrees allow multiple checkouts of the same repository, with separate checked-out branches. See the <a href="https://git-scm.com/docs/git-worktree">official Git worktree documentation</a>.</p>
+<ol>
+<li>Inspect the Git directory, common directory, current branch, and superproject before creating anything. Reuse a suitable linked worktree when one already exists; a submodule is not evidence of isolation.</li>
+<li>Commit the planning/configuration baseline first so the worktree has a known starting commit. Uncommitted files in the primary checkout are not automatically copied into a new worktree.</li>
+<li>Prefer Codex&#x27;s managed worktree creation and attachment tools when available. Select the committed baseline explicitly if there is no remote default branch yet. Work in the returned directory and inspect its branch state; do not assume it created the suggested branch name.</li>
+<li>If managed/native tools are unavailable, use a manual worktree at .worktrees/triage-agent. Before creation, commit the .worktrees/ ignore rule and verify it with git check-ignore. The fallback directory is a proposal, not a directory created by this plan.</li>
+<li>Install dependencies inside that checkout and run its baseline checks. If only documentation exists, report that no application tests exist yet; do not report a passing test suite. Once tests exist, resolve baseline failures before proceeding.</li>
+<li>Make implementation commits inside the isolated checkout. In a detached managed checkout, use the app&#x27;s branch/integration controls before pushing; do not assume a named branch exists.</li>
+<li>After integration, preserve any needed ignored files and clean up a managed worktree using the app&#x27;s archive tool. For a manual worktree, use Git&#x27;s worktree removal workflow after checking for uncommitted work. Do not recursively delete a checkout to clean up Git metadata.</li>
+</ol>
+<p>Keep the primary checkout on main and use one implementation branch for this short assignment. Avoid a separate develop branch or one worktree per small task. Additional branches/worktrees are useful only when there is actual independent work.</p>
+<h3>5. Commit and review plan</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Commit group</th><th scope="col">Planner tasks</th><th scope="col">Suggested commit message</th></tr></thead><tbody>
+<tr><td>Baseline</td><td>T01–T02</td><td>docs: record assignment plan and project setup</td></tr>
+<tr><td>Contracts/data</td><td>T03–T04</td><td>feat: add ticket fixtures and validated triage contracts</td></tr>
+<tr><td>Tools/prompt</td><td>T05–T06</td><td>feat: add mock tools and triage system prompt</td></tr>
+<tr><td>Agent/output</td><td>T07–T08</td><td>feat: implement bounded GPT tool loop and action policy</td></tr>
+<tr><td>Verification</td><td>T09–T10</td><td>test: cover triage scenarios and failure paths</td></tr>
+<tr><td>Submission</td><td>T11–T12</td><td>docs: document setup evaluation and sample results</td></tr>
+</tbody></table></div>
+<p>Keep changes reviewable and truthful; commit messages describe implemented behavior, not planned behavior. A single pull request from the implementation branch to main is sufficient. Include the problem solved, tool/decision behavior, checks actually run, and any live-model verification limitation. Do not claim a successful live run based on fake-model tests.</p>
+<h3>6. Lightweight GitHub tracking</h3>
+<p>Optional: use one milestone, Homework submission, and six issues matching the commit groups above. Issue acceptance criteria should link to T01–T12 and R1–R11 in the planner. A small board can use To do, In progress, Review, Done. Do not create this tracking overhead if the local checklist is sufficient for the time budget.</p>
+<h3>7. CI and reviewer experience</h3>
+<p>Create one lightweight workflow for pull requests and pushes to main: check out source, select the supported Python version, install declared development dependencies, run chosen lint/format checks, and run offline tests. Match the commands in CI to the README. Pin workflow action revisions when authoring the workflow. GitHub provides a <a href="https://docs.github.com/en/actions/tutorials/build-and-test-code/python">Python build-and-test guide</a>.</p>
+<p>Default CI should use the fake-model adapter and mocked tools, requiring no API key. A live GPT smoke run is a separate local or explicitly triggered check; record whether it was run. If configuring a live CI run later, use a repository secret rather than a tracked file and avoid passing it to untrusted pull-request code. Requiring a paid live-model check for every pull request is unnecessary for this homework.</p>
+<p>The README should make the reviewer path obvious: prerequisites → create environment → install → configure their own key/model → run three tickets → inspect JSON and tool traces → run offline tests. Include sample results and mark how they were generated. Ensure a private repository is accessible to the reviewer before sending its URL.</p>
+<h3>8. Submission checklist</h3>
+<ul>
+<li>☐ Repository owner/name/visibility selected; reviewer access verified.</li>
+<li>☐ main contains the intended final implementation and all R1–R11 deliverables.</li>
+<li>☐ README commands work from a clean clone in a new environment.</li>
+<li>☐ Offline checks pass; live verification status stated accurately.</li>
+<li>☐ Thai text and all three four-message conversations are intact.</li>
+<li>☐ Prompt plus two tool schemas/implementations are easy to locate.</li>
+<li>☐ WRITEUP.md is no more than one page in its intended rendering.</li>
+<li>☐ Tracked files and commit history contain no actual API key or customer secrets.</li>
+<li>☐ Example outputs identify mock/live provenance and do not invent verified facts.</li>
+<li>☐ Submission URL references the final main commit; optionally tag that tested commit submission-v1.</li>
+<li>☐ If using ZIP fallback, package the primary repository&#x27;s source plus its actual .git directory, excluding virtual environments, worktrees, caches, secrets, and unrelated local files.</li>
+<li>☐ ZIP fallback extracted elsewhere and checked for usable Git history and runnable source.</li>
+</ul>
+<p>For the ZIP fallback, do not zip only a linked worktree: its .git is usually a pointer to shared metadata elsewhere. Package the self-contained primary repository so the reviewer receives the Git history required by the assignment.</p></section>
+<section id="t01"><div class="note">T01: concrete design ready for your review. The defaults below are proposals; T02 has not started.</div><h2>T01 — Support Ticket Triage Agent Design</h2>
+<p>9 October 2026 · Draft ready for user review · Covers T01; implementation has not started</p>
+<h3>Purpose and success criteria</h3>
+<p>Create a small homework submission demonstrating grounded triage of complete customer conversations using an OpenAI GPT model and at least two executable tools. It must process all three supplied tickets, preserve Thai text, produce understandable decisions, and include the prompt, tool definitions, README, and maximum-one-page write-up. Readability, maintainability, extensibility, and logic take priority within the recommended 150–240 minutes.</p>
+<p>Assignment requirements come from the supplied DOCX. Language, library choices, output schema, severity rubric, and execution limits below are proposed decisions. They are not an official answer key.</p>
+<h3>1. Language, interface, and boundaries</h3>
+<p>Proposed choice: <strong>Python CLI</strong>, with Python 3.11 as the minimum target, the official OpenAI Python SDK for model access, Pydantic for contracts, pytest for tests, and Ruff for linting. Resolve and record compatible dependency versions in T02. Use a single pyproject.toml with runtime and development dependencies.</p>
+<p>The CLI accepts one ticket or a file of tickets and prints JSON results. The default demonstration processes all three supplied conversations. A separate trace option shows tool execution without contaminating JSON output. Proposed invocation after packaging: python -m triage_agent --input data/sample_tickets.json, with --trace as an optional flag.</p>
+<p>Configure the key with OPENAI_API_KEY and the GPT model with OPENAI_MODEL. The model must support tool calls; verify the chosen model and SDK API during integration. Do not hard-code a model version or include a real key. Offline fake-model tests work without credentials; live execution reports a clear configuration error when credentials/model are missing.</p>
+<p>The CLI produces triage recommendations and draft responses. No chat UI, HTTP service, database, agent framework, vector database, deployment, automatic messaging, refunds, or account mutations are in this design. A TypeScript CLI remains an alternative if that is your preferred language; this draft selects Python to keep the implementation compact.</p>
+<h3>2. Architecture and data flow</h3>
+<p>Ticket loader → validated conversation → prompt and tool-capable model adapter → bounded agent loop → allowlisted tool dispatcher → final result validation → policy consistency checks → JSON result and optional trace.</p>
+<p>Use the module layout from PROJECT_TASK_PLANNER.md. cli.py handles input/output; schemas.py owns contracts; agent.py owns model/tool orchestration; tools.py owns mock tools; policy.py owns action consistency and fallback. The prompt and mock fixtures remain separate files.</p>
+<p>Each message includes its original text, sequence, and supplied relative time. Preserve provided translations separately from original Thai text, and label them as supplied translations. Never manufacture absolute timestamps from phrases such as just now. Customer IDs are synthetic fixture IDs mapped to the supplied customer metadata.</p>
+<p>The agent sees the entire conversation and reconciles later messages with earlier ones. Tool results are returned to the model as tool results, with call IDs retained. The model adapter is replaceable with a fake for deterministic orchestration tests.</p>
+<h3>3. Urgency policy</h3>
+<p>Severity reflects reported impact and time sensitivity; confirmation is represented separately in rationale and uncertainties. A suspected incident may merit urgent investigation without asserting a confirmed outage. Account tier is context, not an automatic severity label.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Urgency</th><th scope="col">Proposed rule</th><th scope="col">Example</th></tr></thead><tbody>
+<tr><td>critical</td><td>Reported core service failure across multiple users/devices with substantial business interruption; or comparably severe ongoing harm requiring immediate human investigation</td><td>Thai Enterprise ticket with repeated error 500, affected coworkers, and imminent client demo</td></tr>
+<tr><td>high</td><td>Material financial risk, blocked paid entitlement, or a substantial time-sensitive individual problem without evidence of broad service failure</td><td>Repeated reported charges, no Pro access, presentation in two hours, dispute threat</td></tr>
+<tr><td>medium</td><td>Meaningful functional impairment with limited impact, no acute harm/deadline, and no broader incident evidence</td><td>Non-cosmetic feature malfunction requiring technical investigation</td></tr>
+<tr><td>low</td><td>Cosmetic issue, how-to question, or feature request without material interruption or acute harm</td><td>Dark-mode behavior plus scheduling request</td></tr>
+</tbody></table></div>
+<p>Apply the highest supported severity among the ticket&#x27;s unresolved issues. Anger alone does not make a ticket critical. Missing information must not silently downgrade a clearly reported serious problem; document the uncertainty and escalate when appropriate.</p>
+<h3>4. Action policy</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Primary action</th><th scope="col">Conditions</th><th scope="col">Destination</th></tr></thead><tbody>
+<tr><td>escalate_to_human</td><td>Critical incident, financial dispute/repeated charges requiring account intervention, or inability to produce a safe supported decision after tool/model failure</td><td>incident_on_call, billing_payments, or human_support</td></tr>
+<tr><td>route_to_specialist</td><td>Unresolved product/technical issue needing investigation, without the immediate escalation conditions above</td><td>product_support or technical_support</td></tr>
+<tr><td>auto_respond</td><td>Retrieved knowledge directly supports a safe answer for the unresolved issue and no escalation/routing condition remains</td><td>null</td></tr>
+</tbody></table></div>
+<p>Urgency and action are separate: a low-severity bug can require a specialist. Critical results always escalate. Billing harm described in sample 1 always escalates. If a ticket combines a bug and a feature request, choose one primary action addressing the main unresolved problem and retain secondary issues.</p>
+<p>No retrieved article means no grounded auto-response. References must point to document IDs actually returned by the knowledge-base tool. A draft acknowledgement is allowed during routing/escalation, but must not promise a resolution, refund, feature, or SLA unsupported by evidence.</p>
+<h3>5. Tool contracts</h3>
+<p>Both tools are read-only mock implementations. The demonstration requires successful execution of both before treating a model result as complete. If required tool evidence cannot be obtained, return an explicit fallback, not a fabricated successful triage.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tool</th><th scope="col">Arguments</th><th scope="col">Result</th></tr></thead><tbody>
+<tr><td>get_customer_history</td><td>customer_id: non-empty string</td><td>status: ok/not_found/error; customer: object or null; error: string or null</td></tr>
+<tr><td>search_knowledge_base</td><td>query: non-empty string; product, issue_type, locale: optional strings</td><td>status: ok/error; documents: list of up to five matches; error: string or null</td></tr>
+</tbody></table></div>
+<p>Customer objects contain customer_id, plan, tenure_months, region, seats, and prior_support_summary. Preserve unknown region/seats as null. Documents contain id, title, excerpt, locale, and is_mock=true. An empty document list is a valid no-match result. Use a simple deterministic term/category search for the mock KB; do not add embedding infrastructure.</p>
+<p>The KB contains clearly labeled illustrative billing, service-access, and theme articles. It does not establish live regional status, actual refund timing, or real company feature availability. The dispatcher validates arguments and rejects unknown tool names. Customer text and retrieved content cannot override system instructions.</p>
+<h3>6. Output contract</h3>
+<p>All fields below are present; nullable fields use null and list fields use empty lists when no value is known. Reject unexpected fields and invalid enum values. Do not present a technical failure as a normal completed triage.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Field</th><th scope="col">Type and meaning</th></tr></thead><tbody>
+<tr><td>ticket_id</td><td>Non-empty string; supplied or synthetic fixture identifier</td></tr>
+<tr><td>status</td><td>completed or fallback</td></tr>
+<tr><td>urgency</td><td>critical/high/medium/low; null only on a fallback when no reliable classification is available</td></tr>
+<tr><td>product</td><td>String or null; never infer an actual product name from plan tier or export features alone</td></tr>
+<tr><td>issue_type</td><td>Non-empty string describing the primary issue; null allowed on fallback</td></tr>
+<tr><td>customer_sentiment</td><td>positive/neutral/frustrated/angry/mixed/unknown</td></tr>
+<tr><td>secondary_issues</td><td>List of concise strings</td></tr>
+<tr><td>next_action</td><td>auto_respond/route_to_specialist/escalate_to_human</td></tr>
+<tr><td>destination</td><td>Allowed destination from the action table; null only for auto_respond</td></tr>
+<tr><td>rationale</td><td>Non-empty explanation grounded in the conversation and tool evidence</td></tr>
+<tr><td>draft_response</td><td>String or null; Thai for the Thai customer&#x27;s draft; no invented promises</td></tr>
+<tr><td>knowledge_sources</td><td>List of retrieved KB document IDs actually used</td></tr>
+<tr><td>uncertainties</td><td>List of unknown or unverified facts</td></tr>
+<tr><td>tool_calls</td><td>List of tool execution records with name, call_id, and status</td></tr>
+<tr><td>error</td><td>null for completed; structured code/message for fallback</td></tr>
+</tbody></table></div>
+<p>A completed result requires a valid urgency, primary issue, both required tools having succeeded, and consistent action/destination fields. A fallback always escalates to human_support, records its failure cause, and preserves trustworthy available fields. It does not guess urgency to satisfy the schema.</p>
+<p>Keep provider/tool internals and secrets out of the customer draft. Optional traces may include redacted arguments and results for debugging; full customer text is not needed in routine logs.</p>
+<h3>7. Limits and error handling</h3>
+<p>Proposed defaults: 30-second timeout per provider request; at most six model requests per ticket, including one possible retry for a transient provider error or invalid final output; at most eight individual tool executions. Stop with fallback when any budget is exhausted. Count parallel tool calls individually, and validate them before dispatch. Exact SDK wiring belongs to T07, while these limits are policy decisions.</p>
+<p>Unknown tools, malformed arguments, missing customers, or KB errors return explicit errors to the agent. The agent may correct a call within the remaining budget. If no grounded decision emerges, fallback. Missing credentials stop a live batch before requests and return a clear nonzero CLI error. Other per-ticket failures produce fallback results and a nonzero batch exit code while retaining successful ticket outputs.</p>
+<h3>8. Sample acceptance targets</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Sample</th><th scope="col">Expected baseline</th><th scope="col">Required explanation</th></tr></thead><tbody>
+<tr><td>1 — Billing</td><td>high; escalate_to_human; billing_payments; angry</td><td>Three customer-reported charges, failed entitlement, two-hour deadline, dispute threat; payment settlement/refund state unverified</td></tr>
+<tr><td>2 — Thai access</td><td>critical; escalate_to_human; incident_on_call; frustrated</td><td>Cross-device/browser and coworker access failure, business risk, operational-status discrepancy; Asia-wide outage and all 45 users affected remain unconfirmed</td></tr>
+<tr><td>3 — Theme</td><td>low; route_to_specialist; product_support; mixed</td><td>Earlier advice failed; possible cosmetic theme bug plus separate scheduling feature request; actual availability unverified</td></tr>
+</tbody></table></div>
+<p>These baseline labels follow this draft rubric. A policy change requires updating the tests and reasoning targets together. Draft Thai replies must preserve uncertainty rather than turning the customer&#x27;s regional hypothesis into a confirmed diagnosis.</p>
+<h3>9. Verification and task handoff</h3>
+<p>Test fixtures preserve all three four-message conversations. Unit checks cover both tools, empty matches, unknown customers, and validation. Fake-model integration checks exercise tool dispatch, tool results returned to the model, both-tool completion, budget exhaustion, bad citations, contradictory actions, invalid output, and injection attempts. Sample-case assertions check supported facts and decision policy, not exact wording.</p>
+<p>Run a live GPT smoke check separately when a key and chosen model are available. State honestly whether it ran. A clean-checkout run, README, one-page write-up, and repository/ZIP checks complete the submission.</p>
+<p>T01 status: <strong>design drafted and self-reviewed; user review pending</strong>. T02 has not started. The workspace is not yet a Git repository, so the spec cannot be committed now. Initialize Git and commit the reviewed baseline at T02, then use the managed worktree workflow from GITHUB_REPO_PLAN.md for project implementation.</p></section>
+<section id="original"><h2>Original assignment — readable transcription</h2><div class="note">Source: AI_Engineer_-_Code_Homework_Test.docx. All non-empty main-document paragraphs are preserved below. Message spacing has been added for readability; this section is source material, separate from the proposed plan.</div><div data-source-paragraph="0"><h2>AI Engineer - Code Homework Test</h2></div>
+<div data-source-paragraph="1"><p>Time: 150 - 240 minutes recommended.</p></div>
+<div data-source-paragraph="3"><p>Please use GPT OpenAI model, DON’T need to provide API KEY. We will use our own key.</p></div>
+<div data-source-paragraph="4"><p>Provide the source code in a GitHub repository. If you cannot push to Github you can zip the source code file with .git</p></div>
+<div data-source-paragraph="5"><p>Include a README file with instructions on how to set up and run the application.</p></div>
+<div data-source-paragraph="6"><p>We advise spending at least 150 - 240 minutes on the test – if you want to spend more or less time on it, that’s completely up to you.</p></div>
+<div data-source-paragraph="7"><p>Our scoring will be determined in 4 criterias:</p></div>
+<div data-source-paragraph="8"><p class="requirement">Readability</p></div>
+<div data-source-paragraph="9"><p class="requirement">Maintainability</p></div>
+<div data-source-paragraph="10"><p class="requirement">Extensibility</p></div>
+<div data-source-paragraph="11"><p class="requirement">Logic</p></div>
+<div data-source-paragraph="13"><h2>The Assignment: &quot;Support Ticket Triage Agent&quot;</h2></div>
+<div data-source-paragraph="14"><h3>Scenario</h3></div>
+<div data-source-paragraph="15"><p>Build an AI agent that triages incoming customer support tickets. The agent should:</p></div>
+<div data-source-paragraph="16"><p class="requirement">Classify ticket urgency (critical/high/medium/low)</p></div>
+<div data-source-paragraph="17"><p class="requirement">Extract key information (product, issue type, customer sentiment)</p></div>
+<div data-source-paragraph="18"><p class="requirement">Search a knowledge base — find relevant FAQ/docs to help answer</p></div>
+<div data-source-paragraph="19"><p class="requirement">Decide next action: auto-respond, route to specialist, or escalate to human</p></div>
+<div data-source-paragraph="20"><p class="requirement">Use at least 2 tools (e.g., check customer history, lookup knowledge base)</p></div>
+<div data-source-paragraph="21"><h3>What to deliver</h3></div>
+<div data-source-paragraph="22"><p>Don’t need to build a Chat UI on it, it can be a terminal console or API.</p></div>
+<div data-source-paragraph="23"><p class="requirement">Working code — Agent that processes sample tickets</p></div>
+<div data-source-paragraph="24"><p class="requirement">System prompt — The instructions driving the agent</p></div>
+<div data-source-paragraph="25"><p class="requirement">Tool definitions — Schema + implementation (can be mocked)</p></div>
+<div data-source-paragraph="26"><p class="requirement">Brief write-up (1 page max):</p></div>
+<div data-source-paragraph="27"><p class="requirement">Architecture decisions and why</p></div>
+<div data-source-paragraph="28"><p class="requirement">What could go wrong and how you&#x27;d handle it</p></div>
+<div data-source-paragraph="29"><p class="requirement">How you&#x27;d evaluate this agent in production</p></div>
+<div data-source-paragraph="30"><h3>Sample tickets provided</h3></div>
+<div data-source-paragraph="32"><h4>1) Customer info: Free plan (upgrade attempted), 4 months on free tier, first time contacting support</h4></div>
+<div data-source-paragraph="33"><p class="message">Message 1 (3 hours ago):&quot;My payment failed when I tried to upgrade to Pro. Can you check what&#x27;s wrong?&quot;</p><p class="message">Message 2 (2 hours ago):&quot;I tried again with a different card. Now I see TWO pending charges but my account still shows Free plan??&quot;</p><p class="message">Message 3 (1 hour ago):&quot;Okay this is getting ridiculous. Just checked my bank app - I have THREE charges of $29.99 now. None of them refunded. And I STILL don&#x27;t have Pro access.&quot;</p><p class="message">Message 4 (just now):&quot;HELLO?? Is anyone there??? I need this fixed NOW. I have a presentation in 2 hours and I need the Pro export features. If these charges aren&#x27;t reversed by end of day I&#x27;m disputing all of them with my bank.&quot;</p></div>
+<div data-source-paragraph="35"><h4>2) Customer info: Enterprise plan, Thailand region, 45 seats, 8 months customer, first critical issue</h4></div>
+<div data-source-paragraph="36"><p class="message">Message 1 (2 hours ago):&quot;ระบบเข้าไม่ได้ครับ ขึ้น error 500&quot;(Thai: Can&#x27;t access the system, showing error 500)</p><p class="message">Message 2 (1.5 hours ago):&quot;ลองหลายเครื่องแล้ว ทั้ง Chrome, Safari, Firefox ผลเหมือนกันหมด เพื่อนร่วมงานก็เข้าไม่ได้เหมือนกัน&quot;(Thai: Tried multiple machines - Chrome, Safari, Firefox - same result. Coworkers also can&#x27;t access)</p><p class="message">Message 3 (45 mins ago):&quot;ตอนนี้ลูกค้าโวยเข้ามาเยอะมาก เรามี demo กับลูกค้ารายใหญ่บ่ายนี้ ถ้าระบบไม่กลับมา deal นี้อาจจะหลุด&quot;(Thai: Customers are flooding in with complaints now. We have a demo with a major client this afternoon. If the system doesn&#x27;t come back, we might lose this deal)</p><p class="message">Message 4 (just now):&quot;เช็ค status.company.com แล้ว บอกว่า all systems operational แต่เราใช้งานไม่ได้จริงๆ ช่วยเช็คให้หน่อยได้ไหมครับ region Asia มีปัญหาหรือเปล่า?&quot;(Thai: Checked status.company.com - it says all systems operational, but we really can&#x27;t use it. Can you please check? Is there an issue with the Asia region?)</p></div>
+<div data-source-paragraph="38"><h4>3) Customer info: Pro plan, 5 months customer, active user (daily logins), no previous support tickets</h4></div>
+<div data-source-paragraph="39"><p class="message">Message 1 (2 days ago):&quot;Hey, just wondering if you support dark mode? No rush 😊&quot;</p><p class="message">Message 2 (1 day ago):&quot;Thanks for the reply! Oh nice, so it&#x27;s in Settings &gt; Appearance. Found it! But hmm I&#x27;m on Pro plan and I only see &#x27;Light&#x27; and &#x27;System Default&#x27; options. No dark mode toggle?&quot;</p><p class="message">Message 3 (1 day ago, 3 hours later):&quot;Okay so I switched to &#x27;System Default&#x27; and my Mac is set to dark mode, but your app still shows light theme. Is this a bug or am I missing something?&quot;</p><p class="message">Message 4 (today):&quot;Also random question while I have you - is there a way to schedule dark mode? Like auto-switch at 6pm? Some apps have that. Would be cool if you guys added it 👀&quot;</p></div></section>
+<footer>Prepared from the supplied document. Reading works offline. Optional documentation links require a network connection; no external assets, scripts, or API keys are used.</footer></main></div></body></html>
