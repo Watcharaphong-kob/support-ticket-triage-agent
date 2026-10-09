@@ -61,7 +61,7 @@ def main():
     ).read_bytes()
     print(
         "Delivery checks passed: 35 source paragraphs, reader navigation, "
-        "18 tickets, 3 labeled samples."
+        f"{len(tasks)} tickets, 3 labeled samples."
     )
 
 

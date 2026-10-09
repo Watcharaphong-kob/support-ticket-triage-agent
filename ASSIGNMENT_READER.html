@@ -6,7 +6,7 @@
 @media(max-width:900px){.layout{grid-template-columns:1fr;padding:14px;gap:14px}aside{position:static}.sub,.aside-note{display:none}nav{display:flex;flex-wrap:wrap;gap:3px}nav a{background:#e5eded;font-size:13px;padding:6px 10px}.page{padding:24px 20px}.stats{gap:7px}.stats>div{padding:12px}.stats b{font-size:21px}}
 @media(max-width:480px){.tiles{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stats>div{display:flex;gap:16px;align-items:center}}
 @media print{body{background:white;font-size:10pt}.layout{display:block;padding:0}aside,footer,.skip{display:none}.page,.enhanced .page{display:block!important;box-shadow:none;border:0;padding:0;break-before:page}.page:first-child{break-before:auto}h2,h3,h4{break-after:avoid}tr,.message{break-inside:avoid}.table-scroll{overflow:visible}table{font-size:9pt}pre{white-space:pre-wrap;background:#f1f4f5;color:var(--ink)}.tiles{display:none}}
-</style></head><body><a class="skip" href="#overview">Skip to content</a><div class="layout"><aside><div class="brand">OOCA Assignment</div><div class="sub">SUPPORT TICKET TRIAGE</div><nav aria-label="Document views"><a href="#overview">Overview</a><a href="#planner">Task planner</a><a href="#todo">TODO list</a><a href="#tickets">Tickets</a><a href="#spec">Spec</a><a href="#stack">Tech stack</a><a href="#knowledge">Knowledge system</a><a href="#github">GitHub plan</a><a href="#t02">Verified setup</a><a href="#original">Original assignment</a></nav><div class="aside-note">17/17 Phase 1 tasks done<br>Offline reader · Ctrl+P to print<br>Task data: docs/project_tasks.json</div></aside><main><section class="page" id="overview" tabindex="-1"><div class="eyebrow">PROJECT WORKSPACE · 9 October 2026</div>
+</style></head><body><a class="skip" href="#overview">Skip to content</a><div class="layout"><aside><div class="brand">OOCA Assignment</div><div class="sub">SUPPORT TICKET TRIAGE</div><nav aria-label="Document views"><a href="#overview">Overview</a><a href="#planner">Task planner</a><a href="#todo">TODO list</a><a href="#tickets">Tickets</a><a href="#spec">Spec</a><a href="#stack">Tech stack</a><a href="#testing">How to test / Word fit</a><a href="#knowledge">Knowledge system</a><a href="#github">GitHub plan</a><a href="#t02">Verified setup</a><a href="#original">Original assignment</a></nav><div class="aside-note">17/17 Phase 1 tasks done<br>Offline reader · Ctrl+P to print<br>Task data: docs/project_tasks.json</div></aside><main><section class="page" id="overview" tabindex="-1"><div class="eyebrow">PROJECT WORKSPACE · 9 October 2026</div>
 <h2>Support Ticket<br>Triage Agent</h2><p class="lead">The assignment, spec, stack and execution plan in one offline reader.</p>
 <div class="stats"><div><b>17/17</b><span>Phase 1 tasks complete</span></div><div><b>Classic RAG</b><span>Docker + PostgreSQL + pgvector</span></div><div><b>Prototype</b><span>GraphRAG deferred to Phase 2</span></div></div>
 <div class="note">GPT prompt, bounded agent loop, JSON CLI, Docker classic RAG and both tools implemented; see Tickets for evidence. Next: Phase 1 complete. Live embeddings not verified.</div>
@@ -41,6 +41,8 @@
 <div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Min</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>T01</td><td>done</td><td>10</td><td>—</td><td>Approve architecture and contracts</td></tr><tr><td>T02</td><td>done</td><td>10</td><td>T01</td><td>Set up uv package and GitHub</td></tr><tr><td>E01</td><td>done</td><td>TBD</td><td>T01</td><td>Select Phase 1 prototype architecture</td></tr><tr><td>T03</td><td>done</td><td>15</td><td>T02</td><td>Create complete bilingual ticket fixtures</td></tr><tr><td>T04</td><td>done</td><td>15</td><td>T03</td><td>Define validated input/tool/result contracts</td></tr><tr><td>E02</td><td>done</td><td>TBD</td><td>E01, T02</td><td>Set up Docker Compose and PostgreSQL/pgvector</td></tr><tr><td>E03</td><td>done</td><td>TBD</td><td>E02</td><td>Implement classic RAG ingestion and embeddings</td></tr><tr><td>E04</td><td>done</td><td>TBD</td><td>E03, T04</td><td>Implement PostgreSQL classic RAG knowledge search</td></tr><tr><td>T05</td><td>done</td><td>20</td><td>T03, T04, E04</td><td>Wire history and classic RAG tools</td></tr><tr><td>T06</td><td>done</td><td>15</td><td>T04, T05</td><td>Write grounded bilingual system prompt</td></tr><tr><td>T07</td><td>done</td><td>35</td><td>T02, T04, T05, T06</td><td>Build bounded GPT/tool execution loop</td></tr><tr><td>T08</td><td>done</td><td>20</td><td>T07</td><td>Apply action policy and integrate JSON CLI</td></tr><tr><td>E06</td><td>done</td><td>TBD</td><td>E04</td><td>Test classic RAG against Docker PostgreSQL</td></tr><tr><td>T09</td><td>done</td><td>25</td><td>T08, E06</td><td>Verify scenarios and failure paths offline</td></tr><tr><td>T10</td><td>done</td><td>15</td><td>T09</td><td>Run demos and record live verification</td></tr><tr><td>T11</td><td>done</td><td>20</td><td>T10</td><td>Finish README and one-page write-up</td></tr><tr><td>T12</td><td>done</td><td>10</td><td>T11</td><td>Verify clean checkout and submit</td></tr></tbody></table></div>
 <h3>Phase 2 — deferred GraphRAG</h3>
 <div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>E05</td><td>deferred</td><td>T12</td><td>Explore GraphRAG in the next phase</td></tr></tbody></table></div>
+<h3>Reviewer guide and simplicity follow-up</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>S01</td><td>done</td><td>Document testing, assignment fit and clone setup</td></tr><tr><td>S02</td><td>todo</td><td>Simplify repeated runtime code without changing behavior</td></tr></tbody></table></div>
 <h3>Task contracts</h3>
 <h4>T01 — Approve architecture and contracts</h4>
 <p>Phase: Design &amp; setup. Status: done. Depends on: none. Estimate: 10 min (historical).</p>
@@ -170,6 +172,18 @@
 <p>Phase: Phase 2 â€” deferred GraphRAG. Status: deferred. Depends on: T12. Estimate: TBD.</p>
 <p>Outputs: <code>src/triage_agent/knowledge/neo4j_store.py</code>, <code>tests/test_graph_retrieval.py</code>.</p>
 <p>Acceptance: Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</p>
+<h4>S01 — Document testing, assignment fit and clone setup</h4>
+<p>Phase: Reviewer guide and simplicity follow-up. Status: done. Depends on: T12. Estimate: TBD.</p>
+<p>Outputs: <code>TEST_GUIDE.md</code>, <code>docs/SIMPLICITY_SPEC.md</code>, <code>ASSIGNMENT_READER.html</code>.</p>
+<p>Acceptance: Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.</p>
+<p>Skills used: ask-matt (before and after), grill-with-docs, grilling, domain-modeling, to-spec, superpowers:verification-before-completion.</p>
+<p>Plugins used: Superpowers: evidence verification, GitHub: simplicity specification publication.</p>
+<p>Verification: Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.</p>
+<p><a href="#tickets">Execution ticket</a></p>
+<h4>S02 — Simplify repeated runtime code without changing behavior</h4>
+<p>Phase: Reviewer guide and simplicity follow-up. Status: todo. Depends on: S01. Estimate: TBD.</p>
+<p>Outputs: <code>src/triage_agent/models.py</code>, <code>src/triage_agent/agent.py</code>, <code>tests/test_agent.py</code>.</p>
+<p>Acceptance: Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.</p>
 <h3>Execution rules</h3>
 <p>Implement one task at a time in dependency order. Use focused failing tests before behavior changes and record actual verification. Keep prompts/tools/model adapters separate. Do not mark installed libraries as working agent features. Review architecture changes before extension implementation.</p>
 <p>Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: Phase 1 complete.</p>
@@ -263,9 +277,11 @@
 <li>Existing isolated worktree: feat/triage-agent at commit 4844b1bdc4bdea9d449e983dc48efbce7e0cc884.</li>
 <li>Fresh baseline: uv run --locked pytest -q; 8 passed.</li>
 <li>After T03 planning: ask-matt consulted again; plan self-review checked source fidelity, customer context, scope and neighboring contracts. Ruff check/format passed for the generator; HTML structure, JavaScript syntax, all 35 source blocks and deterministic regeneration verified. Plan and workflow are embedded in the HTML planner view.</li>
-<li>The user authorized continued implementation/testing through T05. Ask-matt was consulted before and after T03, T04, E02, E03, E04 and T05; verification and independent standards/spec review followed. The per-task tickets record steps and results. GPT-loop implementation remains pending; GitHub issue publication is separate from local ticket creation.</li>
+<li>Historical checkpoint: the user authorized continued implementation/testing through T05. Ask-matt was consulted before and after T03, T04, E02, E03, E04 and T05; verification and independent standards/spec review followed. The per-task tickets record steps and results. GPT-loop implementation was pending at that historical checkpoint; GitHub issue publication is separate from local ticket creation.</li>
 </ul>
-<p>Skill source: C:/Users/ASUS/.codex/skills/ask-matt/SKILL.md. This workflow implements the user&#x27;s instruction; ask-matt itself does not certify successful results.</p></details></section><section class="page" id="todo" tabindex="-1"><h2>Project TODO</h2>
+<p>Skill source: C:/Users/ASUS/.codex/skills/ask-matt/SKILL.md. This workflow implements the user&#x27;s instruction; ask-matt itself does not certify successful results.</p>
+<h3>Reviewer-guide follow-up</h3>
+<p>S01 consults ask-matt before and after documentation work. Existing CLI and Docker tool/database seams are reused; no new seam or runtime change is needed. Fresh Docker suite: 65 passed/1 host-only skip. Simplicity means fewer necessary concepts and less duplication while retaining readable code, Word requirements and tested protections. S02 is a separate proposed refactor; no runtime shortening is claimed.</p></details></section><section class="page" id="todo" tabindex="-1"><h2>Project TODO</h2>
 <p>9 October 2026 · 17/17 Phase 1 tasks done · Next: Phase 1 complete</p>
 <p><a href="#spec">Spec</a> · <a href="#stack">Stack</a> · <a href="#planner">Detailed planner</a></p>
 <p><a href="#tickets">Tickets with skills, plugins and steps</a></p>
@@ -331,6 +347,13 @@
 <h3>Phase 2 â€” deferred GraphRAG</h3>
 <ul>
 <li><input type="checkbox" disabled aria-label="Task status"> <strong>E05 — Explore GraphRAG in the next phase</strong> (deferred): Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</li>
+</ul>
+<h3>Reviewer guide and simplicity follow-up</h3>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>S01 — Document testing, assignment fit and clone setup</strong> (done): Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>S02 — Simplify repeated runtime code without changing behavior</strong> (todo): Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.</li>
 </ul>
 <h3>Before submission</h3>
 <p>Follow T12 acceptance and the final verification record. Verification covers fixtures, schemas, Docker, ingestion, retrieval, GPT adapter contracts, agent and CLI. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.</p></section><section class="page" id="tickets" tabindex="-1"><h2>Execution Tickets</h2>
@@ -727,6 +750,52 @@
 </ol>
 <ol>
 <li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>S01 — Document testing, assignment fit and clone setup</h3>
+<p>Status: done. Scope: followup. Dependencies: T12.</p>
+<h3>Acceptance</h3>
+<p>Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.</p>
+<h3>Skills and plugins</h3>
+<p>Skills used: ask-matt (before and after), grill-with-docs, grilling, domain-modeling, to-spec, superpowers:verification-before-completion.</p>
+<p>Plugins used: Superpowers: evidence verification, GitHub: simplicity specification publication.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. GitHub connector delivered PR/issue; hosted CI verified.</p>
+<h3>Steps performed</h3>
+<ol>
+<li>Consulted ask-matt and read the requested skills and current Word traceability.</li>
+</ol>
+<ol>
+<li>Re-ran the complete Docker suite and inspected runtime size and README prerequisites.</li>
+</ol>
+<ol>
+<li>Wrote reviewer test guide and simplicity spec; added follow-up tasks and HTML testing page.</li>
+</ol>
+<ol>
+<li>Checked source fidelity, generator determinism and syntax; recorded live-quality limits separately.</li>
+</ol>
+<ol>
+<li>Published simplicity spec as GitHub issue #3 with ready-for-agent; runtime refactor remains S02 TODO.</li>
+</ol>
+<h3>Verification</h3>
+<p>Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.</p>
+<p>Implementation commit: Follow-up documentation commit recorded by Git..</p>
+<h3>S02 — Simplify repeated runtime code without changing behavior</h3>
+<p>Status: todo. Scope: followup. Dependencies: S01.</p>
+<h3>Acceptance</h3>
+<p>Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
 </ol></section><section class="page" id="spec" tabindex="-1"><h2>Phase 1 Spec — Docker Classic RAG Prototype</h2>
 <p>9 October 2026 · User-selected phase scope · Continuous Phase 1 completion authorized</p>
 <p>The original AI_Engineer_-_Code_Homework_Test.docx is the main assignment, as explicitly directed by the user. Follow its requirements strictly; the architecture and policy choices here implement those requirements and are not an official assignment answer key. See docs/ASSIGNMENT_REQUIREMENTS.md for required-versus-selected traceability.</p>
@@ -809,7 +878,66 @@
 <h3>Further Notes</h3>
 <p>The Phase 1 implementation includes the bilingual prompt, bounded GPT adapter/tool loop, JSON CLI, database retrieval, policy and failure-path tests. Live GPT and semantic embedding quality remain unverified because no credentials were configured. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.</p>
 <p>GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. The tracking spec is published as <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub issue #1</a> with implementation evidence recorded in local tickets and docs/verification.md.</p>
-<p>Selected interview decisions: search across languages by default; missing customer history permits conversation-only triage with disclosed uncertainty; mock FAQ evidence may support low-urgency demonstration auto-response drafts clearly labeled as synthetic, never actual sending. These are project decisions, not original Word requirements.</p><details><summary>Main Word assignment — requirement traceability</summary><h2>Main Assignment — Requirements Traceability</h2>
+<p>Selected interview decisions: search across languages by default; missing customer history permits conversation-only triage with disclosed uncertainty; mock FAQ evidence may support low-urgency demonstration auto-response drafts clearly labeled as synthetic, never actual sending. These are project decisions, not original Word requirements.</p>
+<ul>
+<li><strong>Simplicity:</strong> Keep code as simple and short as possible while preserving main-assignment behavior and selected Docker/classic-RAG scope. Prefer direct readable code and less duplication; do not compress logic into unreadable one-liners or remove necessary validation/tests. The follow-up simplicity spec records acceptance; no runtime refactor is claimed.</li>
+</ul><details><summary>Simplicity and reviewer acceptance spec</summary><h2>Simplicity and Reviewer Acceptance Spec</h2>
+<h3>Problem Statement</h3>
+<p>The user wants the prototype&#x27;s code to be as simple and short as possible, and wants clear ways to test it, judge assignment fit and let another person reproduce it from GitHub. Passing offline tests alone does not prove live GPT reasoning or semantic retrieval quality.</p>
+<h3>Solution</h3>
+<p>Use the main Word assignment as the binding requirement. Keep the selected uv/Docker/classic-RAG architecture. Prefer direct readable code, fewer concepts and less duplication; retain necessary validation, tool execution, citations, language handling and visible failures. Provide a reviewer guide separating automated contract tests, offline sample demonstrations and live quality evaluation. Any later simplification must preserve public behavior and prove the change at the existing CLI and tool/database boundaries.</p>
+<h3>User Stories</h3>
+<ol>
+<li>As a reviewer, I want an exact clone branch, so that I obtain the complete prototype.</li>
+<li>As a reviewer, I want prerequisites stated, so that I know whether host Python is needed.</li>
+<li>As a developer, I want my own local environment settings, so that credentials remain private.</li>
+<li>As a reviewer, I want one full Docker test command, so that database tests are not silently omitted.</li>
+<li>As a reviewer, I want expected results and skip explanations, so that I can interpret a test run.</li>
+<li>As a reviewer, I want a credential-free demonstration, so that I can verify tool/database wiring.</li>
+<li>As a reviewer, I want live GPT evaluation distinguished from canned output, so that confidence is honest.</li>
+<li>As a reviewer, I want semantic embedding evaluation distinguished from fake vectors, so that RAG claims are supported.</li>
+<li>As an operator, I want a whole-thread rubric, so that urgency reflects evolving impact.</li>
+<li>As a reviewer, I want citations checked against source content, so that plausible JSON is not mistaken for grounded reasoning.</li>
+<li>As a Thai customer, I want Thai source text and drafts preserved, so that language survives testing/refactoring.</li>
+<li>As a reviewer, I want missing history and tool failure distinguished, so that uncertainty is disclosed.</li>
+<li>As a developer, I want direct code with minimal repetition, so that a prototype remains easy to understand.</li>
+<li>As a developer, I want optional demonstration content kept separate from GPT logic, so that the live path stays clear.</li>
+<li>As a developer, I want existing tests reused, so that shortening code cannot silently change behavior.</li>
+<li>As a reviewer, I want requirement coverage and remaining evidence gaps stated, so that I can judge submission readiness.</li>
+<li>As another developer, I want fresh-clone startup steps, so that I can reproduce the project without local caches.</li>
+<li>As an owner, I want private repository access explained, so that an evaluator can choose repository access or the permitted source archive.</li>
+</ol>
+<h3>Implementation Decisions</h3>
+<ul>
+<li>The original assignment and previously selected prototype scope take precedence over code-length goals.</li>
+<li>&quot;Simple and short&quot; means minimal necessary concepts, direct control flow, readable names and removal of repeated logic; it does not mean compressed one-liners or deletion of error checks/tests.</li>
+<li>Keep the current explicit OpenAI SDK tool loop and one PostgreSQL/pgvector knowledge database. No new agent framework, graph backend, generic plugin system or orchestration layer.</li>
+<li>Reuse the existing JSON CLI and read-only tool/database interfaces. No new public testing seam is needed; these boundaries were already approved and verified during Phase 1.</li>
+<li>Before a later refactor, record runtime size and duplication candidates. Evaluate moving canned offline demonstration text out of live-model logic and consolidating repeated serialization/decision construction where it reduces total complexity.</li>
+<li>Do not shrink code by hardcoding the supplied ticket IDs, skipping either tool, inventing citations, dropping Thai handling or masking failures.</li>
+<li>Preserve input/result contracts, execution budgets, safe provider errors, UTF-8 output, read-only parameterized retrieval and embedding-space validation.</li>
+<li>Existing demonstration and test behavior remains available. Reducing runtime lines is useful only if equivalent behavior is proven and readability improves.</li>
+<li>Requirement fit uses a documented human rubric and explicit confidence limits. A subjective score is not an official assignment grade.</li>
+</ul>
+<h3>Testing Decisions</h3>
+<ul>
+<li>Prefer highest existing boundary: JSON CLI with the deterministic model against real Docker PostgreSQL. Assert observable outputs, tool records, citations, exit codes and stderr separation.</li>
+<li>Reuse current tool/retrieval, provider HTTP, UTF-8 and offline-configuration tests; do not test private helpers solely because code moved.</li>
+<li>Preserve the three original conversations and all twelve messages. Compare urgency/action evidence, unknown facts, separate feature requests and Thai drafts.</li>
+<li>Require the complete Docker suite and host Compose check after runtime changes. A host test run with DB skips is insufficient.</li>
+<li>Demonstration tests prove plumbing and policy constraints. Separately run live GPT and live embeddings with user-owned credentials to assess actual reasoning, grounding, multilingual relevance and generalization.</li>
+<li>For fresh-clone acceptance, verify access/prerequisites, environment setup, startup, migration, ingestion, sample execution and test results without relying on a prior cache or database.</li>
+</ul>
+<h3>Out of Scope</h3>
+<ul>
+<li>New runtime functionality, production deployment or automatic customer actions.</li>
+<li>GraphRAG in this phase.</li>
+<li>Guaranteed live-model accuracy, an official employer grade or an arbitrary line-count target.</li>
+<li>Runtime refactoring merely because this specification was written. Refactor implementation is a separate follow-up task.</li>
+</ul>
+<h3>Further Notes</h3>
+<p>Current evidence: 65 Docker tests pass with one host-only skip; the separate host Compose check and hosted CI pass. Live paid GPT/semantic embedding checks remain unperformed. Runtime size baseline is 1,054 nonblank Python lines, excluding tests, prompt, SQL and planning artifacts. Reviewer instructions and acceptance criteria are documented; no runtime shortening is claimed.</p>
+<p>Published follow-up: <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3">GitHub issue #3</a>, ready-for-agent. S01 documentation is complete; S02 runtime simplification is still proposed.</p></details><details><summary>Main Word assignment — requirement traceability</summary><h2>Main Assignment — Requirements Traceability</h2>
 <p>The user explicitly designated AI_Engineer_-_Code_Homework_Test.docx as the main assignment and asked for strict adherence. Its original wording governs required behavior and deliverables. Saved transcription was checked against all 35 original Word paragraphs on 9 October 2026. The document is source material; the user&#x27;s instruction authorizes using its requirements for this project.</p>
 <h3>Required behavior and deliverables</h3>
 <div class="table-scroll"><table><thead><tr><th scope="col">Requirement from Word</th><th scope="col">Owning tasks</th><th scope="col">Current evidence / gap</th></tr></thead><tbody><tr><td>Use an OpenAI GPT model; submit without an actual API key</td><td>T02, T07</td><td>Live GPT adapter implemented and HTTP-tested; paid live execution not run (no credentials)</td></tr><tr><td>Source in GitHub, or ZIP containing source and .git</td><td>T02, T12</td><td>Private repo exists; final branch and standalone source+.git ZIP prepared in T12</td></tr><tr><td>README setup/run instructions</td><td>T02, T11</td><td>README documents uv, Docker, live/offline agent, tools, tests and exit codes</td></tr><tr><td>Urgency: critical/high/medium/low</td><td>T04, T06–T09</td><td>Validated rubric and agent output; three offline sample expectations pass</td></tr><tr><td>Extract product, issue type and sentiment</td><td>T04, T06–T09</td><td>Validated output contract and GPT prompt; unknown product null, multi-issue cases tested</td></tr><tr><td>Search relevant FAQ/docs</td><td>E02–E04, T05, T07</td><td>Agent executes PostgreSQL retrieval; mock provenance/citations checked; live semantic quality unverified</td></tr><tr><td>Decide auto-respond, route to specialist, or escalate to human</td><td>T04, T06–T09</td><td>Action/destination policy executes; invalid automation falls back</td></tr><tr><td>Use at least two tools</td><td>T05, T07</td><td>Both schemas/implementations execute through agent for all three samples</td></tr><tr><td>Working code processing supplied sample tickets</td><td>T03, T07–T10</td><td>All twelve messages preserved; complete labeled offline agent run in examples/sample_results.json</td></tr><tr><td>System prompt</td><td>T06</td><td>prompts/system.txt, packaged and copy-checked</td></tr><tr><td>Tool definitions: schemas and implementations; mocks permitted</td><td>T04–T05</td><td>Both tools implemented; synthetic/mock provenance explicit</td></tr><tr><td>Write-up: one page maximum, covering architecture/why, failures, production evaluation</td><td>T11</td><td>WRITEUP.md and verified one-page WRITEUP.pdf</td></tr><tr><td>Terminal console or API sufficient; no chat UI needed</td><td>T02, T07</td><td>JSON batch CLI implemented with stderr traces and truthful exit codes</td></tr><tr><td>Readability, maintainability, extensibility and logic</td><td>All tasks</td><td>Per-task verification and final independent standards/spec review</td></tr></tbody></table></div>
@@ -888,7 +1016,36 @@ uv run --locked pytest
 uv run --locked ruff check .
 uv run --locked ruff format --check .
 uv build
-uv run --locked python scripts/build_planner.py</code></pre></section><section class="page" id="knowledge" tabindex="-1"><h2>Agent and Knowledge System — Phase 1</h2>
+uv run --locked python scripts/build_planner.py</code></pre></section><section class="page" id="testing" tabindex="-1"><h2>Test Guide and Assignment Fit</h2>
+<h3>1. How to test</h3>
+<p>Use the completed branch, not the older main branch. This repository is private, so the owner must grant access before someone else can clone it. Git and Docker with Linux containers/Compose are the only host prerequisites for the Docker route; Python and uv are installed inside the image.</p>
+<pre><code>git clone --branch feat/triage-agent --single-branch https://github.com/Watcharaphong-kob/support-ticket-triage-agent.git
+cd support-ticket-triage-agent
+Copy-Item .env.example .env
+# Edit .env: replace POSTGRES_PASSWORD. Keep EMBEDDING_BACKEND=fake for offline testing.
+docker compose up -d --build app
+docker compose run --rm app python -m triage_agent.knowledge.manage ingest
+docker compose run --rm -e TRIAGE_TEST_DATABASE=1 app python -m pytest -q -p no:cacheprovider
+docker compose run --rm app python -m triage_agent --input data/sample_tickets.json --offline --trace</code></pre>
+<p>On macOS/Linux use <code>cp .env.example .env</code> instead of <code>Copy-Item</code>; Docker commands are the same. First startup needs internet access to download images/dependencies. The CLI container exits after each command; that is normal. PostgreSQL stays running. Stop it with <code>docker compose down</code>, which retains the knowledge volume.</p>
+<p>Expected automated result: <strong>65 passed, 1 skipped</strong>. The skipped test needs the host Docker CLI; it is checked separately on the host and in CI. All database integration tests run inside the container using disposable schemas. A host-only <code>uv run --locked python -m pytest -q</code> may skip database tests and therefore is not a replacement for this Docker command.</p>
+<p>The offline sample command needs no OpenAI key. Its JSON explicitly says <code>offline_demo</code> and <code>fake-token-v1</code>; it demonstrates executable tools, database retrieval and routing safeguards, not GPT intelligence or semantic retrieval accuracy.</p>
+<p>To test actual GPT behavior, set your own <code>OPENAI_API_KEY</code> and compatible <code>OPENAI_MODEL</code> in <code>.env</code>, then omit <code>--offline</code>:</p>
+<pre><code>docker compose run --rm app python -m triage_agent --input data/sample_tickets.json --trace</code></pre>
+<p>That run still uses fake vectors if your embedding configuration remains fake. For semantic RAG testing, follow README&#x27;s separate live Compose project/volume instructions, choose a supported embedding model/dimension and re-ingest there. Never mix fake and live embedding spaces. Live provider requests use your account and may incur charges. No live provider tests have been performed by this implementation session.</p>
+<h3>2. How to tell whether it works for this task</h3>
+<p>First check structural behavior: three results, correct ticket IDs, complete ordered source threads, both actual tools recorded, valid urgency/action fields, real retrieved chunk IDs and disclosed mock provenance. Stdout must be JSON; traces belong to stderr. Exit 0 means completed triage, 1 means at least one explicit human fallback, and 2 means invalid input/configuration. A completed result means contract/policy checks passed, not that every model judgment is correct.</p>
+<p>Then assess reasoning against the whole conversation:</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Sample</th><th scope="col">Project expectation</th><th scope="col">Evidence that should drive the decision</th></tr></thead><tbody><tr><td>Repeated reported charges and no Pro access</td><td>high; escalate_to_human; billing_payments</td><td>Three reported charges, missing access, presentation in two hours and dispute threat; settlement/refund status unverified</td></tr><tr><td>Thai Enterprise error 500</td><td>critical; escalate_to_human; incident_on_call</td><td>Multiple devices/browsers/coworkers, major-client demo and green-status-page conflict; no confirmed Asia outage; Thai draft</td></tr><tr><td>Theme behavior and scheduling request</td><td>low; route_to_specialist; product_support</td><td>Failed System Default attempt, nonblocking theme issue and separate scheduling feature request; do not repeat failed advice</td></tr></tbody></table></div>
+<p>These are this project&#x27;s rubric, not an official answer key from the Word document. Unknown product should remain null; Free/Pro/Enterprise are plan names. Do not accept invented refunds, SLAs, confirmed outages or feature availability. Check that cited passages support the draft/rationale rather than merely containing similar words.</p>
+<p>Use a fourth ticket unlike the supplied samples with the live GPT mode to check generalization. Review mixed issues, evolving urgency, missing history, empty knowledge and hostile instructions. The deterministic offline model is a limited demonstration and cannot validate general-ticket classification. Compare live outputs with a human rubric across repeated runs; record disagreements, citation errors, failure rate, latency and cost.</p>
+<h3>3. Does it fit the main Word assignment?</h3>
+<p><strong>Assessment: 8/10 for current submission readiness. This is a reasoned self-assessment, not an employer score.</strong></p>
+<p>The required deliverables are present: GPT adapter and prompt, urgency/extraction/action contracts, two tool schemas and implementations, CLI processing, three faithful sample conversations, README, source/Git history and a verified one-page architecture/failure/production-evaluation write-up. Mocks are allowed by the assignment. Independent review found two CLI defects, both fixed with failing-then-passing tests; no actionable spec gaps remained. Hosted CI and clean-clone setup passed.</p>
+<p>The remaining confidence gap is live GPT and multilingual semantic RAG quality: mocked HTTP and canned offline decisions cannot establish them. Code is also larger than the minimal Word exercise because the user selected Docker and classic RAG. Runtime currently contains <strong>1,054 nonblank Python lines</strong>, including management, validation, ingestion and offline demonstration code. No line-count reduction has yet been implemented. The new simplicity spec prioritizes readable, direct code and removal of duplication while retaining the original requirements and tested protections.</p>
+<h3>4. Can someone else clone and run it?</h3>
+<p><strong>Yes, if they have repository access, Git, Docker/Compose, and follow the completed branch&#x27;s README.</strong> The Docker route does not require host Python/uv. They must create their own <code>.env</code>, replace the local DB password, start the services, migrate/ingest knowledge and choose offline or live mode. Adding <code>.env</code> alone does not start the database or seed knowledge.</p>
+<p>Compose automatically reads <code>.env</code>; direct host uv/Python commands do not. Host execution needs the documented environment variables. Do not share your <code>.env</code> or API key. A different laptop should create its own named volume; reusing an existing volume requires its existing password and compatible embedding space. Use the standalone source-plus-Git ZIP if private GitHub access cannot be arranged.</p></section><section class="page" id="knowledge" tabindex="-1"><h2>Agent and Knowledge System — Phase 1</h2>
 <p>9 October 2026 · Selected architecture · Phase 1 prototype implemented</p>
 <h3>Phase decision</h3>
 <p>The user selected <strong>classic RAG using Docker for this prototype phase</strong>. Phase 1 uses PostgreSQL with pgvector as its sole knowledge database. GraphRAG belongs to Phase 2; its backend and libraries will be evaluated then. The existing OpenAI SDK and application-owned tool loop remain the agent approach.</p>

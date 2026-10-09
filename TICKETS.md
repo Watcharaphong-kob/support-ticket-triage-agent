@@ -531,3 +531,59 @@ Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers 
 3. Implement the smallest required change.
 
 4. Consult ask-matt, test and review; record evidence before completion.
+
+## S01 — Document testing, assignment fit and clone setup
+
+Status: done. Scope: followup. Dependencies: T12.
+
+## Acceptance
+
+Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.
+
+## Skills and plugins
+
+Skills used: ask-matt (before and after), grill-with-docs, grilling, domain-modeling, to-spec, superpowers:verification-before-completion.
+
+Plugins used: Superpowers: evidence verification, GitHub: simplicity specification publication.
+
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. GitHub connector delivered PR/issue; hosted CI verified.
+
+## Steps performed
+
+1. Consulted ask-matt and read the requested skills and current Word traceability.
+
+2. Re-ran the complete Docker suite and inspected runtime size and README prerequisites.
+
+3. Wrote reviewer test guide and simplicity spec; added follow-up tasks and HTML testing page.
+
+4. Checked source fidelity, generator determinism and syntax; recorded live-quality limits separately.
+
+5. Published simplicity spec as GitHub issue #3 with ready-for-agent; runtime refactor remains S02 TODO.
+
+## Verification
+
+Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.
+
+Implementation commit: Follow-up documentation commit recorded by Git..
+
+## S02 — Simplify repeated runtime code without changing behavior
+
+Status: todo. Scope: followup. Dependencies: S01.
+
+## Acceptance
+
+Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.
+
+## Skills and plugins
+
+Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+
+## Planned steps
+
+1. Read dependencies and acceptance; consult ask-matt.
+
+2. Add a failing behavior check at the agreed public boundary.
+
+3. Implement the smallest required change.
+
+4. Consult ask-matt, test and review; record evidence before completion.

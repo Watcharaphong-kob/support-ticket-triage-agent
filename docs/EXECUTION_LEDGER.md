@@ -29,3 +29,5 @@ Ruling: deliver the reviewed feature branch without merging main, plus source+.g
 Ruling: private evaluator access cannot be confirmed without an identity; retain privacy and provide the permitted standalone ZIP — cost: URL-only submission needs the owner to grant access.
 
 Delivery verified: 8d50edc pushed; draft PR #2 attached; issue #1 closed; hosted CI run 37904012936 succeeded. Ask-matt post-task check: full prototype completion verified; live quality limitations retained.
+
+S01 before: ask-matt → grill-with-docs facts + to-spec synthesis, reuse approved CLI/DB test seams. Fact subagent unavailable; read/count current sources directly. Docker suite 65 passed/1 host-only skip. User requests simplicity; interpretation recorded as readable minimal concepts without dropping required behavior. S01 after: ask-matt → documentation/source/syntax verification. Runtime untouched; S02 simplification proposed separately.

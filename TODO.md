@@ -76,6 +76,14 @@ Checked tasks record completed setup/design and the user's E01 architecture deci
 
 
 
+## Reviewer guide and simplicity follow-up
+
+- [x] **S01 — Document testing, assignment fit and clone setup** (done): Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.
+
+- [ ] **S02 — Simplify repeated runtime code without changing behavior** (todo): Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.
+
+
+
 ## Before submission
 
 Follow T12 acceptance and the final verification record. Verification covers fixtures, schemas, Docker, ingestion, retrieval, GPT adapter contracts, agent and CLI. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.

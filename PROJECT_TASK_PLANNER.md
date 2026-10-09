@@ -44,6 +44,13 @@ The original homework estimate was 210 minutes and the assignment recommends 150
 | --- | --- | --- | --- |
 | E05 | deferred | T12 | Explore GraphRAG in the next phase |
 
+## Reviewer guide and simplicity follow-up
+
+| Task | Status | Deliverable |
+| --- | --- | --- |
+| S01 | done | Document testing, assignment fit and clone setup |
+| S02 | todo | Simplify repeated runtime code without changing behavior |
+
 ## Task contracts
 
 ### T01 — Approve architecture and contracts
@@ -301,6 +308,30 @@ Phase: Phase 2 â€” deferred GraphRAG. Status: deferred. Depends on: T12. Es
 Outputs: `src/triage_agent/knowledge/neo4j_store.py`, `tests/test_graph_retrieval.py`.
 
 Acceptance: Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.
+
+### S01 — Document testing, assignment fit and clone setup
+
+Phase: Reviewer guide and simplicity follow-up. Status: done. Depends on: T12. Estimate: TBD.
+
+Outputs: `TEST_GUIDE.md`, `docs/SIMPLICITY_SPEC.md`, `ASSIGNMENT_READER.html`.
+
+Acceptance: Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.
+
+Skills used: ask-matt (before and after), grill-with-docs, grilling, domain-modeling, to-spec, superpowers:verification-before-completion.
+
+Plugins used: Superpowers: evidence verification, GitHub: simplicity specification publication.
+
+Verification: Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.
+
+[Execution ticket](docs/tickets/S01.md)
+
+### S02 — Simplify repeated runtime code without changing behavior
+
+Phase: Reviewer guide and simplicity follow-up. Status: todo. Depends on: S01. Estimate: TBD.
+
+Outputs: `src/triage_agent/models.py`, `src/triage_agent/agent.py`, `tests/test_agent.py`.
+
+Acceptance: Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.
 
 ## Execution rules
 

@@ -25,6 +25,10 @@ User instruction recorded 9 October 2026: use ask-matt before and after every ta
 - Existing isolated worktree: feat/triage-agent at commit 4844b1bdc4bdea9d449e983dc48efbce7e0cc884.
 - Fresh baseline: uv run --locked pytest -q; 8 passed.
 - After T03 planning: ask-matt consulted again; plan self-review checked source fidelity, customer context, scope and neighboring contracts. Ruff check/format passed for the generator; HTML structure, JavaScript syntax, all 35 source blocks and deterministic regeneration verified. Plan and workflow are embedded in the HTML planner view.
-- The user authorized continued implementation/testing through T05. Ask-matt was consulted before and after T03, T04, E02, E03, E04 and T05; verification and independent standards/spec review followed. The per-task tickets record steps and results. GPT-loop implementation remains pending; GitHub issue publication is separate from local ticket creation.
+- Historical checkpoint: the user authorized continued implementation/testing through T05. Ask-matt was consulted before and after T03, T04, E02, E03, E04 and T05; verification and independent standards/spec review followed. The per-task tickets record steps and results. GPT-loop implementation was pending at that historical checkpoint; GitHub issue publication is separate from local ticket creation.
 
 Skill source: C:/Users/ASUS/.codex/skills/ask-matt/SKILL.md. This workflow implements the user's instruction; ask-matt itself does not certify successful results.
+
+## Reviewer-guide follow-up
+
+S01 consults ask-matt before and after documentation work. Existing CLI and Docker tool/database seams are reused; no new seam or runtime change is needed. Fresh Docker suite: 65 passed/1 host-only skip. Simplicity means fewer necessary concepts and less duplication while retaining readable code, Word requirements and tested protections. S02 is a separate proposed refactor; no runtime shortening is claimed.

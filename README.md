@@ -6,6 +6,8 @@ Phase 1 prototype for the **main Word assignment**: a Python CLI with an OpenAI 
 
 ## Run the complete offline demonstration
 
+For clone commands, expected output, assignment-fit assessment and live-vs-offline acceptance, see [Test guide](TEST_GUIDE.md). The completed code is on `feat/triage-agent`; the older `main` branch is not the full prototype. The owner must grant access to this private repository before another person can clone it.
+
 Prerequisites: Docker Desktop with Linux containers and Docker Compose. Run from the repository root. Compose loads `.env`; host Python reads environment variables only.
 
 ```powershell

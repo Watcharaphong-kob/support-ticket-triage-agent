@@ -18,6 +18,8 @@ LINKS = {
     "AGENT_KNOWLEDGE_SPEC.md": "#knowledge",
     "GITHUB_REPO_PLAN.md": "#github",
     "TICKETS.md": "#tickets",
+    "TEST_GUIDE.md": "#testing",
+    "docs/SIMPLICITY_SPEC.md": "#spec",
 }
 
 
@@ -125,7 +127,7 @@ def main():
     baseline = [task for task in tasks if task["id"].startswith("T")]
     phase1 = [task for task in tasks if task["scope"] == "phase1"]
     phase2 = [task for task in tasks if task["scope"] == "phase2"]
-    done = {task["id"] for task in tasks if task["status"] == "done"}
+    done = {task["id"] for task in phase1 if task["status"] == "done"}
     ready = [
         task["id"]
         for task in phase1
@@ -176,6 +178,14 @@ def main():
         planner.append(
             f"| {task['id']} | {task['status']} | {', '.join(task['depends_on'])} | {task['title']} |"
         )
+    followups = [task for task in tasks if task["scope"] == "followup"]
+    if followups:
+        planner += [
+            "## Reviewer guide and simplicity follow-up",
+            "| Task | Status | Deliverable |",
+            "| --- | --- | --- |",
+        ]
+        planner += [f"| {task['id']} | {task['status']} | {task['title']} |" for task in followups]
     planner += ["## Task contracts"]
     for task in tasks:
         planner += [
@@ -264,7 +274,7 @@ def main():
                     if task["id"] == "T05"
                     else (
                         "GitHub connector delivered PR/issue; hosted CI verified."
-                        if task["id"] == "T12"
+                        if task["id"] in {"T12", "S01"}
                         else "No external app connector used for this task."
                     )
                 ),
@@ -387,6 +397,9 @@ def main():
             "spec",
             "Spec",
             markdown((ROOT / "PROJECT_SPEC.md").read_text(encoding="utf-8"))
+            + "<details><summary>Simplicity and reviewer acceptance spec</summary>"
+            + markdown((ROOT / "docs/SIMPLICITY_SPEC.md").read_text(encoding="utf-8"))
+            + "</details>"
             + "<details><summary>Main Word assignment — requirement traceability</summary>"
             + markdown((ROOT / "docs/ASSIGNMENT_REQUIREMENTS.md").read_text(encoding="utf-8"))
             + "</details><details><summary>Support-ticket glossary</summary>"
@@ -401,6 +414,11 @@ def main():
             + "</details>",
         ),
         ("stack", "Tech stack", markdown((ROOT / "TECH_STACK.md").read_text(encoding="utf-8"))),
+        (
+            "testing",
+            "How to test / Word fit",
+            markdown((ROOT / "TEST_GUIDE.md").read_text(encoding="utf-8")),
+        ),
         (
             "knowledge",
             "Knowledge system",

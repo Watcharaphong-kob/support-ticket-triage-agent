@@ -601,6 +601,63 @@
       "acceptance": "Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.",
       "status": "deferred",
       "scope": "phase2"
+    },
+    {
+      "id": "S01",
+      "title": "Document testing, assignment fit and clone setup",
+      "phase": "Reviewer guide and simplicity follow-up",
+      "minutes": null,
+      "depends_on": [
+        "T12"
+      ],
+      "outputs": [
+        "TEST_GUIDE.md",
+        "docs/SIMPLICITY_SPEC.md",
+        "ASSIGNMENT_READER.html"
+      ],
+      "acceptance": "Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.",
+      "status": "done",
+      "scope": "followup",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "grill-with-docs",
+        "grilling",
+        "domain-modeling",
+        "to-spec",
+        "superpowers:verification-before-completion"
+      ],
+      "plugins_used": [
+        "Superpowers: evidence verification",
+        "GitHub: simplicity specification publication"
+      ],
+      "steps_done": [
+        "Consulted ask-matt and read the requested skills and current Word traceability.",
+        "Re-ran the complete Docker suite and inspected runtime size and README prerequisites.",
+        "Wrote reviewer test guide and simplicity spec; added follow-up tasks and HTML testing page.",
+        "Checked source fidelity, generator determinism and syntax; recorded live-quality limits separately.",
+        "Published simplicity spec as GitHub issue #3 with ready-for-agent; runtime refactor remains S02 TODO."
+      ],
+      "verification": "Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.",
+      "ticket": "docs/tickets/S01.md",
+      "implementation_commit": "Follow-up documentation commit recorded by Git."
+    },
+    {
+      "id": "S02",
+      "title": "Simplify repeated runtime code without changing behavior",
+      "phase": "Reviewer guide and simplicity follow-up",
+      "minutes": null,
+      "depends_on": [
+        "S01"
+      ],
+      "outputs": [
+        "src/triage_agent/models.py",
+        "src/triage_agent/agent.py",
+        "tests/test_agent.py"
+      ],
+      "acceptance": "Measure before/after runtime size and complexity; reduce actual duplication where useful; preserve public contracts, both tools, Thai output, budgets, citations and every regression test. No arbitrary line target or framework changes.",
+      "status": "todo",
+      "scope": "followup",
+      "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3"
     }
   ],
   "phase": "Phase 1 â€” Docker classic RAG prototype",
@@ -609,5 +666,6 @@
   "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1",
   "github_issue_status": "closed — completed",
   "github_pull_request": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/pull/2",
-  "github_ci_run": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/actions/runs/37904012936"
+  "github_ci_run": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/actions/runs/37904012936",
+  "simplicity_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/3"
 }
