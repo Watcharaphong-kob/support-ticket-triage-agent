@@ -27,3 +27,5 @@ Final: Ruling: reviewers declined T12 and remote CI — directly verify clean cl
 T12 complete: clean standalone clone uv install/build, Docker migrate/ingest/full suite/sample runs, resource/reader/PDF checks and source+.git ZIP all verified. Final rebuilt image 65 passed/1 host-only skip; Compose check passes on host. Ask-matt after → verified submission and final review complete.
 Ruling: deliver the reviewed feature branch without merging main, plus source+.git ZIP — user authorized continuous repository/project delivery; no destructive integration is needed — cost: repository consumers must choose the delivery branch until integration.
 Ruling: private evaluator access cannot be confirmed without an identity; retain privacy and provide the permitted standalone ZIP — cost: URL-only submission needs the owner to grant access.
+
+Delivery verified: 8d50edc pushed; draft PR #2 attached; issue #1 closed; hosted CI run 37904012936 succeeded. Ask-matt post-task check: full prototype completion verified; live quality limitations retained.

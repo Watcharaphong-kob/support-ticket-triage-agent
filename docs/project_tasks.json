@@ -572,16 +572,17 @@
       ],
       "plugins_used": [
         "Superpowers: execution, review and verified delivery",
-        "GitHub: private feature-branch delivery and tracking issue"
+        "GitHub: pushed private feature branch, opened draft PR #2, closed tracking issue #1, verified hosted CI"
       ],
       "steps_done": [
         "Consulted ask-matt; verified independent review findings with failing regression tests.",
         "Fixed offline live-embedding selection and Windows redirected Thai output; full rebuilt Docker suite passed.",
         "Verified clean standalone clone with locked uv install, tests, package resources, Docker startup/ingestion/sample run and one-page PDF.",
         "Configured pinned GitHub Actions and verified equivalent commands locally; packaged source plus actual standalone .git, excluding secrets/caches.",
-        "Regenerated planner/TODO/HTML, verified source fidelity and checked ask-matt after completion; repository delivery preserves main for review."
+        "Regenerated planner/TODO/HTML, verified source fidelity and checked ask-matt after completion; repository delivery preserves main for review.",
+        "Pushed reviewed feature branch, attached draft PR #2, closed issue #1 and verified GitHub Actions push run success for 8d50edc."
       ],
-      "verification": "Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run.",
+      "verification": "Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run. Hosted GitHub Actions run 37904012936 succeeded for delivered commit 8d50edc.",
       "ticket": "docs/tickets/T12.md",
       "implementation_commit": "Reviewed implementation 614dfc0; delivery head recorded by Git and submission manifest."
     },
@@ -605,5 +606,8 @@
   "phase": "Phase 1 â€” Docker classic RAG prototype",
   "phase1_estimate_minutes": null,
   "execution_scope": "User authorized continuous completion of all Phase 1 tasks on 9 October 2026.",
-  "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1"
+  "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1",
+  "github_issue_status": "closed — completed",
+  "github_pull_request": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/pull/2",
+  "github_ci_run": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/actions/runs/37904012936"
 }

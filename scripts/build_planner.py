@@ -242,7 +242,7 @@ def main():
     (ROOT / "docs/tickets").mkdir(exist_ok=True)
     if data.get("github_issue"):
         ticket_blocks.append(
-            f"[GitHub Phase 1 tracking issue]({data['github_issue']}) · ready-for-agent. "
+            f"[GitHub Phase 1 tracking issue]({data['github_issue']}) · {data.get('github_issue_status', 'open')}. "
             "The local task tickets below contain per-task execution details."
         )
     for task in tasks:
@@ -262,7 +262,11 @@ def main():
                 + (
                     "GitHub connector published the tracking issue."
                     if task["id"] == "T05"
-                    else "No external app connector used for this task."
+                    else (
+                        "GitHub connector delivered PR/issue; hosted CI verified."
+                        if task["id"] == "T12"
+                        else "No external app connector used for this task."
+                    )
                 ),
                 "## Steps performed",
             ]

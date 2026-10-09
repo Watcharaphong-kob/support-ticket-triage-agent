@@ -163,8 +163,8 @@
 <p>Outputs: <code>.github/workflows/ci.yml</code>, <code>docs/verification.md</code>.</p>
 <p>Acceptance: Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</p>
 <p>Skills used: ask-matt (before and after), implement, code-review (independent standards/spec agents), superpowers:executing-plans, superpowers:receiving-code-review, superpowers:verification-before-completion, superpowers:finishing-a-development-branch, pr, to-spec.</p>
-<p>Plugins used: Superpowers: execution, review and verified delivery, GitHub: private feature-branch delivery and tracking issue.</p>
-<p>Verification: Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run.</p>
+<p>Plugins used: Superpowers: execution, review and verified delivery, GitHub: pushed private feature branch, opened draft PR #2, closed tracking issue #1, verified hosted CI.</p>
+<p>Verification: Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run. Hosted GitHub Actions run 37904012936 succeeded for delivered commit 8d50edc.</p>
 <p><a href="#tickets">Execution ticket</a></p>
 <h4>E05 — Explore GraphRAG in the next phase</h4>
 <p>Phase: Phase 2 â€” deferred GraphRAG. Status: deferred. Depends on: T12. Estimate: TBD.</p>
@@ -336,7 +336,7 @@
 <p>Follow T12 acceptance and the final verification record. Verification covers fixtures, schemas, Docker, ingestion, retrieval, GPT adapter contracts, agent and CLI. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.</p></section><section class="page" id="tickets" tabindex="-1"><h2>Execution Tickets</h2>
 <p>9 October 2026 · Local project tickets</p>
 <p>Each ticket records dependencies, acceptance, skills/plugins and simple steps. Completed steps are evidence; planned steps are not claimed as executed.</p>
-<p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub Phase 1 tracking issue</a> · ready-for-agent. The local task tickets below contain per-task execution details.</p>
+<p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub Phase 1 tracking issue</a> · closed — completed. The local task tickets below contain per-task execution details.</p>
 <h3>T01 — Approve architecture and contracts</h3>
 <p>Status: done. Scope: phase1. Dependencies: none.</p>
 <h3>Acceptance</h3>
@@ -685,8 +685,8 @@
 <p>Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</p>
 <h3>Skills and plugins</h3>
 <p>Skills used: ask-matt (before and after), implement, code-review (independent standards/spec agents), superpowers:executing-plans, superpowers:receiving-code-review, superpowers:verification-before-completion, superpowers:finishing-a-development-branch, pr, to-spec.</p>
-<p>Plugins used: Superpowers: execution, review and verified delivery, GitHub: private feature-branch delivery and tracking issue.</p>
-<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<p>Plugins used: Superpowers: execution, review and verified delivery, GitHub: pushed private feature branch, opened draft PR #2, closed tracking issue #1, verified hosted CI.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. GitHub connector delivered PR/issue; hosted CI verified.</p>
 <h3>Steps performed</h3>
 <ol>
 <li>Consulted ask-matt; verified independent review findings with failing regression tests.</li>
@@ -703,8 +703,11 @@
 <ol>
 <li>Regenerated planner/TODO/HTML, verified source fidelity and checked ask-matt after completion; repository delivery preserves main for review.</li>
 </ol>
+<ol>
+<li>Pushed reviewed feature branch, attached draft PR #2, closed issue #1 and verified GitHub Actions push run success for 8d50edc.</li>
+</ol>
 <h3>Verification</h3>
-<p>Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run.</p>
+<p>Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run. Hosted GitHub Actions run 37904012936 succeeded for delivered commit 8d50edc.</p>
 <p>Implementation commit: Reviewed implementation 614dfc0; delivery head recorded by Git and submission manifest..</p>
 <h3>E05 — Explore GraphRAG in the next phase</h3>
 <p>Status: deferred. Scope: phase2. Dependencies: T12.</p>
@@ -1010,7 +1013,9 @@ uv run --locked python scripts/build_planner.py</code></pre></section><section c
 <li><input type="checkbox" disabled aria-label="Task status"> If using ZIP fallback, package the primary repository&#x27;s source plus its actual .git directory, excluding virtual environments, worktrees, caches, secrets, and unrelated local files.</li>
 <li><input type="checkbox" disabled aria-label="Task status"> ZIP fallback extracted elsewhere and checked for usable Git history and runnable source.</li>
 </ul>
-<p>For the ZIP fallback, do not zip only a linked worktree: its .git is usually a pointer to shared metadata elsewhere. Package the self-contained primary repository so the reviewer receives the Git history required by the assignment.</p></section><section class="page" id="t02" tabindex="-1"><h2>T02 — Project setup status</h2>
+<p>For the ZIP fallback, do not zip only a linked worktree: its .git is usually a pointer to shared metadata elsewhere. Package the self-contained primary repository so the reviewer receives the Git history required by the assignment.</p>
+<h3>Delivered prototype</h3>
+<p>Reviewed code is pushed to feat/triage-agent and available in <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/pull/2">draft PR #2</a>. Tracking issue #1 is closed as completed. <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/actions/runs/37904012936">GitHub Actions run 37904012936</a> succeeded for delivery commit 8d50edc. Main remains available for reviewed integration. Local SUBMISSION_Phase1.zip contains source and standalone .git; SUBMISSION_MANIFEST.json records its final commit and checksum.</p></section><section class="page" id="t02" tabindex="-1"><h2>T02 — Project setup status</h2>
 <p>9 October 2026</p>
 <h3>Delivered</h3>
 <ul>

@@ -288,9 +288,9 @@ Acceptance: Clean-checkout commands succeed; offline CI documented/configured as
 
 Skills used: ask-matt (before and after), implement, code-review (independent standards/spec agents), superpowers:executing-plans, superpowers:receiving-code-review, superpowers:verification-before-completion, superpowers:finishing-a-development-branch, pr, to-spec.
 
-Plugins used: Superpowers: execution, review and verified delivery, GitHub: private feature-branch delivery and tracking issue.
+Plugins used: Superpowers: execution, review and verified delivery, GitHub: pushed private feature branch, opened draft PR #2, closed tracking issue #1, verified hosted CI.
 
-Verification: Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run.
+Verification: Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run. Hosted GitHub Actions run 37904012936 succeeded for delivered commit 8d50edc.
 
 [Execution ticket](docs/tickets/T12.md)
 

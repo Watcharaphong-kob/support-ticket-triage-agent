@@ -132,3 +132,7 @@ The README should make the reviewer path obvious: prerequisites → create envir
 - [ ] ZIP fallback extracted elsewhere and checked for usable Git history and runnable source.
 
 For the ZIP fallback, do not zip only a linked worktree: its .git is usually a pointer to shared metadata elsewhere. Package the self-contained primary repository so the reviewer receives the Git history required by the assignment.
+
+## Delivered prototype
+
+Reviewed code is pushed to feat/triage-agent and available in [draft PR #2](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/pull/2). Tracking issue #1 is closed as completed. [GitHub Actions run 37904012936](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/actions/runs/37904012936) succeeded for delivery commit 8d50edc. Main remains available for reviewed integration. Local SUBMISSION_Phase1.zip contains source and standalone .git; SUBMISSION_MANIFEST.json records its final commit and checksum.
