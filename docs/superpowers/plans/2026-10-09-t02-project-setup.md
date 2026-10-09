@@ -39,11 +39,11 @@
 
 ## Execution steps
 
-- [ ] Commit approved planning baseline and ignore rules; create an isolated managed checkout.
-- [ ] Write configuration and CLI tests; verify they fail before implementing behavior.
-- [ ] Add pyproject.toml, configuration, CLI/module entry points, and safe example configuration.
-- [ ] Generate uv.lock and install through uv; verify focused tests pass.
-- [ ] Run Ruff lint/format checks, both entry points, and a wheel build.
-- [ ] Document exact uv commands and T02 limitations; update planner and reader status.
-- [ ] Create one private repository under the authenticated user's account, connect origin, and push verified setup; verify remote SHA and visibility.
-- [ ] Commit results and record T02 evidence. Stop at T02.
+- [x] Commit approved planning baseline and ignore rules; create an isolated managed checkout.
+- [x] Write configuration and CLI tests; verify they fail before implementing behavior.
+- [x] Add pyproject.toml, configuration, CLI/module entry points, and safe example configuration.
+- [x] Generate uv.lock and install through uv; verify focused tests pass.
+- [x] Run Ruff lint/format checks, both entry points, and a wheel build.
+- [x] Document exact uv commands and T02 limitations; update planner and reader status.
+- [x] Create one private repository under the authenticated user's account, connect origin, and push verified setup; verify remote SHA and visibility.
+- [x] Commit results and record T02 evidence. Stop at T02.

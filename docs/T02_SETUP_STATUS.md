@@ -24,8 +24,8 @@
 
 ## Scope and implementation rulings
 
-T01 is approved; T02 setup is implemented locally. Ticket input explicitly returns exit 2 with an unfinished-processing message. Fixtures, tools, system prompt, and live GPT processing remain T03–T08. No live model call was made.
+T01 is approved; T02 setup is implemented and pushed to main and feat/triage-agent. Ticket input explicitly returns exit 2 with an unfinished-processing message. Fixtures, tools, system prompt, and live GPT processing remain T03–T08. No live model call was made.
 
 The app's managed worktree tool did not recognize this newly initialized repository. Git fallback created the ignored .worktrees/triage-agent checkout after the planning baseline was committed. The primary checkout remains the self-contained repository for the assignment's ZIP fallback.
 
-The user explicitly requested uv and one GitHub repository. Existing Git Credential Manager authentication created the private repository; no key/token was written to project files or printed. Repository publishing/remote verification is the final T02 step.
+The user explicitly requested uv and one GitHub repository. Existing Git Credential Manager authentication created the private repository; no key/token was written to project files or printed. The verified setup commit b00ba9b was pushed to main and feat/triage-agent. Independent review found no actionable T02 issues. GitHub metadata confirms private visibility and main as default branch. Primary-checkout uv sync --locked --offline succeeded; all 8 tests, installed CLI version, and Ruff checks passed there as well.

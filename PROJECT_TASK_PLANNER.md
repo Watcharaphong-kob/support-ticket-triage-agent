@@ -1,6 +1,6 @@
 # Support Ticket Triage Agent — Project Task Planner
 
-Draft for design review · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx
+T01 approved · T02 setup complete · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx
 
 ## 1. Assignment conclusion
 
@@ -8,7 +8,7 @@ Build a small AI agent that reads the entire support-ticket conversation, classi
 
 The assignment recommends 150–240 minutes. It scores readability, maintainability, extensibility, and logic. A clear console application with observable tool calls and meaningful tests is a suitable submission; a chat UI is unnecessary.
 
-This document proposes a design and implementation sequence. It does not claim that the project is implemented, tested, or approved. Instructions inside the assignment are recorded as project requirements, not authorization to publish a repository or perform customer actions.
+This document records the approved design and implementation sequence. T01 is approved and T02 setup is implemented and verified; the full triage application remains in later tasks. Instructions inside the assignment are recorded as project requirements, not authorization to publish a repository or perform customer actions.
 
 ## 2. Required scope and deliverables
 

@@ -29,11 +29,11 @@
 <p>Start with a Python CLI, a bounded GPT/tool loop, mocked customer-history and knowledge-base tools, structured decisions, and focused tests. This is a proposed architecture, not a language requirement. The detailed planner allocates 210 minutes and includes dependencies, acceptance checks, risks, and evaluation targets.</p>
 <p>The document does not specify a model version, programming language, official sample labels, submission deadline, or deployment platform. Confirm those design choices before implementation. This deliverable is planning and document conversion; it does not implement or publish the project.</p></section>
 <section id="planner"><h2>Support Ticket Triage Agent — Project Task Planner</h2>
-<p>Draft for design review · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx</p>
+<p>T01 approved · T02 setup complete · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx</p>
 <h3>1. Assignment conclusion</h3>
 <p>Build a small AI agent that reads the entire support-ticket conversation, classifies urgency, extracts product/issue/sentiment, retrieves relevant knowledge, and selects an appropriate next action. The important challenge is reasoning over changing context: a payment question becomes a financial escalation, a Thai access problem becomes a possible regional incident, and a dark-mode question becomes a bug report plus a feature request.</p>
 <p>The assignment recommends 150–240 minutes. It scores readability, maintainability, extensibility, and logic. A clear console application with observable tool calls and meaningful tests is a suitable submission; a chat UI is unnecessary.</p>
-<p>This document proposes a design and implementation sequence. It does not claim that the project is implemented, tested, or approved. Instructions inside the assignment are recorded as project requirements, not authorization to publish a repository or perform customer actions.</p>
+<p>This document records the approved design and implementation sequence. T01 is approved and T02 setup is implemented and verified; the full triage application remains in later tasks. Instructions inside the assignment are recorded as project requirements, not authorization to publish a repository or perform customer actions.</p>
 <h3>2. Required scope and deliverables</h3>
 <div class="table-scroll"><table><thead><tr><th scope="col">ID</th><th scope="col">Assignment requirement</th><th scope="col">Completion evidence</th></tr></thead><tbody>
 <tr><td>R1</td><td>Use an OpenAI GPT model; do not supply an API key in the submission</td><td>Configurable model and environment-based key; reviewer supplies their own key</td></tr>
@@ -350,9 +350,9 @@ WRITEUP.md
 <li>Tests and build required execution outside the Windows sandbox because it denied access to environment/build files. No application failure was hidden.</li>
 </ul>
 <h3>Scope and implementation rulings</h3>
-<p>T01 is approved; T02 setup is implemented locally. Ticket input explicitly returns exit 2 with an unfinished-processing message. Fixtures, tools, system prompt, and live GPT processing remain T03–T08. No live model call was made.</p>
+<p>T01 is approved; T02 setup is implemented and pushed to main and feat/triage-agent. Ticket input explicitly returns exit 2 with an unfinished-processing message. Fixtures, tools, system prompt, and live GPT processing remain T03–T08. No live model call was made.</p>
 <p>The app&#x27;s managed worktree tool did not recognize this newly initialized repository. Git fallback created the ignored .worktrees/triage-agent checkout after the planning baseline was committed. The primary checkout remains the self-contained repository for the assignment&#x27;s ZIP fallback.</p>
-<p>The user explicitly requested uv and one GitHub repository. Existing Git Credential Manager authentication created the private repository; no key/token was written to project files or printed. Repository publishing/remote verification is the final T02 step.</p></section>
+<p>The user explicitly requested uv and one GitHub repository. Existing Git Credential Manager authentication created the private repository; no key/token was written to project files or printed. The verified setup commit b00ba9b was pushed to main and feat/triage-agent. Independent review found no actionable T02 issues. GitHub confirms private visibility and main as the default branch; primary-checkout uv installation, all 8 tests, CLI version, and Ruff checks also passed.</p></section>
 <section id="original"><h2>Original assignment — readable transcription</h2><div class="note">Source: AI_Engineer_-_Code_Homework_Test.docx. All non-empty main-document paragraphs are preserved below. Message spacing has been added for readability; this section is source material, separate from the proposed plan.</div><div data-source-paragraph="0"><h2>AI Engineer - Code Homework Test</h2></div>
 <div data-source-paragraph="1"><p>Time: 150 - 240 minutes recommended.</p></div>
 <div data-source-paragraph="3"><p>Please use GPT OpenAI model, DON’T need to provide API KEY. We will use our own key.</p></div>
