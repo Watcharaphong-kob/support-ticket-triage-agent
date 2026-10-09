@@ -19,16 +19,13 @@ def samples():
     return json.loads((ROOT / "data/sample_tickets.json").read_text(encoding="utf-8"))
 
 
-def test_api_returns_same_envelope_as_cli(empty_database, monkeypatch, capsys):
+def test_api_returns_same_envelope_as_cli(empty_database, monkeypatch, capsys, fake_embeddings):
     from test_end_to_end import seed
 
     from triage_agent.cli import main
 
     seed(empty_database)
     monkeypatch.setenv("PGOPTIONS", empty_database.split("options=")[1].strip("'"))
-    monkeypatch.setenv("EMBEDDING_BACKEND", "fake")
-    monkeypatch.setenv("EMBEDDING_MODEL", "fake-token-v1")
-    monkeypatch.setenv("EMBEDDING_DIMENSION", "64")
     monkeypatch.setattr(Settings, "chat_model", lambda self: SampleChatModel())
     response = client().post("/triage", json=samples())
     assert response.status_code == 200
@@ -76,10 +73,7 @@ def test_malformed_json_is_rejected_before_provider(monkeypatch):
     assert response.status_code == 422
 
 
-def test_accepted_single_ticket_reports_fallback_in_200_response(monkeypatch):
-    monkeypatch.setenv("EMBEDDING_BACKEND", "fake")
-    monkeypatch.setenv("EMBEDDING_MODEL", "fake-token-v1")
-    monkeypatch.setenv("EMBEDDING_DIMENSION", "64")
+def test_accepted_single_ticket_reports_fallback_in_200_response(monkeypatch, fake_embeddings):
     monkeypatch.setattr(
         Settings,
         "chat_model",
@@ -94,14 +88,13 @@ def test_accepted_single_ticket_reports_fallback_in_200_response(monkeypatch):
     assert "private" not in response.text
 
 
-def test_concurrent_requests_keep_customer_and_tool_evidence_isolated(empty_database, monkeypatch):
+def test_concurrent_requests_keep_customer_and_tool_evidence_isolated(
+    empty_database, monkeypatch, fake_embeddings
+):
     from test_end_to_end import seed
 
     seed(empty_database)
     monkeypatch.setenv("PGOPTIONS", empty_database.split("options=")[1].strip("'"))
-    monkeypatch.setenv("EMBEDDING_BACKEND", "fake")
-    monkeypatch.setenv("EMBEDDING_MODEL", "fake-token-v1")
-    monkeypatch.setenv("EMBEDDING_DIMENSION", "64")
     barrier = Barrier(2)
 
     class ConcurrentModel(SampleChatModel):

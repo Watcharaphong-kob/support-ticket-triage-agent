@@ -263,7 +263,7 @@ GitHub: [#7](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/is
 
 ### F02 — HTTP access to the same agent
 
-GitHub: [#8](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/8). Pending; native blocker #7.
+GitHub: [#8](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/8). Done; native blocker #7 completed.
 
 Blocked by F01.
 
@@ -336,3 +336,5 @@ F01 post-task ask-matt: verification complete → code-review → next frontier 
 - RED→GREEN: missing HTTP routes and missing Compose API service. Reused real triage for CLI/API parity and concurrent request isolation; invalid requests invoke no provider/tools, accepted failures remain explicit result fallbacks in HTTP 200, missing config is sanitized 503 and malformed input is 422.
 - Full rebuilt Docker suite: 78 passed, 1 host-only skip. Includes actual PostgreSQL parity, Thai output and barrier-forced concurrent requests. Host API checks: 8 passed / 2 DB skips; host Compose check: 1 passed. Local HTTP /health and /openapi.json responded correctly. Ruff and whitespace checks passed.
 - Restricted Windows TestClient run stalled; terminated and used the unrestricted host run plus Linux Docker suite. No live GPT/semantic quality calls; deterministic injected chat models are test-only.
+
+F02 post-task ask-matt: HTTP verification → standards/spec review → F03 delivery frontier. Standards: no violations; optional repeated test config consolidated in a small fixture. Spec: no findings. After cleanup, real DB API tests: 10 passed (read-only test mount); forced concurrent isolation also passed with inherited live-embedding config overridden by the fixture. Rebuilt image suite before test-only cleanup: 78 passed / 1 host-only skip. F02 implementation commit f621598; final no-mount image suite follows in F03.

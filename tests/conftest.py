@@ -4,6 +4,13 @@ import uuid
 import pytest
 
 
+@pytest.fixture
+def fake_embeddings(monkeypatch):
+    monkeypatch.setenv("EMBEDDING_BACKEND", "fake")
+    monkeypatch.setenv("EMBEDDING_MODEL", "fake-token-v1")
+    monkeypatch.setenv("EMBEDDING_DIMENSION", "64")
+
+
 @pytest.fixture(scope="session")
 def database_dsn():
     if os.environ.get("TRIAGE_TEST_DATABASE") != "1":
