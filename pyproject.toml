@@ -34,9 +34,6 @@ where = ["src"]
 "triage_agent" = ["prompts/*.txt"]
 "triage_agent.knowledge" = ["migrations/*.sql"]
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-
 [tool.ruff]
 target-version = "py311"
 line-length = 100
