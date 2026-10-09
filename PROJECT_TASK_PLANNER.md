@@ -4,7 +4,7 @@
 
 ## Current position
 
-16 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: Phase 1 complete. GPT/tool/CLI implementation is available; see verification for live-check limits.
+17 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: Phase 1 complete. GPT/tool/CLI implementation is available; see verification for live-check limits.
 
 This is the current task plan. Existing task IDs and completion evidence are preserved. Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.
 
@@ -36,7 +36,7 @@ The original homework estimate was 210 minutes and the assignment recommends 150
 | T09 | done | 25 | T08, E06 | Verify scenarios and failure paths offline |
 | T10 | done | 15 | T09 | Run demos and record live verification |
 | T11 | done | 20 | T10 | Finish README and one-page write-up |
-| T12 | in_progress | 10 | T11 | Verify clean checkout and submit |
+| T12 | done | 10 | T11 | Verify clean checkout and submit |
 
 ## Phase 2 — deferred GraphRAG
 
@@ -174,11 +174,11 @@ Outputs: `prompts/system.txt`.
 
 Acceptance: Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
-Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 [Execution ticket](docs/tickets/T06.md)
 
@@ -190,11 +190,11 @@ Outputs: `src/triage_agent/agent.py`, `tests/test_agent.py`.
 
 Acceptance: Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests <=6 and tool executions <=8 enforced.
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
-Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 [Execution ticket](docs/tickets/T07.md)
 
@@ -206,11 +206,11 @@ Outputs: `src/triage_agent/policy.py`, `src/triage_agent/cli.py`, `tests/test_po
 
 Acceptance: Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
-Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 [Execution ticket](docs/tickets/T08.md)
 
@@ -222,11 +222,11 @@ Outputs: `tests/test_retrieval.py`, `docs/retrieval_evaluation.md`.
 
 Acceptance: Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
-Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 [Execution ticket](docs/tickets/E06.md)
 
@@ -238,11 +238,11 @@ Outputs: `tests/test_agent.py`, `tests/test_policy.py`, `tests/test_tools.py`.
 
 Acceptance: Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
-Verification: Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 [Execution ticket](docs/tickets/T09.md)
 
@@ -280,11 +280,19 @@ Verification: Rebuilt image: 63 passed/1 host-only skip. All three offline sampl
 
 ### T12 — Verify clean checkout and submit
 
-Phase: Verification & delivery. Status: in_progress. Depends on: T11. Estimate: 10 min (historical).
+Phase: Verification & delivery. Status: done. Depends on: T11. Estimate: 10 min (historical).
 
 Outputs: `.github/workflows/ci.yml`, `docs/verification.md`.
 
 Acceptance: Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.
+
+Skills used: ask-matt (before and after), implement, code-review (independent standards/spec agents), superpowers:executing-plans, superpowers:receiving-code-review, superpowers:verification-before-completion, superpowers:finishing-a-development-branch, pr, to-spec.
+
+Plugins used: Superpowers: execution, review and verified delivery, GitHub: private feature-branch delivery and tracking issue.
+
+Verification: Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run.
+
+[Execution ticket](docs/tickets/T12.md)
 
 ### E05 — Explore GraphRAG in the next phase
 

@@ -260,7 +260,7 @@ Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty,
 
 ## Skills and plugins
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
@@ -278,7 +278,7 @@ Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector u
 
 ## Verification
 
-Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
@@ -292,7 +292,7 @@ Actual tool calls and results flow through adapter; both tools succeed before co
 
 ## Skills and plugins
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
@@ -310,7 +310,7 @@ Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector u
 
 ## Verification
 
-Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
@@ -324,7 +324,7 @@ Action/destination and citations validated; failure escalates visibly; JSON stdo
 
 ## Skills and plugins
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
@@ -342,7 +342,7 @@ Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector u
 
 ## Verification
 
-Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
@@ -356,7 +356,7 @@ Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector u
 
 ## Skills and plugins
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
@@ -374,7 +374,7 @@ Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector u
 
 ## Verification
 
-Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
@@ -388,7 +388,7 @@ Three evidence-based sample cases, invalid output/citations, unknown tools, erro
 
 ## Skills and plugins
 
-Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review scheduled).
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:verification-before-completion, code-review (final standards/spec review completed).
 
 Plugins used: Superpowers: inline execution, debugging and verification.
 
@@ -406,7 +406,7 @@ Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector u
 
 ## Verification
 
-Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.
+Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
 Implementation commit: Completion branch; final hash recorded in docs/verification.md.
 
@@ -476,7 +476,7 @@ Implementation commit: Completion branch; final delivery commit recorded in docs
 
 ## T12 — Verify clean checkout and submit
 
-Status: in_progress. Scope: phase1. Dependencies: T11.
+Status: done. Scope: phase1. Dependencies: T11.
 
 ## Acceptance
 
@@ -484,17 +484,29 @@ Clean-checkout commands succeed; offline CI documented/configured as selected; n
 
 ## Skills and plugins
 
-Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.
+Skills used: ask-matt (before and after), implement, code-review (independent standards/spec agents), superpowers:executing-plans, superpowers:receiving-code-review, superpowers:verification-before-completion, superpowers:finishing-a-development-branch, pr, to-spec.
 
-## Planned steps
+Plugins used: Superpowers: execution, review and verified delivery, GitHub: private feature-branch delivery and tracking issue.
 
-1. Read dependencies and acceptance; consult ask-matt.
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
 
-2. Add a failing behavior check at the agreed public boundary.
+## Steps performed
 
-3. Implement the smallest required change.
+1. Consulted ask-matt; verified independent review findings with failing regression tests.
 
-4. Consult ask-matt, test and review; record evidence before completion.
+2. Fixed offline live-embedding selection and Windows redirected Thai output; full rebuilt Docker suite passed.
+
+3. Verified clean standalone clone with locked uv install, tests, package resources, Docker startup/ingestion/sample run and one-page PDF.
+
+4. Configured pinned GitHub Actions and verified equivalent commands locally; packaged source plus actual standalone .git, excluding secrets/caches.
+
+5. Regenerated planner/TODO/HTML, verified source fidelity and checked ask-matt after completion; repository delivery preserves main for review.
+
+## Verification
+
+Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run.
+
+Implementation commit: Reviewed implementation 614dfc0; delivery head recorded by Git and submission manifest..
 
 ## E05 — Explore GraphRAG in the next phase
 

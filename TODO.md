@@ -1,6 +1,6 @@
 # Project TODO
 
-9 October 2026 · 16/17 Phase 1 tasks done · Next: Phase 1 complete
+9 October 2026 · 17/17 Phase 1 tasks done · Next: Phase 1 complete
 
 [Spec](PROJECT_SPEC.md) · [Stack](TECH_STACK.md) · [Detailed planner](PROJECT_TASK_PLANNER.md)
 
@@ -66,7 +66,7 @@ Checked tasks record completed setup/design and the user's E01 architecture deci
 
 - [x] **T11 — Finish README and one-page write-up** (done): README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.
 
-- [ ] **T12 — Verify clean checkout and submit** (in_progress): Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.
+- [x] **T12 — Verify clean checkout and submit** (done): Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.
 
 
 

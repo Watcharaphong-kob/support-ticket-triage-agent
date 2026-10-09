@@ -308,7 +308,7 @@
         "tdd",
         "superpowers:executing-plans",
         "superpowers:verification-before-completion",
-        "code-review (final standards/spec review scheduled)"
+        "code-review (final standards/spec review completed)"
       ],
       "plugins_used": [
         "Superpowers: inline execution, debugging and verification"
@@ -319,7 +319,7 @@
         "Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.",
         "Consulted ask-matt after the task: verification passed; include this work in final two-axis review."
       ],
-      "verification": "Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.",
+      "verification": "Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.",
       "ticket": "docs/tickets/T06.md",
       "implementation_commit": "Completion branch; final hash recorded in docs/verification.md"
     },
@@ -347,7 +347,7 @@
         "tdd",
         "superpowers:executing-plans",
         "superpowers:verification-before-completion",
-        "code-review (final standards/spec review scheduled)"
+        "code-review (final standards/spec review completed)"
       ],
       "plugins_used": [
         "Superpowers: inline execution, debugging and verification"
@@ -358,7 +358,7 @@
         "Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.",
         "Consulted ask-matt after the task: verification passed; include this work in final two-axis review."
       ],
-      "verification": "Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.",
+      "verification": "Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.",
       "ticket": "docs/tickets/T07.md",
       "implementation_commit": "Completion branch; final hash recorded in docs/verification.md"
     },
@@ -384,7 +384,7 @@
         "tdd",
         "superpowers:executing-plans",
         "superpowers:verification-before-completion",
-        "code-review (final standards/spec review scheduled)"
+        "code-review (final standards/spec review completed)"
       ],
       "plugins_used": [
         "Superpowers: inline execution, debugging and verification"
@@ -395,7 +395,7 @@
         "Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.",
         "Consulted ask-matt after the task: verification passed; include this work in final two-axis review."
       ],
-      "verification": "Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.",
+      "verification": "Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.",
       "ticket": "docs/tickets/T08.md",
       "implementation_commit": "Completion branch; final hash recorded in docs/verification.md"
     },
@@ -420,7 +420,7 @@
         "tdd",
         "superpowers:executing-plans",
         "superpowers:verification-before-completion",
-        "code-review (final standards/spec review scheduled)"
+        "code-review (final standards/spec review completed)"
       ],
       "plugins_used": [
         "Superpowers: inline execution, debugging and verification"
@@ -431,7 +431,7 @@
         "Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.",
         "Consulted ask-matt after the task: verification passed; include this work in final two-axis review."
       ],
-      "verification": "Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.",
+      "verification": "Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.",
       "ticket": "docs/tickets/E06.md",
       "implementation_commit": "Completion branch; final hash recorded in docs/verification.md"
     },
@@ -458,7 +458,7 @@
         "tdd",
         "superpowers:executing-plans",
         "superpowers:verification-before-completion",
-        "code-review (final standards/spec review scheduled)"
+        "code-review (final standards/spec review completed)"
       ],
       "plugins_used": [
         "Superpowers: inline execution, debugging and verification"
@@ -469,7 +469,7 @@
         "Ran focused checks and real Docker database tests; recorded RED→GREEN corrections.",
         "Consulted ask-matt after the task: verification passed; include this work in final two-axis review."
       ],
-      "verification": "Agent/CLI/model/policy focused checks: 27 passed. Docker full suite: 62 passed, 1 host-only Compose check skipped; a subsequent low-urgency auto-response regression passed. Live provider calls not run.",
+      "verification": "Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.",
       "ticket": "docs/tickets/T09.md",
       "implementation_commit": "Completion branch; final hash recorded in docs/verification.md"
     },
@@ -557,8 +557,33 @@
         "docs/verification.md"
       ],
       "acceptance": "Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.",
-      "status": "in_progress",
-      "scope": "phase1"
+      "status": "done",
+      "scope": "phase1",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "implement",
+        "code-review (independent standards/spec agents)",
+        "superpowers:executing-plans",
+        "superpowers:receiving-code-review",
+        "superpowers:verification-before-completion",
+        "superpowers:finishing-a-development-branch",
+        "pr",
+        "to-spec"
+      ],
+      "plugins_used": [
+        "Superpowers: execution, review and verified delivery",
+        "GitHub: private feature-branch delivery and tracking issue"
+      ],
+      "steps_done": [
+        "Consulted ask-matt; verified independent review findings with failing regression tests.",
+        "Fixed offline live-embedding selection and Windows redirected Thai output; full rebuilt Docker suite passed.",
+        "Verified clean standalone clone with locked uv install, tests, package resources, Docker startup/ingestion/sample run and one-page PDF.",
+        "Configured pinned GitHub Actions and verified equivalent commands locally; packaged source plus actual standalone .git, excluding secrets/caches.",
+        "Regenerated planner/TODO/HTML, verified source fidelity and checked ask-matt after completion; repository delivery preserves main for review."
+      ],
+      "verification": "Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run.",
+      "ticket": "docs/tickets/T12.md",
+      "implementation_commit": "Reviewed implementation 614dfc0; delivery head recorded by Git and submission manifest."
     },
     {
       "id": "E05",
