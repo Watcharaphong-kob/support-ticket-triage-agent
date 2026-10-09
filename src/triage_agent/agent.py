@@ -16,7 +16,6 @@ from langchain.agents.middleware.model_call_limit import ModelCallLimitExceededE
 from langchain.agents.middleware.tool_call_limit import ToolCallLimitExceededError
 from langchain.agents.structured_output import StructuredOutputError, ToolStrategy
 from langchain_core.language_models import BaseChatModel
-from langchain_core.tools import StructuredTool
 from langgraph.errors import GraphRecursionError
 
 from triage_agent.config import Settings
@@ -24,15 +23,13 @@ from triage_agent.knowledge.embeddings import configured_embedder
 from triage_agent.knowledge.postgres_store import PostgresStore
 from triage_agent.policy import validate_decision
 from triage_agent.schemas import (
-    HistoryArguments,
     ResultError,
-    SearchArguments,
     Ticket,
     ToolCall,
     TriageResult,
     validate_batch,
 )
-from triage_agent.tools import TOOL_DEFINITIONS, ToolDispatcher
+from triage_agent.tools import TOOL_SCHEMAS, ToolDispatcher
 
 
 class TriageFailure(Exception):
@@ -45,25 +42,7 @@ class Agent:
 
     def triage(self, ticket: Ticket) -> TriageResult:
         prompt = files("triage_agent").joinpath("prompts/system.txt").read_text(encoding="utf-8")
-        functions = {
-            "get_customer_history": (
-                HistoryArguments,
-                lambda **args: self.tools.call("get_customer_history", args),
-            ),
-            "search_knowledge_base": (
-                SearchArguments,
-                lambda **args: self.tools.call("search_knowledge_base", args),
-            ),
-        }
-        tools = [
-            StructuredTool.from_function(
-                func=functions[d["function"]["name"]][1],
-                name=d["function"]["name"],
-                description=d["function"]["description"],
-                args_schema=functions[d["function"]["name"]][0],
-            )
-            for d in TOOL_DEFINITIONS
-        ]
+        tools = self.tools.framework_tools()
         used_ids = set()
         call_order, records, documents = [], {}, {}
 
@@ -116,10 +95,10 @@ class Agent:
                 used_ids.add(call["id"])
                 if call["name"] == "TriageResult":
                     continue
-                if call["name"] not in functions:
+                if call["name"] not in TOOL_SCHEMAS:
                     raise TriageFailure("invalid_tool_call")
                 try:
-                    functions[call["name"]][0].model_validate(call["args"])
+                    TOOL_SCHEMAS[call["name"]].model_validate(call["args"])
                 except ValueError:
                     raise TriageFailure("invalid_tool_call") from None
                 if (

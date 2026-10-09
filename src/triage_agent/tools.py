@@ -3,6 +3,7 @@
 import json
 from pathlib import Path
 
+from langchain_core.tools import StructuredTool
 from pydantic import ValidationError
 
 from triage_agent.knowledge.base import KnowledgeStore
@@ -14,6 +15,11 @@ from triage_agent.schemas import (
     SearchArguments,
     SearchResult,
 )
+
+TOOL_SCHEMAS = {
+    "get_customer_history": HistoryArguments,
+    "search_knowledge_base": SearchArguments,
+}
 
 TOOL_DEFINITIONS = [
     {
@@ -40,14 +46,32 @@ class ToolDispatcher:
     def __init__(self, customers_path: Path, knowledge: KnowledgeStore):
         self.customers_path, self.knowledge = customers_path, knowledge
 
+    def framework_tools(self) -> list[StructuredTool]:
+        tools = []
+        for definition in TOOL_DEFINITIONS:
+            function = definition["function"]
+            name = function["name"]
+
+            def invoke(tool_name=name, **arguments):
+                return self.call(tool_name, arguments)
+
+            tools.append(
+                StructuredTool.from_function(
+                    func=invoke,
+                    name=name,
+                    description=function["description"],
+                    args_schema=TOOL_SCHEMAS[name],
+                )
+            )
+        return tools
+
     def call(self, name: str, arguments: dict) -> dict:
-        if name not in {"get_customer_history", "search_knowledge_base"}:
+        if name not in TOOL_SCHEMAS:
             return {"status": "error", "error": "unknown_tool"}
         try:
+            args = TOOL_SCHEMAS[name].model_validate(arguments)
             if name == "get_customer_history":
-                args = HistoryArguments.model_validate(arguments)
                 return self.get_customer_history(args.customer_id).model_dump()
-            args = SearchArguments.model_validate(arguments)
             return self.search_knowledge_base(args).model_dump()
         except ValidationError:
             if name == "get_customer_history":

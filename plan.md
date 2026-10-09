@@ -252,7 +252,7 @@ Each task consults ask-matt before and after, uses tests at public seams, and re
 
 ### F01 — Framework agent through the terminal
 
-GitHub: [#7](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/7). In progress.
+GitHub: [#7](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/7). Done.
 
 - [x] Write failing framework-level tests: full thread reaches the model, both real tools execute, actual tool IDs/citations are retained, unauthorized customer access cannot execute.
 - [x] Run those tests and confirm meaningful failures against the current custom-loop implementation.
@@ -326,3 +326,5 @@ Skill usage for this plan/spec: ask-matt before/after, to-spec, Superpowers brai
 - Full Docker suite: 68 passed, 1 host-only skip. Real PostgreSQL and all three source-ticket wiring tests passed; scripted model/fake embeddings do not establish GPT or semantic quality.
 - Host suite outside the restricted sandbox: 61 passed, 8 DB/container skips. Ruff check/format passed. Initial restricted host run had tokenizer-network/temp permission failures; the unrestricted host run and rebuilt Docker run resolved those environment limitations.
 - Live GPT and semantic embedding quality not checked. Framework branch runtime requires reviewer-supplied GPT credentials; deterministic models exist only in tests, and the original offline demo remains on feat/triage-agent.
+
+F01 post-task ask-matt: verification complete → code-review → next frontier F02. Standards: zero violations, one nonblocking schema-ownership duplication addressed in tools.py and re-reviewed with no findings. Spec: zero findings. Final rebuilt Docker suite after that refactor: 68 passed / 1 host-only skip; host Compose check 1 passed. No live quality claim. F01 implementation commit cc85d6b; follow-up review cleanup committed next.
