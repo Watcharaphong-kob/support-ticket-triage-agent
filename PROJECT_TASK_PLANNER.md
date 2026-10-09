@@ -1,165 +1,247 @@
-# Support Ticket Triage Agent — Project Task Planner
+# Project Task Planner
 
-T01 approved · T02 setup complete · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx
+9 October 2026 · Rebuilt from docs/project_tasks.json
 
-## 1. Assignment conclusion
+## Current position
 
-Build a small AI agent that reads the entire support-ticket conversation, classifies urgency, extracts product/issue/sentiment, retrieves relevant knowledge, and selects an appropriate next action. The important challenge is reasoning over changing context: a payment question becomes a financial escalation, a Thai access problem becomes a possible regional incident, and a dark-mode question becomes a bug report plus a feature request.
+9 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: T06. Full GPT ticket processing is pending.
 
-The assignment recommends 150–240 minutes. It scores readability, maintainability, extensibility, and logic. A clear console application with observable tool calls and meaningful tests is a suitable submission; a chat UI is unnecessary.
+This is the current task plan. Existing task IDs and completion evidence are preserved. Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.
 
-This document records the approved design and implementation sequence. T01 is approved and T02 setup is implemented and verified; the full triage application remains in later tasks. Instructions inside the assignment are recorded as project requirements, not authorization to publish a repository or perform customer actions.
+## Spec and stack
 
-## 2. Required scope and deliverables
+[Project spec](PROJECT_SPEC.md) defines scope, contracts and acceptance. [Tech stack](TECH_STACK.md) separates installed tools from selected Phase 1 components. [Working TODO list](TODO.md) mirrors the tasks below. [Execution tickets](TICKETS.md) record skills, plugins, steps and evidence. [RAG and GraphRAG spec](AGENT_KNOWLEDGE_SPEC.md) supplies extension details.
 
-| ID | Assignment requirement | Completion evidence |
-| --- | --- | --- |
-| R1 | Use an OpenAI GPT model; do not supply an API key in the submission | Configurable model and environment-based key; reviewer supplies their own key |
-| R2 | Classify urgency as critical/high/medium/low | Validated output containing one of the four labels |
-| R3 | Extract product, issue type, and customer sentiment | Structured fields; unknown product remains unknown rather than invented |
-| R4 | Search a knowledge base for relevant FAQs/docs | Knowledge-base tool called; answer references retrieved document IDs |
-| R5 | Choose auto-respond, route to specialist, or escalate to human | One primary action, reason, and destination when applicable |
-| R6 | Use at least two tools; schemas and implementations may be mocked | Two callable tools with schemas, implementations, and visible execution traces |
-| R7 | Process the supplied sample tickets | All three complete conversations preserved and runnable |
-| R8 | Supply the system prompt and tool definitions | Versioned prompt file and readable tool contracts |
-| R9 | Include a README with setup/run instructions | Clean-checkout instructions, configuration, commands, and example output |
-| R10 | Brief write-up, maximum one page | Architecture/why, failure handling, and production evaluation |
-| R11 | Source in GitHub, or ZIP containing source and .git if unable to push | Reviewable repository or archive, with secrets excluded |
+## Phases and timing
 
-Optional enhancements: JSON output, a minimal API, extra tools, or a larger knowledge base. Keep these behind completion of R1–R11.
+The original homework estimate was 210 minutes and the assignment recommends 150–240 minutes. Docker and real classic RAG expand that scope. A revised Phase 1 estimate is not assigned; original task minutes below are historical references, not a total for this prototype.
 
-## 3. Approaches to consider
+## Phase 1 — Docker classic RAG prototype
 
-| Approach | Benefit | Trade-off |
-| --- | --- | --- |
-| Python CLI with a small explicit tool loop — recommended draft | Compact structure; easy to demonstrate decisions and tool calls within the time budget | Requires implementing a bounded dispatch loop and output validation |
-| TypeScript CLI with the same contracts | Good fit if TypeScript is your strongest language; explicit typed interfaces | More setup if the project and environment are new |
-| API service with an agent framework | Useful for HTTP integration or a framework you already know | Adds integration work that the assignment does not require |
-
-Recommendation: choose the Python CLI unless your experience strongly favors TypeScript. No particular language, framework, GPT model version, vector database, or deployment platform is specified by the document. These are proposed choices, not assignment requirements.
-
-## 4. Proposed architecture
-
-Flow: ticket JSON → input validation → GPT agent with tools → tool dispatcher → mocked customer history/knowledge base → final triage JSON → validation and action policy → console output and trace.
-
-- **Ticket loader:** Preserve customer metadata, every message, ordering, relative times, Thai text, and supplied translations. Process each conversation as one ticket, not four unrelated tickets.
-- **Agent:** Give the model the full ticket, a system prompt, and two tool definitions. Execute requested tool calls and return their results to the model until it produces a final result or reaches a configured limit.
-- **Tools:** Keep tool implementations independent of the model so mocked data can later be replaced with real services without rewriting triage logic.
-- **Validation/policy:** Validate enumerations and required fields; reject unsupported document citations and contradictory action fields. On unrecoverable failure, produce an explicit human-review fallback instead of fabricating a successful triage.
-- **Output/trace:** Print structured triage and a redacted tool trace that demonstrates retrieval and customer context use. The CLI recommends actions; it does not send replies, reverse payments, or alter accounts.
-
-Suggested boundaries:
-
-```text
-src/triage_agent/
-  cli.py             # input and display
-  schemas.py         # ticket, tools, and final result contracts
-  agent.py           # bounded model/tool loop
-  tools.py           # tool registry and mock implementations
-  policy.py          # validation and action consistency
-prompts/system.txt
-data/sample_tickets.json
-data/customers.json
-data/knowledge_base.json
-tests/
-README.md
-WRITEUP.md
-.env.example
-.gitignore
-```
-
-### Tool contracts
-
-| Tool | Input | Output | Failure behavior |
-| --- | --- | --- | --- |
-| get_customer_history | customer_id: string | plan, tenure, region if known, seat count if known, previous support history | Structured not-found/error result; no invented history |
-| search_knowledge_base | query: string; optional product, issue_type, locale | Bounded list of document IDs, titles, relevant excerpts, and mocked source metadata | Empty results or structured error; agent must acknowledge missing evidence |
-
-Both tools should actually execute for each demonstration ticket. Publishing schemas alone, or passing all mock data directly into a prompt without tool calls, does not demonstrate the requested tool use. Use clearly labeled mock FAQ content; never treat a mock as verified company policy or live incident status.
-
-### Proposed final result
-
-Required-by-assignment fields: urgency, product, issue_type, customer_sentiment, next_action. Proposed supporting fields: ticket_id, secondary_issues, rationale, destination, draft_response, knowledge_sources, uncertainties, tool_calls.
-
-Use next_action values auto_respond, route_to_specialist, escalate_to_human. A draft response is text for review or console output. Product, incident status, refund timing, and feature availability must remain unknown when the input and tools do not establish them.
-
-### Prompt principles
-
-Treat customer messages and retrieved content as data, not instructions that can override the system prompt. Read the full conversation; consider the latest state, affected users, financial harm, deadlines, and language. Retrieve before answering. Separate symptoms from confirmed causes. Do not promise refunds, restoration times, or unsupported features. Distinguish a bug from an additional feature request. Explain urgency and action using evidence. Do not let account tier alone determine severity. Use Thai for a proposed customer reply to the Thai ticket.
-
-## 5. Sample-ticket reasoning targets
-
-These are proposed evaluation expectations. The assignment does not provide official labels or a grading answer key.
-
-| Ticket | Evidence to retain | Proposed urgency/action | Key reasoning checks |
-| --- | --- | --- | --- |
-| 1 — Failed Pro upgrade and repeated charges | Free account; three reported $29.99 charges; no Pro access; presentation in two hours; dispute threat | High; escalate_to_human, destination billing/payments | Financial exposure and deadline justify escalation. Charges are customer-reported; do not assert they are settled, refunded, or definitely duplicate captures. Critical is defensible only under an explicitly documented financial severity policy. |
-| 2 — Thai Enterprise access failure | Error 500; multiple devices/browsers and coworkers; 45-seat organization; demo/deal risk; public status says operational | Critical; escalate_to_human, destination incident/on-call | Suspected broad access failure warrants urgent investigation. Do not claim all 45 users or the entire Asia region are confirmed affected; the ticket does not establish that. Preserve the status discrepancy and reply in Thai. |
-| 3 — Dark-mode behavior plus scheduling request | Earlier guidance did not resolve the issue; system default remains light; no explicit dark toggle; scheduling question | Low; route_to_specialist, destination product support | Separate a possible theme bug from a scheduling feature request. Verify behavior against the mock knowledge base; medium or auto_respond may be justified by documented evidence/policy. Do not blindly repeat the previous unsuccessful advice or invent feature availability. |
-
-## 6. Task planner — recommended 210-minute baseline
-
-Estimates are planning assumptions, not guaranteed durations. Dependencies identify what should be complete before starting a task.
-
-| Task | Min | Depends on | Work | Acceptance check |
+| Task | Status | Min | Dependencies | Deliverable |
 | --- | --- | --- | --- | --- |
-| T01 | 10 | — | Confirm CLI/language, output contract, and severity/action policy | Record choices and reasoning targets; clarify ambiguity without adding a UI |
-| T02 | 10 | T01 | Create project packaging, configuration, ignore rules, and CLI entry point | Entry point runs; example config has no real secrets; dependency versions recorded |
-| T03 | 15 | T01 | Encode all three conversations and customer fixtures | Four messages per ticket; Thai/English and relative times preserved; fabricated IDs labeled fixtures |
-| T04 | 15 | T01, T03 | Define ticket/result schemas and validation | Invalid urgency/action rejected; unknown values supported; multi-issue output supported |
-| T05 | 20 | T03, T04 | Implement customer-history and knowledge-base tools with schemas | Both callable independently; misses/errors explicit; mock KB facts labeled |
-| T06 | 15 | T01, T04, T05 | Write the system prompt | Covers whole-thread reasoning, grounded answers, Thai, escalation, and untrusted content |
-| T07 | 35 | T02, T04, T05, T06 | Integrate GPT and bounded tool-call execution | Real tool results returned to model; both tools executed; unknown tool/timeout/loop limit handled |
-| T08 | 20 | T04, T07 | Validate decisions; add fallback and readable JSON/trace output | Consistent action/destination; no unsupported citations/promises; failures visible |
-| T09 | 25 | T03, T05, T08 | Add focused unit and agent-loop tests using a fake model | Three ticket cases, no KB match, tool error, invalid output, and injection case covered |
-| T10 | 15 | T08, T09 | Run all sample tickets; inspect one live GPT smoke run when a key is available | Outputs justified; two tools per ticket demonstrated; live versus mocked verification reported honestly |
-| T11 | 20 | T01–T10 | Write README and a maximum-one-page write-up | Setup/run/tests/config documented; write-up addresses architecture, failures, evaluation |
-| T12 | 10 | T09–T11 | Verify from clean checkout and prepare repository/archive | All required files present; no secrets; reproducible commands; repository or ZIP with .git |
+| T01 | done | 10 | — | Approve architecture and contracts |
+| T02 | done | 10 | T01 | Set up uv package and GitHub |
+| E01 | done | TBD | T01 | Select Phase 1 prototype architecture |
+| T03 | done | 15 | T02 | Create complete bilingual ticket fixtures |
+| T04 | done | 15 | T03 | Define validated input/tool/result contracts |
+| E02 | done | TBD | E01, T02 | Set up Docker Compose and PostgreSQL/pgvector |
+| E03 | done | TBD | E02 | Implement classic RAG ingestion and embeddings |
+| E04 | done | TBD | E03, T04 | Implement PostgreSQL classic RAG knowledge search |
+| T05 | done | 20 | T03, T04, E04 | Wire history and classic RAG tools |
+| T06 | todo | 15 | T04, T05 | Write grounded bilingual system prompt |
+| T07 | todo | 35 | T02, T04, T05, T06 | Build bounded GPT/tool execution loop |
+| T08 | todo | 20 | T07 | Apply action policy and integrate JSON CLI |
+| E06 | todo | TBD | E04 | Test classic RAG against Docker PostgreSQL |
+| T09 | todo | 25 | T08, E06 | Verify scenarios and failure paths offline |
+| T10 | todo | 15 | T09 | Run demos and record live verification |
+| T11 | todo | 20 | T10 | Finish README and one-page write-up |
+| T12 | todo | 10 | T11 | Verify clean checkout and submit |
 
-Total: **210 minutes**. Critical build sequence: T01 → contracts/fixtures → tools/prompt → agent loop → policy/output → tests/demo → documentation/package.
+## Phase 2 — deferred GraphRAG
 
-At 150 minutes, use the same two mocked tools, CLI, and three full tickets; reduce polish and test breadth, and reserve time for essential checks/documentation. At 240 minutes, spend the extra 30 minutes on broader failure/injection cases and bilingual evaluation. Do not add an API or chat UI at the expense of required deliverables.
+| Task | Status | Dependencies | Deliverable |
+| --- | --- | --- | --- |
+| E05 | deferred | T12 | Explore GraphRAG in the next phase |
 
-### Working checklist
+## Task contracts
 
-- [x] T01 — Design approved by the user; use uv for package management
-- [x] T02 — uv package/configuration and CLI startup implemented; 8 tests and packaging checks pass (docs/T02_SETUP_STATUS.md)
-- [ ] T03 — Complete sample fixtures
-- [ ] T04 — Validated contracts
-- [ ] T05 — Two executable tools
-- [ ] T06 — System prompt
-- [ ] T07 — GPT/tool loop
-- [ ] T08 — Policy, fallback, output, traces
-- [ ] T09 — Focused tests
-- [ ] T10 — Sample runs and recorded verification
-- [ ] T11 — README and one-page write-up
-- [ ] T12 — Clean-checkout verification and submission package
+### T01 — Approve architecture and contracts
 
-## 7. Verification and production evaluation
+Phase: Design & setup. Status: done. Depends on: none. Estimate: 10 min (historical).
 
-For the homework, use deterministic fake-model tests for dispatch/validation and evidence-based assertions for the sample cases. Live model results can vary; assess supported reasoning and action consistency instead of requiring an exact response string. Offline tests demonstrate orchestration, but do not prove that live GPT integration works. If no key is available, document that limitation and give the reviewer a live-run command.
+Outputs: `docs/superpowers/specs/2026-10-09-ticket-triage-design.md`.
 
-In production, build a human-labeled dataset covering all urgency levels, action types, issue categories, languages, and multi-message changes. Measure urgency macro-F1 and critical recall, action accuracy, extraction accuracy, grounded-response quality, tool failures, latency, and cost per ticket. Track harmful auto-responses and missed escalations separately. Use human review and sampled disagreement analysis to update the prompt, knowledge base, and policy. Redact customer data in logs; use synthetic fixtures for the homework.
+Acceptance: Python CLI, urgency/action rubric, two tool contracts, output contract, and limits approved.
 
-| Failure | Planned handling |
-| --- | --- |
-| Missing key/model access or upstream timeout | Clear configuration/error output; bounded retries where appropriate; no fake success |
-| Tool failure, unknown customer, or empty KB | Explicit tool error/empty result; record uncertainty; human-review fallback when an answer cannot be supported |
-| Invalid model output or endless calls | Validate result; cap tool rounds/retries; return a visible fallback result |
-| Hallucinated cause, refund, SLA, or feature | Require evidence; validate references; prohibit unsupported promises |
-| Prompt injection in ticket or KB | Keep data separate from system instructions; allowlisted tool dispatch; no tools that mutate customer accounts |
-| Misread Thai or evolving thread | Preserve source text; bilingual test cases; evaluate full conversations and latest unresolved state |
+### T02 — Set up uv package and GitHub
 
-## 8. One-page write-up outline
+Phase: Design & setup. Status: done. Depends on: T01. Estimate: 10 min (historical).
 
-Use three concise paragraphs in WRITEUP.md: (1) why a CLI, explicit tool loop, structured results, and replaceable mock tools fit the assignment; (2) the most important failure modes and concrete safeguards implemented; (3) production evaluation using human labels, critical recall, groundedness, action quality, latency/cost, and ongoing review. Describe the final implementation honestly; do not claim proposed safeguards already exist.
+Outputs: `pyproject.toml`, `uv.lock`, `src/triage_agent/cli.py`, `src/triage_agent/config.py`, `README.md`.
 
-## 9. Design decisions still open
+Acceptance: Both entry points run; safe environment config; 8 setup tests, Ruff and package builds pass; private repository pushed.
 
-T01 is approved at docs/superpowers/specs/2026-10-09-ticket-triage-design.md: Python CLI, structured output, two read-only tools, severity/action rules, and execution limits. The user selected uv for package management; T02 now provides the package/configuration baseline. The GPT model is configured by the runner and verified at integration; no model version is imposed by the assignment. There is no submission deadline or required deployment environment in the supplied document.
+### E01 — Select Phase 1 prototype architecture
 
-## 10. GitHub repository and worktree plan
+Phase: Phase 1 decision. Status: done. Depends on: T01. Estimate: TBD.
 
-See GITHUB_REPO_PLAN.md for the proposed repository layout, initialization sequence, isolated worktree workflow, commit groups, optional issues, CI, and submission checks. Suggested repository: support-ticket-triage-agent; main as the default branch; one implementation branch/worktree. These names are recommendations, not resources already created.
+Outputs: `AGENT_KNOWLEDGE_SPEC.md`.
 
-T02 initialized local Git and an ignored implementation worktree and created the private GitHub repository at https://github.com/Watcharaphong-kob/support-ticket-triage-agent. uv manages pyproject.toml and the committed uv.lock. Verify the full application and submit from main during T12. The repository tasks fit the existing 210-minute plan. For the ZIP fallback, package the primary repository with its actual .git directory rather than a linked worktree's metadata pointer.
+Acceptance: User selected a Docker-based classic RAG prototype. PostgreSQL/pgvector and the existing OpenAI SDK approach define this phase; GraphRAG is Phase 2.
+
+### T03 — Create complete bilingual ticket fixtures
+
+Phase: Data & tools. Status: done. Depends on: T02. Estimate: 15 min (historical).
+
+Outputs: `data/sample_tickets.json`, `data/customers.json`.
+
+Acceptance: All 3 tickets retain 4 messages, ordering, relative times, Thai and supplied translations; synthetic customer IDs labeled; no invented dates.
+
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).
+
+Plugins used: Superpowers: worktree, execution, debugging and verification workflow.
+
+Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
+
+[Execution ticket](docs/tickets/T03.md)
+
+### T04 — Define validated input/tool/result contracts
+
+Phase: Data & tools. Status: done. Depends on: T03. Estimate: 15 min (historical).
+
+Outputs: `src/triage_agent/schemas.py`, `tests/test_schemas.py`.
+
+Acceptance: Invalid enums rejected; unknown product null; all approved fields present; completed/fallback rules and multi-issue input covered.
+
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).
+
+Plugins used: Superpowers: worktree, execution, debugging and verification workflow.
+
+Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
+
+[Execution ticket](docs/tickets/T04.md)
+
+### E02 — Set up Docker Compose and PostgreSQL/pgvector
+
+Phase: Phase 1 RAG infrastructure. Status: done. Depends on: E01, T02. Estimate: TBD.
+
+Outputs: `compose.yaml`, `Dockerfile`, `pyproject.toml`, `uv.lock`, `migrations/`.
+
+Acceptance: App and PostgreSQL/pgvector services start through Compose; DB readiness and migrations verified; pinned image/dependencies; local named volume; secret-free example config.
+
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), superpowers:systematic-debugging.
+
+Plugins used: Superpowers: worktree, execution, debugging and verification workflow.
+
+Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
+
+[Execution ticket](docs/tickets/E02.md)
+
+### E03 — Implement classic RAG ingestion and embeddings
+
+Phase: Phase 1 RAG infrastructure. Status: done. Depends on: E02. Estimate: TBD.
+
+Outputs: `src/triage_agent/knowledge/ingest.py`, `tests/test_ingest.py`.
+
+Acceptance: English/Thai articles produce stable source/chunk IDs and idempotent upserts; configured embedding model/dimension/version validated; deterministic fake embeddings available for offline DB tests.
+
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), superpowers:systematic-debugging, openai-docs.
+
+Plugins used: Superpowers: worktree, execution, debugging and verification workflow.
+
+Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
+
+[Execution ticket](docs/tickets/E03.md)
+
+### E04 — Implement PostgreSQL classic RAG knowledge search
+
+Phase: Phase 1 RAG infrastructure. Status: done. Depends on: E03, T04. Estimate: TBD.
+
+Outputs: `src/triage_agent/knowledge/base.py`, `src/triage_agent/knowledge/postgres_store.py`, `tests/test_retrieval.py`.
+
+Acceptance: Read-only parameterized top-5 vector retrieval returns source IDs/excerpts and provenance; locale/product filters, no-match and DB failure explicit; no graph traversal.
+
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).
+
+Plugins used: Superpowers: worktree, execution, debugging and verification workflow.
+
+Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
+
+[Execution ticket](docs/tickets/E04.md)
+
+### T05 — Wire history and classic RAG tools
+
+Phase: Data & tools. Status: done. Depends on: T03, T04, E04. Estimate: 20 min (historical).
+
+Outputs: `src/triage_agent/tools.py`, `data/knowledge_base.json`, `tests/test_tools.py`.
+
+Acceptance: Both tool schemas execute: fixture customer lookup and Docker PostgreSQL/pgvector KB retrieval; unknown customers, empty matches and DB errors explicit; mock knowledge flagged.
+
+Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), to-spec (GitHub issue publication).
+
+Plugins used: Superpowers: worktree, execution, debugging and verification workflow, GitHub: published Phase 1 spec/checkpoint issue #1 with ready-for-agent.
+
+Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
+
+[Execution ticket](docs/tickets/T05.md)
+
+### T06 — Write grounded bilingual system prompt
+
+Phase: Data & tools. Status: todo. Depends on: T04, T05. Estimate: 15 min (historical).
+
+Outputs: `prompts/system.txt`.
+
+Acceptance: Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.
+
+### T07 — Build bounded GPT/tool execution loop
+
+Phase: Agent & decisions. Status: todo. Depends on: T02, T04, T05, T06. Estimate: 35 min (historical).
+
+Outputs: `src/triage_agent/agent.py`, `tests/test_agent.py`.
+
+Acceptance: Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests <=6 and tool executions <=8 enforced.
+
+### T08 — Apply action policy and integrate JSON CLI
+
+Phase: Agent & decisions. Status: todo. Depends on: T07. Estimate: 20 min (historical).
+
+Outputs: `src/triage_agent/policy.py`, `src/triage_agent/cli.py`, `tests/test_policy.py`.
+
+Acceptance: Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.
+
+### E06 — Test classic RAG against Docker PostgreSQL
+
+Phase: Phase 1 RAG verification. Status: todo. Depends on: E04. Estimate: TBD.
+
+Outputs: `tests/test_retrieval.py`, `docs/retrieval_evaluation.md`.
+
+Acceptance: Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.
+
+### T09 — Verify scenarios and failure paths offline
+
+Phase: Verification & delivery. Status: todo. Depends on: T08, E06. Estimate: 25 min (historical).
+
+Outputs: `tests/test_agent.py`, `tests/test_policy.py`, `tests/test_tools.py`.
+
+Acceptance: Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.
+
+### T10 — Run demos and record live verification
+
+Phase: Verification & delivery. Status: todo. Depends on: T09. Estimate: 15 min (historical).
+
+Outputs: `examples/sample_results.json`, `docs/verification.md`.
+
+Acceptance: Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.
+
+### T11 — Finish README and one-page write-up
+
+Phase: Verification & delivery. Status: todo. Depends on: T10. Estimate: 20 min (historical).
+
+Outputs: `README.md`, `WRITEUP.md`.
+
+Acceptance: README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.
+
+### T12 — Verify clean checkout and submit
+
+Phase: Verification & delivery. Status: todo. Depends on: T11. Estimate: 10 min (historical).
+
+Outputs: `.github/workflows/ci.yml`, `docs/verification.md`.
+
+Acceptance: Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.
+
+### E05 — Explore GraphRAG in the next phase
+
+Phase: Phase 2 â€” deferred GraphRAG. Status: deferred. Depends on: T12. Estimate: TBD.
+
+Outputs: `src/triage_agent/knowledge/neo4j_store.py`, `tests/test_graph_retrieval.py`.
+
+Acceptance: Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.
+
+## Execution rules
+
+Implement one task at a time in dependency order. Use focused failing tests before behavior changes and record actual verification. Keep prompts/tools/model adapters separate. Do not mark installed libraries as working agent features. Review architecture changes before extension implementation.
+
+Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: T06.
+
+T02 evidence: docs/T02_SETUP_STATUS.md. Repository/worktree/submission workflow: [GitHub plan](GITHUB_REPO_PLAN.md). Preserve customer uncertainty and source citations.

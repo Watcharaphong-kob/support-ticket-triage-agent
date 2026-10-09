@@ -77,6 +77,8 @@ Task execution follows [the before/after checking workflow](docs/TASK_WORKFLOW.m
 - PROJECT_SPEC.md — scope, policy, contracts, and acceptance in one current spec page.
 - TECH_STACK.md — installed baseline and selected Phase 1 components.
 - TODO.md — tech stack, spec checkpoints, and current working task list.
+- TICKETS.md — each task's skills/plugins, simple steps, acceptance and evidence.
+- docs/T05_IMPLEMENTATION_STATUS.md — verification, review fix and remaining scope.
 - AGENT_KNOWLEDGE_SPEC.md — selected Docker/classic RAG contracts and deferred Phase 2 GraphRAG.
 - GITHUB_REPO_PLAN.md — branches, worktrees, CI, submission.
 - docs/superpowers/specs/2026-10-09-ticket-triage-design.md — approved design.

@@ -2,9 +2,11 @@
 
 Planning addition · 9 October 2026 · Complements PROJECT_TASK_PLANNER.md
 
+Current scope: Phase 1 Docker classic RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. The invoked to-spec workflow published the spec/checkpoint as issue #1. Older layout and commit-group suggestions below are expanded by the current planner.
+
 ## 1. Current state and proposed repository
 
-T02 initialized Git at D:\Documents\OOCA_Assignment and created the private repository https://github.com/Watcharaphong-kob/support-ticket-triage-agent. The app's worktree tool could not recognize the new repository, so the ignored local Git worktree at .worktrees/triage-agent is used on feat/triage-agent. No GitHub issues or CI workflow have been created yet. See docs/T02_SETUP_STATUS.md for verification evidence.
+T02 initialized Git and created the private repository. Implementation through T05 is committed locally on feat/triage-agent in .worktrees/triage-agent. [GitHub issue #1](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1) tracks the Phase 1 spec/checkpoint with ready-for-agent. No new code push, merge or CI workflow is claimed. See docs/T05_IMPLEMENTATION_STATUS.md for evidence.
 
 | Setting | Proposed choice |
 | --- | --- |
@@ -25,6 +27,10 @@ support-ticket-triage-agent/
   README.md
   WRITEUP.md                     # maximum one page
   pyproject.toml                 # package, runtime, dev dependencies
+  uv.lock                        # committed dependency lock
+  Dockerfile                     # uv-managed Python application image
+  compose.yaml                   # application + PostgreSQL/pgvector
+  migrations/                    # knowledge schema and vector extension
   .env.example                   # empty/example values only
   .gitignore
   .github/
@@ -36,6 +42,7 @@ support-ticket-triage-agent/
     agent.py
     tools.py
     policy.py
+    knowledge/                   # ingestion, embedding adapter, PostgreSQL search
   prompts/system.txt
   data/
     sample_tickets.json
@@ -64,7 +71,7 @@ Proposed ignore rules: .env, .env.* with an exception for .env.example; .venv/; 
 2. Create .gitignore and include the planning documents and project metadata in an explicit initial commit. Review the staged file list; do not blindly stage the employer DOCX or local configuration.
 3. Create an empty GitHub remote with the selected owner/name/visibility, then connect origin and push the baseline. Choose either local initialization plus an empty remote, or cloning a preinitialized remote; avoid creating conflicting initial histories.
 4. Create or reuse an isolated implementation worktree from the committed baseline using the workflow below.
-5. Complete T03–T11 in the implementation branch with meaningful commits and recorded verification.
+5. Complete Phase 1 tasks in dependency order, including Docker infrastructure, ingestion, classic RAG and database integration checks, with meaningful commits and recorded verification.
 6. At T12, review the diff, merge the reviewed branch into main, verify a clean clone, and prepare the submission URL/archive.
 
 Repository setup belongs inside T02 and delivery inside T12. This plan does not add another 210-minute schedule. If authentication or remote setup takes too long, continue with local Git and use the assignment's ZIP fallback.
@@ -89,7 +96,8 @@ Keep the primary checkout on main and use one implementation branch for this sho
 | --- | --- | --- |
 | Baseline | T01–T02 | docs: record assignment plan and project setup |
 | Contracts/data | T03–T04 | feat: add ticket fixtures and validated triage contracts |
-| Tools/prompt | T05–T06 | feat: add mock tools and triage system prompt |
+| Docker / knowledge | E02–E04 | feat: add Docker PostgreSQL ingestion and classic RAG |
+| Tools/prompt | T05–T06 | feat: add customer history and database knowledge tools |
 | Agent/output | T07–T08 | feat: implement bounded GPT tool loop and action policy |
 | Verification | T09–T10 | test: cover triage scenarios and failure paths |
 | Submission | T11–T12 | docs: document setup evaluation and sample results |
@@ -98,13 +106,13 @@ Keep changes reviewable and truthful; commit messages describe implemented behav
 
 ## 6. Lightweight GitHub tracking
 
-Optional: use one milestone, Homework submission, and six issues matching the commit groups above. Issue acceptance criteria should link to T01–T12 and R1–R11 in the planner. A small board can use To do, In progress, Review, Done. Do not create this tracking overhead if the local checklist is sufficient for the time budget.
+Publish the Phase 1 spec as a single issue with the ready-for-agent label after the to-spec test-boundary confirmation. The canonical planner tracks implementation subtasks; no extra board or milestone is required. GraphRAG remains a separate Phase 2 scope.
 
 ## 7. CI and reviewer experience
 
 Create one lightweight workflow for pull requests and pushes to main: check out source, select the supported Python version, install declared development dependencies, run chosen lint/format checks, and run offline tests. Match the commands in CI to the README. Pin workflow action revisions when authoring the workflow. GitHub provides a [Python build-and-test guide](https://docs.github.com/en/actions/tutorials/build-and-test-code/python).
 
-Default CI should use the fake-model adapter and mocked tools, requiring no API key. A live GPT smoke run is a separate local or explicitly triggered check; record whether it was run. If configuring a live CI run later, use a repository secret rather than a tracked file and avoid passing it to untrusted pull-request code. Requiring a paid live-model check for every pull request is unnecessary for this homework.
+Default CI should use fake GPT and embedding adapters against real Docker PostgreSQL/pgvector, requiring no API key. Keep lightweight setup tests independent of Docker. Live GPT/embedding smoke runs are separate opt-in checks; record whether they ran. If configuring live CI later, use repository secrets and avoid passing them to untrusted pull-request code.
 
 The README should make the reviewer path obvious: prerequisites → create environment → install → configure their own key/model → run three tickets → inspect JSON and tool traces → run offline tests. Include sample results and mark how they were generated. Ensure a private repository is accessible to the reviewer before sending its URL.
 

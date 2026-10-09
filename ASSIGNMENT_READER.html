@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="OOCA AI Engineer homework: readable assignment, summary, and draft project task planner."><title>OOCA Assignment — Reader &amp; Project Planner</title><style>
-:root{--ink:#18263a;--muted:#526176;--accent:#125b60;--paper:#fff;--bg:#f1f5f7;--line:#dce5e9}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:1.5rem}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Leelawadee UI",Tahoma,Arial,sans-serif;line-height:1.75;font-size:16px}
-.hero{background:#173a42;color:white;padding:48px max(24px,calc((100vw - 1180px)/2))}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#bce6de;font-weight:700}.hero h1{font-size:clamp(30px,4vw,48px);line-height:1.15;margin:12px 0 18px;max-width:900px}.hero p{max-width:820px;color:#daeeee;margin:0}.badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.badge{padding:5px 12px;border:1px solid #66888b;border-radius:24px;font-size:13px}
-.layout{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:215px minmax(0,1fr);gap:28px;padding:32px 24px 64px}nav{position:sticky;top:24px;align-self:start}nav p{font-size:12px;font-weight:700;text-transform:uppercase;color:var(--muted);letter-spacing:.1em}nav a{display:block;padding:10px 12px;margin:4px 0;text-decoration:none;color:var(--ink);border-radius:8px}nav a:hover,nav a:focus{background:#dfece9;color:var(--accent)}nav small{display:block;margin:20px 12px;color:var(--muted)}main{min-width:0}section{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 34px;margin-bottom:24px;box-shadow:0 3px 14px #162b3810}h2{font-size:26px;line-height:1.3;margin:14px 0 22px}h3{font-size:21px;line-height:1.4;margin-top:32px}h4{font-size:17px;margin-top:26px}p{margin:12px 0}li{margin:8px 0}ul{padding-left:24px}.note{border-left:4px solid var(--accent);background:#edf6f3;padding:14px 18px;color:#28454b;margin-bottom:24px}.table-scroll{overflow-x:auto;margin:20px 0;max-width:100%}table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.6}th,td{text-align:left;vertical-align:top;padding:12px 13px;border-bottom:1px solid var(--line);min-width:100px}th{background:#eaf2f3;font-weight:700}tbody tr:nth-child(even){background:#fafcfc}pre{background:#172c3b;color:#e9f2f6;padding:20px;overflow:auto;border-radius:9px;line-height:1.65;font-size:13px}code{font-family:Consolas,monospace}.message{background:#f4f7fa;border-left:3px solid #94b4bb;padding:16px 20px;border-radius:0 8px 8px 0;white-space:pre-wrap;overflow-wrap:anywhere}.requirement{padding-left:16px;border-left:2px solid #dbe7e6}footer{color:var(--muted);font-size:13px;padding:8px 4px}.skip{position:absolute;left:-10000px}.skip:focus{left:16px;top:16px;background:white;padding:10px;z-index:2}
-@media(max-width:900px){.layout{grid-template-columns:1fr;padding:20px 14px}nav{position:static;display:flex;flex-wrap:wrap;gap:6px}nav p,nav small{display:none}nav a{background:#e5eeef;font-size:14px}section{padding:22px 20px}.hero{padding:32px 22px}}
-@media print{body{background:white;font-size:10pt}.hero{background:white;color:#18263a;padding:0 0 20px}.hero p,.eyebrow{color:#526176}.badges,nav,.skip{display:none}.layout{display:block;max-width:none;padding:0}section{border:0;box-shadow:none;padding:0;border-radius:0;margin:24px 0}h2,h3,h4{break-after:avoid}tr,.message{break-inside:avoid}.table-scroll{overflow:visible}table{font-size:9pt}pre{background:#f0f3f5;color:#18263a;white-space:pre-wrap}a{color:inherit}}
-</style></head><body>
-<a class="skip" href="#summary">Skip to content</a>
-<header class="hero"><div class="eyebrow">OOCA · AI Engineer Homework</div><h1>Support Ticket<br>Triage Agent</h1><p>Your assignment, explained clearly and organized into a practical project plan. Read the summary first, then the proposed tasks, or jump to the complete source document.</p><div class="badges"><span class="badge">150–240 min recommended</span><span class="badge">2+ tools</span><span class="badge">3 sample conversations</span><span class="badge">CLI or API</span></div></header>
-<div class="layout"><nav aria-label="Document sections"><p>Reading guide</p><a href="#summary">01 · Assignment summary</a><a href="#planner">02 · Project task planner</a><a href="#github">03 · GitHub repo plan</a><a href="#t01">04 · T01 design decisions</a><a href="#t02">05 · T02 setup status</a><a href="#original">06 · Original assignment</a><small>T01 approved · T02 setup · 9 Oct 2026<br>Works offline · Print with Ctrl+P</small></nav><main>
-<section id="summary"><h2>Assignment Summary</h2>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OOCA · Project planner</title><style>
+:root{--ink:#183039;--muted:#5d737a;--accent:#116b65;--line:#dbe5e7;--bg:#eef3f3}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 'Segoe UI','Leelawadee UI',Tahoma,sans-serif}a{color:var(--accent)}
+.layout{max-width:1400px;margin:auto;display:grid;grid-template-columns:235px minmax(0,1fr);gap:28px;padding:28px}aside{position:sticky;top:28px;align-self:start}.brand{font-size:20px;font-weight:750;margin-bottom:2px}.sub{color:var(--muted);font-size:12px;letter-spacing:.08em;margin-bottom:24px}nav a{display:block;padding:9px 14px;margin:4px 0;border-radius:9px;color:var(--ink);text-decoration:none;font-size:14px}nav a:hover,nav a[aria-current=page]{background:#d4e9e3;color:#08524d;font-weight:650}.aside-note{font-size:12px;color:var(--muted);margin:26px 14px}main{min-width:0}.page{padding:36px 42px;background:white;border:1px solid var(--line);border-radius:16px;margin-bottom:24px;box-shadow:0 3px 20px #193b4310}.enhanced .page{display:none}.enhanced .page.active{display:block}.eyebrow{color:var(--accent);letter-spacing:.13em;font-size:12px;font-weight:700}h2{font-size:32px;line-height:1.3;margin:8px 0 22px}#overview>h2{font-size:clamp(36px,5vw,58px);letter-spacing:-.025em;line-height:1.08}h3{font-size:22px;line-height:1.4;margin:30px 0 14px}h4{font-size:18px;line-height:1.45;margin:26px 0 12px}p{margin:12px 0}.lead{font-size:18px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}.stats>div{border:1px solid var(--line);border-radius:11px;padding:18px;background:#f6f9f8}.stats b{display:block;font-size:25px}.stats span{font-size:12px;color:var(--muted)}.note{padding:16px 20px;border-left:4px solid var(--accent);background:#edf6f2;border-radius:0 8px 8px 0;margin:20px 0}.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:26px 0}.tiles a{display:block;padding:20px;border:1px solid var(--line);border-radius:10px;text-decoration:none}.tiles a:hover{background:#edf6f2}.tiles b,.tiles span{display:block}.tiles span{font-size:13px;color:var(--muted)}ul,ol{padding-left:24px}li{margin:10px 0}input[type=checkbox]{accent-color:var(--accent);margin-right:7px}table{width:100%;border-collapse:collapse;font-size:14px;line-height:1.6}th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);min-width:95px}th{background:#e8f0ef}tbody tr:nth-child(even){background:#f9fbfb}.table-scroll{overflow:auto;margin:20px 0}pre{background:#173039;color:#e4f2f2;padding:20px;border-radius:10px;overflow:auto;font-size:13px;line-height:1.65}code{font-family:Consolas,monospace;overflow-wrap:anywhere}.message{background:#f3f7f9;padding:18px;border-left:3px solid #8caeb7;white-space:pre-wrap;overflow-wrap:anywhere}details{margin:24px 0;border:1px solid var(--line);padding:18px;border-radius:10px}summary{cursor:pointer;font-weight:650}.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;background:white;padding:10px;z-index:2}footer{font-size:12px;color:var(--muted);padding:6px}
+@media(max-width:900px){.layout{grid-template-columns:1fr;padding:14px;gap:14px}aside{position:static}.sub,.aside-note{display:none}nav{display:flex;flex-wrap:wrap;gap:3px}nav a{background:#e5eded;font-size:13px;padding:6px 10px}.page{padding:24px 20px}.stats{gap:7px}.stats>div{padding:12px}.stats b{font-size:21px}}
+@media(max-width:480px){.tiles{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stats>div{display:flex;gap:16px;align-items:center}}
+@media print{body{background:white;font-size:10pt}.layout{display:block;padding:0}aside,footer,.skip{display:none}.page,.enhanced .page{display:block!important;box-shadow:none;border:0;padding:0;break-before:page}.page:first-child{break-before:auto}h2,h3,h4{break-after:avoid}tr,.message{break-inside:avoid}.table-scroll{overflow:visible}table{font-size:9pt}pre{white-space:pre-wrap;background:#f1f4f5;color:var(--ink)}.tiles{display:none}}
+</style></head><body><a class="skip" href="#overview">Skip to content</a><div class="layout"><aside><div class="brand">OOCA Assignment</div><div class="sub">SUPPORT TICKET TRIAGE</div><nav aria-label="Document views"><a href="#overview">Overview</a><a href="#planner">Task planner</a><a href="#todo">TODO list</a><a href="#tickets">Tickets</a><a href="#spec">Spec</a><a href="#stack">Tech stack</a><a href="#knowledge">Knowledge system</a><a href="#github">GitHub plan</a><a href="#t02">Verified setup</a><a href="#original">Original assignment</a></nav><div class="aside-note">9/17 Phase 1 tasks done<br>Offline reader · Ctrl+P to print<br>Task data: docs/project_tasks.json</div></aside><main><section class="page" id="overview" tabindex="-1"><div class="eyebrow">PROJECT WORKSPACE · 9 October 2026</div>
+<h2>Support Ticket<br>Triage Agent</h2><p class="lead">The assignment, spec, stack and execution plan in one offline reader.</p>
+<div class="stats"><div><b>9/17</b><span>Phase 1 tasks complete</span></div><div><b>Classic RAG</b><span>Docker + PostgreSQL + pgvector</span></div><div><b>Prototype</b><span>GraphRAG deferred to Phase 2</span></div></div>
+<div class="note">Docker, classic RAG and both tools implemented through T05; see Tickets for review status and evidence. The GPT prompt and agent loop remain pending. Next: T06. Live embeddings not verified.</div>
+<div class="tiles"><a href="#spec"><b>Project spec</b><span>Scope, contracts and acceptance</span></a><a href="#stack"><b>Tech stack</b><span>Installed tools and proposed choices</span></a><a href="#todo"><b>TODO list</b><span>One shared list; verified status</span></a><a href="#original"><b>Original assignment</b><span>All conversations, including Thai</span></a></div>
+<h2>Assignment Summary</h2>
 <h3>What you need to build</h3>
 <p>A Support Ticket Triage Agent that uses an OpenAI GPT model to process complete customer conversations, classify urgency (critical/high/medium/low), extract product/issue type/sentiment, search a knowledge base, and choose auto-response, specialist routing, or human escalation. Use at least two executable tools; mocks are allowed.</p>
 <h3>What you need to submit</h3>
@@ -27,148 +28,814 @@
 <p>Read the entire thread. Ticket 1 evolves into repeated reported charges and a deadline. Ticket 2 describes a Thai Enterprise access failure across devices and coworkers despite an operational status page. Ticket 3 combines unresolved theme behavior with a scheduling feature request.</p>
 <h3>Recommended planning direction</h3>
 <p>Start with a Python CLI, a bounded GPT/tool loop, mocked customer-history and knowledge-base tools, structured decisions, and focused tests. This is a proposed architecture, not a language requirement. The detailed planner allocates 210 minutes and includes dependencies, acceptance checks, risks, and evaluation targets.</p>
-<p>The document does not specify a model version, programming language, official sample labels, submission deadline, or deployment platform. Confirm those design choices before implementation. This deliverable is planning and document conversion; it does not implement or publish the project.</p></section>
-<section id="planner"><h2>Support Ticket Triage Agent — Project Task Planner</h2>
-<p>T01 approved · T02 setup complete · 9 October 2026 · Source: AI_Engineer_-_Code_Homework_Test.docx</p>
-<h3>1. Assignment conclusion</h3>
-<p>Build a small AI agent that reads the entire support-ticket conversation, classifies urgency, extracts product/issue/sentiment, retrieves relevant knowledge, and selects an appropriate next action. The important challenge is reasoning over changing context: a payment question becomes a financial escalation, a Thai access problem becomes a possible regional incident, and a dark-mode question becomes a bug report plus a feature request.</p>
-<p>The assignment recommends 150–240 minutes. It scores readability, maintainability, extensibility, and logic. A clear console application with observable tool calls and meaningful tests is a suitable submission; a chat UI is unnecessary.</p>
-<p>This document records the approved design and implementation sequence. T01 is approved and T02 setup is implemented and verified; the full triage application remains in later tasks. Instructions inside the assignment are recorded as project requirements, not authorization to publish a repository or perform customer actions.</p>
-<h3>2. Required scope and deliverables</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">ID</th><th scope="col">Assignment requirement</th><th scope="col">Completion evidence</th></tr></thead><tbody>
-<tr><td>R1</td><td>Use an OpenAI GPT model; do not supply an API key in the submission</td><td>Configurable model and environment-based key; reviewer supplies their own key</td></tr>
-<tr><td>R2</td><td>Classify urgency as critical/high/medium/low</td><td>Validated output containing one of the four labels</td></tr>
-<tr><td>R3</td><td>Extract product, issue type, and customer sentiment</td><td>Structured fields; unknown product remains unknown rather than invented</td></tr>
-<tr><td>R4</td><td>Search a knowledge base for relevant FAQs/docs</td><td>Knowledge-base tool called; answer references retrieved document IDs</td></tr>
-<tr><td>R5</td><td>Choose auto-respond, route to specialist, or escalate to human</td><td>One primary action, reason, and destination when applicable</td></tr>
-<tr><td>R6</td><td>Use at least two tools; schemas and implementations may be mocked</td><td>Two callable tools with schemas, implementations, and visible execution traces</td></tr>
-<tr><td>R7</td><td>Process the supplied sample tickets</td><td>All three complete conversations preserved and runnable</td></tr>
-<tr><td>R8</td><td>Supply the system prompt and tool definitions</td><td>Versioned prompt file and readable tool contracts</td></tr>
-<tr><td>R9</td><td>Include a README with setup/run instructions</td><td>Clean-checkout instructions, configuration, commands, and example output</td></tr>
-<tr><td>R10</td><td>Brief write-up, maximum one page</td><td>Architecture/why, failure handling, and production evaluation</td></tr>
-<tr><td>R11</td><td>Source in GitHub, or ZIP containing source and .git if unable to push</td><td>Reviewable repository or archive, with secrets excluded</td></tr>
-</tbody></table></div>
-<p>Optional enhancements: JSON output, a minimal API, extra tools, or a larger knowledge base. Keep these behind completion of R1–R11.</p>
-<h3>3. Approaches to consider</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Approach</th><th scope="col">Benefit</th><th scope="col">Trade-off</th></tr></thead><tbody>
-<tr><td>Python CLI with a small explicit tool loop — recommended draft</td><td>Compact structure; easy to demonstrate decisions and tool calls within the time budget</td><td>Requires implementing a bounded dispatch loop and output validation</td></tr>
-<tr><td>TypeScript CLI with the same contracts</td><td>Good fit if TypeScript is your strongest language; explicit typed interfaces</td><td>More setup if the project and environment are new</td></tr>
-<tr><td>API service with an agent framework</td><td>Useful for HTTP integration or a framework you already know</td><td>Adds integration work that the assignment does not require</td></tr>
-</tbody></table></div>
-<p>Recommendation: choose the Python CLI unless your experience strongly favors TypeScript. No particular language, framework, GPT model version, vector database, or deployment platform is specified by the document. These are proposed choices, not assignment requirements.</p>
-<h3>4. Proposed architecture</h3>
-<p>Flow: ticket JSON → input validation → GPT agent with tools → tool dispatcher → mocked customer history/knowledge base → final triage JSON → validation and action policy → console output and trace.</p>
+<p>The document does not specify a model version, programming language, official sample labels, submission deadline, or deployment platform. Confirm those design choices before implementation. This deliverable is planning and document conversion; it does not implement or publish the project.</p></section><section class="page" id="planner" tabindex="-1"><h2>Project Task Planner</h2>
+<p>9 October 2026 · Rebuilt from docs/project_tasks.json</p>
+<h3>Current position</h3>
+<p>9 of 17 Phase 1 tasks complete. T01 design is approved; T02 setup is verified and pushed; E01 architecture selection is approved. Next ready task: T06. Full GPT ticket processing is pending.</p>
+<p>This is the current task plan. Existing task IDs and completion evidence are preserved. Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.</p>
+<h3>Spec and stack</h3>
+<p><a href="#spec">Project spec</a> defines scope, contracts and acceptance. <a href="#stack">Tech stack</a> separates installed tools from selected Phase 1 components. <a href="#todo">Working TODO list</a> mirrors the tasks below. <a href="#tickets">Execution tickets</a> record skills, plugins, steps and evidence. <a href="#knowledge">RAG and GraphRAG spec</a> supplies extension details.</p>
+<h3>Phases and timing</h3>
+<p>The original homework estimate was 210 minutes and the assignment recommends 150–240 minutes. Docker and real classic RAG expand that scope. A revised Phase 1 estimate is not assigned; original task minutes below are historical references, not a total for this prototype.</p>
+<h3>Phase 1 — Docker classic RAG prototype</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Min</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>T01</td><td>done</td><td>10</td><td>—</td><td>Approve architecture and contracts</td></tr><tr><td>T02</td><td>done</td><td>10</td><td>T01</td><td>Set up uv package and GitHub</td></tr><tr><td>E01</td><td>done</td><td>TBD</td><td>T01</td><td>Select Phase 1 prototype architecture</td></tr><tr><td>T03</td><td>done</td><td>15</td><td>T02</td><td>Create complete bilingual ticket fixtures</td></tr><tr><td>T04</td><td>done</td><td>15</td><td>T03</td><td>Define validated input/tool/result contracts</td></tr><tr><td>E02</td><td>done</td><td>TBD</td><td>E01, T02</td><td>Set up Docker Compose and PostgreSQL/pgvector</td></tr><tr><td>E03</td><td>done</td><td>TBD</td><td>E02</td><td>Implement classic RAG ingestion and embeddings</td></tr><tr><td>E04</td><td>done</td><td>TBD</td><td>E03, T04</td><td>Implement PostgreSQL classic RAG knowledge search</td></tr><tr><td>T05</td><td>done</td><td>20</td><td>T03, T04, E04</td><td>Wire history and classic RAG tools</td></tr><tr><td>T06</td><td>todo</td><td>15</td><td>T04, T05</td><td>Write grounded bilingual system prompt</td></tr><tr><td>T07</td><td>todo</td><td>35</td><td>T02, T04, T05, T06</td><td>Build bounded GPT/tool execution loop</td></tr><tr><td>T08</td><td>todo</td><td>20</td><td>T07</td><td>Apply action policy and integrate JSON CLI</td></tr><tr><td>E06</td><td>todo</td><td>TBD</td><td>E04</td><td>Test classic RAG against Docker PostgreSQL</td></tr><tr><td>T09</td><td>todo</td><td>25</td><td>T08, E06</td><td>Verify scenarios and failure paths offline</td></tr><tr><td>T10</td><td>todo</td><td>15</td><td>T09</td><td>Run demos and record live verification</td></tr><tr><td>T11</td><td>todo</td><td>20</td><td>T10</td><td>Finish README and one-page write-up</td></tr><tr><td>T12</td><td>todo</td><td>10</td><td>T11</td><td>Verify clean checkout and submit</td></tr></tbody></table></div>
+<h3>Phase 2 — deferred GraphRAG</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Status</th><th scope="col">Dependencies</th><th scope="col">Deliverable</th></tr></thead><tbody><tr><td>E05</td><td>deferred</td><td>T12</td><td>Explore GraphRAG in the next phase</td></tr></tbody></table></div>
+<h3>Task contracts</h3>
+<h4>T01 — Approve architecture and contracts</h4>
+<p>Phase: Design &amp; setup. Status: done. Depends on: none. Estimate: 10 min (historical).</p>
+<p>Outputs: <code>docs/superpowers/specs/2026-10-09-ticket-triage-design.md</code>.</p>
+<p>Acceptance: Python CLI, urgency/action rubric, two tool contracts, output contract, and limits approved.</p>
+<h4>T02 — Set up uv package and GitHub</h4>
+<p>Phase: Design &amp; setup. Status: done. Depends on: T01. Estimate: 10 min (historical).</p>
+<p>Outputs: <code>pyproject.toml</code>, <code>uv.lock</code>, <code>src/triage_agent/cli.py</code>, <code>src/triage_agent/config.py</code>, <code>README.md</code>.</p>
+<p>Acceptance: Both entry points run; safe environment config; 8 setup tests, Ruff and package builds pass; private repository pushed.</p>
+<h4>E01 — Select Phase 1 prototype architecture</h4>
+<p>Phase: Phase 1 decision. Status: done. Depends on: T01. Estimate: TBD.</p>
+<p>Outputs: <code>AGENT_KNOWLEDGE_SPEC.md</code>.</p>
+<p>Acceptance: User selected a Docker-based classic RAG prototype. PostgreSQL/pgvector and the existing OpenAI SDK approach define this phase; GraphRAG is Phase 2.</p>
+<h4>T03 — Create complete bilingual ticket fixtures</h4>
+<p>Phase: Data &amp; tools. Status: done. Depends on: T02. Estimate: 15 min (historical).</p>
+<p>Outputs: <code>data/sample_tickets.json</code>, <code>data/customers.json</code>.</p>
+<p>Acceptance: All 3 tickets retain 4 messages, ordering, relative times, Thai and supplied translations; synthetic customer IDs labeled; no invented dates.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
+<h4>T04 — Define validated input/tool/result contracts</h4>
+<p>Phase: Data &amp; tools. Status: done. Depends on: T03. Estimate: 15 min (historical).</p>
+<p>Outputs: <code>src/triage_agent/schemas.py</code>, <code>tests/test_schemas.py</code>.</p>
+<p>Acceptance: Invalid enums rejected; unknown product null; all approved fields present; completed/fallback rules and multi-issue input covered.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
+<h4>E02 — Set up Docker Compose and PostgreSQL/pgvector</h4>
+<p>Phase: Phase 1 RAG infrastructure. Status: done. Depends on: E01, T02. Estimate: TBD.</p>
+<p>Outputs: <code>compose.yaml</code>, <code>Dockerfile</code>, <code>pyproject.toml</code>, <code>uv.lock</code>, <code>migrations/</code>.</p>
+<p>Acceptance: App and PostgreSQL/pgvector services start through Compose; DB readiness and migrations verified; pinned image/dependencies; local named volume; secret-free example config.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), superpowers:systematic-debugging.</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
+<h4>E03 — Implement classic RAG ingestion and embeddings</h4>
+<p>Phase: Phase 1 RAG infrastructure. Status: done. Depends on: E02. Estimate: TBD.</p>
+<p>Outputs: <code>src/triage_agent/knowledge/ingest.py</code>, <code>tests/test_ingest.py</code>.</p>
+<p>Acceptance: English/Thai articles produce stable source/chunk IDs and idempotent upserts; configured embedding model/dimension/version validated; deterministic fake embeddings available for offline DB tests.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), superpowers:systematic-debugging, openai-docs.</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
+<h4>E04 — Implement PostgreSQL classic RAG knowledge search</h4>
+<p>Phase: Phase 1 RAG infrastructure. Status: done. Depends on: E03, T04. Estimate: TBD.</p>
+<p>Outputs: <code>src/triage_agent/knowledge/base.py</code>, <code>src/triage_agent/knowledge/postgres_store.py</code>, <code>tests/test_retrieval.py</code>.</p>
+<p>Acceptance: Read-only parameterized top-5 vector retrieval returns source IDs/excerpts and provenance; locale/product filters, no-match and DB failure explicit; no graph traversal.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
+<h4>T05 — Wire history and classic RAG tools</h4>
+<p>Phase: Data &amp; tools. Status: done. Depends on: T03, T04, E04. Estimate: 20 min (historical).</p>
+<p>Outputs: <code>src/triage_agent/tools.py</code>, <code>data/knowledge_base.json</code>, <code>tests/test_tools.py</code>.</p>
+<p>Acceptance: Both tool schemas execute: fixture customer lookup and Docker PostgreSQL/pgvector KB retrieval; unknown customers, empty matches and DB errors explicit; mock knowledge flagged.</p>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), to-spec (GitHub issue publication).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow, GitHub: published Phase 1 spec/checkpoint issue #1 with ready-for-agent.</p>
+<p>Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p><a href="#tickets">Execution ticket</a></p>
+<h4>T06 — Write grounded bilingual system prompt</h4>
+<p>Phase: Data &amp; tools. Status: todo. Depends on: T04, T05. Estimate: 15 min (historical).</p>
+<p>Outputs: <code>prompts/system.txt</code>.</p>
+<p>Acceptance: Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.</p>
+<h4>T07 — Build bounded GPT/tool execution loop</h4>
+<p>Phase: Agent &amp; decisions. Status: todo. Depends on: T02, T04, T05, T06. Estimate: 35 min (historical).</p>
+<p>Outputs: <code>src/triage_agent/agent.py</code>, <code>tests/test_agent.py</code>.</p>
+<p>Acceptance: Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests &lt;=6 and tool executions &lt;=8 enforced.</p>
+<h4>T08 — Apply action policy and integrate JSON CLI</h4>
+<p>Phase: Agent &amp; decisions. Status: todo. Depends on: T07. Estimate: 20 min (historical).</p>
+<p>Outputs: <code>src/triage_agent/policy.py</code>, <code>src/triage_agent/cli.py</code>, <code>tests/test_policy.py</code>.</p>
+<p>Acceptance: Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.</p>
+<h4>E06 — Test classic RAG against Docker PostgreSQL</h4>
+<p>Phase: Phase 1 RAG verification. Status: todo. Depends on: E04. Estimate: TBD.</p>
+<p>Outputs: <code>tests/test_retrieval.py</code>, <code>docs/retrieval_evaluation.md</code>.</p>
+<p>Acceptance: Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.</p>
+<h4>T09 — Verify scenarios and failure paths offline</h4>
+<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T08, E06. Estimate: 25 min (historical).</p>
+<p>Outputs: <code>tests/test_agent.py</code>, <code>tests/test_policy.py</code>, <code>tests/test_tools.py</code>.</p>
+<p>Acceptance: Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.</p>
+<h4>T10 — Run demos and record live verification</h4>
+<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T09. Estimate: 15 min (historical).</p>
+<p>Outputs: <code>examples/sample_results.json</code>, <code>docs/verification.md</code>.</p>
+<p>Acceptance: Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.</p>
+<h4>T11 — Finish README and one-page write-up</h4>
+<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T10. Estimate: 20 min (historical).</p>
+<p>Outputs: <code>README.md</code>, <code>WRITEUP.md</code>.</p>
+<p>Acceptance: README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.</p>
+<h4>T12 — Verify clean checkout and submit</h4>
+<p>Phase: Verification &amp; delivery. Status: todo. Depends on: T11. Estimate: 10 min (historical).</p>
+<p>Outputs: <code>.github/workflows/ci.yml</code>, <code>docs/verification.md</code>.</p>
+<p>Acceptance: Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</p>
+<h4>E05 — Explore GraphRAG in the next phase</h4>
+<p>Phase: Phase 2 â€” deferred GraphRAG. Status: deferred. Depends on: T12. Estimate: TBD.</p>
+<p>Outputs: <code>src/triage_agent/knowledge/neo4j_store.py</code>, <code>tests/test_graph_retrieval.py</code>.</p>
+<p>Acceptance: Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</p>
+<h3>Execution rules</h3>
+<p>Implement one task at a time in dependency order. Use focused failing tests before behavior changes and record actual verification. Keep prompts/tools/model adapters separate. Do not mark installed libraries as working agent features. Review architecture changes before extension implementation.</p>
+<p>Consult ask-matt before and after each task to select the testing/review route. Record fresh evidence before marking completion; see docs/TASK_WORKFLOW.md. The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; next ready task: T06.</p>
+<p>T02 evidence: docs/T02_SETUP_STATUS.md. Repository/worktree/submission workflow: <a href="#github">GitHub plan</a>. Preserve customer uncertainty and source citations.</p><details><summary>T03 implementation plan and checklist</summary><h2>T03 Bilingual Fixtures Implementation Plan</h2>
+<p>&gt; <strong>For agentic workers:</strong> REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox syntax for tracking.</p>
+<p><strong>Goal:</strong> Supply faithful, reusable JSON fixtures for all three assignment tickets and their synthetic customer records.</p>
+<p><strong>Architecture:</strong> Keep source conversations separate from triage expectations. JSON files form the public input boundary; source-fidelity tests compare their contents with the frozen assignment transcription. Existing CLI processing remains pending until later tasks.</p>
+<p><strong>Tech Stack:</strong> Python 3.12, uv, standard-library JSON, pytest, Ruff. No new dependencies.</p>
+<p><strong>Spec:</strong> PROJECT_SPEC.md, docs/project_tasks.json (T03), and the message-preservation/customer-history contracts in docs/superpowers/specs/2026-10-09-ticket-triage-design.md. The current Phase 1 spec supersedes the historical mock-only knowledge scope.</p>
+<h3>Global Constraints</h3>
 <ul>
-<li><strong>Ticket loader:</strong> Preserve customer metadata, every message, ordering, relative times, Thai text, and supplied translations. Process each conversation as one ticket, not four unrelated tickets.</li>
-<li><strong>Agent:</strong> Give the model the full ticket, a system prompt, and two tool definitions. Execute requested tool calls and return their results to the model until it produces a final result or reaches a configured limit.</li>
-<li><strong>Tools:</strong> Keep tool implementations independent of the model so mocked data can later be replaced with real services without rewriting triage logic.</li>
-<li><strong>Validation/policy:</strong> Validate enumerations and required fields; reject unsupported document citations and contradictory action fields. On unrecoverable failure, produce an explicit human-review fallback instead of fabricating a successful triage.</li>
-<li><strong>Output/trace:</strong> Print structured triage and a redacted tool trace that demonstrates retrieval and customer context use. The CLI recommends actions; it does not send replies, reverse payments, or alter accounts.</li>
+<li>All 3 tickets retain 4 messages, ordering, relative times, Thai and supplied translations; synthetic customer IDs labeled; no invented dates.</li>
+<li>Customer objects contain customer_id, plan, tenure_months, region, seats, and prior_support_summary. Preserve unknown region/seats as null.</li>
+<li>Customer IDs are synthetic fixture IDs mapped to the supplied customer metadata.</li>
+<li>Phase 1 is a Docker classic-RAG prototype; GraphRAG belongs to Phase 2. T03 prepares data only.</li>
+<li>Use uv and the existing lockfile; no API key is required for fixture verification.</li>
 </ul>
-<p>Suggested boundaries:</p>
-<pre><code>src/triage_agent/
-  cli.py             # input and display
-  schemas.py         # ticket, tools, and final result contracts
-  agent.py           # bounded model/tool loop
-  tools.py           # tool registry and mock implementations
-  policy.py          # validation and action consistency
-prompts/system.txt
-data/sample_tickets.json
-data/customers.json
-data/knowledge_base.json
-tests/
-README.md
-WRITEUP.md
-.env.example
-.gitignore</code></pre>
-<h4>Tool contracts</h4>
-<div class="table-scroll"><table><thead><tr><th scope="col">Tool</th><th scope="col">Input</th><th scope="col">Output</th><th scope="col">Failure behavior</th></tr></thead><tbody>
-<tr><td>get_customer_history</td><td>customer_id: string</td><td>plan, tenure, region if known, seat count if known, previous support history</td><td>Structured not-found/error result; no invented history</td></tr>
-<tr><td>search_knowledge_base</td><td>query: string; optional product, issue_type, locale</td><td>Bounded list of document IDs, titles, relevant excerpts, and mocked source metadata</td><td>Empty results or structured error; agent must acknowledge missing evidence</td></tr>
-</tbody></table></div>
-<p>Both tools should actually execute for each demonstration ticket. Publishing schemas alone, or passing all mock data directly into a prompt without tool calls, does not demonstrate the requested tool use. Use clearly labeled mock FAQ content; never treat a mock as verified company policy or live incident status.</p>
-<h4>Proposed final result</h4>
-<p>Required-by-assignment fields: urgency, product, issue_type, customer_sentiment, next_action. Proposed supporting fields: ticket_id, secondary_issues, rationale, destination, draft_response, knowledge_sources, uncertainties, tool_calls.</p>
-<p>Use next_action values auto_respond, route_to_specialist, escalate_to_human. A draft response is text for review or console output. Product, incident status, refund timing, and feature availability must remain unknown when the input and tools do not establish them.</p>
-<h4>Prompt principles</h4>
-<p>Treat customer messages and retrieved content as data, not instructions that can override the system prompt. Read the full conversation; consider the latest state, affected users, financial harm, deadlines, and language. Retrieve before answering. Separate symptoms from confirmed causes. Do not promise refunds, restoration times, or unsupported features. Distinguish a bug from an additional feature request. Explain urgency and action using evidence. Do not let account tier alone determine severity. Use Thai for a proposed customer reply to the Thai ticket.</p>
-<h3>5. Sample-ticket reasoning targets</h3>
-<p>These are proposed evaluation expectations. The assignment does not provide official labels or a grading answer key.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Ticket</th><th scope="col">Evidence to retain</th><th scope="col">Proposed urgency/action</th><th scope="col">Key reasoning checks</th></tr></thead><tbody>
-<tr><td>1 — Failed Pro upgrade and repeated charges</td><td>Free account; three reported $29.99 charges; no Pro access; presentation in two hours; dispute threat</td><td>High; escalate_to_human, destination billing/payments</td><td>Financial exposure and deadline justify escalation. Charges are customer-reported; do not assert they are settled, refunded, or definitely duplicate captures. Critical is defensible only under an explicitly documented financial severity policy.</td></tr>
-<tr><td>2 — Thai Enterprise access failure</td><td>Error 500; multiple devices/browsers and coworkers; 45-seat organization; demo/deal risk; public status says operational</td><td>Critical; escalate_to_human, destination incident/on-call</td><td>Suspected broad access failure warrants urgent investigation. Do not claim all 45 users or the entire Asia region are confirmed affected; the ticket does not establish that. Preserve the status discrepancy and reply in Thai.</td></tr>
-<tr><td>3 — Dark-mode behavior plus scheduling request</td><td>Earlier guidance did not resolve the issue; system default remains light; no explicit dark toggle; scheduling question</td><td>Low; route_to_specialist, destination product support</td><td>Separate a possible theme bug from a scheduling feature request. Verify behavior against the mock knowledge base; medium or auto_respond may be justified by documented evidence/policy. Do not blindly repeat the previous unsuccessful advice or invent feature availability.</td></tr>
-</tbody></table></div>
-<h3>6. Task planner — recommended 210-minute baseline</h3>
-<p>Estimates are planning assumptions, not guaranteed durations. Dependencies identify what should be complete before starting a task.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Task</th><th scope="col">Min</th><th scope="col">Depends on</th><th scope="col">Work</th><th scope="col">Acceptance check</th></tr></thead><tbody>
-<tr><td>T01</td><td>10</td><td>—</td><td>Confirm CLI/language, output contract, and severity/action policy</td><td>Record choices and reasoning targets; clarify ambiguity without adding a UI</td></tr>
-<tr><td>T02</td><td>10</td><td>T01</td><td>Create project packaging, configuration, ignore rules, and CLI entry point</td><td>Entry point runs; example config has no real secrets; dependency versions recorded</td></tr>
-<tr><td>T03</td><td>15</td><td>T01</td><td>Encode all three conversations and customer fixtures</td><td>Four messages per ticket; Thai/English and relative times preserved; fabricated IDs labeled fixtures</td></tr>
-<tr><td>T04</td><td>15</td><td>T01, T03</td><td>Define ticket/result schemas and validation</td><td>Invalid urgency/action rejected; unknown values supported; multi-issue output supported</td></tr>
-<tr><td>T05</td><td>20</td><td>T03, T04</td><td>Implement customer-history and knowledge-base tools with schemas</td><td>Both callable independently; misses/errors explicit; mock KB facts labeled</td></tr>
-<tr><td>T06</td><td>15</td><td>T01, T04, T05</td><td>Write the system prompt</td><td>Covers whole-thread reasoning, grounded answers, Thai, escalation, and untrusted content</td></tr>
-<tr><td>T07</td><td>35</td><td>T02, T04, T05, T06</td><td>Integrate GPT and bounded tool-call execution</td><td>Real tool results returned to model; both tools executed; unknown tool/timeout/loop limit handled</td></tr>
-<tr><td>T08</td><td>20</td><td>T04, T07</td><td>Validate decisions; add fallback and readable JSON/trace output</td><td>Consistent action/destination; no unsupported citations/promises; failures visible</td></tr>
-<tr><td>T09</td><td>25</td><td>T03, T05, T08</td><td>Add focused unit and agent-loop tests using a fake model</td><td>Three ticket cases, no KB match, tool error, invalid output, and injection case covered</td></tr>
-<tr><td>T10</td><td>15</td><td>T08, T09</td><td>Run all sample tickets; inspect one live GPT smoke run when a key is available</td><td>Outputs justified; two tools per ticket demonstrated; live versus mocked verification reported honestly</td></tr>
-<tr><td>T11</td><td>20</td><td>T01–T10</td><td>Write README and a maximum-one-page write-up</td><td>Setup/run/tests/config documented; write-up addresses architecture, failures, evaluation</td></tr>
-<tr><td>T12</td><td>10</td><td>T09–T11</td><td>Verify from clean checkout and prepare repository/archive</td><td>All required files present; no secrets; reproducible commands; repository or ZIP with .git</td></tr>
-</tbody></table></div>
-<p>Total: <strong>210 minutes</strong>. Critical build sequence: T01 → contracts/fixtures → tools/prompt → agent loop → policy/output → tests/demo → documentation/package.</p>
-<p>At 150 minutes, use the same two mocked tools, CLI, and three full tickets; reduce polish and test breadth, and reserve time for essential checks/documentation. At 240 minutes, spend the extra 30 minutes on broader failure/injection cases and bilingual evaluation. Do not add an API or chat UI at the expense of required deliverables.</p>
-<h4>Working checklist</h4>
+<h3>Review Focus</h3>
 <ul>
-<li>☑ T01 — Design approved by the user; use uv for package management</li>
-<li>☑ T02 — uv package/configuration and CLI startup implemented; 8 tests and packaging checks pass (docs/T02_SETUP_STATUS.md)</li>
-<li>☐ T03 — Complete sample fixtures</li>
-<li>☐ T04 — Validated contracts</li>
-<li>☐ T05 — Two executable tools</li>
-<li>☐ T06 — System prompt</li>
-<li>☐ T07 — GPT/tool loop</li>
-<li>☐ T08 — Policy, fallback, output, traces</li>
-<li>☐ T09 — Focused tests</li>
-<li>☐ T10 — Sample runs and recorded verification</li>
-<li>☐ T11 — README and one-page write-up</li>
-<li>☐ T12 — Clean-checkout verification and submission package</li>
+<li>Thai Unicode, punctuation and emoji must survive UTF-8 JSON loading without paraphrasing.</li>
+<li>Similar relative times must preserve distinct message positions; never calculate calendar timestamps.</li>
+<li>Supplied English translations remain separate from the original Thai text.</li>
+<li>Reported pending charges and regional hypotheses remain customer claims, not confirmed account/incident facts.</li>
+<li>Synthetic identifiers and unknown metadata are explicit; Enterprise&#x27;s first critical issue must not become a claim of no previous support tickets.</li>
 </ul>
-<h3>7. Verification and production evaluation</h3>
-<p>For the homework, use deterministic fake-model tests for dispatch/validation and evidence-based assertions for the sample cases. Live model results can vary; assess supported reasoning and action consistency instead of requiring an exact response string. Offline tests demonstrate orchestration, but do not prove that live GPT integration works. If no key is available, document that limitation and give the reviewer a live-run command.</p>
-<p>In production, build a human-labeled dataset covering all urgency levels, action types, issue categories, languages, and multi-message changes. Measure urgency macro-F1 and critical recall, action accuracy, extraction accuracy, grounded-response quality, tool failures, latency, and cost per ticket. Track harmful auto-responses and missed escalations separately. Use human review and sampled disagreement analysis to update the prompt, knowledge base, and policy. Redact customer data in logs; use synthetic fixtures for the homework.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Failure</th><th scope="col">Planned handling</th></tr></thead><tbody>
-<tr><td>Missing key/model access or upstream timeout</td><td>Clear configuration/error output; bounded retries where appropriate; no fake success</td></tr>
-<tr><td>Tool failure, unknown customer, or empty KB</td><td>Explicit tool error/empty result; record uncertainty; human-review fallback when an answer cannot be supported</td></tr>
-<tr><td>Invalid model output or endless calls</td><td>Validate result; cap tool rounds/retries; return a visible fallback result</td></tr>
-<tr><td>Hallucinated cause, refund, SLA, or feature</td><td>Require evidence; validate references; prohibit unsupported promises</td></tr>
-<tr><td>Prompt injection in ticket or KB</td><td>Keep data separate from system instructions; allowlisted tool dispatch; no tools that mutate customer accounts</td></tr>
-<tr><td>Misread Thai or evolving thread</td><td>Preserve source text; bilingual test cases; evaluate full conversations and latest unresolved state</td></tr>
-</tbody></table></div>
-<h3>8. One-page write-up outline</h3>
-<p>Use three concise paragraphs in WRITEUP.md: (1) why a CLI, explicit tool loop, structured results, and replaceable mock tools fit the assignment; (2) the most important failure modes and concrete safeguards implemented; (3) production evaluation using human labels, critical recall, groundedness, action quality, latency/cost, and ongoing review. Describe the final implementation honestly; do not claim proposed safeguards already exist.</p>
-<h3>9. Design decisions still open</h3>
-<p>T01 is approved at docs/superpowers/specs/2026-10-09-ticket-triage-design.md: Python CLI, structured output, two read-only tools, severity/action rules, and execution limits. The user selected uv for package management; T02 now provides the package/configuration baseline. The GPT model is configured by the runner and verified at integration; no model version is imposed by the assignment. There is no submission deadline or required deployment environment in the supplied document.</p>
-<h3>10. GitHub repository and worktree plan</h3>
-<p>See GITHUB_REPO_PLAN.md for the proposed repository layout, initialization sequence, isolated worktree workflow, commit groups, optional issues, CI, and submission checks. Suggested repository: support-ticket-triage-agent; main as the default branch; one implementation branch/worktree. These names are recommendations, not resources already created.</p>
-<p>T02 initialized local Git and an ignored implementation worktree and created the private GitHub repository at https://github.com/Watcharaphong-kob/support-ticket-triage-agent. uv manages pyproject.toml and the committed uv.lock. Verify the full application and submit from main during T12. The repository tasks fit the existing 210-minute plan. For the ZIP fallback, package the primary repository with its actual .git directory rather than a linked worktree&#x27;s metadata pointer.</p></section>
-<section id="github"><h2>GitHub Repository Plan — Support Ticket Triage Agent</h2>
+<h3>Files and public interface</h3>
+<ul>
+<li>Create data/sample_tickets.json: top-level list of three ticket objects.</li>
+<li>Create data/customers.json: top-level list of three synthetic customer objects.</li>
+<li>Create data/README.md: field contract, provenance, synthetic IDs and limits.</li>
+<li>Create tests/test_fixtures.py: tests at the JSON-file boundary, using the existing pytest/unittest conventions.</li>
+<li>Add docs/assignment_source.json to the implementation worktree as the frozen reference already present in the primary checkout. Verify it against the original DOCX before relying on it.</li>
+<li>Update docs/project_tasks.json and rebuild the primary planner/TODO/reader only after T03 passes review.</li>
+</ul>
+<p>Ticket objects contain ticket_id, customer_id, is_synthetic_id, source_sample, locale, customer_info and messages. Use ticket-001/customer-001 through ticket-003/customer-003; is_synthetic_id is true. customer_info preserves the supplied customer-info sentence verbatim without the numbered heading prefix.</p>
+<p>Each message contains sequence (1–4), relative_time, text and supplied_translation (string for the four Thai messages; null for English). relative_time is the supplied phrase verbatim; text is the customer message without the outer quotation delimiters. No timestamps, urgency labels, action targets or invented product names are added to these inputs.</p>
+<p>Customer objects retain the approved fields plus is_synthetic=true and source_sample (1–3). Plans are Free, Enterprise, Pro; tenure_months are 4, 8, 5. Only sample 2 has region=Thailand and seats=45; other unknown values are null. Support summaries preserve the supplied first-contact/first-critical/no-previous distinctions. Upgrade attempt and daily usage are retained through customer_info, not asserted as verified billing/telemetry records.</p>
+<h3>Task 1: Preserve all ticket conversations</h3>
+<p><strong>Consumes:</strong> The independent source transcription, paragraphs 32/33, 35/36 and 38/39.</p>
+<p><strong>Produces:</strong> UTF-8 JSON ticket list with the interface above, for T04 input validation and later CLI demonstrations.</p>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Confirm the JSON fixture boundary and review this plan before implementation.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Consult ask-matt before implementation; reuse the existing isolated worktree. Record the starting commit and run uv run --locked pytest -q.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Write test_ticket_conversations_match_assignment: assert exactly three samples; four ordered messages each; reconstruct message/relative-time/translation source segments and compare against the independent transcription. Assert Thai originals remain in text and translations remain separate.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Run uv run --locked pytest tests/test_fixtures.py -q; expect failure because the fixture file does not exist.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Add data/sample_tickets.json with all 12 source messages and supplied customer metadata, without derived labels or dates.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Run the focused test; expect success and no missing or altered source content.</li>
+</ul>
+<h3>Task 2: Link synthetic customer history safely</h3>
+<p><strong>Consumes:</strong> Ticket customer IDs and supplied customer-info paragraphs.</p>
+<p><strong>Produces:</strong> Three customer records for the later get_customer_history tool, not a working tool itself.</p>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Write test_customer_records_preserve_supplied_context: assert one unique record per ticket ID; explicit synthetic provenance; plans/tenures Free/4, Enterprise/8, Pro/5; only Enterprise Thailand/45; other region/seats null; support summaries retain the source distinctions.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Run the focused test; expect failure because customer fixtures are absent.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Add data/customers.json and data/README.md with the exact field/provenance contract. Treat all billing and outage statements as reported claims.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Run the focused fixture tests; expect success without credentials or network.</li>
+</ul>
+<h3>Task 3: Verify and close T03</h3>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Consult ask-matt after implementation; follow its closing route through verification and code-review.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Run uv run --locked pytest -q, uv run --locked ruff check . and uv run --locked ruff format --check .; expect zero failures and unchanged setup behavior.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Review standards and T03 spec fidelity independently, using the recorded baseline and task-scoped diff. Check the five Review Focus cases explicitly.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Record concrete test counts and review findings in docs/T03_FIXTURE_STATUS.md; resolve findings before setting T03 done.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Update the canonical task registry, regenerate planner/TODO/HTML, and verify matching task counts and preserved source paragraphs.</li>
+<li><input type="checkbox" disabled checked aria-label="Task status"> Commit only the reviewed T03 implementation files if permitted; do not retry the previously declined unrelated documentation push. Report the commit/publication state honestly.</li>
+</ul>
+<h3>Plan self-review</h3>
+<p>T03 acceptance maps to Tasks 1 and 2; all five Review Focus risks are covered by the source-fidelity/customer tests. JSON fields above define the boundary for T04 without prematurely implementing its Pydantic schemas. Docker provisioning and agent processing remain in their owning tasks. Source fidelity is tested against independently supplied assignment content, not a snapshot generated from the new fixtures.</p>
+<p>Planning checkpoint: baseline 8 tests passed. The user authorized continued implementation/testing through T05. T03 source checks passed and final review was completed; see the T03 execution ticket.</p></details><details><summary>Before/after task checking workflow</summary><h2>Task checking workflow</h2>
+<p>User instruction recorded 9 October 2026: use ask-matt before and after every task to select the right checking/testing flow.</p>
+<h3>Before each task</h3>
+<ol>
+<li>Consult the installed ask-matt skill and follow its applicable route. It is a skill router, not a test runner.</li>
+<li>Read the current spec, task acceptance, dependencies and existing implementation. Select only a ready task; preserve Phase 1 Docker/classic RAG scope.</li>
+<li>Record the intended deliverable, test boundary and observable acceptance. Reuse established boundaries. Confirm new test boundaries as required by the selected TDD flow.</li>
+<li>Reuse the isolated implementation worktree and run baseline checks with uv. Investigate failures before attributing them to new work.</li>
+<li>For a new implementation plan, obtain the review required by writing-plans before executing it. Use the implementation/TDD flow for behavior changes.</li>
+</ol>
+<h3>After each task</h3>
+<ol>
+<li>Consult ask-matt again and choose the closing route: implementation work closes with testing and code-review; a planning task closes with a spec/plan self-review.</li>
+<li>Run relevant checks, inspect exit codes, and record actual outputs. Full implementation suites run at the end; live model/database checks are reported separately from setup checks.</li>
+<li>Review implementation against standards and its task spec. Resolve actionable findings before marking the task complete. Reviewers use a recorded starting commit and a task-scoped diff.</li>
+<li>Update the shared task registry, planner, TODO and HTML only when acceptance is met. Record failures/skips honestly.</li>
+<li>Commit only authorized changes after verification. Respect previous declined operations; do not silently publish or push unrelated local documentation.</li>
+<li>Report the deliverable, evidence, remaining limits and next ready task. Do not equate an installed dependency or a written plan with a working feature.</li>
+</ol>
+<h3>Current checkpoint</h3>
+<ul>
+<li>Before T03 planning: ask-matt consulted; route selected: plan review → implementation with TDD → standards/spec review.</li>
+<li>Existing isolated worktree: feat/triage-agent at commit 4844b1bdc4bdea9d449e983dc48efbce7e0cc884.</li>
+<li>Fresh baseline: uv run --locked pytest -q; 8 passed.</li>
+<li>After T03 planning: ask-matt consulted again; plan self-review checked source fidelity, customer context, scope and neighboring contracts. Ruff check/format passed for the generator; HTML structure, JavaScript syntax, all 35 source blocks and deterministic regeneration verified. Plan and workflow are embedded in the HTML planner view.</li>
+<li>The user authorized continued implementation/testing through T05. Ask-matt was consulted before and after T03, T04, E02, E03, E04 and T05; verification and independent standards/spec review followed. The per-task tickets record steps and results. GPT-loop implementation remains pending; GitHub issue publication is separate from local ticket creation.</li>
+</ul>
+<p>Skill source: C:/Users/ASUS/.codex/skills/ask-matt/SKILL.md. This workflow implements the user&#x27;s instruction; ask-matt itself does not certify successful results.</p></details></section><section class="page" id="todo" tabindex="-1"><h2>Project TODO</h2>
+<p>9 October 2026 · 9/17 Phase 1 tasks done · Next: T06</p>
+<p><a href="#spec">Spec</a> · <a href="#stack">Stack</a> · <a href="#planner">Detailed planner</a></p>
+<p><a href="#tickets">Tickets with skills, plugins and steps</a></p>
+<p>Checked tasks record completed setup/design and the user&#x27;s E01 architecture decision. Classic RAG and Docker are selected for Phase 1; GraphRAG is deferred to Phase 2. Task data lives in docs/project_tasks.json; rebuild with uv run python scripts/build_planner.py.</p>
+<h3>Design &amp; setup</h3>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T01 — Approve architecture and contracts</strong> (done): Python CLI, urgency/action rubric, two tool contracts, output contract, and limits approved.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T02 — Set up uv package and GitHub</strong> (done): Both entry points run; safe environment config; 8 setup tests, Ruff and package builds pass; private repository pushed.</li>
+</ul>
+<h3>Phase 1 decision</h3>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>E01 — Select Phase 1 prototype architecture</strong> (done): User selected a Docker-based classic RAG prototype. PostgreSQL/pgvector and the existing OpenAI SDK approach define this phase; GraphRAG is Phase 2.</li>
+</ul>
+<h3>Data &amp; tools</h3>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T03 — Create complete bilingual ticket fixtures</strong> (done): All 3 tickets retain 4 messages, ordering, relative times, Thai and supplied translations; synthetic customer IDs labeled; no invented dates.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T04 — Define validated input/tool/result contracts</strong> (done): Invalid enums rejected; unknown product null; all approved fields present; completed/fallback rules and multi-issue input covered.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>T05 — Wire history and classic RAG tools</strong> (done): Both tool schemas execute: fixture customer lookup and Docker PostgreSQL/pgvector KB retrieval; unknown customers, empty matches and DB errors explicit; mock knowledge flagged.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T06 — Write grounded bilingual system prompt</strong> (todo): Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.</li>
+</ul>
+<h3>Phase 1 RAG infrastructure</h3>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>E02 — Set up Docker Compose and PostgreSQL/pgvector</strong> (done): App and PostgreSQL/pgvector services start through Compose; DB readiness and migrations verified; pinned image/dependencies; local named volume; secret-free example config.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>E03 — Implement classic RAG ingestion and embeddings</strong> (done): English/Thai articles produce stable source/chunk IDs and idempotent upserts; configured embedding model/dimension/version validated; deterministic fake embeddings available for offline DB tests.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled checked aria-label="Task status"> <strong>E04 — Implement PostgreSQL classic RAG knowledge search</strong> (done): Read-only parameterized top-5 vector retrieval returns source IDs/excerpts and provenance; locale/product filters, no-match and DB failure explicit; no graph traversal.</li>
+</ul>
+<h3>Agent &amp; decisions</h3>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T07 — Build bounded GPT/tool execution loop</strong> (todo): Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests &lt;=6 and tool executions &lt;=8 enforced.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T08 — Apply action policy and integrate JSON CLI</strong> (todo): Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.</li>
+</ul>
+<h3>Phase 1 RAG verification</h3>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>E06 — Test classic RAG against Docker PostgreSQL</strong> (todo): Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.</li>
+</ul>
+<h3>Verification &amp; delivery</h3>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T09 — Verify scenarios and failure paths offline</strong> (todo): Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T10 — Run demos and record live verification</strong> (todo): Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T11 — Finish README and one-page write-up</strong> (todo): README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.</li>
+</ul>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>T12 — Verify clean checkout and submit</strong> (todo): Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</li>
+</ul>
+<h3>Phase 2 â€” deferred GraphRAG</h3>
+<ul>
+<li><input type="checkbox" disabled aria-label="Task status"> <strong>E05 — Explore GraphRAG in the next phase</strong> (deferred): Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</li>
+</ul>
+<h3>Before submission</h3>
+<p>Follow T12 acceptance. The GPT agent and prompt remain pending. Current verification covers fixtures, schemas, Docker, ingestion, retrieval and both tools. Live provider calls have not run. The historical 210-minute estimate does not cover the expanded Phase 1 scope.</p></section><section class="page" id="tickets" tabindex="-1"><h2>Execution Tickets</h2>
+<p>9 October 2026 · Local project tickets</p>
+<p>Each ticket records dependencies, acceptance, skills/plugins and simple steps. Completed steps are evidence; planned steps are not claimed as executed.</p>
+<p><a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub Phase 1 tracking issue</a> · ready-for-agent. The local task tickets below contain per-task execution details.</p>
+<h3>T01 — Approve architecture and contracts</h3>
+<p>Status: done. Scope: phase1. Dependencies: none.</p>
+<h3>Acceptance</h3>
+<p>Python CLI, urgency/action rubric, two tool contracts, output contract, and limits approved.</p>
+<h3>Skills and plugins</h3>
+<p>Historical task; skill usage was not recorded in this ticket format.</p>
+<h3>Evidence</h3>
+<p>See the task outputs and existing setup/design evidence.</p>
+<h3>T02 — Set up uv package and GitHub</h3>
+<p>Status: done. Scope: phase1. Dependencies: T01.</p>
+<h3>Acceptance</h3>
+<p>Both entry points run; safe environment config; 8 setup tests, Ruff and package builds pass; private repository pushed.</p>
+<h3>Skills and plugins</h3>
+<p>Historical task; skill usage was not recorded in this ticket format.</p>
+<h3>Evidence</h3>
+<p>See the task outputs and existing setup/design evidence.</p>
+<h3>E01 — Select Phase 1 prototype architecture</h3>
+<p>Status: done. Scope: phase1. Dependencies: T01.</p>
+<h3>Acceptance</h3>
+<p>User selected a Docker-based classic RAG prototype. PostgreSQL/pgvector and the existing OpenAI SDK approach define this phase; GraphRAG is Phase 2.</p>
+<h3>Skills and plugins</h3>
+<p>Historical task; skill usage was not recorded in this ticket format.</p>
+<h3>Evidence</h3>
+<p>See the task outputs and existing setup/design evidence.</p>
+<h3>T03 — Create complete bilingual ticket fixtures</h3>
+<p>Status: done. Scope: phase1. Dependencies: T02.</p>
+<h3>Acceptance</h3>
+<p>All 3 tickets retain 4 messages, ordering, relative times, Thai and supplied translations; synthetic customer IDs labeled; no invented dates.</p>
+<h3>Skills and plugins</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
+<ol>
+<li>Consulted ask-matt; reused the existing worktree and verified 8 setup tests.</li>
+</ol>
+<ol>
+<li>Verified the independent DOCX transcription and wrote failing fixture checks.</li>
+</ol>
+<ol>
+<li>Created all 12 original messages, supplied translations and synthetic customer links.</li>
+</ol>
+<ol>
+<li>Ran source-fidelity tests; consulted ask-matt after implementation.</li>
+</ol>
+<h3>Verification</h3>
+<p>Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p>Implementation commit: d61e1ca; review fix f82298b.</p>
+<h3>T04 — Define validated input/tool/result contracts</h3>
+<p>Status: done. Scope: phase1. Dependencies: T03.</p>
+<h3>Acceptance</h3>
+<p>Invalid enums rejected; unknown product null; all approved fields present; completed/fallback rules and multi-issue input covered.</p>
+<h3>Skills and plugins</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
+<ol>
+<li>Consulted ask-matt and wrote failing input/result contract tests.</li>
+</ol>
+<ol>
+<li>Added strict Pydantic ticket, customer, tool, knowledge and result contracts.</li>
+</ol>
+<ol>
+<li>Validated nulls, enums, ordered messages, both-tool completion and fallback routing.</li>
+</ol>
+<ol>
+<li>Ran the suite (21 passed at this checkpoint); consulted ask-matt after implementation.</li>
+</ol>
+<h3>Verification</h3>
+<p>Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p>Implementation commit: d61e1ca; review fix f82298b.</p>
+<h3>E02 — Set up Docker Compose and PostgreSQL/pgvector</h3>
+<p>Status: done. Scope: phase1. Dependencies: E01, T02.</p>
+<h3>Acceptance</h3>
+<p>App and PostgreSQL/pgvector services start through Compose; DB readiness and migrations verified; pinned image/dependencies; local named volume; secret-free example config.</p>
+<h3>Skills and plugins</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), superpowers:systematic-debugging.</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
+<ol>
+<li>Consulted ask-matt and checked Compose readiness/storage configuration.</li>
+</ol>
+<ol>
+<li>Added version-pinned Dockerfile, Compose database/app/migration services and uv dependencies.</li>
+</ol>
+<ol>
+<li>Generated an ignored local password, started the database and fixed duplicate image build targets.</li>
+</ol>
+<ol>
+<li>Verified healthy database, pgvector 0.8.7, CLI startup and repeatable migration; consulted ask-matt afterward.</li>
+</ol>
+<h3>Verification</h3>
+<p>Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p>Implementation commit: d61e1ca; review fix f82298b.</p>
+<h3>E03 — Implement classic RAG ingestion and embeddings</h3>
+<p>Status: done. Scope: phase1. Dependencies: E02.</p>
+<h3>Acceptance</h3>
+<p>English/Thai articles produce stable source/chunk IDs and idempotent upserts; configured embedding model/dimension/version validated; deterministic fake embeddings available for offline DB tests.</p>
+<h3>Skills and plugins</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), superpowers:systematic-debugging, openai-docs.</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
+<ol>
+<li>Consulted ask-matt and wrote failing ingestion tests.</li>
+</ol>
+<ol>
+<li>Added Unicode-safe 500-token chunks with 60-token overlap, stable hashes and atomic source replacement.</li>
+</ol>
+<ol>
+<li>Added explicit fake embeddings and an opt-in OpenAI adapter with model/dimension checks.</li>
+</ol>
+<ol>
+<li>Verified duplicate-free re-ingestion, Thai content, incompatible-space rejection and token limits; consulted ask-matt afterward.</li>
+</ol>
+<ol>
+<li>Fixed the section-boundary finding: separate sections/paragraphs and repeat headings on long chunks; regression test RED then GREEN.</li>
+</ol>
+<h3>Verification</h3>
+<p>Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p>Implementation commit: d61e1ca; review fix f82298b.</p>
+<h3>E04 — Implement PostgreSQL classic RAG knowledge search</h3>
+<p>Status: done. Scope: phase1. Dependencies: E03, T04.</p>
+<h3>Acceptance</h3>
+<p>Read-only parameterized top-5 vector retrieval returns source IDs/excerpts and provenance; locale/product filters, no-match and DB failure explicit; no graph traversal.</p>
+<h3>Skills and plugins</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.</p>
+<h3>Steps performed</h3>
+<ol>
+<li>Consulted ask-matt and wrote failing database-search tests.</li>
+</ol>
+<ol>
+<li>Added parameterized read-only exact cosine retrieval with top-five bounds and metadata filters.</li>
+</ol>
+<ol>
+<li>Returned document/chunk IDs, excerpts, version, mock flag and ranking score.</li>
+</ol>
+<ol>
+<li>Verified citations, changed sources, safe filters, no-match and database failures; consulted ask-matt afterward.</li>
+</ol>
+<h3>Verification</h3>
+<p>Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p>Implementation commit: d61e1ca; review fix f82298b.</p>
+<h3>T05 — Wire history and classic RAG tools</h3>
+<p>Status: done. Scope: phase1. Dependencies: T03, T04, E04.</p>
+<h3>Acceptance</h3>
+<p>Both tool schemas execute: fixture customer lookup and Docker PostgreSQL/pgvector KB retrieval; unknown customers, empty matches and DB errors explicit; mock knowledge flagged.</p>
+<h3>Skills and plugins</h3>
+<p>Skills used: ask-matt (before and after), implement, tdd, superpowers:executing-plans, superpowers:using-git-worktrees, superpowers:verification-before-completion, code-review (standards and spec), to-spec (GitHub issue publication).</p>
+<p>Plugins used: Superpowers: worktree, execution, debugging and verification workflow, GitHub: published Phase 1 spec/checkpoint issue #1 with ready-for-agent.</p>
+<p>Tools: PowerShell, uv, pytest, Ruff, Docker Compose. GitHub connector published the tracking issue.</p>
+<h3>Steps performed</h3>
+<ol>
+<li>Consulted ask-matt and wrote failing tool-dispatch tests.</li>
+</ol>
+<ol>
+<li>Added allowlisted customer-history and database-search schemas plus implementations.</li>
+</ol>
+<ol>
+<li>Ingested three synthetic KB articles and ran both tools for all three source tickets.</li>
+</ol>
+<ol>
+<li>Ran the full Docker suite (35 passed, Compose host check separate); consulted ask-matt and requested standards/spec reviews.</li>
+</ol>
+<ol>
+<li>Published the Phase 1 spec and implementation checkpoint as GitHub issue #1; code remains local and unpushed.</li>
+</ol>
+<h3>Verification</h3>
+<p>Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.</p>
+<p>Implementation commit: d61e1ca; review fix f82298b.</p>
+<h3>T06 — Write grounded bilingual system prompt</h3>
+<p>Status: todo. Scope: phase1. Dependencies: T04, T05.</p>
+<h3>Acceptance</h3>
+<p>Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>T07 — Build bounded GPT/tool execution loop</h3>
+<p>Status: todo. Scope: phase1. Dependencies: T02, T04, T05, T06.</p>
+<h3>Acceptance</h3>
+<p>Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests &lt;=6 and tool executions &lt;=8 enforced.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>T08 — Apply action policy and integrate JSON CLI</h3>
+<p>Status: todo. Scope: phase1. Dependencies: T07.</p>
+<h3>Acceptance</h3>
+<p>Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>E06 — Test classic RAG against Docker PostgreSQL</h3>
+<p>Status: todo. Scope: phase1. Dependencies: E04.</p>
+<h3>Acceptance</h3>
+<p>Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>T09 — Verify scenarios and failure paths offline</h3>
+<p>Status: todo. Scope: phase1. Dependencies: T08, E06.</p>
+<h3>Acceptance</h3>
+<p>Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>T10 — Run demos and record live verification</h3>
+<p>Status: todo. Scope: phase1. Dependencies: T09.</p>
+<h3>Acceptance</h3>
+<p>Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>T11 — Finish README and one-page write-up</h3>
+<p>Status: todo. Scope: phase1. Dependencies: T10.</p>
+<h3>Acceptance</h3>
+<p>README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>T12 — Verify clean checkout and submit</h3>
+<p>Status: todo. Scope: phase1. Dependencies: T11.</p>
+<h3>Acceptance</h3>
+<p>Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol>
+<h3>E05 — Explore GraphRAG in the next phase</h3>
+<p>Status: deferred. Scope: phase2. Dependencies: T12.</p>
+<h3>Acceptance</h3>
+<p>Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.</p>
+<h3>Skills and plugins</h3>
+<p>Planned skills: ask-matt before/after, implement, tdd, code-review, Superpowers execution and verification. Not executed yet.</p>
+<h3>Planned steps</h3>
+<ol>
+<li>Read dependencies and acceptance; consult ask-matt.</li>
+</ol>
+<ol>
+<li>Add a failing behavior check at the agreed public boundary.</li>
+</ol>
+<ol>
+<li>Implement the smallest required change.</li>
+</ol>
+<ol>
+<li>Consult ask-matt, test and review; record evidence before completion.</li>
+</ol></section><section class="page" id="spec" tabindex="-1"><h2>Phase 1 Spec — Docker Classic RAG Prototype</h2>
+<p>9 October 2026 · User-selected phase scope · Implementation authorized through T05</p>
+<h3>Problem Statement</h3>
+<p>The user needs a demonstrable support-ticket triage prototype that reads whole conversations, retrieves supporting knowledge, and makes justified urgency/routing decisions. Earlier planning offered several database and retrieval options without selecting one, leaving the next implementation steps unclear.</p>
+<h3>Solution</h3>
+<p>Build Phase 1 as a local Docker Compose prototype using PostgreSQL with pgvector for classic RAG. Retain Python, uv, Pydantic, the installed OpenAI SDK, and an explicit bounded agent loop. A customer-history tool reads synthetic fixtures; a knowledge-search tool retrieves relevant document passages from PostgreSQL. Demonstrate the three supplied English/Thai conversations with JSON decisions and source citations.</p>
+<p>Compose runs one PostgreSQL/pgvector database and a Python application service used for migrations, ingestion, samples, and tests. Host uv commands remain available for development. Database-dependent work waits for health and schema initialization. See <a href="https://docs.docker.com/compose/how-tos/startup-order/">Docker&#x27;s health-based startup guidance</a> and <a href="https://github.com/pgvector/pgvector">pgvector&#x27;s official documentation</a>.</p>
+<p>This phase is a prototype. GraphRAG is deferred to Phase 2 and is not a current dependency or service.</p>
+<h3>User Stories</h3>
+<ol>
+<li>As a developer, I want one Compose environment, so that another machine can reproduce the prototype.</li>
+<li>As a developer, I want database readiness checked, so that the application does not race initialization.</li>
+<li>As a developer, I want repeatable migrations, so that local databases reach the required schema safely.</li>
+<li>As a developer, I want uv-locked dependencies inside the image, so that host/container environments agree.</li>
+<li>As a reviewer, I want start/stop/ingest/test/sample commands, so that I can evaluate the prototype.</li>
+<li>As a reviewer, I want to supply my own key and models, so that credentials stay out of the submission.</li>
+<li>As a reviewer, I want credential-free help/offline checks, so that setup is independently verifiable.</li>
+<li>As an operator, I want all ticket messages read together, so that later impact changes the decision.</li>
+<li>As an operator, I want impact-based urgency, so that account tier or anger alone does not determine severity.</li>
+<li>As an operator, I want product/issue/sentiment and secondary issues extracted, so that mixed requests remain visible.</li>
+<li>As a Thai customer, I want Thai source text preserved and a Thai draft, so that my issue is understood in context.</li>
+<li>As an operator, I want supplied customer history looked up, so that account context informs triage.</li>
+<li>As a knowledge maintainer, I want English/Thai articles imported, so that both languages can retrieve evidence.</li>
+<li>As a maintainer, I want stable document/chunk identifiers, so that re-ingestion does not duplicate knowledge.</li>
+<li>As a maintainer, I want source/embedding versions retained, so that stale or incompatible evidence is detectable.</li>
+<li>As an operator, I want semantic passage retrieval, so that relevant knowledge supports the answer.</li>
+<li>As an operator, I want optional product/issue/locale filters, so that results target applicable documents.</li>
+<li>As a reviewer, I want source identifiers and excerpts, so that I can trace answers to evidence.</li>
+<li>As an operator, I want empty search handled explicitly, so that missing knowledge does not become invented policy.</li>
+<li>As a billing customer, I want repeated reported charges escalated, so that the prototype does not promise an unsupported refund.</li>
+<li>As an enterprise customer, I want reported multi-user access failure escalated, so that a green status page does not dismiss my issue.</li>
+<li>As a product reviewer, I want a theme bug separated from a feature request, so that failed advice is not blindly repeated.</li>
+<li>As an operator, I want one action/destination, so that auto-response, routing, and escalation remain clear.</li>
+<li>As a developer, I want database/model/tool failures visible, so that failure does not appear as completed triage.</li>
+<li>As a developer, I want bounded calls/timeouts, so that the prototype cannot loop indefinitely.</li>
+<li>As a reviewer, I want fake-model/embedding tests against real Docker PostgreSQL, so that database behavior is verified without paid requests.</li>
+<li>As a reviewer, I want live verification reported separately, so that offline tests are not mistaken for live integration.</li>
+<li>As a developer, I want one database for this phase, so that GraphRAG infrastructure stays in the next phase.</li>
+<li>As a future developer, I want a stable knowledge-search boundary, so that Phase 2 can compare graph retrieval against this baseline.</li>
+<li>As a reviewer, I want the prompt, tools, README, compact write-up and source, so that all homework deliverables remain complete.</li>
+</ol>
+<h3>Implementation Decisions</h3>
+<ul>
+<li><strong>Phase and runtime:</strong> Docker classic RAG now, GraphRAG later. Keep the OpenAI SDK explicit loop; no framework migration is selected. Earlier database alternatives are superseded for this phase.</li>
+<li><strong>Containers:</strong> PostgreSQL/pgvector plus Python CLI application under Compose. Pin a compatible image version/digest during setup and install application dependencies from uv&#x27;s committed lockfile. Persist local knowledge in a named volume; destructive reset is separate and explicit.</li>
+<li><strong>Readiness/configuration:</strong> Require database health and migration completion before ingestion/search. Any published database port binds to loopback. Secrets come from environment variables and are not committed. A running container alone is not readiness.</li>
+<li><strong>Data boundaries:</strong> PostgreSQL stores knowledge documents/chunks and ingestion/embedding metadata. Customer history stays in synthetic fixtures. Mock FAQ evidence does not establish actual company policy or live incident status.</li>
+<li><strong>Ingestion interface:</strong> Input articles carry source ID, title, content, locale, product/issue metadata, version and mock flag. Output chunks retain stable IDs, source references, text, sequence, hashes and embedding metadata. Unchanged re-imports are idempotent; changed sources replace/deactivate stale chunks without silently mixing versions.</li>
+<li><strong>Chunking:</strong> Trial defaults are approximately 400–600 tokens with about 60 tokens overlap and preserved section/source boundaries. Tune using bilingual retrieval evidence.</li>
+<li><strong>Embeddings:</strong> Configure model and dimension separately from GPT. Ingest/query embeddings must share compatible model/version/dimensions. Reject mismatches; changing embedding space requires an intentional rebuild. Deterministic fake embeddings are test data, not proof of semantic quality.</li>
+<li><strong>Schema:</strong> Documents retain identity, title, source/version, locale, metadata, hash and mock status. Chunks reference documents and retain text, sequence, embedding, model/dimension, index version and hash. Enforce referential integrity and uniqueness for repeatable imports.</li>
+<li><strong>Retrieval interface:</strong> Exact vector similarity over a small corpus, maximum five chunks, explicit metadata filters, parameterized read-only queries. Return tool-compatible IDs/titles/excerpts/locale/mock status and resolvable provenance. Ranking scores are not factual confidence. No arbitrary model-written SQL.</li>
+<li><strong>Two tools:</strong> Customer-history lookup reads fixtures; knowledge search reads Docker PostgreSQL/pgvector. Both must succeed before completed demonstration triage. Empty search is valid but does not justify a fabricated auto-response; database failure is an error, not no-match.</li>
+<li><strong>Policies:</strong> Billing sample is high with billing escalation; Thai access failure is critical with incident escalation; theme behavior is low with product-support routing. These are project expectations, not an official assignment answer key. Preserve unknown financial state and unconfirmed regional hypotheses.</li>
+<li><strong>Result interface:</strong> Keep ticket ID, completed/fallback status, urgency, product, primary issue, sentiment, secondary issues, action/destination, rationale, draft, retrieved source IDs, uncertainties, tool records and structured error. Unknown product remains null. Technical fallback escalates to human support; unknown fallback urgency may be null.</li>
+<li><strong>Limits:</strong> Provider timeout 30 seconds; maximum six model requests including one possible retry, and eight tool executions per ticket. Exhaustion produces fallback. Database connection/query timeouts must also be bounded; choose and record concrete values during infrastructure implementation.</li>
+<li><strong>Language/grounding:</strong> Preserve all four messages per sample, original Thai, supplied translations and relative times. Thai customer drafts use Thai. Cite only returned source IDs. Never invent refunds, SLA, features, settled charges or confirmed regional incidents.</li>
+<li><strong>Delivery:</strong> JSON stdout, optional stderr traces, uv/Compose README, prompt/tool definitions, three sample runs, truthful verification, maximum-one-page architecture/failure/evaluation write-up, and repository or self-contained Git archive. No UI or deployment requirement.</li>
+</ul>
+<h3>Testing Decisions</h3>
+<ul>
+<li>Proposed highest seam: end-to-end CLI with a fake GPT adapter against real Docker PostgreSQL/pgvector. Assert observable results, exit status, routing, source citations and explicit failure behavior rather than private helpers.</li>
+<li>Second seam: the existing knowledge-search tool contract with ingestion setup. Verify idempotency, filters, bilingual source handling, top-five bounds, empty matches, citations, source changes and database outage. Keep SQL internals replaceable.</li>
+<li>Existing CLI/configuration tests are prior art for credential-independent startup, safe errors and stdout/stderr separation. Extend those contracts rather than adding test-only application interfaces.</li>
+<li>Use isolated temporary databases/fixtures and deterministic embeddings for repeatable integration checks. Cover schema initialization, references, changed sources, embedding model/dimension mismatch and query failures.</li>
+<li>Fake-model cases exercise all three tickets, both required tools, invalid output/citations, budgets, injection attempts and action/destination consistency.</li>
+<li>Fake embeddings prove storage/retrieval contracts, not multilingual semantic quality. Separately evaluate live embeddings against labeled English/Thai queries when credentials are available.</li>
+<li>Live GPT and embedding checks are opt-in and reported independently; offline checks require no real key. Document skipped live checks and reviewer commands honestly.</li>
+<li>The user authorized continued implementation and checking through T05 at the fixture/tool/database boundaries. Later GPT-loop end-to-end checks remain part of T07–T09.</li>
+</ul>
+<h3>Out of Scope</h3>
+<ul>
+<li>GraphRAG, Neo4j, entity/edge extraction, graph traversal and graph community summaries in Phase 1.</li>
+<li>SQLite, a second vector database, or migration to a different agent framework.</li>
+<li>Production rollout, Kubernetes, high availability, production auth/tenancy, real customer ingestion, billing changes, or automatic sending/refunds.</li>
+<li>Chat UI, API service, unrestricted SQL and extra orchestration/infrastructure without a prototype need.</li>
+<li>Mandatory hybrid search/reranking or advanced ANN tuning before the small-corpus classic RAG path works.</li>
+</ul>
+<h3>Further Notes</h3>
+<p>T03/T04/E02/E03/E04/T05 are implemented and verified with real Docker PostgreSQL and fake embeddings; live model quality remains unverified. The user has selected prototype scope, not declared implementation complete. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.</p>
+<p>GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. The current spec and T05 checkpoint are published as <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub issue #1</a> with ready-for-agent. Local implementation is committed separately and has not been pushed or merged.</p><details><summary>Historical T01 contracts and design</summary><p>The current Phase 1 spec supersedes the original mock-only knowledge scope. Triage policies and output contracts remain applicable.</p><h2>T01 — Support Ticket Triage Agent Design</h2>
+<p>9 October 2026 · T01 approved by the user · T02 authorized; use uv for package management</p>
+<h3>Purpose and success criteria</h3>
+<p>Create a small homework submission demonstrating grounded triage of complete customer conversations using an OpenAI GPT model and at least two executable tools. It must process all three supplied tickets, preserve Thai text, produce understandable decisions, and include the prompt, tool definitions, README, and maximum-one-page write-up. Readability, maintainability, extensibility, and logic take priority within the recommended 150–240 minutes.</p>
+<p>Assignment requirements come from the supplied DOCX. Language, library choices, output schema, severity rubric, and execution limits below are proposed decisions. They are not an official answer key.</p>
+<h3>1. Language, interface, and boundaries</h3>
+<p>Approved choice: <strong>Python CLI</strong>, with Python 3.11 as the minimum target, the official OpenAI Python SDK for model access, Pydantic for contracts, pytest for tests, and Ruff for linting. Use <strong>uv</strong> for package management, a single pyproject.toml with runtime and development dependencies, and a committed uv.lock for resolved versions.</p>
+<p>The CLI accepts one ticket or a file of tickets and prints JSON results. The default demonstration processes all three supplied conversations. A separate trace option shows tool execution without contaminating JSON output. Proposed invocation after packaging: python -m triage_agent --input data/sample_tickets.json, with --trace as an optional flag.</p>
+<p>Configure the key with OPENAI_API_KEY and the GPT model with OPENAI_MODEL. The model must support tool calls; verify the chosen model and SDK API during integration. Do not hard-code a model version or include a real key. Offline fake-model tests work without credentials; live execution reports a clear configuration error when credentials/model are missing.</p>
+<p>The CLI produces triage recommendations and draft responses. No chat UI, HTTP service, database, agent framework, vector database, deployment, automatic messaging, refunds, or account mutations are in this design. A TypeScript CLI remains an alternative if that is your preferred language; this draft selects Python to keep the implementation compact.</p>
+<h3>2. Architecture and data flow</h3>
+<p>Ticket loader → validated conversation → prompt and tool-capable model adapter → bounded agent loop → allowlisted tool dispatcher → final result validation → policy consistency checks → JSON result and optional trace.</p>
+<p>Use the module layout from PROJECT_TASK_PLANNER.md. cli.py handles input/output; schemas.py owns contracts; agent.py owns model/tool orchestration; tools.py owns mock tools; policy.py owns action consistency and fallback. The prompt and mock fixtures remain separate files.</p>
+<p>Each message includes its original text, sequence, and supplied relative time. Preserve provided translations separately from original Thai text, and label them as supplied translations. Never manufacture absolute timestamps from phrases such as just now. Customer IDs are synthetic fixture IDs mapped to the supplied customer metadata.</p>
+<p>The agent sees the entire conversation and reconciles later messages with earlier ones. Tool results are returned to the model as tool results, with call IDs retained. The model adapter is replaceable with a fake for deterministic orchestration tests.</p>
+<h3>3. Urgency policy</h3>
+<p>Severity reflects reported impact and time sensitivity; confirmation is represented separately in rationale and uncertainties. A suspected incident may merit urgent investigation without asserting a confirmed outage. Account tier is context, not an automatic severity label.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Urgency</th><th scope="col">Proposed rule</th><th scope="col">Example</th></tr></thead><tbody><tr><td>critical</td><td>Reported core service failure across multiple users/devices with substantial business interruption; or comparably severe ongoing harm requiring immediate human investigation</td><td>Thai Enterprise ticket with repeated error 500, affected coworkers, and imminent client demo</td></tr><tr><td>high</td><td>Material financial risk, blocked paid entitlement, or a substantial time-sensitive individual problem without evidence of broad service failure</td><td>Repeated reported charges, no Pro access, presentation in two hours, dispute threat</td></tr><tr><td>medium</td><td>Meaningful functional impairment with limited impact, no acute harm/deadline, and no broader incident evidence</td><td>Non-cosmetic feature malfunction requiring technical investigation</td></tr><tr><td>low</td><td>Cosmetic issue, how-to question, or feature request without material interruption or acute harm</td><td>Dark-mode behavior plus scheduling request</td></tr></tbody></table></div>
+<p>Apply the highest supported severity among the ticket&#x27;s unresolved issues. Anger alone does not make a ticket critical. Missing information must not silently downgrade a clearly reported serious problem; document the uncertainty and escalate when appropriate.</p>
+<h3>4. Action policy</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Primary action</th><th scope="col">Conditions</th><th scope="col">Destination</th></tr></thead><tbody><tr><td>escalate_to_human</td><td>Critical incident, financial dispute/repeated charges requiring account intervention, or inability to produce a safe supported decision after tool/model failure</td><td>incident_on_call, billing_payments, or human_support</td></tr><tr><td>route_to_specialist</td><td>Unresolved product/technical issue needing investigation, without the immediate escalation conditions above</td><td>product_support or technical_support</td></tr><tr><td>auto_respond</td><td>Retrieved knowledge directly supports a safe answer for the unresolved issue and no escalation/routing condition remains</td><td>null</td></tr></tbody></table></div>
+<p>Urgency and action are separate: a low-severity bug can require a specialist. Critical results always escalate. Billing harm described in sample 1 always escalates. If a ticket combines a bug and a feature request, choose one primary action addressing the main unresolved problem and retain secondary issues.</p>
+<p>No retrieved article means no grounded auto-response. References must point to document IDs actually returned by the knowledge-base tool. A draft acknowledgement is allowed during routing/escalation, but must not promise a resolution, refund, feature, or SLA unsupported by evidence.</p>
+<h3>5. Tool contracts</h3>
+<p>Both tools are read-only mock implementations. The demonstration requires successful execution of both before treating a model result as complete. If required tool evidence cannot be obtained, return an explicit fallback, not a fabricated successful triage.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Tool</th><th scope="col">Arguments</th><th scope="col">Result</th></tr></thead><tbody><tr><td>get_customer_history</td><td>customer_id: non-empty string</td><td>status: ok/not_found/error; customer: object or null; error: string or null</td></tr><tr><td>search_knowledge_base</td><td>query: non-empty string; product, issue_type, locale: optional strings</td><td>status: ok/error; documents: list of up to five matches; error: string or null</td></tr></tbody></table></div>
+<p>Customer objects contain customer_id, plan, tenure_months, region, seats, and prior_support_summary. Preserve unknown region/seats as null. Documents contain id, title, excerpt, locale, and is_mock=true. An empty document list is a valid no-match result. Use a simple deterministic term/category search for the mock KB; do not add embedding infrastructure.</p>
+<p>The KB contains clearly labeled illustrative billing, service-access, and theme articles. It does not establish live regional status, actual refund timing, or real company feature availability. The dispatcher validates arguments and rejects unknown tool names. Customer text and retrieved content cannot override system instructions.</p>
+<h3>6. Output contract</h3>
+<p>All fields below are present; nullable fields use null and list fields use empty lists when no value is known. Reject unexpected fields and invalid enum values. Do not present a technical failure as a normal completed triage.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Field</th><th scope="col">Type and meaning</th></tr></thead><tbody><tr><td>ticket_id</td><td>Non-empty string; supplied or synthetic fixture identifier</td></tr><tr><td>status</td><td>completed or fallback</td></tr><tr><td>urgency</td><td>critical/high/medium/low; null only on a fallback when no reliable classification is available</td></tr><tr><td>product</td><td>String or null; never infer an actual product name from plan tier or export features alone</td></tr><tr><td>issue_type</td><td>Non-empty string describing the primary issue; null allowed on fallback</td></tr><tr><td>customer_sentiment</td><td>positive/neutral/frustrated/angry/mixed/unknown</td></tr><tr><td>secondary_issues</td><td>List of concise strings</td></tr><tr><td>next_action</td><td>auto_respond/route_to_specialist/escalate_to_human</td></tr><tr><td>destination</td><td>Allowed destination from the action table; null only for auto_respond</td></tr><tr><td>rationale</td><td>Non-empty explanation grounded in the conversation and tool evidence</td></tr><tr><td>draft_response</td><td>String or null; Thai for the Thai customer&#x27;s draft; no invented promises</td></tr><tr><td>knowledge_sources</td><td>List of retrieved KB document IDs actually used</td></tr><tr><td>uncertainties</td><td>List of unknown or unverified facts</td></tr><tr><td>tool_calls</td><td>List of tool execution records with name, call_id, and status</td></tr><tr><td>error</td><td>null for completed; structured code/message for fallback</td></tr></tbody></table></div>
+<p>A completed result requires a valid urgency, primary issue, both required tools having succeeded, and consistent action/destination fields. A fallback always escalates to human_support, records its failure cause, and preserves trustworthy available fields. It does not guess urgency to satisfy the schema.</p>
+<p>Keep provider/tool internals and secrets out of the customer draft. Optional traces may include redacted arguments and results for debugging; full customer text is not needed in routine logs.</p>
+<h3>7. Limits and error handling</h3>
+<p>Proposed defaults: 30-second timeout per provider request; at most six model requests per ticket, including one possible retry for a transient provider error or invalid final output; at most eight individual tool executions. Stop with fallback when any budget is exhausted. Count parallel tool calls individually, and validate them before dispatch. Exact SDK wiring belongs to T07, while these limits are policy decisions.</p>
+<p>Unknown tools, malformed arguments, missing customers, or KB errors return explicit errors to the agent. The agent may correct a call within the remaining budget. If no grounded decision emerges, fallback. Missing credentials stop a live batch before requests and return a clear nonzero CLI error. Other per-ticket failures produce fallback results and a nonzero batch exit code while retaining successful ticket outputs.</p>
+<h3>8. Sample acceptance targets</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Sample</th><th scope="col">Expected baseline</th><th scope="col">Required explanation</th></tr></thead><tbody><tr><td>1 — Billing</td><td>high; escalate_to_human; billing_payments; angry</td><td>Three customer-reported charges, failed entitlement, two-hour deadline, dispute threat; payment settlement/refund state unverified</td></tr><tr><td>2 — Thai access</td><td>critical; escalate_to_human; incident_on_call; frustrated</td><td>Cross-device/browser and coworker access failure, business risk, operational-status discrepancy; Asia-wide outage and all 45 users affected remain unconfirmed</td></tr><tr><td>3 — Theme</td><td>low; route_to_specialist; product_support; mixed</td><td>Earlier advice failed; possible cosmetic theme bug plus separate scheduling feature request; actual availability unverified</td></tr></tbody></table></div>
+<p>These baseline labels follow this draft rubric. A policy change requires updating the tests and reasoning targets together. Draft Thai replies must preserve uncertainty rather than turning the customer&#x27;s regional hypothesis into a confirmed diagnosis.</p>
+<h3>9. Verification and task handoff</h3>
+<p>Test fixtures preserve all three four-message conversations. Unit checks cover both tools, empty matches, unknown customers, and validation. Fake-model integration checks exercise tool dispatch, tool results returned to the model, both-tool completion, budget exhaustion, bad citations, contradictory actions, invalid output, and injection attempts. Sample-case assertions check supported facts and decision policy, not exact wording.</p>
+<p>Run a live GPT smoke check separately when a key and chosen model are available. State honestly whether it ran. A clean-checkout run, README, one-page write-up, and repository/ZIP checks complete the submission.</p>
+<p>T01 status: <strong>approved by the user</strong>. T02 is authorized with uv as the package manager and creation of one GitHub repository. Initialize Git and commit the reviewed baseline at T02, then use the managed worktree workflow from GITHUB_REPO_PLAN.md for project implementation. Repository and verification evidence will be recorded with the completed T02 task.</p></details></section><section class="page" id="stack" tabindex="-1"><h2>Tech Stack</h2>
+<p>9 October 2026 · Versions read from committed uv.lock</p>
+<h3>Installed baseline</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Component</th><th scope="col">Technology</th><th scope="col">Version / choice</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Language</td><td>Python</td><td>&gt;=3.11; development default 3.12</td><td>Package ready</td></tr><tr><td>Packages</td><td>uv</td><td>pyproject.toml + uv.lock + ignored .venv</td><td>Ready</td></tr><tr><td>Model client</td><td>openai</td><td>2.54.0</td><td>Installed; agent integration T07</td></tr><tr><td>Validation</td><td>pydantic</td><td>2.14.0</td><td>Installed; schemas T04</td></tr><tr><td>CLI</td><td>argparse</td><td>Python standard library</td><td>Startup ready; processing pending</td></tr><tr><td>Tests</td><td>pytest</td><td>9.1.1</td><td>8 setup tests passed at T02</td></tr><tr><td>Lint / format</td><td>ruff</td><td>0.16.10</td><td>T02 checks passed</td></tr><tr><td>Build</td><td>setuptools</td><td>&gt;=77 build backend</td><td>Wheel/source build verified</td></tr><tr><td>Source control</td><td>Git + private GitHub</td><td>main + feat/triage-agent</td><td>Repository ready</td></tr></tbody></table></div>
+<h3>Selected Phase 1 components</h3>
+<div class="table-scroll"><table><thead><tr><th scope="col">Area</th><th scope="col">Technology / decision</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Main agent</td><td>openai SDK with explicit bounded tool loop</td><td>Selected; T07 pending</td></tr><tr><td>Customer / ticket data</td><td>Synthetic UTF-8 JSON fixtures</td><td>T03 implemented</td></tr><tr><td>Runtime</td><td>Docker Engine 28.5.1 + Compose 2.40.0; Python 3.12.14 image + uv 0.12.6</td><td>Startup verified</td></tr><tr><td>Knowledge database</td><td>PostgreSQL 17 + pgvector 0.8.7</td><td>Healthy Docker service; migrations verified</td></tr><tr><td>Database client</td><td>psycopg 3.3.6 + pgvector 0.5.1</td><td>uv-locked</td></tr><tr><td>Retrieval</td><td>Classic RAG; exact cosine search, top 5, metadata filters, 0.2 ranking cutoff</td><td>Real DB tests passed</td></tr><tr><td>Chunk tokenizer</td><td>tiktoken 0.14.0; cl100k_base</td><td>Unicode-safe 500 tokens / 60 overlap</td></tr><tr><td>Embeddings</td><td>Fake lexical vectors by default; opt-in OpenAI model/dimension</td><td>Adapter tested with mock HTTP; live semantic quality pending</td></tr><tr><td>Phase 2</td><td>GraphRAG; backend decision in next phase</td><td>Deferred; no graph dependencies now</td></tr><tr><td>CI</td><td>GitHub Actions + uv offline checks</td><td>Planned; no workflow yet</td></tr></tbody></table></div>
+<h3>Stack decisions</h3>
+<p>Phase 1 is a prototype using one knowledge database and the existing model SDK. Classic RAG retrieves passages; GraphRAG relationships and traversal belong to Phase 2. Pin compatible Docker images and new dependencies during setup. Details are in <a href="#knowledge">knowledge-system spec</a>.</p>
+<h3>Configuration and commands</h3>
+<p>GPT model: OPENAI_MODEL. Key: OPENAI_API_KEY. No hard-coded model or actual key in the submission. Help/version/offline tests need no key.</p>
+<pre><code>uv sync --locked
+uv run --locked triage-agent --help
+uv run --locked pytest
+uv run --locked ruff check .
+uv run --locked ruff format --check .
+uv build
+uv run --locked python scripts/build_planner.py</code></pre></section><section class="page" id="knowledge" tabindex="-1"><h2>Agent and Knowledge System — Phase 1</h2>
+<p>9 October 2026 · Selected architecture · Implemented through T05</p>
+<h3>Phase decision</h3>
+<p>The user selected <strong>classic RAG using Docker for this prototype phase</strong>. Phase 1 uses PostgreSQL with pgvector as its sole knowledge database. GraphRAG belongs to Phase 2; its backend and libraries will be evaluated then. The existing OpenAI SDK and application-owned tool loop remain the agent approach.</p>
+<p>The <a href="#spec">current project spec</a> defines acceptance. <a href="#planner">Task planner</a> and <a href="#todo">TODO</a> include Docker and classic RAG as Phase 1 work.</p>
+<h3>Agent library and data boundaries</h3>
+<ul>
+<li>Agent: installed openai SDK, Pydantic output/tool validation, explicit bounded tool dispatch. No additional agent framework is selected.</li>
+<li>Customer history: synthetic JSON fixtures behind get_customer_history; never mixed into the shared knowledge corpus.</li>
+<li>Knowledge: PostgreSQL + pgvector behind search_knowledge_base. psycopg and pgvector Python integration are installed through uv and tested against Docker PostgreSQL.</li>
+<li>Runtime: Docker Compose database and Python application services. Host uv commands remain available for development.</li>
+<li>Limits: 30-second provider timeout, at most six model requests and eight tool executions; safe human escalation on failure.</li>
+</ul>
+<h3>Docker contract</h3>
+<p>Pin compatible PostgreSQL/pgvector and Python images by version or digest during implementation. Resolve Python dependencies with uv.lock. A database health check must pass before migrations and ingestion run; a running container alone does not establish database readiness. Persist knowledge in a named volume and expose development ports only on loopback. Keep credentials in runtime configuration with placeholders in examples. Destructive volume reset requires an explicit action.</p>
+<p>See <a href="https://docs.docker.com/compose/how-tos/startup-order/">Compose startup order</a> and <a href="https://github.com/pgvector/pgvector">pgvector installation and Docker support</a>.</p>
+<h3>Classic RAG flow</h3>
+<p>FAQ/docs → normalize and split → embeddings → PostgreSQL chunks → ticket query embedding → top-five vector retrieval → cited tool evidence → triage and draft.</p>
+<ol>
+<li>Ingest synthetic English and Thai articles with stable source IDs, title, language, product/issue metadata, version, content hash and mock flag.</li>
+<li>Keep stable chunk IDs and parent-source relationships. Re-ingestion updates existing records without duplicates; changed or removed chunks must not leave stale evidence.</li>
+<li>Start with approximately 400–600 tokens per chunk and 60-token overlap; preserve sections and tune against retrieval examples.</li>
+<li>Configure the embedding model separately from GPT. Record model, dimension and index version; reject incompatible query vectors. Changing embedding space requires a compatible rebuild.</li>
+<li>Use parameterized, read-only exact vector similarity queries for the small prototype corpus, top_k=5 and validated metadata filters. Scores describe ranking, not factual confidence.</li>
+<li>Return document/chunk IDs, excerpts, language, version and mock provenance. Final knowledge_sources must reference returned evidence. A database failure must be distinct from a successful empty search.</li>
+<li>Empty or insufficient evidence leads to uncertainty and appropriate routing; never fabricate product policy or confirmation of billing/incident facts.</li>
+</ol>
+<h3>Verified test boundaries</h3>
+<p>Prefer externally visible behavior: run CLI triage with a fake GPT adapter against real Docker PostgreSQL/pgvector, and test the knowledge-search contract for ingestion, filtering, citations, bilingual data, empty results and outages. Deterministic fake embeddings test database contracts; they do not establish live multilingual semantic quality. Keep optional live embedding/GPT smoke checks separate. Existing CLI/configuration tests remain the starting point.</p>
+<p>The user authorized continued implementation/testing through T05. The JSON fixture, schema, ingestion, retrieval and tool boundaries are verified. Full GPT CLI execution belongs to later tasks; local execution tickets record current evidence.</p>
+<h3>Phase 2 — GraphRAG</h3>
+<p>Deferred task E05 evaluates whether sourced relationships improve retrieval over the Phase 1 baseline. Decide the graph backend then; no Neo4j, graph extraction, traversal or GraphRAG dependencies are included in Phase 1. Keep the knowledge-tool interface stable enough to compare future retrieval implementations without replacing triage policy.</p>
+<h3>Prototype limits</h3>
+<p>No production deployment, real customer data, billing mutation, high availability, multi-tenant authentication or mandatory vector ANN indexes. No SQLite or second database. Compose, migrations, ingestion, retrieval and both tools are verified with fake embeddings; the GPT agent and live semantic quality remain pending.</p></section><section class="page" id="github" tabindex="-1"><h2>GitHub Repository Plan — Support Ticket Triage Agent</h2>
 <p>Planning addition · 9 October 2026 · Complements PROJECT_TASK_PLANNER.md</p>
+<p>Current scope: Phase 1 Docker classic RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. The invoked to-spec workflow published the spec/checkpoint as issue #1. Older layout and commit-group suggestions below are expanded by the current planner.</p>
 <h3>1. Current state and proposed repository</h3>
-<p>T02 initialized Git at D:\Documents\OOCA_Assignment and created the private repository https://github.com/Watcharaphong-kob/support-ticket-triage-agent. The app&#x27;s worktree tool could not recognize the new repository, so the ignored local Git worktree at .worktrees/triage-agent is used on feat/triage-agent. No GitHub issues or CI workflow have been created yet. See docs/T02_SETUP_STATUS.md for verification evidence.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Setting</th><th scope="col">Proposed choice</th></tr></thead><tbody>
-<tr><td>Repository name</td><td>support-ticket-triage-agent</td></tr>
-<tr><td>Description</td><td>OpenAI GPT support-ticket triage with customer-history and knowledge-base tools, structured decisions, and Thai/English sample conversations</td></tr>
-<tr><td>Owner</td><td>Watcharaphong-kob</td></tr>
-<tr><td>Visibility</td><td>Private; give the evaluator access before submission</td></tr>
-<tr><td>Default branch</td><td>main</td></tr>
-<tr><td>Implementation branch</td><td>feat/triage-agent — created locally for T02</td></tr>
-<tr><td>Delivery</td><td>Repository URL plus reproducible README; ZIP with source and .git if GitHub submission is unavailable</td></tr>
-</tbody></table></div>
+<p>T02 initialized Git and created the private repository. Implementation through T05 is committed locally on feat/triage-agent in .worktrees/triage-agent. <a href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1">GitHub issue #1</a> tracks the Phase 1 spec/checkpoint with ready-for-agent. No new code push, merge or CI workflow is claimed. See docs/T05_IMPLEMENTATION_STATUS.md for evidence.</p>
+<div class="table-scroll"><table><thead><tr><th scope="col">Setting</th><th scope="col">Proposed choice</th></tr></thead><tbody><tr><td>Repository name</td><td>support-ticket-triage-agent</td></tr><tr><td>Description</td><td>OpenAI GPT support-ticket triage with customer-history and knowledge-base tools, structured decisions, and Thai/English sample conversations</td></tr><tr><td>Owner</td><td>Watcharaphong-kob</td></tr><tr><td>Visibility</td><td>Private; give the evaluator access before submission</td></tr><tr><td>Default branch</td><td>main</td></tr><tr><td>Implementation branch</td><td>feat/triage-agent — created locally for T02</td></tr><tr><td>Delivery</td><td>Repository URL plus reproducible README; ZIP with source and .git if GitHub submission is unavailable</td></tr></tbody></table></div>
 <p>These are recommendations. The assignment specifies a repository or ZIP fallback, but not a repository name, branch strategy, visibility, CI provider, or license. Keep the original employer document local unless you intend to include it in the submission; do not add an open-source license to supplied employer material by default.</p>
 <h3>2. Planned repository layout</h3>
 <pre><code>support-ticket-triage-agent/
   README.md
   WRITEUP.md                     # maximum one page
   pyproject.toml                 # package, runtime, dev dependencies
+  uv.lock                        # committed dependency lock
+  Dockerfile                     # uv-managed Python application image
+  compose.yaml                   # application + PostgreSQL/pgvector
+  migrations/                    # knowledge schema and vector extension
   .env.example                   # empty/example values only
   .gitignore
   .github/
@@ -180,6 +847,7 @@ WRITEUP.md
     agent.py
     tools.py
     policy.py
+    knowledge/                   # ingestion, embedding adapter, PostgreSQL search
   prompts/system.txt
   data/
     sample_tickets.json
@@ -204,7 +872,7 @@ WRITEUP.md
 <li>Create .gitignore and include the planning documents and project metadata in an explicit initial commit. Review the staged file list; do not blindly stage the employer DOCX or local configuration.</li>
 <li>Create an empty GitHub remote with the selected owner/name/visibility, then connect origin and push the baseline. Choose either local initialization plus an empty remote, or cloning a preinitialized remote; avoid creating conflicting initial histories.</li>
 <li>Create or reuse an isolated implementation worktree from the committed baseline using the workflow below.</li>
-<li>Complete T03–T11 in the implementation branch with meaningful commits and recorded verification.</li>
+<li>Complete Phase 1 tasks in dependency order, including Docker infrastructure, ingestion, classic RAG and database integration checks, with meaningful commits and recorded verification.</li>
 <li>At T12, review the diff, merge the reviewed branch into main, verify a clean clone, and prepare the submission URL/archive.</li>
 </ol>
 <p>Repository setup belongs inside T02 and delivery inside T12. This plan does not add another 210-minute schedule. If authentication or remote setup takes too long, continue with local Git and use the assignment&#x27;s ZIP fallback.</p>
@@ -221,113 +889,30 @@ WRITEUP.md
 </ol>
 <p>Keep the primary checkout on main and use one implementation branch for this short assignment. Avoid a separate develop branch or one worktree per small task. Additional branches/worktrees are useful only when there is actual independent work.</p>
 <h3>5. Commit and review plan</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Commit group</th><th scope="col">Planner tasks</th><th scope="col">Suggested commit message</th></tr></thead><tbody>
-<tr><td>Baseline</td><td>T01–T02</td><td>docs: record assignment plan and project setup</td></tr>
-<tr><td>Contracts/data</td><td>T03–T04</td><td>feat: add ticket fixtures and validated triage contracts</td></tr>
-<tr><td>Tools/prompt</td><td>T05–T06</td><td>feat: add mock tools and triage system prompt</td></tr>
-<tr><td>Agent/output</td><td>T07–T08</td><td>feat: implement bounded GPT tool loop and action policy</td></tr>
-<tr><td>Verification</td><td>T09–T10</td><td>test: cover triage scenarios and failure paths</td></tr>
-<tr><td>Submission</td><td>T11–T12</td><td>docs: document setup evaluation and sample results</td></tr>
-</tbody></table></div>
+<div class="table-scroll"><table><thead><tr><th scope="col">Commit group</th><th scope="col">Planner tasks</th><th scope="col">Suggested commit message</th></tr></thead><tbody><tr><td>Baseline</td><td>T01–T02</td><td>docs: record assignment plan and project setup</td></tr><tr><td>Contracts/data</td><td>T03–T04</td><td>feat: add ticket fixtures and validated triage contracts</td></tr><tr><td>Docker / knowledge</td><td>E02–E04</td><td>feat: add Docker PostgreSQL ingestion and classic RAG</td></tr><tr><td>Tools/prompt</td><td>T05–T06</td><td>feat: add customer history and database knowledge tools</td></tr><tr><td>Agent/output</td><td>T07–T08</td><td>feat: implement bounded GPT tool loop and action policy</td></tr><tr><td>Verification</td><td>T09–T10</td><td>test: cover triage scenarios and failure paths</td></tr><tr><td>Submission</td><td>T11–T12</td><td>docs: document setup evaluation and sample results</td></tr></tbody></table></div>
 <p>Keep changes reviewable and truthful; commit messages describe implemented behavior, not planned behavior. A single pull request from the implementation branch to main is sufficient. Include the problem solved, tool/decision behavior, checks actually run, and any live-model verification limitation. Do not claim a successful live run based on fake-model tests.</p>
 <h3>6. Lightweight GitHub tracking</h3>
-<p>Optional: use one milestone, Homework submission, and six issues matching the commit groups above. Issue acceptance criteria should link to T01–T12 and R1–R11 in the planner. A small board can use To do, In progress, Review, Done. Do not create this tracking overhead if the local checklist is sufficient for the time budget.</p>
+<p>Publish the Phase 1 spec as a single issue with the ready-for-agent label after the to-spec test-boundary confirmation. The canonical planner tracks implementation subtasks; no extra board or milestone is required. GraphRAG remains a separate Phase 2 scope.</p>
 <h3>7. CI and reviewer experience</h3>
 <p>Create one lightweight workflow for pull requests and pushes to main: check out source, select the supported Python version, install declared development dependencies, run chosen lint/format checks, and run offline tests. Match the commands in CI to the README. Pin workflow action revisions when authoring the workflow. GitHub provides a <a href="https://docs.github.com/en/actions/tutorials/build-and-test-code/python">Python build-and-test guide</a>.</p>
-<p>Default CI should use the fake-model adapter and mocked tools, requiring no API key. A live GPT smoke run is a separate local or explicitly triggered check; record whether it was run. If configuring a live CI run later, use a repository secret rather than a tracked file and avoid passing it to untrusted pull-request code. Requiring a paid live-model check for every pull request is unnecessary for this homework.</p>
+<p>Default CI should use fake GPT and embedding adapters against real Docker PostgreSQL/pgvector, requiring no API key. Keep lightweight setup tests independent of Docker. Live GPT/embedding smoke runs are separate opt-in checks; record whether they ran. If configuring live CI later, use repository secrets and avoid passing them to untrusted pull-request code.</p>
 <p>The README should make the reviewer path obvious: prerequisites → create environment → install → configure their own key/model → run three tickets → inspect JSON and tool traces → run offline tests. Include sample results and mark how they were generated. Ensure a private repository is accessible to the reviewer before sending its URL.</p>
 <h3>8. Submission checklist</h3>
 <ul>
-<li>☐ Repository owner/name/visibility selected; reviewer access verified.</li>
-<li>☐ main contains the intended final implementation and all R1–R11 deliverables.</li>
-<li>☐ README commands work from a clean clone in a new environment.</li>
-<li>☐ Offline checks pass; live verification status stated accurately.</li>
-<li>☐ Thai text and all three four-message conversations are intact.</li>
-<li>☐ Prompt plus two tool schemas/implementations are easy to locate.</li>
-<li>☐ WRITEUP.md is no more than one page in its intended rendering.</li>
-<li>☐ Tracked files and commit history contain no actual API key or customer secrets.</li>
-<li>☐ Example outputs identify mock/live provenance and do not invent verified facts.</li>
-<li>☐ Submission URL references the final main commit; optionally tag that tested commit submission-v1.</li>
-<li>☐ If using ZIP fallback, package the primary repository&#x27;s source plus its actual .git directory, excluding virtual environments, worktrees, caches, secrets, and unrelated local files.</li>
-<li>☐ ZIP fallback extracted elsewhere and checked for usable Git history and runnable source.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Repository owner/name/visibility selected; reviewer access verified.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> main contains the intended final implementation and all R1–R11 deliverables.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> README commands work from a clean clone in a new environment.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Offline checks pass; live verification status stated accurately.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Thai text and all three four-message conversations are intact.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Prompt plus two tool schemas/implementations are easy to locate.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> WRITEUP.md is no more than one page in its intended rendering.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Tracked files and commit history contain no actual API key or customer secrets.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Example outputs identify mock/live provenance and do not invent verified facts.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> Submission URL references the final main commit; optionally tag that tested commit submission-v1.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> If using ZIP fallback, package the primary repository&#x27;s source plus its actual .git directory, excluding virtual environments, worktrees, caches, secrets, and unrelated local files.</li>
+<li><input type="checkbox" disabled aria-label="Task status"> ZIP fallback extracted elsewhere and checked for usable Git history and runnable source.</li>
 </ul>
-<p>For the ZIP fallback, do not zip only a linked worktree: its .git is usually a pointer to shared metadata elsewhere. Package the self-contained primary repository so the reviewer receives the Git history required by the assignment.</p></section>
-<section id="t01"><h2>T01 — Support Ticket Triage Agent Design</h2>
-<p>9 October 2026 · T01 approved by the user · T02 authorized; use uv for package management</p>
-<h3>Purpose and success criteria</h3>
-<p>Create a small homework submission demonstrating grounded triage of complete customer conversations using an OpenAI GPT model and at least two executable tools. It must process all three supplied tickets, preserve Thai text, produce understandable decisions, and include the prompt, tool definitions, README, and maximum-one-page write-up. Readability, maintainability, extensibility, and logic take priority within the recommended 150–240 minutes.</p>
-<p>Assignment requirements come from the supplied DOCX. Language, library choices, output schema, severity rubric, and execution limits below are proposed decisions. They are not an official answer key.</p>
-<h3>1. Language, interface, and boundaries</h3>
-<p>Approved choice: <strong>Python CLI</strong>, with Python 3.11 as the minimum target, the official OpenAI Python SDK for model access, Pydantic for contracts, pytest for tests, and Ruff for linting. Use <strong>uv</strong> for package management, a single pyproject.toml with runtime and development dependencies, and a committed uv.lock for resolved versions.</p>
-<p>The CLI accepts one ticket or a file of tickets and prints JSON results. The default demonstration processes all three supplied conversations. A separate trace option shows tool execution without contaminating JSON output. Proposed invocation after packaging: python -m triage_agent --input data/sample_tickets.json, with --trace as an optional flag.</p>
-<p>Configure the key with OPENAI_API_KEY and the GPT model with OPENAI_MODEL. The model must support tool calls; verify the chosen model and SDK API during integration. Do not hard-code a model version or include a real key. Offline fake-model tests work without credentials; live execution reports a clear configuration error when credentials/model are missing.</p>
-<p>The CLI produces triage recommendations and draft responses. No chat UI, HTTP service, database, agent framework, vector database, deployment, automatic messaging, refunds, or account mutations are in this design. A TypeScript CLI remains an alternative if that is your preferred language; this draft selects Python to keep the implementation compact.</p>
-<h3>2. Architecture and data flow</h3>
-<p>Ticket loader → validated conversation → prompt and tool-capable model adapter → bounded agent loop → allowlisted tool dispatcher → final result validation → policy consistency checks → JSON result and optional trace.</p>
-<p>Use the module layout from PROJECT_TASK_PLANNER.md. cli.py handles input/output; schemas.py owns contracts; agent.py owns model/tool orchestration; tools.py owns mock tools; policy.py owns action consistency and fallback. The prompt and mock fixtures remain separate files.</p>
-<p>Each message includes its original text, sequence, and supplied relative time. Preserve provided translations separately from original Thai text, and label them as supplied translations. Never manufacture absolute timestamps from phrases such as just now. Customer IDs are synthetic fixture IDs mapped to the supplied customer metadata.</p>
-<p>The agent sees the entire conversation and reconciles later messages with earlier ones. Tool results are returned to the model as tool results, with call IDs retained. The model adapter is replaceable with a fake for deterministic orchestration tests.</p>
-<h3>3. Urgency policy</h3>
-<p>Severity reflects reported impact and time sensitivity; confirmation is represented separately in rationale and uncertainties. A suspected incident may merit urgent investigation without asserting a confirmed outage. Account tier is context, not an automatic severity label.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Urgency</th><th scope="col">Proposed rule</th><th scope="col">Example</th></tr></thead><tbody>
-<tr><td>critical</td><td>Reported core service failure across multiple users/devices with substantial business interruption; or comparably severe ongoing harm requiring immediate human investigation</td><td>Thai Enterprise ticket with repeated error 500, affected coworkers, and imminent client demo</td></tr>
-<tr><td>high</td><td>Material financial risk, blocked paid entitlement, or a substantial time-sensitive individual problem without evidence of broad service failure</td><td>Repeated reported charges, no Pro access, presentation in two hours, dispute threat</td></tr>
-<tr><td>medium</td><td>Meaningful functional impairment with limited impact, no acute harm/deadline, and no broader incident evidence</td><td>Non-cosmetic feature malfunction requiring technical investigation</td></tr>
-<tr><td>low</td><td>Cosmetic issue, how-to question, or feature request without material interruption or acute harm</td><td>Dark-mode behavior plus scheduling request</td></tr>
-</tbody></table></div>
-<p>Apply the highest supported severity among the ticket&#x27;s unresolved issues. Anger alone does not make a ticket critical. Missing information must not silently downgrade a clearly reported serious problem; document the uncertainty and escalate when appropriate.</p>
-<h3>4. Action policy</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Primary action</th><th scope="col">Conditions</th><th scope="col">Destination</th></tr></thead><tbody>
-<tr><td>escalate_to_human</td><td>Critical incident, financial dispute/repeated charges requiring account intervention, or inability to produce a safe supported decision after tool/model failure</td><td>incident_on_call, billing_payments, or human_support</td></tr>
-<tr><td>route_to_specialist</td><td>Unresolved product/technical issue needing investigation, without the immediate escalation conditions above</td><td>product_support or technical_support</td></tr>
-<tr><td>auto_respond</td><td>Retrieved knowledge directly supports a safe answer for the unresolved issue and no escalation/routing condition remains</td><td>null</td></tr>
-</tbody></table></div>
-<p>Urgency and action are separate: a low-severity bug can require a specialist. Critical results always escalate. Billing harm described in sample 1 always escalates. If a ticket combines a bug and a feature request, choose one primary action addressing the main unresolved problem and retain secondary issues.</p>
-<p>No retrieved article means no grounded auto-response. References must point to document IDs actually returned by the knowledge-base tool. A draft acknowledgement is allowed during routing/escalation, but must not promise a resolution, refund, feature, or SLA unsupported by evidence.</p>
-<h3>5. Tool contracts</h3>
-<p>Both tools are read-only mock implementations. The demonstration requires successful execution of both before treating a model result as complete. If required tool evidence cannot be obtained, return an explicit fallback, not a fabricated successful triage.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Tool</th><th scope="col">Arguments</th><th scope="col">Result</th></tr></thead><tbody>
-<tr><td>get_customer_history</td><td>customer_id: non-empty string</td><td>status: ok/not_found/error; customer: object or null; error: string or null</td></tr>
-<tr><td>search_knowledge_base</td><td>query: non-empty string; product, issue_type, locale: optional strings</td><td>status: ok/error; documents: list of up to five matches; error: string or null</td></tr>
-</tbody></table></div>
-<p>Customer objects contain customer_id, plan, tenure_months, region, seats, and prior_support_summary. Preserve unknown region/seats as null. Documents contain id, title, excerpt, locale, and is_mock=true. An empty document list is a valid no-match result. Use a simple deterministic term/category search for the mock KB; do not add embedding infrastructure.</p>
-<p>The KB contains clearly labeled illustrative billing, service-access, and theme articles. It does not establish live regional status, actual refund timing, or real company feature availability. The dispatcher validates arguments and rejects unknown tool names. Customer text and retrieved content cannot override system instructions.</p>
-<h3>6. Output contract</h3>
-<p>All fields below are present; nullable fields use null and list fields use empty lists when no value is known. Reject unexpected fields and invalid enum values. Do not present a technical failure as a normal completed triage.</p>
-<div class="table-scroll"><table><thead><tr><th scope="col">Field</th><th scope="col">Type and meaning</th></tr></thead><tbody>
-<tr><td>ticket_id</td><td>Non-empty string; supplied or synthetic fixture identifier</td></tr>
-<tr><td>status</td><td>completed or fallback</td></tr>
-<tr><td>urgency</td><td>critical/high/medium/low; null only on a fallback when no reliable classification is available</td></tr>
-<tr><td>product</td><td>String or null; never infer an actual product name from plan tier or export features alone</td></tr>
-<tr><td>issue_type</td><td>Non-empty string describing the primary issue; null allowed on fallback</td></tr>
-<tr><td>customer_sentiment</td><td>positive/neutral/frustrated/angry/mixed/unknown</td></tr>
-<tr><td>secondary_issues</td><td>List of concise strings</td></tr>
-<tr><td>next_action</td><td>auto_respond/route_to_specialist/escalate_to_human</td></tr>
-<tr><td>destination</td><td>Allowed destination from the action table; null only for auto_respond</td></tr>
-<tr><td>rationale</td><td>Non-empty explanation grounded in the conversation and tool evidence</td></tr>
-<tr><td>draft_response</td><td>String or null; Thai for the Thai customer&#x27;s draft; no invented promises</td></tr>
-<tr><td>knowledge_sources</td><td>List of retrieved KB document IDs actually used</td></tr>
-<tr><td>uncertainties</td><td>List of unknown or unverified facts</td></tr>
-<tr><td>tool_calls</td><td>List of tool execution records with name, call_id, and status</td></tr>
-<tr><td>error</td><td>null for completed; structured code/message for fallback</td></tr>
-</tbody></table></div>
-<p>A completed result requires a valid urgency, primary issue, both required tools having succeeded, and consistent action/destination fields. A fallback always escalates to human_support, records its failure cause, and preserves trustworthy available fields. It does not guess urgency to satisfy the schema.</p>
-<p>Keep provider/tool internals and secrets out of the customer draft. Optional traces may include redacted arguments and results for debugging; full customer text is not needed in routine logs.</p>
-<h3>7. Limits and error handling</h3>
-<p>Proposed defaults: 30-second timeout per provider request; at most six model requests per ticket, including one possible retry for a transient provider error or invalid final output; at most eight individual tool executions. Stop with fallback when any budget is exhausted. Count parallel tool calls individually, and validate them before dispatch. Exact SDK wiring belongs to T07, while these limits are policy decisions.</p>
-<p>Unknown tools, malformed arguments, missing customers, or KB errors return explicit errors to the agent. The agent may correct a call within the remaining budget. If no grounded decision emerges, fallback. Missing credentials stop a live batch before requests and return a clear nonzero CLI error. Other per-ticket failures produce fallback results and a nonzero batch exit code while retaining successful ticket outputs.</p>
-<h3>8. Sample acceptance targets</h3>
-<div class="table-scroll"><table><thead><tr><th scope="col">Sample</th><th scope="col">Expected baseline</th><th scope="col">Required explanation</th></tr></thead><tbody>
-<tr><td>1 — Billing</td><td>high; escalate_to_human; billing_payments; angry</td><td>Three customer-reported charges, failed entitlement, two-hour deadline, dispute threat; payment settlement/refund state unverified</td></tr>
-<tr><td>2 — Thai access</td><td>critical; escalate_to_human; incident_on_call; frustrated</td><td>Cross-device/browser and coworker access failure, business risk, operational-status discrepancy; Asia-wide outage and all 45 users affected remain unconfirmed</td></tr>
-<tr><td>3 — Theme</td><td>low; route_to_specialist; product_support; mixed</td><td>Earlier advice failed; possible cosmetic theme bug plus separate scheduling feature request; actual availability unverified</td></tr>
-</tbody></table></div>
-<p>These baseline labels follow this draft rubric. A policy change requires updating the tests and reasoning targets together. Draft Thai replies must preserve uncertainty rather than turning the customer&#x27;s regional hypothesis into a confirmed diagnosis.</p>
-<h3>9. Verification and task handoff</h3>
-<p>Test fixtures preserve all three four-message conversations. Unit checks cover both tools, empty matches, unknown customers, and validation. Fake-model integration checks exercise tool dispatch, tool results returned to the model, both-tool completion, budget exhaustion, bad citations, contradictory actions, invalid output, and injection attempts. Sample-case assertions check supported facts and decision policy, not exact wording.</p>
-<p>Run a live GPT smoke check separately when a key and chosen model are available. State honestly whether it ran. A clean-checkout run, README, one-page write-up, and repository/ZIP checks complete the submission.</p>
-<p>T01 status: <strong>approved by the user</strong>. T02 is authorized with uv as the package manager and creation of one GitHub repository. Initialize Git and commit the reviewed baseline at T02, then use the managed worktree workflow from GITHUB_REPO_PLAN.md for project implementation. Repository and verification evidence will be recorded with the completed T02 task.</p></section>
-<section id="t02"><h2>T02 — Project setup status</h2>
+<p>For the ZIP fallback, do not zip only a linked worktree: its .git is usually a pointer to shared metadata elsewhere. Package the self-contained primary repository so the reviewer receives the Git history required by the assignment.</p></section><section class="page" id="t02" tabindex="-1"><h2>T02 — Project setup status</h2>
 <p>9 October 2026</p>
 <h3>Delivered</h3>
 <ul>
@@ -352,40 +937,49 @@ WRITEUP.md
 <h3>Scope and implementation rulings</h3>
 <p>T01 is approved; T02 setup is implemented and pushed to main and feat/triage-agent. Ticket input explicitly returns exit 2 with an unfinished-processing message. Fixtures, tools, system prompt, and live GPT processing remain T03–T08. No live model call was made.</p>
 <p>The app&#x27;s managed worktree tool did not recognize this newly initialized repository. Git fallback created the ignored .worktrees/triage-agent checkout after the planning baseline was committed. The primary checkout remains the self-contained repository for the assignment&#x27;s ZIP fallback.</p>
-<p>The user explicitly requested uv and one GitHub repository. Existing Git Credential Manager authentication created the private repository; no key/token was written to project files or printed. The verified setup commit b00ba9b was pushed to main and feat/triage-agent. Independent review found no actionable T02 issues. GitHub confirms private visibility and main as the default branch; primary-checkout uv installation, all 8 tests, CLI version, and Ruff checks also passed.</p></section>
-<section id="original"><h2>Original assignment — readable transcription</h2><div class="note">Source: AI_Engineer_-_Code_Homework_Test.docx. All non-empty main-document paragraphs are preserved below. Message spacing has been added for readability; this section is source material, separate from the proposed plan.</div><div data-source-paragraph="0"><h2>AI Engineer - Code Homework Test</h2></div>
+<p>The user explicitly requested uv and one GitHub repository. Existing Git Credential Manager authentication created the private repository; no key/token was written to project files or printed. The verified setup commit b00ba9b was pushed to main and feat/triage-agent. Independent review found no actionable T02 issues. GitHub metadata confirms private visibility and main as default branch. Primary-checkout uv sync --locked --offline succeeded; all 8 tests, installed CLI version, and Ruff checks passed there as well.</p></section><section class="page" id="original" tabindex="-1"><h2>Original assignment</h2><p class=note>Complete source transcription; message spacing is reformatted. Assignment requirements are reference material; the current spec records the user's selected implementation scope.</p>
+<div data-source-paragraph="0"><h3>AI Engineer - Code Homework Test</h3></div>
 <div data-source-paragraph="1"><p>Time: 150 - 240 minutes recommended.</p></div>
 <div data-source-paragraph="3"><p>Please use GPT OpenAI model, DON’T need to provide API KEY. We will use our own key.</p></div>
 <div data-source-paragraph="4"><p>Provide the source code in a GitHub repository. If you cannot push to Github you can zip the source code file with .git</p></div>
 <div data-source-paragraph="5"><p>Include a README file with instructions on how to set up and run the application.</p></div>
 <div data-source-paragraph="6"><p>We advise spending at least 150 - 240 minutes on the test – if you want to spend more or less time on it, that’s completely up to you.</p></div>
 <div data-source-paragraph="7"><p>Our scoring will be determined in 4 criterias:</p></div>
-<div data-source-paragraph="8"><p class="requirement">Readability</p></div>
-<div data-source-paragraph="9"><p class="requirement">Maintainability</p></div>
-<div data-source-paragraph="10"><p class="requirement">Extensibility</p></div>
-<div data-source-paragraph="11"><p class="requirement">Logic</p></div>
-<div data-source-paragraph="13"><h2>The Assignment: &quot;Support Ticket Triage Agent&quot;</h2></div>
+<div data-source-paragraph="8"><p>Readability</p></div>
+<div data-source-paragraph="9"><p>Maintainability</p></div>
+<div data-source-paragraph="10"><p>Extensibility</p></div>
+<div data-source-paragraph="11"><p>Logic</p></div>
+<div data-source-paragraph="13"><h3>The Assignment: &quot;Support Ticket Triage Agent&quot;</h3></div>
 <div data-source-paragraph="14"><h3>Scenario</h3></div>
 <div data-source-paragraph="15"><p>Build an AI agent that triages incoming customer support tickets. The agent should:</p></div>
-<div data-source-paragraph="16"><p class="requirement">Classify ticket urgency (critical/high/medium/low)</p></div>
-<div data-source-paragraph="17"><p class="requirement">Extract key information (product, issue type, customer sentiment)</p></div>
-<div data-source-paragraph="18"><p class="requirement">Search a knowledge base — find relevant FAQ/docs to help answer</p></div>
-<div data-source-paragraph="19"><p class="requirement">Decide next action: auto-respond, route to specialist, or escalate to human</p></div>
-<div data-source-paragraph="20"><p class="requirement">Use at least 2 tools (e.g., check customer history, lookup knowledge base)</p></div>
+<div data-source-paragraph="16"><p>Classify ticket urgency (critical/high/medium/low)</p></div>
+<div data-source-paragraph="17"><p>Extract key information (product, issue type, customer sentiment)</p></div>
+<div data-source-paragraph="18"><p>Search a knowledge base — find relevant FAQ/docs to help answer</p></div>
+<div data-source-paragraph="19"><p>Decide next action: auto-respond, route to specialist, or escalate to human</p></div>
+<div data-source-paragraph="20"><p>Use at least 2 tools (e.g., check customer history, lookup knowledge base)</p></div>
 <div data-source-paragraph="21"><h3>What to deliver</h3></div>
 <div data-source-paragraph="22"><p>Don’t need to build a Chat UI on it, it can be a terminal console or API.</p></div>
-<div data-source-paragraph="23"><p class="requirement">Working code — Agent that processes sample tickets</p></div>
-<div data-source-paragraph="24"><p class="requirement">System prompt — The instructions driving the agent</p></div>
-<div data-source-paragraph="25"><p class="requirement">Tool definitions — Schema + implementation (can be mocked)</p></div>
-<div data-source-paragraph="26"><p class="requirement">Brief write-up (1 page max):</p></div>
-<div data-source-paragraph="27"><p class="requirement">Architecture decisions and why</p></div>
-<div data-source-paragraph="28"><p class="requirement">What could go wrong and how you&#x27;d handle it</p></div>
-<div data-source-paragraph="29"><p class="requirement">How you&#x27;d evaluate this agent in production</p></div>
+<div data-source-paragraph="23"><p>Working code — Agent that processes sample tickets</p></div>
+<div data-source-paragraph="24"><p>System prompt — The instructions driving the agent</p></div>
+<div data-source-paragraph="25"><p>Tool definitions — Schema + implementation (can be mocked)</p></div>
+<div data-source-paragraph="26"><p>Brief write-up (1 page max):</p></div>
+<div data-source-paragraph="27"><p>Architecture decisions and why</p></div>
+<div data-source-paragraph="28"><p>What could go wrong and how you&#x27;d handle it</p></div>
+<div data-source-paragraph="29"><p>How you&#x27;d evaluate this agent in production</p></div>
 <div data-source-paragraph="30"><h3>Sample tickets provided</h3></div>
-<div data-source-paragraph="32"><h4>1) Customer info: Free plan (upgrade attempted), 4 months on free tier, first time contacting support</h4></div>
+<div data-source-paragraph="32"><h3>1) Customer info: Free plan (upgrade attempted), 4 months on free tier, first time contacting support</h3></div>
 <div data-source-paragraph="33"><p class="message">Message 1 (3 hours ago):&quot;My payment failed when I tried to upgrade to Pro. Can you check what&#x27;s wrong?&quot;</p><p class="message">Message 2 (2 hours ago):&quot;I tried again with a different card. Now I see TWO pending charges but my account still shows Free plan??&quot;</p><p class="message">Message 3 (1 hour ago):&quot;Okay this is getting ridiculous. Just checked my bank app - I have THREE charges of $29.99 now. None of them refunded. And I STILL don&#x27;t have Pro access.&quot;</p><p class="message">Message 4 (just now):&quot;HELLO?? Is anyone there??? I need this fixed NOW. I have a presentation in 2 hours and I need the Pro export features. If these charges aren&#x27;t reversed by end of day I&#x27;m disputing all of them with my bank.&quot;</p></div>
-<div data-source-paragraph="35"><h4>2) Customer info: Enterprise plan, Thailand region, 45 seats, 8 months customer, first critical issue</h4></div>
+<div data-source-paragraph="35"><h3>2) Customer info: Enterprise plan, Thailand region, 45 seats, 8 months customer, first critical issue</h3></div>
 <div data-source-paragraph="36"><p class="message">Message 1 (2 hours ago):&quot;ระบบเข้าไม่ได้ครับ ขึ้น error 500&quot;(Thai: Can&#x27;t access the system, showing error 500)</p><p class="message">Message 2 (1.5 hours ago):&quot;ลองหลายเครื่องแล้ว ทั้ง Chrome, Safari, Firefox ผลเหมือนกันหมด เพื่อนร่วมงานก็เข้าไม่ได้เหมือนกัน&quot;(Thai: Tried multiple machines - Chrome, Safari, Firefox - same result. Coworkers also can&#x27;t access)</p><p class="message">Message 3 (45 mins ago):&quot;ตอนนี้ลูกค้าโวยเข้ามาเยอะมาก เรามี demo กับลูกค้ารายใหญ่บ่ายนี้ ถ้าระบบไม่กลับมา deal นี้อาจจะหลุด&quot;(Thai: Customers are flooding in with complaints now. We have a demo with a major client this afternoon. If the system doesn&#x27;t come back, we might lose this deal)</p><p class="message">Message 4 (just now):&quot;เช็ค status.company.com แล้ว บอกว่า all systems operational แต่เราใช้งานไม่ได้จริงๆ ช่วยเช็คให้หน่อยได้ไหมครับ region Asia มีปัญหาหรือเปล่า?&quot;(Thai: Checked status.company.com - it says all systems operational, but we really can&#x27;t use it. Can you please check? Is there an issue with the Asia region?)</p></div>
-<div data-source-paragraph="38"><h4>3) Customer info: Pro plan, 5 months customer, active user (daily logins), no previous support tickets</h4></div>
-<div data-source-paragraph="39"><p class="message">Message 1 (2 days ago):&quot;Hey, just wondering if you support dark mode? No rush 😊&quot;</p><p class="message">Message 2 (1 day ago):&quot;Thanks for the reply! Oh nice, so it&#x27;s in Settings &gt; Appearance. Found it! But hmm I&#x27;m on Pro plan and I only see &#x27;Light&#x27; and &#x27;System Default&#x27; options. No dark mode toggle?&quot;</p><p class="message">Message 3 (1 day ago, 3 hours later):&quot;Okay so I switched to &#x27;System Default&#x27; and my Mac is set to dark mode, but your app still shows light theme. Is this a bug or am I missing something?&quot;</p><p class="message">Message 4 (today):&quot;Also random question while I have you - is there a way to schedule dark mode? Like auto-switch at 6pm? Some apps have that. Would be cool if you guys added it 👀&quot;</p></div></section>
-<footer>Prepared from the supplied document. Reading works offline. Optional documentation links require a network connection; no external assets, scripts, or API keys are used.</footer></main></div></body></html>
+<div data-source-paragraph="38"><h3>3) Customer info: Pro plan, 5 months customer, active user (daily logins), no previous support tickets</h3></div>
+<div data-source-paragraph="39"><p class="message">Message 1 (2 days ago):&quot;Hey, just wondering if you support dark mode? No rush 😊&quot;</p><p class="message">Message 2 (1 day ago):&quot;Thanks for the reply! Oh nice, so it&#x27;s in Settings &gt; Appearance. Found it! But hmm I&#x27;m on Pro plan and I only see &#x27;Light&#x27; and &#x27;System Default&#x27; options. No dark mode toggle?&quot;</p><p class="message">Message 3 (1 day ago, 3 hours later):&quot;Okay so I switched to &#x27;System Default&#x27; and my Mac is set to dark mode, but your app still shows light theme. Is this a bug or am I missing something?&quot;</p><p class="message">Message 4 (today):&quot;Also random question while I have you - is there a way to schedule dark mode? Like auto-switch at 6pm? Some apps have that. Would be cool if you guys added it 👀&quot;</p></div></section><footer>Generated from shared task data and source documents. Document links work offline; external reference links require a connection.</footer></main></div><script>
+const aliases={summary:'overview',t01:'spec','tech-stack':'stack','implementation-spec':'spec'};
+function showPage(){let key=location.hash.slice(1)||'overview';key=aliases[key]||key;
+if(!document.getElementById(key)?.classList.contains('page'))key='overview';
+document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===key));
+document.querySelectorAll('nav a').forEach(a=>{if(a.hash==='#'+key)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+document.title='OOCA · '+(document.querySelector('nav a[aria-current]')?.textContent||'Overview');}
+document.body.classList.add('enhanced');showPage();window.addEventListener('hashchange',()=>{showPage();window.scrollTo(0,0)});
+window.addEventListener('beforeprint',()=>document.querySelectorAll('details').forEach(d=>{d.dataset.wasOpen=String(d.open);d.open=true}));
+window.addEventListener('afterprint',()=>document.querySelectorAll('details').forEach(d=>{d.open=d.dataset.wasOpen==='true';delete d.dataset.wasOpen}));
+</script></body></html>

@@ -1,6 +1,6 @@
 # Phase 1 Spec — Docker Classic RAG Prototype
 
-9 October 2026 · User-selected phase scope · Test-boundary confirmation pending
+9 October 2026 · User-selected phase scope · Implementation authorized through T05
 
 ## Problem Statement
 
@@ -74,7 +74,7 @@ This phase is a prototype. GraphRAG is deferred to Phase 2 and is not a current 
 - Fake-model cases exercise all three tickets, both required tools, invalid output/citations, budgets, injection attempts and action/destination consistency.
 - Fake embeddings prove storage/retrieval contracts, not multilingual semantic quality. Separately evaluate live embeddings against labeled English/Thai queries when credentials are available.
 - Live GPT and embedding checks are opt-in and reported independently; offline checks require no real key. Document skipped live checks and reviewer commands honestly.
-- Test-boundary confirmation is pending before publishing this issue as ready for agent work, as required by the invoked to-spec skill.
+- The user authorized continued implementation and checking through T05 at the fixture/tool/database boundaries. Later GPT-loop end-to-end checks remain part of T07–T09.
 
 ## Out of Scope
 
@@ -86,6 +86,6 @@ This phase is a prototype. GraphRAG is deferred to Phase 2 and is not a current 
 
 ## Further Notes
 
-T01/T02 are verified historical progress, not proof of database/RAG/live-model functionality. The user has selected prototype scope, not declared implementation complete. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.
+T03/T04/E02/E03/E04/T05 are implemented and verified with real Docker PostgreSQL and fake embeddings; live model quality remains unverified. The user has selected prototype scope, not declared implementation complete. The earlier 210-minute estimate covered the smaller homework baseline; Docker/database/embedding work expands scope and needs a revised estimate.
 
-GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. After the required seam confirmation, publish this spec in the existing project GitHub issue tracker with ready-for-agent. No further interview is needed.
+GraphRAG remains a separate Phase 2 spec and evaluation against the Phase 1 baseline. The current spec and T05 checkpoint are published as [GitHub issue #1](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1) with ready-for-agent. Local implementation is committed separately and has not been pushed or merged.

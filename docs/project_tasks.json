@@ -1,0 +1,445 @@
+{
+  "date": "9 October 2026",
+  "baseline_minutes": 210,
+  "tasks": [
+    {
+      "id": "T01",
+      "title": "Approve architecture and contracts",
+      "phase": "Design & setup",
+      "minutes": 10,
+      "depends_on": [],
+      "outputs": [
+        "docs/superpowers/specs/2026-10-09-ticket-triage-design.md"
+      ],
+      "acceptance": "Python CLI, urgency/action rubric, two tool contracts, output contract, and limits approved.",
+      "status": "done",
+      "scope": "phase1"
+    },
+    {
+      "id": "T02",
+      "title": "Set up uv package and GitHub",
+      "phase": "Design & setup",
+      "minutes": 10,
+      "depends_on": [
+        "T01"
+      ],
+      "outputs": [
+        "pyproject.toml",
+        "uv.lock",
+        "src/triage_agent/cli.py",
+        "src/triage_agent/config.py",
+        "README.md"
+      ],
+      "acceptance": "Both entry points run; safe environment config; 8 setup tests, Ruff and package builds pass; private repository pushed.",
+      "status": "done",
+      "scope": "phase1"
+    },
+    {
+      "id": "E01",
+      "title": "Select Phase 1 prototype architecture",
+      "phase": "Phase 1 decision",
+      "minutes": null,
+      "depends_on": [
+        "T01"
+      ],
+      "outputs": [
+        "AGENT_KNOWLEDGE_SPEC.md"
+      ],
+      "acceptance": "User selected a Docker-based classic RAG prototype. PostgreSQL/pgvector and the existing OpenAI SDK approach define this phase; GraphRAG is Phase 2.",
+      "status": "done",
+      "scope": "phase1"
+    },
+    {
+      "id": "T03",
+      "title": "Create complete bilingual ticket fixtures",
+      "phase": "Data & tools",
+      "minutes": 15,
+      "depends_on": [
+        "T02"
+      ],
+      "outputs": [
+        "data/sample_tickets.json",
+        "data/customers.json"
+      ],
+      "acceptance": "All 3 tickets retain 4 messages, ordering, relative times, Thai and supplied translations; synthetic customer IDs labeled; no invented dates.",
+      "status": "done",
+      "scope": "phase1",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "implement",
+        "tdd",
+        "superpowers:executing-plans",
+        "superpowers:using-git-worktrees",
+        "superpowers:verification-before-completion",
+        "code-review (standards and spec)"
+      ],
+      "plugins_used": [
+        "Superpowers: worktree, execution, debugging and verification workflow"
+      ],
+      "steps_done": [
+        "Consulted ask-matt; reused the existing worktree and verified 8 setup tests.",
+        "Verified the independent DOCX transcription and wrote failing fixture checks.",
+        "Created all 12 original messages, supplied translations and synthetic customer links.",
+        "Ran source-fidelity tests; consulted ask-matt after implementation."
+      ],
+      "verification": "Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.",
+      "ticket": "docs/tickets/T03.md",
+      "implementation_commit": "d61e1ca; review fix f82298b"
+    },
+    {
+      "id": "T04",
+      "title": "Define validated input/tool/result contracts",
+      "phase": "Data & tools",
+      "minutes": 15,
+      "depends_on": [
+        "T03"
+      ],
+      "outputs": [
+        "src/triage_agent/schemas.py",
+        "tests/test_schemas.py"
+      ],
+      "acceptance": "Invalid enums rejected; unknown product null; all approved fields present; completed/fallback rules and multi-issue input covered.",
+      "status": "done",
+      "scope": "phase1",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "implement",
+        "tdd",
+        "superpowers:executing-plans",
+        "superpowers:using-git-worktrees",
+        "superpowers:verification-before-completion",
+        "code-review (standards and spec)"
+      ],
+      "plugins_used": [
+        "Superpowers: worktree, execution, debugging and verification workflow"
+      ],
+      "steps_done": [
+        "Consulted ask-matt and wrote failing input/result contract tests.",
+        "Added strict Pydantic ticket, customer, tool, knowledge and result contracts.",
+        "Validated nulls, enums, ordered messages, both-tool completion and fallback routing.",
+        "Ran the suite (21 passed at this checkpoint); consulted ask-matt after implementation."
+      ],
+      "verification": "Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.",
+      "ticket": "docs/tickets/T04.md",
+      "implementation_commit": "d61e1ca; review fix f82298b"
+    },
+    {
+      "id": "E02",
+      "title": "Set up Docker Compose and PostgreSQL/pgvector",
+      "phase": "Phase 1 RAG infrastructure",
+      "minutes": null,
+      "depends_on": [
+        "E01",
+        "T02"
+      ],
+      "outputs": [
+        "compose.yaml",
+        "Dockerfile",
+        "pyproject.toml",
+        "uv.lock",
+        "migrations/"
+      ],
+      "acceptance": "App and PostgreSQL/pgvector services start through Compose; DB readiness and migrations verified; pinned image/dependencies; local named volume; secret-free example config.",
+      "status": "done",
+      "scope": "phase1",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "implement",
+        "tdd",
+        "superpowers:executing-plans",
+        "superpowers:using-git-worktrees",
+        "superpowers:verification-before-completion",
+        "code-review (standards and spec)",
+        "superpowers:systematic-debugging"
+      ],
+      "plugins_used": [
+        "Superpowers: worktree, execution, debugging and verification workflow"
+      ],
+      "steps_done": [
+        "Consulted ask-matt and checked Compose readiness/storage configuration.",
+        "Added version-pinned Dockerfile, Compose database/app/migration services and uv dependencies.",
+        "Generated an ignored local password, started the database and fixed duplicate image build targets.",
+        "Verified healthy database, pgvector 0.8.7, CLI startup and repeatable migration; consulted ask-matt afterward."
+      ],
+      "verification": "Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.",
+      "ticket": "docs/tickets/E02.md",
+      "implementation_commit": "d61e1ca; review fix f82298b"
+    },
+    {
+      "id": "E03",
+      "title": "Implement classic RAG ingestion and embeddings",
+      "phase": "Phase 1 RAG infrastructure",
+      "minutes": null,
+      "depends_on": [
+        "E02"
+      ],
+      "outputs": [
+        "src/triage_agent/knowledge/ingest.py",
+        "tests/test_ingest.py"
+      ],
+      "acceptance": "English/Thai articles produce stable source/chunk IDs and idempotent upserts; configured embedding model/dimension/version validated; deterministic fake embeddings available for offline DB tests.",
+      "status": "done",
+      "scope": "phase1",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "implement",
+        "tdd",
+        "superpowers:executing-plans",
+        "superpowers:using-git-worktrees",
+        "superpowers:verification-before-completion",
+        "code-review (standards and spec)",
+        "superpowers:systematic-debugging",
+        "openai-docs"
+      ],
+      "plugins_used": [
+        "Superpowers: worktree, execution, debugging and verification workflow"
+      ],
+      "steps_done": [
+        "Consulted ask-matt and wrote failing ingestion tests.",
+        "Added Unicode-safe 500-token chunks with 60-token overlap, stable hashes and atomic source replacement.",
+        "Added explicit fake embeddings and an opt-in OpenAI adapter with model/dimension checks.",
+        "Verified duplicate-free re-ingestion, Thai content, incompatible-space rejection and token limits; consulted ask-matt afterward.",
+        "Fixed the section-boundary finding: separate sections/paragraphs and repeat headings on long chunks; regression test RED then GREEN."
+      ],
+      "verification": "Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.",
+      "ticket": "docs/tickets/E03.md",
+      "implementation_commit": "d61e1ca; review fix f82298b"
+    },
+    {
+      "id": "E04",
+      "title": "Implement PostgreSQL classic RAG knowledge search",
+      "phase": "Phase 1 RAG infrastructure",
+      "minutes": null,
+      "depends_on": [
+        "E03",
+        "T04"
+      ],
+      "outputs": [
+        "src/triage_agent/knowledge/base.py",
+        "src/triage_agent/knowledge/postgres_store.py",
+        "tests/test_retrieval.py"
+      ],
+      "acceptance": "Read-only parameterized top-5 vector retrieval returns source IDs/excerpts and provenance; locale/product filters, no-match and DB failure explicit; no graph traversal.",
+      "status": "done",
+      "scope": "phase1",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "implement",
+        "tdd",
+        "superpowers:executing-plans",
+        "superpowers:using-git-worktrees",
+        "superpowers:verification-before-completion",
+        "code-review (standards and spec)"
+      ],
+      "plugins_used": [
+        "Superpowers: worktree, execution, debugging and verification workflow"
+      ],
+      "steps_done": [
+        "Consulted ask-matt and wrote failing database-search tests.",
+        "Added parameterized read-only exact cosine retrieval with top-five bounds and metadata filters.",
+        "Returned document/chunk IDs, excerpts, version, mock flag and ranking score.",
+        "Verified citations, changed sources, safe filters, no-match and database failures; consulted ask-matt afterward."
+      ],
+      "verification": "Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.",
+      "ticket": "docs/tickets/E04.md",
+      "implementation_commit": "d61e1ca; review fix f82298b"
+    },
+    {
+      "id": "T05",
+      "title": "Wire history and classic RAG tools",
+      "phase": "Data & tools",
+      "minutes": 20,
+      "depends_on": [
+        "T03",
+        "T04",
+        "E04"
+      ],
+      "outputs": [
+        "src/triage_agent/tools.py",
+        "data/knowledge_base.json",
+        "tests/test_tools.py"
+      ],
+      "acceptance": "Both tool schemas execute: fixture customer lookup and Docker PostgreSQL/pgvector KB retrieval; unknown customers, empty matches and DB errors explicit; mock knowledge flagged.",
+      "status": "done",
+      "scope": "phase1",
+      "skills_used": [
+        "ask-matt (before and after)",
+        "implement",
+        "tdd",
+        "superpowers:executing-plans",
+        "superpowers:using-git-worktrees",
+        "superpowers:verification-before-completion",
+        "code-review (standards and spec)",
+        "to-spec (GitHub issue publication)"
+      ],
+      "plugins_used": [
+        "Superpowers: worktree, execution, debugging and verification workflow",
+        "GitHub: published Phase 1 spec/checkpoint issue #1 with ready-for-agent"
+      ],
+      "steps_done": [
+        "Consulted ask-matt and wrote failing tool-dispatch tests.",
+        "Added allowlisted customer-history and database-search schemas plus implementations.",
+        "Ingested three synthetic KB articles and ran both tools for all three source tickets.",
+        "Ran the full Docker suite (35 passed, Compose host check separate); consulted ask-matt and requested standards/spec reviews.",
+        "Published the Phase 1 spec and implementation checkpoint as GitHub issue #1; code remains local and unpushed."
+      ],
+      "verification": "Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.",
+      "ticket": "docs/tickets/T05.md",
+      "implementation_commit": "d61e1ca; review fix f82298b"
+    },
+    {
+      "id": "T06",
+      "title": "Write grounded bilingual system prompt",
+      "phase": "Data & tools",
+      "minutes": 15,
+      "depends_on": [
+        "T04",
+        "T05"
+      ],
+      "outputs": [
+        "prompts/system.txt"
+      ],
+      "acceptance": "Whole-thread reasoning, severity/action policy, Thai draft replies, uncertainty, evidence references and untrusted-content rules included.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "T07",
+      "title": "Build bounded GPT/tool execution loop",
+      "phase": "Agent & decisions",
+      "minutes": 35,
+      "depends_on": [
+        "T02",
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "outputs": [
+        "src/triage_agent/agent.py",
+        "tests/test_agent.py"
+      ],
+      "acceptance": "Actual tool calls and results flow through adapter; both tools succeed before completed sample triage; timeout 30s, model requests <=6 and tool executions <=8 enforced.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "T08",
+      "title": "Apply action policy and integrate JSON CLI",
+      "phase": "Agent & decisions",
+      "minutes": 20,
+      "depends_on": [
+        "T07"
+      ],
+      "outputs": [
+        "src/triage_agent/policy.py",
+        "src/triage_agent/cli.py",
+        "tests/test_policy.py"
+      ],
+      "acceptance": "Action/destination and citations validated; failure escalates visibly; JSON stdout separated from optional stderr traces; batch exit status truthful.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "E06",
+      "title": "Test classic RAG against Docker PostgreSQL",
+      "phase": "Phase 1 RAG verification",
+      "minutes": null,
+      "depends_on": [
+        "E04"
+      ],
+      "outputs": [
+        "tests/test_retrieval.py",
+        "docs/retrieval_evaluation.md"
+      ],
+      "acceptance": "Knowledge-tool contract and CLI/fake-model tests exercise real Docker pgvector using fake embeddings; bilingual source retrieval, re-ingestion, dimension mismatch, filters, citations, empty results and DB outage covered.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "T09",
+      "title": "Verify scenarios and failure paths offline",
+      "phase": "Verification & delivery",
+      "minutes": 25,
+      "depends_on": [
+        "T08",
+        "E06"
+      ],
+      "outputs": [
+        "tests/test_agent.py",
+        "tests/test_policy.py",
+        "tests/test_tools.py"
+      ],
+      "acceptance": "Three evidence-based sample cases, invalid output/citations, unknown tools, errors, exhausted budgets and injection attempts tested with fake model; no key required.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "T10",
+      "title": "Run demos and record live verification",
+      "phase": "Verification & delivery",
+      "minutes": 15,
+      "depends_on": [
+        "T09"
+      ],
+      "outputs": [
+        "examples/sample_results.json",
+        "docs/verification.md"
+      ],
+      "acceptance": "Compose sample run processes all three tickets; tool results/citations justified; mock embeddings/model runs labeled; live embeddings and GPT smoke verification reported separately.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "T11",
+      "title": "Finish README and one-page write-up",
+      "phase": "Verification & delivery",
+      "minutes": 20,
+      "depends_on": [
+        "T10"
+      ],
+      "outputs": [
+        "README.md",
+        "WRITEUP.md"
+      ],
+      "acceptance": "README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "T12",
+      "title": "Verify clean checkout and submit",
+      "phase": "Verification & delivery",
+      "minutes": 10,
+      "depends_on": [
+        "T11"
+      ],
+      "outputs": [
+        ".github/workflows/ci.yml",
+        "docs/verification.md"
+      ],
+      "acceptance": "Clean-checkout commands succeed; offline CI documented/configured as selected; no secrets; reviewer access and final commit verified; ZIP fallback contains actual .git.",
+      "status": "todo",
+      "scope": "phase1"
+    },
+    {
+      "id": "E05",
+      "title": "Explore GraphRAG in the next phase",
+      "phase": "Phase 2 â€” deferred GraphRAG",
+      "minutes": null,
+      "depends_on": [
+        "T12"
+      ],
+      "outputs": [
+        "src/triage_agent/knowledge/neo4j_store.py",
+        "tests/test_graph_retrieval.py"
+      ],
+      "acceptance": "Future Phase 2 requires a reviewed graph schema, sourced relationships, bounded traversal and comparison against completed Phase 1 classic RAG; no Neo4j dependencies/services now.",
+      "status": "deferred",
+      "scope": "phase2"
+    }
+  ],
+  "phase": "Phase 1 â€” Docker classic RAG prototype",
+  "phase1_estimate_minutes": null,
+  "execution_scope": "User authorized continuous implementation through T05, including Docker and classic RAG prerequisites.",
+  "github_issue": "https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1"
+}
