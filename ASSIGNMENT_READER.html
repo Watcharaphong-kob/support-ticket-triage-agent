@@ -387,6 +387,15 @@ F02 post-task ask-matt: HTTP verification → standards/spec review → F03 deli
 - Correct delivery branch: [feat/langchain-langgraph](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/tree/feat/langchain-langgraph). Repository remains private. No reviewer identity/access was supplied; the owner must grant reviewer access before submitting this URL. No public deployment, merge or customer reply was performed.
 
 F03 post-task ask-matt: delivery verification and two-axis code review complete → retain the requested alternate branch and worktree. F01–F03 are complete; live-quality evidence and reviewer access are disclosed remaining submission prerequisites, not silently reported as passed.
+
+### Repository cleanup — 2026-10-09
+
+- ask-matt before/after: maintenance and verification; no runtime behavior changes or new planning files.
+- Consolidated fixture provenance and packaged-migration instructions from data/README.md and migrations/README.md into the main README. Tracked delivery files decreased from 60 to 58; source, tests, uv lock, prompt, spec/reader and write-up remain.
+- Removed local build/test/uv caches, build outputs, empty examples/migrations directories, obsolete bootstrap scripts, latest disposable verification clone/previews and a duplicate old final-submission checkout. All 416 files in that last checkout matched the retained original submission ZIP before deletion.
+- Preserved .env, installed uv environment, active worktree, original Word, original submission ZIP/manifest, Git history and DB volumes. Older clean-checkout/zip-verification directories had differing files and remain under ignored .delivery rather than risking unique work.
+- Automatic approval review initially rejected broad verification-folder deletion because submission artifacts were unverified. Cleanup proceeded only with verified duplicates and reproducible files; differing checkouts were excluded.
+- Post-cleanup verification passed: reader/source/link checks, Ruff lint/format (33 Python files), installed terminal version, packaged prompt/migration resources and Git whitespace checks. No runtime code changed; the previous 78-pass Docker result remains historical evidence, not a newly rerun suite.
 </pre></section>
 <section id="original"><h2>Main Assignment — original Word text</h2><p>Faithful source text
 follows. These are assignment requirements, distinct from the owner's implementation

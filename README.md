@@ -18,6 +18,8 @@ docker compose run --rm app python -m triage_agent --input data/sample_tickets.j
 
 Use a GPT model supporting Chat Completions and function calling. Structured output uses LangChain's tool strategy. Compose loads `.env`; host Python reads shell environment variables only. Run from the repository root so relative fixture paths resolve. Keep the same DB password when reusing the persistent volume.
 
+Migration SQL is packaged in `src/triage_agent/knowledge/migrations/`. The repeatable migration enables pgvector and preserves existing records; Compose runs it before application startup.
+
 ### API
 
 ```powershell
@@ -118,5 +120,7 @@ Semantic correctness is evaluated separately: manually label held-out English/Th
 - Source/uv lock/Compose/tests on **feat/langchain-langgraph**. The original prototype branch is preserved.
 
 Knowledge/customer fixtures are synthetic, permitted by the Word assignment. uv, both CLI/API, framework choice and Docker classic RAG are owner scope; the assignment requires at least two tools and allows terminal or API. This prototype needs approved real knowledge, authentication/tenant controls, observability and live evaluation before production. GraphRAG is next phase.
+
+`data/sample_tickets.json` preserves all three assignment conversations, twelve messages, relative times, original Thai and supplied translations; IDs are synthetic, without inferred dates/products or answer labels. `data/customers.json` contains synthetic supplied account context: null means unknown, and billing/outage statements remain customer reports. `data/knowledge_base.json` contains illustrative policies, not verified company policy, refunds, live incidents or feature availability.
 
 `docker compose down` stops this project's containers without deleting the knowledge volume. Repository privacy and reviewer access remain controlled by the owner.
