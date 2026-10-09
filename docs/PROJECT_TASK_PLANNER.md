@@ -51,6 +51,7 @@ The original homework estimate was 210 minutes and the assignment recommends 150
 | S01 | done | Document testing, assignment fit and clone setup |
 | S02 | todo | Concentrate read-only tool validation |
 | S03 | todo | Simplify offline demonstration content |
+| S04 | done | Tidy repository folders and consolidate ticket records |
 
 ## Task contracts
 
@@ -74,7 +75,7 @@ Acceptance: Both entry points run; safe environment config; 8 setup tests, Ruff 
 
 Phase: Phase 1 decision. Status: done. Depends on: T01. Estimate: TBD.
 
-Outputs: `AGENT_KNOWLEDGE_SPEC.md`.
+Outputs: `docs/AGENT_KNOWLEDGE_SPEC.md`.
 
 Acceptance: User selected a Docker-based classic RAG prototype. PostgreSQL/pgvector and the existing OpenAI SDK approach define this phase; GraphRAG is Phase 2.
 
@@ -92,7 +93,7 @@ Plugins used: Superpowers: worktree, execution, debugging and verification workf
 
 Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
 
-[Execution ticket](docs/tickets/T03.md)
+[Execution ticket](TICKETS.md)
 
 ### T04 — Define validated input/tool/result contracts
 
@@ -108,7 +109,7 @@ Plugins used: Superpowers: worktree, execution, debugging and verification workf
 
 Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
 
-[Execution ticket](docs/tickets/T04.md)
+[Execution ticket](TICKETS.md)
 
 ### E02 — Set up Docker Compose and PostgreSQL/pgvector
 
@@ -124,7 +125,7 @@ Plugins used: Superpowers: worktree, execution, debugging and verification workf
 
 Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
 
-[Execution ticket](docs/tickets/E02.md)
+[Execution ticket](TICKETS.md)
 
 ### E03 — Implement classic RAG ingestion and embeddings
 
@@ -140,7 +141,7 @@ Plugins used: Superpowers: worktree, execution, debugging and verification workf
 
 Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
 
-[Execution ticket](docs/tickets/E03.md)
+[Execution ticket](TICKETS.md)
 
 ### E04 — Implement PostgreSQL classic RAG knowledge search
 
@@ -156,7 +157,7 @@ Plugins used: Superpowers: worktree, execution, debugging and verification workf
 
 Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
 
-[Execution ticket](docs/tickets/E04.md)
+[Execution ticket](TICKETS.md)
 
 ### T05 — Wire history and classic RAG tools
 
@@ -172,7 +173,7 @@ Plugins used: Superpowers: worktree, execution, debugging and verification workf
 
 Verification: Full Docker suite: 36 passed, 1 skipped (Compose check passed separately on host). Real PostgreSQL in disposable schemas; fake embeddings; mocked live adapter HTTP. Both tools succeeded for all 3 tickets. Ruff check/format passed. Standards review: 0 findings. Spec review: section-boundary finding fixed with a failing regression test, then green full suite. Live OpenAI calls not run.
 
-[Execution ticket](docs/tickets/T05.md)
+[Execution ticket](TICKETS.md)
 
 ### T06 — Write grounded bilingual system prompt
 
@@ -188,7 +189,7 @@ Plugins used: Superpowers: inline execution, debugging and verification.
 
 Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
-[Execution ticket](docs/tickets/T06.md)
+[Execution ticket](TICKETS.md)
 
 ### T07 — Build bounded GPT/tool execution loop
 
@@ -204,7 +205,7 @@ Plugins used: Superpowers: inline execution, debugging and verification.
 
 Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
-[Execution ticket](docs/tickets/T07.md)
+[Execution ticket](TICKETS.md)
 
 ### T08 — Apply action policy and integrate JSON CLI
 
@@ -220,7 +221,7 @@ Plugins used: Superpowers: inline execution, debugging and verification.
 
 Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
-[Execution ticket](docs/tickets/T08.md)
+[Execution ticket](TICKETS.md)
 
 ### E06 — Test classic RAG against Docker PostgreSQL
 
@@ -236,7 +237,7 @@ Plugins used: Superpowers: inline execution, debugging and verification.
 
 Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
-[Execution ticket](docs/tickets/E06.md)
+[Execution ticket](TICKETS.md)
 
 ### T09 — Verify scenarios and failure paths offline
 
@@ -252,7 +253,7 @@ Plugins used: Superpowers: inline execution, debugging and verification.
 
 Verification: Final Docker suite: 65 passed, 1 host-only skip; host Compose check passed separately. Standards review: 2 CLI findings fixed RED→GREEN; spec review: no actionable findings. No deferred minors. Live paid GPT/semantic embedding checks not run.
 
-[Execution ticket](docs/tickets/T09.md)
+[Execution ticket](TICKETS.md)
 
 ### T10 — Run demos and record live verification
 
@@ -268,13 +269,13 @@ Plugins used: Superpowers: execution and verification.
 
 Verification: Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.
 
-[Execution ticket](docs/tickets/T10.md)
+[Execution ticket](TICKETS.md)
 
 ### T11 — Finish README and one-page write-up
 
 Phase: Verification & delivery. Status: done. Depends on: T10. Estimate: 20 min (historical).
 
-Outputs: `README.md`, `WRITEUP.md`, `WRITEUP.pdf`.
+Outputs: `README.md`, `docs/WRITEUP.md`, `WRITEUP.pdf`.
 
 Acceptance: README covers uv and Docker Compose, migrations, ingestion, tests and samples; one-page write-up describes prototype limits, implemented safeguards and production evaluation.
 
@@ -284,7 +285,7 @@ Plugins used: Superpowers: execution and verification, PDF: authored/rendered on
 
 Verification: Rebuilt image: 63 passed/1 host-only skip. All three offline sample results completed. Write-up PDF: exactly one page, rendered and inspected. Live provider checks not run.
 
-[Execution ticket](docs/tickets/T11.md)
+[Execution ticket](TICKETS.md)
 
 ### T12 — Verify clean checkout and submit
 
@@ -300,7 +301,7 @@ Plugins used: Superpowers: execution, review and verified delivery, GitHub: push
 
 Verification: Final rebuilt Docker image: 65 passed/1 host-only skip; host Compose check passed. Fresh clone install and sdist/wheel builds pass; prompt/migration resources present; CLI regression 7 passed. Source+.git ZIP verified, no .env/caches. Independent standards findings fixed; spec 0 actionable. Remote CI reported separately. Live provider checks not run. Hosted GitHub Actions run 37904012936 succeeded for delivered commit 8d50edc.
 
-[Execution ticket](docs/tickets/T12.md)
+[Execution ticket](TICKETS.md)
 
 ### E05 — Explore GraphRAG in the next phase
 
@@ -314,7 +315,7 @@ Acceptance: Future Phase 2 requires a reviewed graph schema, sourced relationshi
 
 Phase: Reviewer guide and simplicity follow-up. Status: done. Depends on: T12. Estimate: TBD.
 
-Outputs: `TEST_GUIDE.md`, `docs/SIMPLICITY_SPEC.md`, `ASSIGNMENT_READER.html`.
+Outputs: `docs/TEST_GUIDE.md`, `docs/SIMPLICITY_SPEC.md`, `ASSIGNMENT_READER.html`.
 
 Acceptance: Four user questions answered with exact commands, pass criteria, honest Word-fit rating and reproducible private-repo setup; simplicity constraint documented.
 
@@ -324,7 +325,7 @@ Plugins used: Superpowers: evidence verification, GitHub: simplicity specificati
 
 Verification: Fresh Docker run: 65 passed, 1 host-only skip. Documentation/delivery checks and generator lint/syntax pass. No runtime code changed. Live checks remain unperformed.
 
-[Execution ticket](docs/tickets/S01.md)
+[Execution ticket](TICKETS.md)
 
 ### S02 — Concentrate read-only tool validation
 
@@ -358,6 +359,22 @@ Acceptance: Make the offline demonstration implementation easier to read by redu
 - [ ] Existing tests, full rebuilt Docker suite and host Compose checks pass; demonstrate all three source tickets through the JSON CLI.
 - [ ] If packaged data changes, verify installed wheel resources and fresh-clone execution.
 - [ ] Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.
+
+### S04 — Tidy repository folders and consolidate ticket records
+
+Phase: Reviewer guide and simplicity follow-up. Status: done. Depends on: S01. Estimate: TBD.
+
+Outputs: `README.md`, `docs/TICKETS.md`, `scripts/build_planner.py`, `scripts/check_delivery.py`, `ASSIGNMENT_READER.html`.
+
+Acceptance: Keep supporting Markdown documents under docs; consolidate duplicate local tickets without losing acceptance or evidence; fix relative links and rebuild checks; preserve Word, environment settings, runtime, tests and Git history.
+
+Skills used: ask-matt (before and after), superpowers:brainstorming (bounded cleanup approved), superpowers:verification-before-completion.
+
+Plugins used: Superpowers: approved cleanup and evidence verification.
+
+Verification: Docker: 65 passed, 1 host-only skip. Host Compose: 1 passed. Wheel and sdist build succeeded. Ruff lint/format and reader/source checks passed; runtime code and tests unchanged.
+
+[Execution ticket](TICKETS.md)
 
 ## Execution rules
 

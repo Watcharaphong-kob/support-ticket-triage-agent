@@ -13,6 +13,7 @@ class Reader(HTMLParser):
         super().__init__()
         self.ids = []
         self.links = []
+        self.files = []
         self.source = {}
         self.paragraph = None
 
@@ -22,6 +23,8 @@ class Reader(HTMLParser):
             self.ids.append(values["id"])
         if "href" in values and values["href"].startswith("#"):
             self.links.append(values["href"][1:])
+        elif "href" in values and ":" not in values["href"]:
+            self.files.append(values["href"].split("#", 1)[0])
         if "data-source-paragraph" in values:
             self.paragraph = int(values["data-source-paragraph"])
             self.source[self.paragraph] = []
@@ -43,6 +46,7 @@ def main():
     assert len(reader.ids) == len(set(reader.ids)), "Duplicate HTML IDs"
     aliases = {"t01", "t03", "t04", "t05"}
     assert set(reader.links) <= set(reader.ids) | aliases, "Broken internal navigation"
+    assert all((ROOT / file).is_file() for file in reader.files), "Broken reader file link"
     assert len(reader.source) == len(source["paragraphs"]) == 35, "Missing original paragraphs"
     for paragraph in source["paragraphs"]:
         shown = "".join(reader.source[paragraph["index"]])
@@ -50,12 +54,13 @@ def main():
             "Changed source text"
         )
     tasks = json.loads((ROOT / "docs/project_tasks.json").read_text(encoding="utf-8"))["tasks"]
+    tickets = (ROOT / "docs/TICKETS.md").read_text(encoding="utf-8")
     for task in tasks:
-        assert (ROOT / "docs/tickets" / (task["id"] + ".md")).exists()
+        assert f"## {task['id']} — {task['title']}" in tickets, "Missing consolidated ticket"
     demo = json.loads((ROOT / "examples/sample_results.json").read_text(encoding="utf-8-sig"))
     assert demo["mode"] == "offline_demo" and len(demo["results"]) == 3
     assert all(r["status"] == "completed" for r in demo["results"])
-    assert len((ROOT / "WRITEUP.md").read_text(encoding="utf-8").split()) <= 450
+    assert len((ROOT / "docs/WRITEUP.md").read_text(encoding="utf-8").split()) <= 450
     assert (ROOT / "prompts/system.txt").read_bytes() == (
         ROOT / "src/triage_agent/prompts/system.txt"
     ).read_bytes()

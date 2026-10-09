@@ -1,6 +1,6 @@
 # GitHub Repository Plan — Support Ticket Triage Agent
 
-Planning addition · 9 October 2026 · Complements PROJECT_TASK_PLANNER.md
+Planning addition · 9 October 2026 · Complements docs/PROJECT_TASK_PLANNER.md
 
 Current scope: Phase 1 Docker classic RAG prototype using PostgreSQL + pgvector. GraphRAG is deferred to Phase 2. The invoked to-spec workflow published the spec/checkpoint as issue #1. Older layout and commit-group suggestions below are expanded by the current planner.
 
@@ -25,7 +25,7 @@ These are recommendations. The assignment specifies a repository or ZIP fallback
 ```text
 support-ticket-triage-agent/
   README.md
-  WRITEUP.md                     # maximum one page
+  docs/WRITEUP.md                     # maximum one page
   pyproject.toml                 # package, runtime, dev dependencies
   uv.lock                        # committed dependency lock
   Dockerfile                     # uv-managed Python application image
@@ -55,9 +55,9 @@ support-ticket-triage-agent/
   examples/
     sample_results.json           # label mock versus live output
   docs/
-    ASSIGNMENT_SUMMARY.md
-    PROJECT_TASK_PLANNER.md
-    GITHUB_REPO_PLAN.md
+    docs/ASSIGNMENT_SUMMARY.md
+    docs/PROJECT_TASK_PLANNER.md
+    docs/GITHUB_REPO_PLAN.md
     ASSIGNMENT_READER.html
 ```
 
@@ -124,7 +124,7 @@ The README should make the reviewer path obvious: prerequisites → create envir
 - [ ] Offline checks pass; live verification status stated accurately.
 - [ ] Thai text and all three four-message conversations are intact.
 - [ ] Prompt plus two tool schemas/implementations are easy to locate.
-- [ ] WRITEUP.md is no more than one page in its intended rendering.
+- [ ] docs/WRITEUP.md is no more than one page in its intended rendering.
 - [ ] Tracked files and commit history contain no actual API key or customer secrets.
 - [ ] Example outputs identify mock/live provenance and do not invent verified facts.
 - [ ] Submission URL references the final main commit; optionally tag that tested commit submission-v1.

@@ -6,7 +6,7 @@
 
 T03 fixtures, T04 contracts, E02 Docker infrastructure, E03 ingestion/embedding adapters, E04 PostgreSQL retrieval, and T05 customer-history/knowledge tools.
 
-Use [execution tickets](../TICKETS.md) for each task's skills/plugins, simple steps and acceptance evidence. Canonical status lives in project_tasks.json; the planner, TODO and HTML are regenerated from it.
+Use [execution tickets](TICKETS.md) for each task's skills/plugins, simple steps and acceptance evidence. Canonical status lives in project_tasks.json; the planner, TODO and HTML are regenerated from it.
 
 ## Verification observed
 
@@ -38,3 +38,4 @@ Spec axis: one section-boundary finding. Regraded as important because mixed pas
 ## Remaining scope
 
 T06 system prompt, T07 GPT loop, T08 decision consistency, E06 additional retrieval evaluation and T09 onward are pending. No live GPT/embedding requests ran, no real customer records were ingested, and no final decisions/drafts are claimed. GraphRAG remains Phase 2. [GitHub issue #1](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/1) contains the Phase 1 spec/checkpoint; code commits remain local and unpushed.
+

@@ -2,11 +2,11 @@
 
 Phase 1 prototype for the **main Word assignment**: a Python CLI with an OpenAI GPT tool loop, customer-history lookup and Docker PostgreSQL/pgvector classic RAG. GraphRAG is deferred to Phase 2. The three original English/Thai conversations retain all twelve messages, relative times and supplied translations.
 
-[Assignment reader](ASSIGNMENT_READER.html) · [Spec](PROJECT_SPEC.md) · [TODO](TODO.md) · [Tickets](TICKETS.md) · [Main assignment traceability](docs/ASSIGNMENT_REQUIREMENTS.md) · [One-page write-up](WRITEUP.pdf) (editable [source](WRITEUP.md)) · [Verification](docs/verification.md)
+[Assignment reader](ASSIGNMENT_READER.html) · [Spec](docs/PROJECT_SPEC.md) · [TODO](docs/TODO.md) · [Tickets](docs/TICKETS.md) · [Main assignment traceability](docs/ASSIGNMENT_REQUIREMENTS.md) · [One-page write-up](WRITEUP.pdf) (editable [source](docs/WRITEUP.md)) · [Verification](docs/verification.md)
 
 ## Run the complete offline demonstration
 
-For clone commands, expected output, assignment-fit assessment and live-vs-offline acceptance, see [Test guide](TEST_GUIDE.md). The completed code is on `feat/triage-agent`; the older `main` branch is not the full prototype. The owner must grant access to this private repository before another person can clone it.
+For clone commands, expected output, assignment-fit assessment and live-vs-offline acceptance, see [Test guide](docs/TEST_GUIDE.md). The completed code is on `feat/triage-agent`; the older `main` branch is not the full prototype. The owner must grant access to this private repository before another person can clone it.
 
 Prerequisites: Docker Desktop with Linux containers and Docker Compose. Run from the repository root. Compose loads `.env`; host Python reads environment variables only.
 
@@ -74,7 +74,7 @@ Stdout contains one JSON object with `mode`, `embedding_model` and `results`. Ea
 
 The loop permits at most **6 model requests / 8 tool executions** per ticket, with 30-second provider timeouts, zero SDK retries and one shared transient retry/output correction. Parameterized read-only retrieval has 5-second connection/statement timeouts. Tools cannot execute shell commands, arbitrary SQL, URLs or billing changes. Application policy validates tool execution, citations, action/destination, low-urgency auto-response evidence and Thai draft language; prompt grounding remains fallible.
 
-[Retrieval evaluation](docs/retrieval_evaluation.md) describes exact cosine top-five search, the prototype 0.2 cutoff, Unicode-safe section-aware 500-token chunks/60-token overlap, and live evaluation needed before production. [Knowledge spec](AGENT_KNOWLEDGE_SPEC.md) describes embedding-space validation and Phase 2 boundaries.
+[Retrieval evaluation](docs/retrieval_evaluation.md) describes exact cosine top-five search, the prototype 0.2 cutoff, Unicode-safe section-aware 500-token chunks/60-token overlap, and live evaluation needed before production. [Knowledge spec](docs/AGENT_KNOWLEDGE_SPEC.md) describes embedding-space validation and Phase 2 boundaries.
 
 Management commands: `python -m triage_agent.knowledge.manage migrate|ingest|stats|search|tool-demo`. Search accepts `--query`, `--locale`, `--product`, `--issue-type`. Example:
 
@@ -85,3 +85,7 @@ docker compose run --rm app python -m triage_agent.knowledge.manage search --que
 ## Submission
 
 The private [GitHub repository](https://github.com/Watcharaphong-kob/support-ticket-triage-agent) contains the delivery branch `feat/triage-agent`; use that branch for the completed prototype. Reviewer access is controlled by the repository owner. A source ZIP with an actual standalone `.git` directory is also provided locally as permitted by the Word assignment. It excludes `.env`, caches and virtual environments. Original Word content is transcribed in `docs/assignment_source.json`; it remains the main authority, distinct from selected architecture/policy choices.
+
+## Repository layout
+
+Runtime lives in `src/`, fixtures in `data/`, tests in `tests/`, and supporting documents in `docs/`. Open `ASSIGNMENT_READER.html` for the combined assignment/planner view. Ticket details are consolidated in [docs/TICKETS.md](docs/TICKETS.md), backed by the shared task registry and GitHub issues; individual generated ticket copies are no longer maintained. The submission PDF remains at the root.

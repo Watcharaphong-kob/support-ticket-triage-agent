@@ -101,6 +101,8 @@ Checked tasks record completed setup/design and the user's E01 architecture deci
 - [ ] If packaged data changes, verify installed wheel resources and fresh-clone execution.
 - [ ] Update planner, TODO, reader HTML and ticket evidence. If no change reduces total complexity, record evidence and report it instead of accepting a cosmetic refactor.
 
+- [x] **S04 — Tidy repository folders and consolidate ticket records** (done): Keep supporting Markdown documents under docs; consolidate duplicate local tickets without losing acceptance or evidence; fix relative links and rebuild checks; preserve Word, environment settings, runtime, tests and Git history.
+
 
 
 ## Before submission

@@ -644,3 +644,37 @@ Planned plugins: Superpowers for implementation/verification; GitHub for executi
 3. Implement the smallest required change.
 
 4. Consult ask-matt, test and review; record evidence before completion.
+
+## S04 — Tidy repository folders and consolidate ticket records
+
+Status: done. Scope: followup. Dependencies: S01.
+
+## Acceptance
+
+Keep supporting Markdown documents under docs; consolidate duplicate local tickets without losing acceptance or evidence; fix relative links and rebuild checks; preserve Word, environment settings, runtime, tests and Git history.
+
+## Skills and plugins
+
+Skills used: ask-matt (before and after), superpowers:brainstorming (bounded cleanup approved), superpowers:verification-before-completion.
+
+Plugins used: Superpowers: approved cleanup and evidence verification.
+
+Tools: PowerShell, uv, pytest, Ruff, Docker Compose. No external app connector used for this task.
+
+## Steps performed
+
+1. Read tracked-file inventory and document references; proposed concrete cleanup and received approval.
+
+2. Moved 11 supporting Markdown documents into docs; consolidated 21 generated ticket files into one maintained ticket record.
+
+3. Updated task paths, README links, generator and source/link checks; retained runtime and submission requirements.
+
+4. Rebuilt Docker image and ran full database suite; verified host Compose and package builds.
+
+5. Verified deterministic reader generation and preserved Word source; synchronized primary folder and removed regenerable caches.
+
+## Verification
+
+Docker: 65 passed, 1 host-only skip. Host Compose: 1 passed. Wheel and sdist build succeeded. Ruff lint/format and reader/source checks passed; runtime code and tests unchanged.
+
+Implementation commit: Cleanup commit recorded by Git..

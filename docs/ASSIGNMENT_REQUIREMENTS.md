@@ -17,7 +17,7 @@ The user explicitly designated AI_Engineer_-_Code_Homework_Test.docx as the main
 | Working code processing supplied sample tickets | T03, T07–T10 | All twelve messages preserved; complete labeled offline agent run in examples/sample_results.json |
 | System prompt | T06 | prompts/system.txt, packaged and copy-checked |
 | Tool definitions: schemas and implementations; mocks permitted | T04–T05 | Both tools implemented; synthetic/mock provenance explicit |
-| Write-up: one page maximum, covering architecture/why, failures, production evaluation | T11 | WRITEUP.md and verified one-page WRITEUP.pdf |
+| Write-up: one page maximum, covering architecture/why, failures, production evaluation | T11 | docs/WRITEUP.md and verified one-page WRITEUP.pdf |
 | Terminal console or API sufficient; no chat UI needed | T02, T07 | JSON batch CLI implemented with stderr traces and truthful exit codes |
 | Readability, maintainability, extensibility and logic | All tasks | Per-task verification and final independent standards/spec review |
 
@@ -29,4 +29,4 @@ The recommended 150–240 minutes is advice, not a hard time limit. The original
 
 ## Interview scope
 
-The grill-with-docs session resolves only decisions needed to finish the assignment within the selected prototype architecture. Previously settled scope remains intact. The user subsequently authorized continuous completion. The three recommended decisions are recorded explicitly in PROJECT_SPEC.md and the execution ledger; their trade-offs remain visible.
+The grill-with-docs session resolves only decisions needed to finish the assignment within the selected prototype architecture. Previously settled scope remains intact. The user subsequently authorized continuous completion. The three recommended decisions are recorded explicitly in docs/PROJECT_SPEC.md and the execution ledger; their trade-offs remain visible.

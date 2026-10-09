@@ -5,20 +5,21 @@
 
 import html
 import json
+import os
 import re
 import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LINKS = {
-    "PROJECT_TASK_PLANNER.md": "#planner",
-    "TODO.md": "#todo",
-    "PROJECT_SPEC.md": "#spec",
-    "TECH_STACK.md": "#stack",
-    "AGENT_KNOWLEDGE_SPEC.md": "#knowledge",
-    "GITHUB_REPO_PLAN.md": "#github",
-    "TICKETS.md": "#tickets",
-    "TEST_GUIDE.md": "#testing",
+    "docs/PROJECT_TASK_PLANNER.md": "#planner",
+    "docs/TODO.md": "#todo",
+    "docs/PROJECT_SPEC.md": "#spec",
+    "docs/TECH_STACK.md": "#stack",
+    "docs/AGENT_KNOWLEDGE_SPEC.md": "#knowledge",
+    "docs/GITHUB_REPO_PLAN.md": "#github",
+    "docs/TICKETS.md": "#tickets",
+    "docs/TEST_GUIDE.md": "#testing",
     "docs/SIMPLICITY_SPEC.md": "#spec",
 }
 
@@ -30,9 +31,13 @@ def inline(value):
 
     def link(match):
         label, target = match.groups()
-        target = LINKS.get(html.unescape(target), target)
-        if target.startswith("docs/tickets/"):
-            target = "#tickets"
+        target = html.unescape(target)
+        target = LINKS.get(target, LINKS.get("docs/" + Path(target).name, target))
+        if target.startswith("../"):
+            target = target.removeprefix("../")
+        if not target.startswith(("#", "https://", "http://")) and not (ROOT / target).exists():
+            if (ROOT / "docs" / target).exists():
+                target = "docs/" + target
         return f'<a href="{target}">{label}</a>'
 
     return re.sub(r"\[([^\]]+)\]\(([^\s)]+)\)", link, value)
@@ -113,6 +118,23 @@ def markdown(value):
 
 
 def write(name, text):
+    if name.endswith(".md"):
+
+        def link(match):
+            label, target = match.groups()
+            file, separator, anchor = target.partition("#")
+            if ":" in file or not file:
+                return match[0]
+            source = ROOT / name
+            candidate = ROOT / file
+            if not candidate.is_file():
+                candidate = source.parent / file
+            if not candidate.is_file():
+                return match[0]
+            relative = Path(os.path.relpath(candidate, source.parent)).as_posix()
+            return f"[{label}]({relative}{separator}{anchor})"
+
+        text = re.sub(r"\[([^\]]+)\]\(([^\s)]+)\)", link, text)
     (ROOT / name).write_text(text.rstrip() + "\n", encoding="utf-8")
 
 
@@ -153,11 +175,11 @@ def main():
         "Phase 1 is a Docker classic-RAG prototype using PostgreSQL + pgvector. "
         "GraphRAG is deferred to Phase 2. Selected components are not yet installed capabilities.",
         "## Spec and stack",
-        "[Project spec](PROJECT_SPEC.md) defines scope, contracts and acceptance. "
-        "[Tech stack](TECH_STACK.md) separates installed tools from selected Phase 1 components. "
-        "[Working TODO list](TODO.md) mirrors the tasks below. "
-        "[Execution tickets](TICKETS.md) record skills, plugins, steps and evidence. "
-        "[RAG and GraphRAG spec](AGENT_KNOWLEDGE_SPEC.md) supplies extension details.",
+        "[Project spec](docs/PROJECT_SPEC.md) defines scope, contracts and acceptance. "
+        "[Tech stack](docs/TECH_STACK.md) separates installed tools from selected Phase 1 components. "
+        "[Working TODO list](docs/TODO.md) mirrors the tasks below. "
+        "[Execution tickets](docs/TICKETS.md) record skills, plugins, steps and evidence. "
+        "[RAG and GraphRAG spec](docs/AGENT_KNOWLEDGE_SPEC.md) supplies extension details.",
         "## Phases and timing",
         "The original homework estimate was 210 minutes and the assignment recommends 150–240 minutes. "
         "Docker and real classic RAG expand that scope. A revised Phase 1 estimate is not assigned; "
@@ -216,14 +238,14 @@ def main():
         "The completed T03 plan is docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md; "
         f"next ready task: {next_task}.",
         "T02 evidence: docs/T02_SETUP_STATUS.md. Repository/worktree/submission workflow: "
-        "[GitHub plan](GITHUB_REPO_PLAN.md). Preserve customer uncertainty and source citations.",
+        "[GitHub plan](docs/GITHUB_REPO_PLAN.md). Preserve customer uncertainty and source citations.",
     ]
-    write("PROJECT_TASK_PLANNER.md", blocks_to_markdown(planner))
+    write("docs/PROJECT_TASK_PLANNER.md", blocks_to_markdown(planner))
     todo = [
         "# Project TODO",
         f"{date} · {len(done)}/{len(phase1)} Phase 1 tasks done · Next: {next_task}",
-        "[Spec](PROJECT_SPEC.md) · [Stack](TECH_STACK.md) · [Detailed planner](PROJECT_TASK_PLANNER.md)",
-        "[Tickets with skills, plugins and steps](TICKETS.md)",
+        "[Spec](docs/PROJECT_SPEC.md) · [Stack](docs/TECH_STACK.md) · [Detailed planner](docs/PROJECT_TASK_PLANNER.md)",
+        "[Tickets with skills, plugins and steps](docs/TICKETS.md)",
         "Checked tasks record completed setup/design and the user's E01 architecture decision. "
         "Classic RAG and Docker are selected for Phase 1; GraphRAG is deferred to Phase 2. "
         "Task data lives in docs/project_tasks.json; rebuild with uv run python scripts/build_planner.py.",
@@ -244,14 +266,13 @@ def main():
         "Live provider calls have not run. "
         "The historical 210-minute estimate does not cover the expanded Phase 1 scope.",
     ]
-    write("TODO.md", "\n\n".join(todo))
+    write("docs/TODO.md", "\n\n".join(todo))
     ticket_blocks = [
         "# Execution Tickets",
         f"{date} · Local project tickets",
         "Each ticket records dependencies, acceptance, skills/plugins and simple steps. "
         "Completed steps are evidence; planned steps are not claimed as executed.",
     ]
-    (ROOT / "docs/tickets").mkdir(exist_ok=True)
     if data.get("github_issue"):
         ticket_blocks.append(
             f"[GitHub Phase 1 tracking issue]({data['github_issue']}) · {data.get('github_issue_status', 'open')}. "
@@ -270,7 +291,10 @@ def main():
             body.insert(2, f"[GitHub execution ticket]({task['github_issue']})")
         if task.get("parent_issue"):
             body.insert(3, f"[Parent specification]({task['parent_issue']}) · ready-for-agent.")
-            body.insert(4, "Publication complete: user approved both slices; to-tickets and ask-matt used; GitHub connector created the issue and native parent link was verified. Runtime implementation is pending.")
+            body.insert(
+                4,
+                "Publication complete: user approved both slices; to-tickets and ask-matt used; GitHub connector created the issue and native parent link was verified. Runtime implementation is pending.",
+            )
         if task.get("steps_done"):
             body += [
                 "Skills used: " + ", ".join(task["skills_used"]) + ".",
@@ -311,9 +335,8 @@ def main():
                 "4. Consult ask-matt, test and review; record evidence before completion.",
             ]
         text = "\n\n".join(body)
-        write(f"docs/tickets/{task['id']}.md", text)
         ticket_blocks += [text.replace("# ", "## ", 1)]
-    write("TICKETS.md", "\n\n".join(ticket_blocks))
+    write("docs/TICKETS.md", "\n\n".join(ticket_blocks))
     lock = tomllib.loads((ROOT / "uv.lock").read_text(encoding="utf-8"))
     versions = {package["name"]: package["version"] for package in lock["package"]}
     stack = [
@@ -348,7 +371,7 @@ def main():
         "Phase 1 is a prototype using one knowledge database and the existing model SDK. "
         "Classic RAG retrieves passages; GraphRAG relationships and traversal belong to Phase 2. "
         "Pin compatible Docker images and new dependencies during setup. "
-        "Details are in [knowledge-system spec](AGENT_KNOWLEDGE_SPEC.md).",
+        "Details are in [knowledge-system spec](docs/AGENT_KNOWLEDGE_SPEC.md).",
         "## Configuration and commands",
         "GPT model: OPENAI_MODEL. Key: OPENAI_API_KEY. "
         "No hard-coded model or actual key in the submission. Help/version/offline tests need no key.",
@@ -357,7 +380,7 @@ def main():
         "uv run --locked ruff format --check .\nuv build\n"
         "uv run --locked python scripts/build_planner.py\n```",
     ]
-    write("TECH_STACK.md", blocks_to_markdown(stack))
+    write("docs/TECH_STACK.md", blocks_to_markdown(stack))
     source = json.loads((ROOT / "docs/assignment_source.json").read_text(encoding="utf-8"))
     original = [
         "<h2>Original assignment</h2><p class=note>Complete source transcription; "
@@ -382,13 +405,13 @@ def main():
 <div class="stats"><div><b>{len(done)}/{len(phase1)}</b><span>Phase 1 tasks complete</span></div><div><b>Classic RAG</b><span>Docker + PostgreSQL + pgvector</span></div><div><b>Prototype</b><span>GraphRAG deferred to Phase 2</span></div></div>
 <div class="note">GPT prompt, bounded agent loop, JSON CLI, Docker classic RAG and both tools implemented; see Tickets for evidence. Next: {next_task}. Live embeddings not verified.</div>
 <div class="tiles"><a href="#spec"><b>Project spec</b><span>Scope, contracts and acceptance</span></a><a href="#stack"><b>Tech stack</b><span>Installed tools and proposed choices</span></a><a href="#todo"><b>TODO list</b><span>One shared list; verified status</span></a><a href="#original"><b>Original assignment</b><span>All conversations, including Thai</span></a></div>
-{markdown((ROOT / "ASSIGNMENT_SUMMARY.md").read_text(encoding="utf-8"))}"""
+{markdown((ROOT / "docs/ASSIGNMENT_SUMMARY.md").read_text(encoding="utf-8"))}"""
     pages = [
         ("overview", "Overview", overview),
         (
             "planner",
             "Task planner",
-            markdown((ROOT / "PROJECT_TASK_PLANNER.md").read_text(encoding="utf-8"))
+            markdown((ROOT / "docs/PROJECT_TASK_PLANNER.md").read_text(encoding="utf-8"))
             + "<details><summary>T03 implementation plan and checklist</summary>"
             + markdown(
                 (ROOT / "docs/superpowers/plans/2026-10-09-t03-bilingual-fixtures.md").read_text(
@@ -399,19 +422,19 @@ def main():
             + markdown((ROOT / "docs/TASK_WORKFLOW.md").read_text(encoding="utf-8"))
             + "</details>",
         ),
-        ("todo", "TODO list", markdown((ROOT / "TODO.md").read_text(encoding="utf-8"))),
-        ("tickets", "Tickets", markdown((ROOT / "TICKETS.md").read_text(encoding="utf-8"))),
+        ("todo", "TODO list", markdown((ROOT / "docs/TODO.md").read_text(encoding="utf-8"))),
+        ("tickets", "Tickets", markdown((ROOT / "docs/TICKETS.md").read_text(encoding="utf-8"))),
         (
             "spec",
             "Spec",
-            markdown((ROOT / "PROJECT_SPEC.md").read_text(encoding="utf-8"))
+            markdown((ROOT / "docs/PROJECT_SPEC.md").read_text(encoding="utf-8"))
             + "<details><summary>Simplicity and reviewer acceptance spec</summary>"
             + markdown((ROOT / "docs/SIMPLICITY_SPEC.md").read_text(encoding="utf-8"))
             + "</details>"
             + "<details><summary>Main Word assignment — requirement traceability</summary>"
             + markdown((ROOT / "docs/ASSIGNMENT_REQUIREMENTS.md").read_text(encoding="utf-8"))
             + "</details><details><summary>Support-ticket glossary</summary>"
-            + markdown((ROOT / "GLOSSARY.md").read_text(encoding="utf-8"))
+            + markdown((ROOT / "docs/GLOSSARY.md").read_text(encoding="utf-8"))
             + "</details>"
             + "<details><summary>Historical T01 contracts and design</summary><p>The current Phase 1 spec supersedes the original mock-only knowledge scope. Triage policies and output contracts remain applicable.</p>"
             + markdown(
@@ -421,21 +444,25 @@ def main():
             )
             + "</details>",
         ),
-        ("stack", "Tech stack", markdown((ROOT / "TECH_STACK.md").read_text(encoding="utf-8"))),
+        (
+            "stack",
+            "Tech stack",
+            markdown((ROOT / "docs/TECH_STACK.md").read_text(encoding="utf-8")),
+        ),
         (
             "testing",
             "How to test / Word fit",
-            markdown((ROOT / "TEST_GUIDE.md").read_text(encoding="utf-8")),
+            markdown((ROOT / "docs/TEST_GUIDE.md").read_text(encoding="utf-8")),
         ),
         (
             "knowledge",
             "Knowledge system",
-            markdown((ROOT / "AGENT_KNOWLEDGE_SPEC.md").read_text(encoding="utf-8")),
+            markdown((ROOT / "docs/AGENT_KNOWLEDGE_SPEC.md").read_text(encoding="utf-8")),
         ),
         (
             "github",
             "GitHub plan",
-            markdown((ROOT / "GITHUB_REPO_PLAN.md").read_text(encoding="utf-8")),
+            markdown((ROOT / "docs/GITHUB_REPO_PLAN.md").read_text(encoding="utf-8")),
         ),
         (
             "t02",

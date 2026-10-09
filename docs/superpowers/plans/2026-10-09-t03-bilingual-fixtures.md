@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.12, uv, standard-library JSON, pytest, Ruff. No new dependencies.
 
-**Spec:** PROJECT_SPEC.md, docs/project_tasks.json (T03), and the message-preservation/customer-history contracts in docs/superpowers/specs/2026-10-09-ticket-triage-design.md. The current Phase 1 spec supersedes the historical mock-only knowledge scope.
+**Spec:** docs/PROJECT_SPEC.md, docs/project_tasks.json (T03), and the message-preservation/customer-history contracts in docs/superpowers/specs/2026-10-09-ticket-triage-design.md. The current Phase 1 spec supersedes the historical mock-only knowledge scope.
 
 ## Global Constraints
 

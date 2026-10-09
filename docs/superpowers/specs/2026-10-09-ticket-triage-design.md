@@ -22,7 +22,7 @@ The CLI produces triage recommendations and draft responses. No chat UI, HTTP se
 
 Ticket loader → validated conversation → prompt and tool-capable model adapter → bounded agent loop → allowlisted tool dispatcher → final result validation → policy consistency checks → JSON result and optional trace.
 
-Use the module layout from PROJECT_TASK_PLANNER.md. cli.py handles input/output; schemas.py owns contracts; agent.py owns model/tool orchestration; tools.py owns mock tools; policy.py owns action consistency and fallback. The prompt and mock fixtures remain separate files.
+Use the module layout from docs/PROJECT_TASK_PLANNER.md. cli.py handles input/output; schemas.py owns contracts; agent.py owns model/tool orchestration; tools.py owns mock tools; policy.py owns action consistency and fallback. The prompt and mock fixtures remain separate files.
 
 Each message includes its original text, sequence, and supplied relative time. Preserve provided translations separately from original Thai text, and label them as supplied translations. Never manufacture absolute timestamps from phrases such as just now. Customer IDs are synthetic fixture IDs mapped to the supplied customer metadata.
 
@@ -114,4 +114,4 @@ Test fixtures preserve all three four-message conversations. Unit checks cover b
 
 Run a live GPT smoke check separately when a key and chosen model are available. State honestly whether it ran. A clean-checkout run, README, one-page write-up, and repository/ZIP checks complete the submission.
 
-T01 status: **approved by the user**. T02 is authorized with uv as the package manager and creation of one GitHub repository. Initialize Git and commit the reviewed baseline at T02, then use the managed worktree workflow from GITHUB_REPO_PLAN.md for project implementation. Repository and verification evidence will be recorded with the completed T02 task.
+T01 status: **approved by the user**. T02 is authorized with uv as the package manager and creation of one GitHub repository. Initialize Git and commit the reviewed baseline at T02, then use the managed worktree workflow from docs/GITHUB_REPO_PLAN.md for project implementation. Repository and verification evidence will be recorded with the completed T02 task.

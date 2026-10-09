@@ -34,3 +34,7 @@ S01 before: ask-matt → grill-with-docs facts + to-spec synthesis, reuse approv
 
 
 Architecture ticket publication before: ask-matt → improve-codebase-architecture/codebase-design survey → to-tickets. User accepted both slices. Published S02/#4 and S03/#5 with ready-for-agent; verified native sub-issue parent #3, labels/open states and unchanged parent body. S01 is complete; no dependency between these tickets. Regenerated planner/TODO/tickets/HTML; runtime untouched. Post-task ask-matt route: verify published acceptance/blockers and deterministic source-fidelity checks; implementation/TDD/review is later work.
+
+Repository cleanup before: ask-matt -> bounded approved cleanup. Moved 11 supporting Markdown documents into docs and removed 21 duplicate generated ticket files; combined TICKETS.md, registry and GitHub issues retain all task acceptance/evidence. Updated generator, links, metadata and delivery assertions. Preserved runtime, tests, Word original, environment settings and Git history. After: ask-matt -> source fidelity, deterministic generation, relative-link checks, lint/package/Docker verification. S02/S03 runtime refactors remain pending.
+
+Fresh cleanup checks: Docker rebuild succeeded, full suite 65 passed/1 host-only skip; host Compose 1 passed. Wheel/sdist build succeeded with network access after sandbox PyPI DNS failure. Ruff lint/format and reader/source checks passed. No runtime or test edits.
