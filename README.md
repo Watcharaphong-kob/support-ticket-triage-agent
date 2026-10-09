@@ -1,3 +1,5 @@
+> Framework branch: LangChain/LangGraph terminal migration is implemented. Live GPT credentials are required; --offline belongs to the original feat/triage-agent branch. API and final setup docs follow in F02/F03. Current specification and evidence: [plan.md](plan.md).
+
 # Support Ticket Triage Agent
 
 Phase 1 prototype for the **main Word assignment**: a Python CLI with an OpenAI GPT tool loop, customer-history lookup and Docker PostgreSQL/pgvector classic RAG. GraphRAG is deferred to Phase 2. The three original English/Thai conversations retain all twelve messages, relative times and supplied translations.

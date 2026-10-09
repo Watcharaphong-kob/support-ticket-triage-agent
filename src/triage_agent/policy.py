@@ -16,8 +16,10 @@ def validate_decision(
         raise ValueError("tool_failure")
     if any(source not in documents for source in result.knowledge_sources):
         raise ValueError("invalid_citation")
-    if result.issue_type == "billing" and (
-        result.next_action != "escalate_to_human" or result.destination != "billing_payments"
+    if (
+        result.urgency != "critical"
+        and result.issue_type == "billing"
+        and (result.next_action != "escalate_to_human" or result.destination != "billing_payments")
     ):
         raise ValueError("billing_requires_human")
     if result.urgency == "critical" and result.destination != "incident_on_call":

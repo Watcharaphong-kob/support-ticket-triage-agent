@@ -2,16 +2,59 @@ import json
 from pathlib import Path
 
 import pytest
+from langchain_core.outputs import ChatGeneration, ChatResult
+from test_agent import ScriptedChatModel, decision, tool_requests
 
 from triage_agent.agent import Agent
 from triage_agent.cli import main
+from triage_agent.config import Settings
 from triage_agent.knowledge.embeddings import FakeEmbedder
 from triage_agent.knowledge.postgres_store import PostgresStore
-from triage_agent.models import OfflineModel
 from triage_agent.schemas import KnowledgeArticle, SearchArguments, Ticket
 from triage_agent.tools import ToolDispatcher
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class SampleChatModel(ScriptedChatModel):
+    """Three literal sample decisions for wiring tests, never a GPT quality benchmark."""
+
+    def _generate(self, messages, stop=None, run_manager=None, **kwargs):
+        self.observed.append(list(messages))
+        current = json.loads(messages[1].content)
+        index = current["source_sample"] - 1
+        outputs = [json.loads(m.content) for m in messages if m.type == "tool"]
+        if not outputs:
+            response = tool_requests(current["customer_id"])
+            response.tool_calls[1]["args"]["query"] = [
+                "payment failed Pro charges",
+                "ระบบเข้าไม่ได้ error 500 demo",
+                "System Default dark theme scheduling",
+            ][index]
+        else:
+            urgency, issue, destination, sentiment, draft = [
+                ("high", "billing", "billing_payments", "angry", "Billing review needed."),
+                (
+                    "critical",
+                    "service_access",
+                    "incident_on_call",
+                    "frustrated",
+                    "รับทราบปัญหา error 500 ต้องให้ทีม incident ตรวจสอบ ยังไม่ยืนยันเวลาซ่อม",
+                ),
+                ("low", "theme", "product_support", "mixed", "Product investigation needed."),
+            ][index]
+            response = decision(
+                ticket_id=current["ticket_id"],
+                urgency=urgency,
+                issue_type=issue,
+                destination=destination,
+                customer_sentiment=sentiment,
+                draft_response=draft,
+                next_action="route_to_specialist" if index == 2 else "escalate_to_human",
+                secondary_issues=["scheduled dark mode feature request"] if index == 2 else [],
+                knowledge_sources=[d["chunk_id"] for o in outputs for d in o.get("documents", [])],
+            )
+        return ChatResult(generations=[ChatGeneration(message=response)])
 
 
 def seed(dsn):
@@ -27,7 +70,7 @@ def seed(dsn):
 
 def test_three_source_tickets_use_real_database_and_grounded_sources(empty_database):
     store = seed(empty_database)
-    agent = Agent(OfflineModel(), ToolDispatcher(ROOT / "data/customers.json", store))
+    agent = Agent(SampleChatModel(), ToolDispatcher(ROOT / "data/customers.json", store))
     tickets = [
         Ticket.model_validate(t)
         for t in json.loads((ROOT / "data/sample_tickets.json").read_text(encoding="utf-8"))
@@ -67,20 +110,21 @@ def test_cli_batch_stdout_is_json_and_traces_are_stderr(empty_database, monkeypa
     monkeypatch.setenv("EMBEDDING_BACKEND", "fake")
     monkeypatch.setenv("EMBEDDING_MODEL", "fake-token-v1")
     monkeypatch.setenv("EMBEDDING_DIMENSION", "64")
+    monkeypatch.setattr(Settings, "chat_model", lambda self: SampleChatModel())
     code = main(
         [
             "--input",
             str(ROOT / "data/sample_tickets.json"),
             "--customers",
             str(ROOT / "data/customers.json"),
-            "--offline",
             "--trace",
         ]
     )
     output = capsys.readouterr()
     assert code == 0
     value = json.loads(output.out)
-    assert value["mode"] == "offline_demo"
+    # Runtime contract; injected test model is not live evidence.
+    assert value["mode"] == "live_gpt"
     assert len(value["results"]) == 3
     assert len(output.err.splitlines()) == 3
 
@@ -91,13 +135,13 @@ def test_cli_database_outage_has_json_fallback_and_nonzero_status(monkeypatch, c
     monkeypatch.setenv("EMBEDDING_BACKEND", "fake")
     monkeypatch.setenv("EMBEDDING_MODEL", "fake-token-v1")
     monkeypatch.setenv("EMBEDDING_DIMENSION", "64")
+    monkeypatch.setattr(Settings, "chat_model", lambda self: SampleChatModel())
     code = main(
         [
             "--input",
             str(ROOT / "data/sample_tickets.json"),
             "--customers",
             str(ROOT / "data/customers.json"),
-            "--offline",
         ]
     )
     output = capsys.readouterr()

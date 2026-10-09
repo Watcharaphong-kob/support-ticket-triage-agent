@@ -1,11 +1,11 @@
 import json
 
 import httpx
-import pytest
-from openai import OpenAI
+from test_agent import ROOT, EmptyKnowledge, decision, ticket
 
-from triage_agent.models import ModelError, OpenAIModel
-from triage_agent.tools import TOOL_DEFINITIONS
+from triage_agent.agent import Agent
+from triage_agent.config import Settings
+from triage_agent.tools import ToolDispatcher
 
 
 def test_live_adapter_passes_tools_and_correlates_provider_call_ids():
@@ -13,6 +13,22 @@ def test_live_adapter_passes_tools_and_correlates_provider_call_ids():
 
     def handle(request):
         observed.append(json.loads(request.content))
+        functions = (
+            [
+                {
+                    "id": "provider-history",
+                    "name": "get_customer_history",
+                    "args": {"customer_id": "customer-001"},
+                },
+                {
+                    "id": "provider-knowledge",
+                    "name": "search_knowledge_base",
+                    "args": {"query": "payment"},
+                },
+            ]
+            if len(observed) == 1
+            else decision().tool_calls
+        )
         return httpx.Response(
             200,
             json={
@@ -29,13 +45,14 @@ def test_live_adapter_passes_tools_and_correlates_provider_call_ids():
                             "content": None,
                             "tool_calls": [
                                 {
-                                    "id": "provider-call",
+                                    "id": c["id"],
                                     "type": "function",
                                     "function": {
-                                        "name": "get_customer_history",
-                                        "arguments": '{"customer_id":"customer-001"}',
+                                        "name": c["name"],
+                                        "arguments": json.dumps(c["args"]),
                                     },
                                 }
+                                for c in functions
                             ],
                         },
                     }
@@ -43,36 +60,18 @@ def test_live_adapter_passes_tools_and_correlates_provider_call_ids():
             },
         )
 
-    client = OpenAI(
-        api_key="test-key",
-        max_retries=0,
-        timeout=30,
-        http_client=httpx.Client(transport=httpx.MockTransport(handle)),
+    model = Settings("test-key", "configured-gpt").chat_model(
+        http_client=httpx.Client(transport=httpx.MockTransport(handle))
     )
-    model = OpenAIModel("test-key", "configured-gpt", client=client)
-    result = model.complete([{"role": "user", "content": "Return JSON"}], TOOL_DEFINITIONS)
-    assert result.calls[0].id == "provider-call"
-    assert observed[0]["tools"] == TOOL_DEFINITIONS
-    assert observed[0]["response_format"] == {"type": "json_object"}
-    assert observed[0]["model"] == "configured-gpt"
+    result = Agent(model, ToolDispatcher(ROOT / "data/customers.json", EmptyKnowledge())).triage(
+        ticket()
+    )
+    assert result.status == "completed"
+    assert [c.call_id for c in result.tool_calls] == ["provider-history", "provider-knowledge"]
+    assert {t["function"]["name"] for t in observed[0]["tools"]} == {
+        "get_customer_history",
+        "search_knowledge_base",
+        "TriageResult",
+    }
     assert observed[0]["store"] is False
-
-
-@pytest.mark.parametrize("status,transient", [(401, False), (429, True), (500, True)])
-def test_provider_errors_are_safe_and_sdk_does_not_retry(status, transient):
-    requests = []
-
-    def handle(request):
-        requests.append(request)
-        return httpx.Response(status, json={"error": {"message": "sensitive-provider-detail"}})
-
-    client = OpenAI(
-        api_key="test-key",
-        max_retries=0,
-        http_client=httpx.Client(transport=httpx.MockTransport(handle)),
-    )
-    with pytest.raises(ModelError) as caught:
-        OpenAIModel("test-key", "configured-gpt", client=client).complete([], TOOL_DEFINITIONS)
-    assert caught.value.transient is transient
-    assert "sensitive" not in str(caught.value)
-    assert len(requests) == 1
+    assert observed[0]["model"] == "configured-gpt"

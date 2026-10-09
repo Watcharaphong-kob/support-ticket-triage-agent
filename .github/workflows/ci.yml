@@ -33,7 +33,6 @@ jobs:
           docker compose up -d --build app
           docker compose run --rm app python -m triage_agent.knowledge.manage ingest
           docker compose run --rm -e TRIAGE_TEST_DATABASE=1 app python -m pytest -q -p no:cacheprovider
-          docker compose run --rm app python -m triage_agent --input data/sample_tickets.json --offline
       - name: Stop local containers
         if: always()
         run: docker compose down

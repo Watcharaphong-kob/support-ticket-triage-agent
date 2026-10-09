@@ -35,6 +35,16 @@ class Ticket(Contract):
         return self
 
 
+def validate_batch(value) -> list[Ticket]:
+    records = value if isinstance(value, list) else [value]
+    if not 1 <= len(records) <= 100:
+        raise ValueError("Batch must contain 1–100 tickets")
+    tickets = [Ticket.model_validate(record) for record in records]
+    if len({t.ticket_id for t in tickets}) != len(tickets):
+        raise ValueError("Duplicate ticket IDs")
+    return tickets
+
+
 class Customer(Contract):
     customer_id: NonEmpty
     plan: Literal["Free", "Pro", "Enterprise"]

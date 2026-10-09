@@ -1,6 +1,6 @@
 # LangChain / LangGraph Triage Specification and Plan
 
-Status: proposed design and delivery checklist. This commit creates the plan only; framework/API implementation has not started. Review this document before coding. Keep all planning updates in this file.
+Status: design and F01–F03 ticket breakdown approved by the owner on 2026-10-09. Implementation is in progress. Keep planning updates and task evidence in this file.
 
 Branch: `feat/langchain-langgraph`, based on `feat/triage-agent` at `c295253`. The previous prototype remains available on its delivery branch.
 
@@ -252,14 +252,18 @@ Each task consults ask-matt before and after, uses tests at public seams, and re
 
 ### F01 — Framework agent through the terminal
 
-- [ ] Write failing framework-level tests: full thread reaches the model, both real tools execute, actual tool IDs/citations are retained, unauthorized customer access cannot execute.
-- [ ] Run those tests and confirm meaningful failures against the current custom-loop implementation.
-- [ ] Add locked framework dependencies; adapt the two tools; replace the loop with `create_agent`; preserve shared result validation and visible fallback.
-- [ ] Test provider/tool failures, unknown calls, budget exhaustion, forged citations, missing history, Thai drafts and critical billing precedence.
-- [ ] Demonstrate all three original tickets through the terminal using an injected scripted model against real Docker PostgreSQL. This proves framework wiring, not GPT quality.
-- [ ] Run focused tests, review the diff and commit a working terminal slice. Record results here.
+GitHub: [#7](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/7). In progress.
+
+- [x] Write failing framework-level tests: full thread reaches the model, both real tools execute, actual tool IDs/citations are retained, unauthorized customer access cannot execute.
+- [x] Run those tests and confirm meaningful failures against the current custom-loop implementation.
+- [x] Add locked framework dependencies; adapt the two tools; replace the loop with `create_agent`; preserve shared result validation and visible fallback.
+- [x] Test provider/tool failures, unknown calls, budget exhaustion, forged citations, missing history, Thai drafts and critical billing precedence.
+- [x] Demonstrate all three original tickets through the terminal using an injected scripted model against real Docker PostgreSQL. This proves framework wiring, not GPT quality.
+- [x] Run focused tests, review the diff and commit a working terminal slice. Record results here.
 
 ### F02 — HTTP access to the same agent
+
+GitHub: [#8](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/8). Pending; native blocker #7.
 
 Blocked by F01.
 
@@ -270,6 +274,8 @@ Blocked by F01.
 - [ ] Run terminal + API tests, review the diff and commit a working dual-entry-point slice. Record results here.
 
 ### F03 — Submission and quality evidence
+
+GitHub: [#9](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/9). Pending; native blocker #8.
 
 Blocked by F02.
 
@@ -308,3 +314,15 @@ Use three compact sections in the existing write-up, with no task history:
 - [FastAPI request bodies](https://fastapi.tiangolo.com/tutorial/body/)
 
 Skill usage for this plan/spec: ask-matt before/after, to-spec, Superpowers brainstorming, reuse of the existing isolated worktree, primary documentation verification and pre-delivery checks. No framework dependencies or runtime code were installed/changed while writing the plan.
+
+## Implementation evidence
+
+### F01 — verification before review (2026-10-09)
+
+- Approved design and three-ticket breakdown published as #7, #8 and #9, with native parent #6 and blocking edges #8←#7, #9←#8. The parent specification body was not modified.
+- Skills: ask-matt pre-task routing, to-tickets, implement, tdd / Superpowers test-driven-development, systematic-debugging, verification-before-completion; existing isolated worktree reused. Plugins/tools: GitHub connector and native GitHub REST links, shell, uv, Docker. Code review follows this verification.
+- Steps: locked LangChain 1.4.4, LangGraph 1.2.14 and langchain-openai 1.7.0; replaced the custom loop with create_agent; retained real read-only tools and application-owned evidence; extracted shared batch triage; removed the canned production model; migrated behavioral tests.
+- RED→GREEN observed for framework chat integration, unauthorized whole-batch rejection, safe no-retry failures, model/tool limits, critical billing precedence, configured provider and truncated output. Eight actual tools plus one output helper can complete; the helper is not required-tool evidence. Graph recursion cap is 40 steps.
+- Full Docker suite: 68 passed, 1 host-only skip. Real PostgreSQL and all three source-ticket wiring tests passed; scripted model/fake embeddings do not establish GPT or semantic quality.
+- Host suite outside the restricted sandbox: 61 passed, 8 DB/container skips. Ruff check/format passed. Initial restricted host run had tokenizer-network/temp permission failures; the unrestricted host run and rebuilt Docker run resolved those environment limitations.
+- Live GPT and semantic embedding quality not checked. Framework branch runtime requires reviewer-supplied GPT credentials; deterministic models exist only in tests, and the original offline demo remains on feat/triage-agent.

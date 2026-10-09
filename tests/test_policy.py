@@ -11,10 +11,8 @@ CALLS = [
 
 
 def validate(**changes):
-    import json
-
     return validate_decision(
-        json.loads(decision(**changes).content),
+        decision(**changes).tool_calls[0]["args"],
         ticket(),
         CALLS,
         {"real-chunk": {"is_mock": False}, "mock-chunk": {"is_mock": True}},

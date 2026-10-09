@@ -32,3 +32,17 @@ class Settings:
             raise ConfigurationError("Set " + " and ".join(missing) + " for live execution.")
         assert self.api_key is not None and self.model is not None
         return self.api_key, self.model
+
+    def chat_model(self, *, http_client=None):
+        from langchain_openai import ChatOpenAI
+
+        key, model = self.require_live_credentials()
+        return ChatOpenAI(
+            api_key=key,
+            model=model,
+            timeout=30,
+            max_retries=0,
+            max_completion_tokens=4096,
+            store=False,
+            http_client=http_client,
+        )

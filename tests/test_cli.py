@@ -34,32 +34,21 @@ class CliTests(unittest.TestCase):
         self.assertEqual(output.getvalue(), "")
         self.assertIn("Input/configuration", errors.getvalue())
 
-    def test_offline_mode_is_explicit_in_help(self):
-        output = io.StringIO()
-        with redirect_stdout(output):
-            main([])
-        self.assertIn("--offline", output.getvalue())
-
 
 if __name__ == "__main__":
     unittest.main()
 
 
-def test_offline_rejects_live_embedding_configuration_before_constructing_provider(
-    monkeypatch, capsys
-):
-    from pathlib import Path
+def test_invalid_batch_fails_before_constructing_provider(tmp_path, monkeypatch, capsys):
+    from triage_agent.config import Settings
 
-    import triage_agent.cli as cli
+    def forbidden_provider(self):
+        raise AssertionError("Invalid input must not construct a provider")
 
-    monkeypatch.setenv("EMBEDDING_BACKEND", "openai")
-
-    def forbidden_provider():
-        raise AssertionError("Offline execution must not construct a live embedder")
-
-    monkeypatch.setattr(cli, "configured_embedder", forbidden_provider)
-    path = Path(__file__).resolve().parents[1] / "data/sample_tickets.json"
-    assert cli.main(["--input", str(path), "--offline"]) == 2
+    monkeypatch.setattr(Settings, "chat_model", forbidden_provider)
+    path = tmp_path / "invalid.json"
+    path.write_text("[]", encoding="utf-8")
+    assert main(["--input", str(path)]) == 2
     assert capsys.readouterr().out == ""
 
 
@@ -87,18 +76,23 @@ def test_redirected_windows_encoding_preserves_unicode_json(tmp_path):
     result = subprocess.run(
         [
             sys.executable,
-            "-m",
-            "triage_agent",
+            "-c",
+            "import sys; sys.path.insert(0, 'tests'); "
+            "from test_agent import ScriptedChatModel, tool_requests; "
+            "from triage_agent.config import Settings; "
+            "from triage_agent.cli import main; "
+            "Settings.chat_model = lambda self: ScriptedChatModel("
+            "turns=[tool_requests('customer-002')]); sys.exit(main())",
             "--input",
             str(path),
             "--customers",
             str(root / "data/customers.json"),
-            "--offline",
             "--trace",
         ],
         env=environ,
+        cwd=root,
         capture_output=True,
-        timeout=15,
+        timeout=30,
     )
     assert result.returncode == 1
     assert json.loads(result.stdout.decode("utf-8"))["results"][0]["ticket_id"] == "ตั๋ว-002"
