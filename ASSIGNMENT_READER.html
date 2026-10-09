@@ -34,7 +34,7 @@ planning source: <a href="plan.md">plan.md</a>. Tickets: <a href="https://github
 href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/8">F02</a> → <a
 href="https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/9">F03</a>.</p><pre># LangChain / LangGraph Triage Specification and Plan
 
-Status: design and F01–F03 ticket breakdown approved by the owner on 2026-10-09. Implementation is in progress. Keep planning updates and task evidence in this file.
+Status: design and F01–F03 ticket breakdown approved by the owner on 2026-10-09. F01–F03 implementation and delivery verification are complete. Live GPT/semantic quality and reviewer access remain explicitly unverified. Keep planning updates and task evidence in this file.
 
 Branch: `feat/langchain-langgraph`, based on `feat/triage-agent` at `c295253`. The previous prototype remains available on its delivery branch.
 
@@ -116,7 +116,7 @@ Use one LangChain agent running on LangGraph, two scoped read-only tools and one
 
 Published specification: [GitHub issue #6](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/6), labeled ready-for-agent. The owner approved the design and breakdown on 2026-10-09; task evidence follows below.
 
-This framework implementation on feat/langchain-langgraph is based on completed prototype c295253. F01 and F02 implement the framework agent and shared HTTP/terminal access; F03 delivery verification is in progress. Baseline: 1,054 nonblank runtime Python lines and 80 tracked files. Original custom-loop prototype and its historical docs remain on feat/triage-agent.
+This framework implementation on feat/langchain-langgraph is based on completed prototype c295253. F01–F03 deliver the framework agent, shared HTTP/terminal access and verified packaging/documentation. Runtime code decreased from 1,054 to 974 nonblank Python lines; tracked files decreased from 80 to 60. Original custom-loop prototype and its historical docs remain on feat/triage-agent.
 
 Terminal/tool/database testing seams are reused. The HTTP seam and retry/offline/routing changes were approved, tested and reviewed. The implementation checklist and actual evidence stay in this document. The owner&#x27;s earlier classic-RAG-only and prototype decisions remain in force.
 
@@ -309,17 +309,17 @@ Blocked by F01.
 
 ### F03 — Submission and quality evidence
 
-GitHub: [#9](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/9). In progress; native blocker #8 completed.
+GitHub: [#9](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/issues/9). Done; native blocker #8 completed.
 
 Blocked by F02.
 
-- [ ] Remove superseded custom-loop/canned-model code and obsolete generated planning copies only where the retained implementation/docs cover their useful behavior and evidence.
-- [ ] Update README with uv/Docker setup, ingestion, terminal commands, HTTP examples, compatible GPT configuration, failures and exact tests. Adding an environment file alone is not DB startup/ingestion.
-- [ ] Update the system prompt and tool definitions as delivered artifacts; verify installed prompt/migration resources and packaged entry points.
-- [ ] Write and render the one-page architecture/failure/evaluation PDF; inspect layout and verify exactly one page.
-- [ ] Run locked install, Ruff, package builds, complete Docker database tests, terminal and HTTP samples, and fresh-clone startup. Record test counts and before/after runtime complexity.
-- [ ] With an owner-provided key, evaluate all three source tickets plus unseen billing, access and product tickets using live GPT. Evaluate live embeddings separately from fake-vector wiring. If credentials are unavailable, mark these checks unperformed and do not claim semantic quality.
-- [ ] Review the entire branch against the Word requirements and this plan. Confirm reviewer access and the correct GitHub branch URL before submission.
+- [x] Remove superseded custom-loop/canned-model code and obsolete generated planning copies only where the retained implementation/docs cover their useful behavior and evidence.
+- [x] Update README with uv/Docker setup, ingestion, terminal commands, HTTP examples, compatible GPT configuration, failures and exact tests. Adding an environment file alone is not DB startup/ingestion.
+- [x] Deliver the system prompt and tool definitions; verify installed prompt/migration resources and packaged entry points.
+- [x] Write and render the one-page architecture/failure/evaluation PDF; inspect layout and verify exactly one page.
+- [x] Run locked install, Ruff, package builds, complete Docker database tests, terminal and HTTP samples, and fresh-clone startup. Record test counts and before/after runtime complexity.
+- [x] Disclose live GPT and semantic embedding evaluation as unperformed: no owner-provided credentials were used. Scripted tests do not establish semantic quality.
+- [x] Review the entire branch against the Word requirements and this plan; verify the branch URL and document private-repository reviewer access requirements. Actual reviewer access remains unconfirmed; the owner must grant access before submission.
 
 ## One-page write-up outline
 
@@ -372,6 +372,21 @@ F01 post-task ask-matt: verification complete → code-review → next frontier 
 - Restricted Windows TestClient run stalled; terminated and used the unrestricted host run plus Linux Docker suite. No live GPT/semantic quality calls; deterministic injected chat models are test-only.
 
 F02 post-task ask-matt: HTTP verification → standards/spec review → F03 delivery frontier. Standards: no violations; optional repeated test config consolidated in a small fixture. Spec: no findings. After cleanup, real DB API tests: 10 passed (read-only test mount); forced concurrent isolation also passed with inherited live-embedding config overridden by the fixture. Rebuilt image suite before test-only cleanup: 78 passed / 1 host-only skip. F02 implementation commit f621598; final no-mount image suite follows in F03.
+
+### F03 — reproducible delivery (2026-10-09)
+
+- Pre-task ask-matt: implement the delivery ticket, then verify public installation/transport seams and run both code-review axes. Skills used: ask-matt before/after, implement, code-review, verification-before-completion, PDF render/inspection and finishing-a-development-branch. Existing isolated worktree retained. Tools/plugins: shell, uv, Docker, GitHub connector/REST and bundled PDF tooling. No new planning files were added.
+- Steps: rewrite README for the actual framework CLI/API and uv/Docker commands; update requirement traceability and the one-page write-up; replace the obsolete reader/planning generator with a small stdlib generator; remove 20 superseded documentation files and two obsolete canned-output examples. Original artifacts remain in the original branch history.
+- Faithful source check: all 35 Word paragraphs match assignment_source.json. Original conversations and all twelve messages remain covered by fixture tests. Installed wheel contains the prompt, migration SQL and API; the removed custom model module is absent.
+- Fresh remote clone of feat/langchain-langgraph at a90e2c5: uv locked install and wheel/sdist builds passed. Isolated Docker Compose DB/API started; migration succeeded; ingestion returned three documents/three chunks. The freshly built image, without source mounts, passed 78 tests with one host-only skip. Installed terminal entry point returned version 0.1.0; all three source samples have CLI/API parity tests against actual PostgreSQL and injected chat models.
+- Actual HTTP smoke checks passed: health reported alive; sample POST without GPT credentials returned the documented sanitized 503. Verification containers/network were stopped; the separate verification volume and original prototype services were preserved.
+- Final Windows host suite: 69 passed, 10 DB/container skips. Ruff check/format passed. Reader source/link/resource checks passed. Reader content was deterministic; explicit LF output prevents Windows newline conversion from leaving a misleading Git dirty flag.
+- PDF: 318-word source, exactly one rendered A4 page, all three required topics present; visual inspection found readable text without clipping or overlap. Runtime Python: 16 files, 974 nonblank lines versus 1,054 baseline. Tracked files: 60 versus 80 baseline.
+- Independent full-branch reviews against c295253: Standards zero violations/actionable smells; Spec zero actionable findings. Hosted CI for a90e2c5 succeeded: [run 37931409462](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/actions/runs/37931409462).
+- Live GPT and semantic embedding quality were not evaluated. Test chat models and fake vectors prove wiring and safeguards only. README describes the required live evaluation and separate embedding-space volume.
+- Correct delivery branch: [feat/langchain-langgraph](https://github.com/Watcharaphong-kob/support-ticket-triage-agent/tree/feat/langchain-langgraph). Repository remains private. No reviewer identity/access was supplied; the owner must grant reviewer access before submitting this URL. No public deployment, merge or customer reply was performed.
+
+F03 post-task ask-matt: delivery verification and two-axis code review complete → retain the requested alternate branch and worktree. F01–F03 are complete; live-quality evidence and reviewer access are disclosed remaining submission prerequisites, not silently reported as passed.
 </pre></section>
 <section id="original"><h2>Main Assignment — original Word text</h2><p>Faithful source text
 follows. These are assignment requirements, distinct from the owner's implementation

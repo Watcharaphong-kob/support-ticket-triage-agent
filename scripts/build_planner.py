@@ -54,7 +54,7 @@ href="{REPO}/issues/9">F03</a>.</p><pre>{escape(plan)}</pre></section>
 follows. These are assignment requirements, distinct from the owner's implementation
 choices.</p>{paragraphs}</section></main></html>
 """
-    (ROOT / "ASSIGNMENT_READER.html").write_text(page, encoding="utf-8")
+    (ROOT / "ASSIGNMENT_READER.html").write_text(page, encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":
